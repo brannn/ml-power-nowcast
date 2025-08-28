@@ -1,6 +1,6 @@
 # ML Power Nowcast
 
-ML Power Nowcast implements a GPU-capable power demand forecasting system using MLflow for experiment tracking and model management. The project demonstrates reproducible machine learning workflows that can be deployed across local development environments, AWS EC2 instances, and SageMaker.
+ML Power Nowcast implements a GPU-capable power demand forecasting system using MLflow for experiment tracking and model management. The project demonstrates reproducible machine learning workflows that can be deployed across local development environments and AWS EC2 instances.
 
 ## Project Goals
 
@@ -49,14 +49,14 @@ ml-power-nowcast/
 
 ### Prerequisites
 
-The project requires Python 3.12 or later, AWS CLI with configured credentials, Terraform 1.6 or later, and Packer 1.9 or later. These tools enable local development, infrastructure provisioning, and custom AMI creation respectively.
+The project requires Python 3.10 or later, AWS CLI with configured credentials, Terraform 1.6 or later, and Packer 1.9 or later. These tools enable local development, infrastructure provisioning, and custom AMI creation respectively.
 
 ### Environment Setup
 
 Create a Python virtual environment and install the required dependencies:
 
 ```bash
-python3.12 -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -135,7 +135,7 @@ Infrastructure secrets such as Terraform variable files containing credentials s
 
 Model performance evaluation uses standard forecasting metrics including Mean Absolute Error (MAE), Root Mean Square Error (RMSE), and Mean Absolute Percentage Error (MAPE). These metrics are compared against naive baseline forecasts to establish performance improvements.
 
-Reproducibility validation ensures identical results across different computing environments. The same model training code should produce consistent outputs whether executed locally, on EC2 instances, or within SageMaker environments.
+Reproducibility validation ensures identical results across different computing environments. The same model training code should produce consistent outputs whether executed locally or on EC2 instances.
 
 Operational metrics include model registry promotion workflows and serving endpoint performance. The system demonstrates automated model deployment through MLflow's model registry, enabling controlled promotion from staging to production environments.
 
