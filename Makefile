@@ -71,20 +71,30 @@ api:
 	uvicorn src.serve.fastapi_app:app --host 0.0.0.0 --port 8000 --reload
 
 fmt:
-	black src/ --line-length 88
-	isort src/ --profile black
+	black src/ tests/ --line-length 88
+	isort src/ tests/ --profile black
 
 lint:
-	flake8 src/ --max-line-length 88 --extend-ignore E203,W503
+	flake8 src/ tests/ --max-line-length 88 --extend-ignore E203,W503
 
 test:
-	pytest tests/ -v --cov=src --cov-report=html
+	pytest tests/ -v
+
+test-cov:
+	pytest tests/ -v --cov=src --cov-report=html --cov-report=term
+
+test-fast:
+	pytest tests/ -v -m "not slow"
 
 clean:
 	find . -type f -name "*.pyc" -delete
 	find . -type d -name "__pycache__" -delete
 	rm -rf .pytest_cache
 	rm -rf htmlcov
+	rm -rf .coverage
 	rm -rf dist
 	rm -rf build
 	rm -rf *.egg-info
+	rm -rf data/raw/
+	rm -rf data/interim/
+	rm -rf data/features/
