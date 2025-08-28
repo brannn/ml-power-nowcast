@@ -49,20 +49,20 @@ infra-destroy:
 	cd terraform/environments/dev && terraform destroy
 
 ingest:
-	python -m src.ingest.pull_power --days 120
-	python -m src.ingest.pull_weather --days 120
+	python3 -m src.ingest.pull_power --days 120
+	python3 -m src.ingest.pull_weather --days 120
 
 features:
-	python -m src.features.build_features --horizon 30 --lags "1,2,3,6,12,24" --rolling "3,6,12"
+	python3 -m src.features.build_features --horizon 30 --lags "1,2,3,6,12,24" --rolling "3,6,12"
 
 train-xgb:
-	python -m src.models.train_xgb --horizon 30 --n_estimators 500 --max_depth 6
+	python3 -m src.models.train_xgb --horizon 30 --n_estimators 500 --max_depth 6
 
 train-lstm:
-	python -m src.models.train_lstm --horizon 30 --hidden_size 64 --layers 2 --epochs 10 --batch_size 256
+	python3 -m src.models.train_lstm --horizon 30 --hidden_size 64 --layers 2 --epochs 10 --batch_size 256
 
 evaluate:
-	python -m src.models.evaluate --horizon 30
+	python3 -m src.models.evaluate --horizon 30
 
 serve-mlflow:
 	mlflow models serve -m "models:/power-nowcast/Production" -p 5000
