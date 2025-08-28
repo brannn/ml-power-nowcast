@@ -25,6 +25,10 @@ help:
 	@echo "  serve-mlflow   - Serve model via MLflow"
 	@echo "  api            - Start FastAPI server"
 	@echo ""
+	@echo "Data Management:"
+	@echo "  prepopulate-s3 - Show S3 pre-population usage"
+	@echo "  list-s3-data   - List existing data in S3 bucket"
+	@echo ""
 	@echo "Development:"
 	@echo "  fmt            - Format code with black and isort"
 	@echo "  lint           - Lint code with flake8"
@@ -71,6 +75,17 @@ train-lstm:
 
 evaluate:
 	python3 -m src.models.evaluate --horizon 30
+
+# S3 data pre-population
+prepopulate-s3:
+	@echo "Usage: make prepopulate-s3 BUCKET=your-bucket-name [YEARS=3]"
+	@echo "Example: make prepopulate-s3 BUCKET=ml-power-nowcast-dev-mlflow-abc123"
+
+prepopulate-s3-run:
+	python3 scripts/prepopulate_s3_data.py --bucket $(BUCKET) --years $(or $(YEARS),3)
+
+list-s3-data:
+	python3 scripts/prepopulate_s3_data.py --bucket $(BUCKET) --list-only
 
 serve-mlflow:
 	mlflow models serve -m "models:/power-nowcast/Production" -p 5000
