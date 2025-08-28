@@ -5,7 +5,8 @@ help:
 	@echo "ML Power Nowcast - Available targets:"
 	@echo ""
 	@echo "Setup:"
-	@echo "  setup          - Create venv and install dependencies"
+	@echo "  setup          - Create venv and install runtime dependencies"
+	@echo "  setup-dev      - Create venv and install all dependencies (runtime + dev)"
 	@echo "  build-ami      - Build custom Ubuntu ML AMI with Packer"
 	@echo ""
 	@echo "Infrastructure:"
@@ -35,6 +36,13 @@ setup:
 	.venv/bin/pip install --upgrade pip
 	.venv/bin/pip install -r requirements.txt
 	@echo "Virtual environment created. Activate with: source .venv/bin/activate"
+
+setup-dev:
+	python3 -m venv .venv
+	.venv/bin/pip install --upgrade pip
+	.venv/bin/pip install -r requirements.txt -r requirements-dev.txt
+	.venv/bin/pip install -e .
+	@echo "Development environment created. Activate with: source .venv/bin/activate"
 
 build-ami:
 	cd packer/ubuntu-ml-base && packer build ubuntu-ml-base.pkr.hcl
