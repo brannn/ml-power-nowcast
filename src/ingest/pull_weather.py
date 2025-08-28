@@ -8,7 +8,7 @@ humidity, and wind speed significantly impact electricity consumption.
 """
 
 import argparse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional, Tuple
 
@@ -46,7 +46,7 @@ def generate_synthetic_weather_data(days: int = 730) -> pd.DataFrame:
     # Create hourly timestamps
     end_time = datetime.now()
     start_time = end_time - timedelta(days=days)
-    timestamps = pd.date_range(start=start_time, end=end_time, freq="H")
+    timestamps = pd.date_range(start=start_time, end=end_time, freq="h")
 
     # Base temperature (Celsius) - around 15°C average
     base_temp = 15.0
@@ -260,21 +260,7 @@ def fetch_meteostat_data(
         raise RuntimeError(f"Failed to fetch Meteostat weather data: {e}")
 
 
-def _fallback_to_synthetic_weather(region: str, days: int) -> pd.DataFrame:
-    """
-    Fallback function to generate synthetic weather data when API fails.
 
-    Args:
-        region: Region name for labeling
-        days: Number of days to generate
-
-    Returns:
-        DataFrame with synthetic weather data labeled with the specified region
-    """
-    df = generate_synthetic_weather_data(days)
-    df["region"] = region
-    df["data_source"] = f"{region.lower()}_synthetic_fallback"
-    return df
 
 
 def save_weather_data(df: pd.DataFrame, output_path: str = "data/raw/weather.parquet") -> str:
