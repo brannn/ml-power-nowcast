@@ -1,4 +1,4 @@
-.PHONY: help setup ingest features train-xgb train-lstm evaluate serve-mlflow api fmt lint test clean infra-plan infra-apply infra-destroy build-ami
+.PHONY: help setup ingest features train-xgb train-lstm evaluate serve-mlflow serve-fastapi serve-info serve-test api fmt lint test clean infra-plan infra-apply infra-destroy build-ami docker-build docker-run
 
 # Default target
 help:
@@ -22,8 +22,11 @@ help:
 	@echo "  evaluate       - Evaluate models and generate plots"
 	@echo ""
 	@echo "Serving:"
-	@echo "  serve-mlflow   - Serve model via MLflow"
-	@echo "  api            - Start FastAPI server"
+	@echo "  serve-fastapi  - Serve model via FastAPI (recommended)"
+	@echo "  serve-mlflow   - Serve model via MLflow built-in server"
+	@echo "  serve-info     - Show information about registered models"
+	@echo "  serve-test     - Test serving endpoints"
+	@echo "  api            - Alias for serve-fastapi"
 	@echo ""
 	@echo "Data Management:"
 	@echo "  prepopulate-s3 - Show S3 pre-population usage"
@@ -119,5 +122,39 @@ clean:
 	rm -rf build
 	rm -rf *.egg-info
 	rm -rf data/raw/
+
+# Serving targets per Section 13
+serve-fastapi:
+	@echo "🚀 Starting FastAPI serving (recommended)..."
+	./scripts/serve_model.sh --type fastapi --port 8000
+
+serve-mlflow:
+	@echo "🚀 Starting MLflow built-in serving..."
+	./scripts/serve_model.sh --type mlflow --port 5000
+
+serve-info:
+	@echo "📋 Model registry information..."
+	python src/serve/mlflow_serve.py --info
+
+serve-test:
+	@echo "🧪 Testing serving endpoints..."
+	@echo "Testing FastAPI (port 8000)..."
+	@curl -f http://localhost:8000/health || echo "FastAPI not running"
+	@echo ""
+	@echo "Testing MLflow (port 5000)..."
+	@curl -f http://localhost:5000/ping || echo "MLflow serving not running"
+
+api: serve-fastapi
+
+# Docker targets per Section 13
+docker-build:
+	@echo "🐳 Building Docker image..."
+	docker build -t power-nowcast-api .
+
+docker-run:
+	@echo "🐳 Running Docker container..."
+	docker run -p 8000:8000 \
+		-e MLFLOW_TRACKING_URI=http://host.docker.internal:5001 \
+		power-nowcast-api
 	rm -rf data/interim/
 	rm -rf data/features/
