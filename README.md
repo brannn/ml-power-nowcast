@@ -35,7 +35,9 @@ ml-power-nowcast/
 ├── packer/              # AMI building
 │   └── ubuntu-ml-base/  # Ubuntu 22.04 + ML dependencies
 ├── planning/            # Project planning documents
+├── scripts/             # Data management and utility scripts
 ├── src/                 # ML pipeline code
+│   ├── config/          # Zone configurations (NYISO, CAISO)
 │   ├── ingest/          # Data ingestion (power, weather)
 │   ├── features/        # Feature engineering
 │   ├── models/          # Model training (XGBoost, LSTM)
@@ -116,6 +118,22 @@ mlflow server --backend-store-uri sqlite:///mlruns.db \
   --default-artifact-root ./mlruns_artifacts --host 0.0.0.0 --port 5001
 ```
 
+For cloud deployments with S3 storage, pre-populate historical data to avoid repeated API calls during development:
+
+```bash
+# Configure your S3 bucket name
+export BUCKET_NAME="your-mlflow-bucket-name"
+
+# Pre-populate with real data (requires API access)
+make prepopulate-s3-run BUCKET=$BUCKET_NAME YEARS=3
+
+# Or use synthetic data for development
+python3 scripts/prepopulate_s3_data.py --bucket $BUCKET_NAME --years 3 --synthetic-power --synthetic-weather
+
+# Check existing data
+make list-s3-data BUCKET=$BUCKET_NAME
+```
+
 Execute the ML pipeline using the provided Makefile targets:
 
 ```bash
@@ -165,13 +183,96 @@ AWS EC2 g6f.xlarge instances provide GPU acceleration for development and testin
 
 Production deployments use EC2 g6.xlarge instances for optimized training and serving performance. The same infrastructure supports both development and production workloads through instance type selection.
 
-## Data Sources
+## Data Ingestion Architecture
 
-Power demand data comes from public APIs including NYISO (New York Independent System Operator) and CAISO (California Independent System Operator). These sources provide real-time and historical electricity demand data at hourly intervals.
+The system implements a comprehensive data ingestion framework designed for accuracy and geographic representativeness. Data collection operates through zone-based weather aggregation and robust power demand APIs, ensuring that weather features properly correlate with statewide power demand patterns.
 
-Weather data integration uses NOAA (National Oceanic and Atmospheric Administration) APIs and the Meteostat Python library. Weather features include temperature, wind speed, and other meteorological variables that correlate with power demand patterns.
+### Power Demand Data Collection
 
-Calendar and temporal features incorporate holiday calendars, hour-of-day indicators, day-of-week patterns, and seasonal variables. These features capture regular demand cycles and special event impacts on power consumption.
+Power demand data originates from public APIs provided by Independent System Operators (ISOs). The implementation addresses specific API limitations and data quality requirements through targeted fixes based on comprehensive analysis of each system's data structure.
+
+**NYISO (New York Independent System Operator)** data collection uses the P-58B Real-Time Actual Load CSV files published daily. The system fetches 5-minute interval data across all load zones and aggregates zone totals to produce accurate statewide (NYCA) demand figures. This approach corrects previous implementations that incorrectly filtered for single zones rather than computing true statewide totals.
+
+**CAISO (California Independent System Operator)** data collection employs the OASIS SingleZip API with chunked requests to handle large date ranges reliably. The implementation uses 7-day request windows with proper error handling for individual chunk failures. API parameters specify 15-minute granularity with actual load data rather than forecasts.
+
+Both systems implement UTC timestamp normalization and comprehensive error handling without synthetic data fallbacks. This approach maintains data integrity by preventing contamination of real datasets with generated values.
+
+### Zone-Based Weather Collection
+
+Weather data collection addresses the geographic mismatch between statewide power demand and single-point weather measurements. The system implements zone-based weather aggregation that properly represents climate diversity across entire states.
+
+**NYISO Weather Zones** encompass 11 representative locations across New York State, from Buffalo (Western NY) through Syracuse (Central NY) to New York City and Long Island. Each zone corresponds to a major load center with coordinates selected for representative weather station coverage. Population-weighted aggregation produces statewide weather averages that reflect actual load distribution, with NYC accounting for 42% of the weighting and Long Island contributing 18%.
+
+**CAISO Weather Zones** cover 8 major load aggregation points across California's diverse climate regions. These include NP15 (North of Path 15, San Francisco Bay Area), SP15 (South of Path 15, Los Angeles Basin), SDGE (San Diego), and additional zones representing the Central Valley, Inland Empire, and Sacramento areas. Load-weighted aggregation accounts for California's concentrated demand patterns, with the LA Basin (SP15) weighted at 35% and the Bay Area (NP15) at 25%.
+
+The zone-based approach captures climate diversity that single-point measurements cannot represent. New York State weather varies significantly from Buffalo's lake-effect snow patterns to NYC's coastal moderation. California spans Mediterranean coastal climates, hot semi-arid Central Valley conditions, and desert regions in the Inland Empire.
+
+### Data Storage and Organization
+
+S3 storage follows a structured hierarchy that maintains clear data provenance and supports both synthetic and real data workflows. The storage structure separates power and weather data by region and data type:
+
+```
+raw/
+├── power/
+│   ├── nyiso/
+│   │   ├── real_3y.parquet      # Real NYISO statewide data
+│   │   └── synthetic_3y.parquet # Synthetic NYISO data
+│   └── caiso/
+│       ├── real_3y.parquet      # Real CAISO statewide data
+│       └── synthetic_3y.parquet # Synthetic CAISO data
+└── weather/
+    ├── nyiso_zones/
+    │   ├── real_3y.parquet      # 11-zone population-weighted NY weather
+    │   └── synthetic_3y.parquet # Synthetic NY weather
+    └── caiso_zones/
+        ├── real_3y.parquet      # 8-zone load-weighted CA weather
+        └── synthetic_3y.parquet # Synthetic CA weather
+```
+
+This organization enables clear separation between synthetic and real data sources while maintaining consistent naming conventions. Data source attribution tracks aggregation methods and API sources for full reproducibility.
+
+### Data Pre-Population Capabilities
+
+The system includes comprehensive S3 pre-population functionality that enables bulk historical data collection from local environments. This approach avoids repeated API calls during development and provides reliable data availability for model training.
+
+Pre-population operates through configurable scripts that support both real API collection and synthetic data generation. Users can specify data types, time ranges, and aggregation methods through command-line parameters. The system handles API failures gracefully without falling back to synthetic data, maintaining strict separation between data types.
+
+Example usage demonstrates the flexibility of the pre-population system:
+
+```bash
+# Real data collection with zone-based weather
+python3 scripts/prepopulate_s3_data.py --bucket mybucket --years 3
+
+# Synthetic data for development
+python3 scripts/prepopulate_s3_data.py --bucket mybucket --years 3 --synthetic-power --synthetic-weather
+
+# Power-only collection for specific testing
+python3 scripts/prepopulate_s3_data.py --bucket mybucket --years 2 --power-only
+```
+
+The pre-population system supports incremental updates and force-refresh capabilities, enabling efficient data management workflows for both development and production environments.
+
+### API Integration and Data Quality
+
+The implementation incorporates specific fixes for known API limitations and data quality issues identified through comprehensive analysis of public power data sources. These improvements ensure accurate data collection and proper geographic representation.
+
+**NYISO API Corrections** address the critical issue of zone aggregation versus single-zone filtering. Previous implementations incorrectly filtered for PTID 61757, which corresponds only to the CAPITL zone rather than statewide totals. The corrected implementation aggregates all zones per timestamp to produce true NYCA (New York Control Area) statewide load figures. This change significantly improves data accuracy for statewide forecasting models.
+
+**CAISO API Reliability** improvements implement chunked request patterns to handle the system's data retention limitations and request size constraints. CAISO OASIS API maintains approximately 39 months of historical data with varying request limits across different report types. The implementation uses 7-day request chunks with comprehensive error handling for individual chunk failures, ensuring robust data collection across large date ranges.
+
+**UTC Timestamp Normalization** standardizes all temporal data to UTC timezone handling, eliminating timezone-related inconsistencies that can affect model training. This normalization applies across both power and weather data sources, ensuring proper temporal alignment for feature engineering.
+
+**Data Integrity Safeguards** prevent mixing of synthetic and real data through strict separation of data collection workflows. Real API functions raise explicit errors rather than falling back to synthetic data generation, maintaining clear data provenance for model evaluation and production deployment.
+
+### Synthetic Data Generation
+
+The system provides comprehensive synthetic data generation capabilities for development and testing scenarios where real API access is unavailable or impractical. Synthetic data generation operates independently from real data collection, ensuring no contamination of production datasets.
+
+Synthetic power demand data incorporates realistic patterns including daily cycles, weekly variations, seasonal trends, and weather correlations. The generation process uses configurable parameters for base load levels, peak demand ratios, and seasonal adjustment factors that reflect actual power system characteristics.
+
+Synthetic weather data generation produces correlated meteorological variables including temperature, humidity, and wind speed with appropriate seasonal patterns and daily variations. The synthetic weather maintains statistical properties similar to real weather data while providing consistent, reproducible datasets for development workflows.
+
+Both synthetic data types include proper metadata attribution that clearly identifies generated data sources, preventing accidental use in production model training or evaluation scenarios.
 
 ## Contributing
 
