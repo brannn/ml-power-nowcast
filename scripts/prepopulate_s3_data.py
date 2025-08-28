@@ -26,7 +26,8 @@ from src.ingest.pull_weather import (
     fetch_noaa_weather_data,
     fetch_meteostat_data,
     generate_synthetic_weather_data,
-    fetch_nyiso_zone_weather_data
+    fetch_nyiso_zone_weather_data,
+    fetch_caiso_zone_weather_data
 )
 
 
@@ -211,23 +212,33 @@ def prepopulate_weather_data(
                 print("   Or check Meteostat package installation")
                 raise
     
-    # California weather (for CAISO correlation)
-    ca_key = f"raw/weather/california/historical_{years}y.parquet"
-    if not force and check_s3_object_exists(bucket, ca_key, s3_client):
-        print(f"⏭️  California weather data already exists: s3://{bucket}/{ca_key}")
+    # CAISO zone-based weather (for accurate power correlation)
+    caiso_weather_key = f"raw/weather/caiso_zones/{data_type}_{years}y.parquet"
+
+    if not force and check_s3_object_exists(bucket, caiso_weather_key, s3_client):
+        print(f"⏭️  CAISO zone weather data already exists: s3://{bucket}/{caiso_weather_key}")
     else:
-        print("🔄 Fetching California weather data...")
-        try:
-            # Los Angeles coordinates for California weather
-            ca_df = fetch_meteostat_data(days=days, latitude=34.0522, longitude=-118.2437)
-            upload_to_s3(ca_df, bucket, ca_key, s3_client)
-        except Exception as e:
-            print(f"❌ Failed to fetch California weather data: {e}")
-            print("🔄 Generating synthetic California weather data as fallback...")
-            ca_df = generate_synthetic_weather_data(days=days)
-            ca_df["region"] = "CALIFORNIA"
-            ca_df["data_source"] = "synthetic_fallback"
-            upload_to_s3(ca_df, bucket, ca_key, s3_client)
+        if use_synthetic:
+            print("🔄 Generating synthetic CAISO weather data...")
+            caiso_weather_df = generate_synthetic_weather_data(days=days)
+            caiso_weather_df["region"] = "CAISO"
+            caiso_weather_df["data_source"] = "synthetic"
+            upload_to_s3(caiso_weather_df, bucket, caiso_weather_key, s3_client)
+        else:
+            print("🔄 Fetching CAISO zone-based weather data...")
+            try:
+                # Fetch weather for all 8 CAISO zones and create load-weighted average
+                caiso_weather_df = fetch_caiso_zone_weather_data(
+                    days=days,
+                    zones=None,  # All zones
+                    aggregate_method="load_weighted"
+                )
+                upload_to_s3(caiso_weather_df, bucket, caiso_weather_key, s3_client)
+            except Exception as e:
+                print(f"❌ Failed to fetch CAISO zone weather data: {e}")
+                print("💡 Consider using synthetic weather mode: --synthetic-weather")
+                print("   Or check Meteostat package installation")
+                raise
 
 
 def list_s3_data(bucket: str, s3_client: Optional[boto3.client] = None) -> None:
