@@ -53,12 +53,30 @@ The project requires Python 3.10 or later, AWS CLI with configured credentials, 
 
 ### Environment Setup
 
-Create a Python virtual environment and install the required dependencies:
+The project uses a two-tier dependency structure for optimal deployment flexibility:
 
+- **`requirements.txt`**: Runtime dependencies for production deployment
+- **`requirements-dev.txt`**: Development tools (testing, linting, notebooks, profiling)
+
+**For Production/Runtime:**
+```bash
+make setup  # Creates .venv with runtime dependencies only
+source .venv/bin/activate
+```
+
+**For Development:**
+```bash
+make setup-dev  # Creates .venv with all dependencies including dev tools
+source .venv/bin/activate
+```
+
+**Manual Setup (if preferred):**
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.txt -r requirements-dev.txt  # For development
+# OR
+pip install -r requirements.txt  # For production only
 ```
 
 Copy the example environment file and configure it for your specific setup:
