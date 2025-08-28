@@ -115,9 +115,9 @@ def fetch_noaa_weather_data(
     print(f"Fetching NOAA weather data for {days} days from station {station_id}...")
 
     if not api_token:
-        print("Warning: No NOAA API token provided. Using synthetic data.")
+        print("Error: No NOAA API token provided.")
         print("Get a free token at: https://www.ncdc.noaa.gov/cdo-web/token")
-        return _fallback_to_synthetic_weather("NOAA", days)
+        raise ValueError("NOAA API token is required for real weather data")
 
     # NOAA Climate Data Online API endpoint
     base_url = "https://www.ncdc.noaa.gov/cdo-web/api/v2/data"
@@ -142,13 +142,13 @@ def fetch_noaa_weather_data(
 
         if response.status_code != 200:
             print(f"NOAA API returned HTTP {response.status_code}")
-            return _fallback_to_synthetic_weather("NOAA", days)
+            raise RuntimeError(f"NOAA API request failed with status {response.status_code}")
 
         data = response.json()
 
         if "results" not in data or not data["results"]:
             print("NOAA API returned no data")
-            return _fallback_to_synthetic_weather("NOAA", days)
+            raise RuntimeError("NOAA API returned no data for the requested parameters")
 
         # Process NOAA data format
         records = []
@@ -170,7 +170,7 @@ def fetch_noaa_weather_data(
             df_pivot["temp_c"] = (df_pivot["TMAX"] + df_pivot["TMIN"]) / 2 / 10  # Convert from tenths
         else:
             print("Missing temperature data in NOAA response")
-            return _fallback_to_synthetic_weather("NOAA", days)
+            raise RuntimeError("NOAA API response missing required temperature data")
 
         # Add synthetic humidity and wind (NOAA daily data doesn't include these)
         np.random.seed(42)
@@ -187,8 +187,7 @@ def fetch_noaa_weather_data(
 
     except Exception as e:
         print(f"Error fetching NOAA data: {e}")
-        print("Falling back to synthetic weather data...")
-        return _fallback_to_synthetic_weather("NOAA", days)
+        raise RuntimeError(f"Failed to fetch NOAA weather data: {e}")
 
 
 def fetch_meteostat_data(
@@ -232,7 +231,7 @@ def fetch_meteostat_data(
         
         if df.empty:
             print("Meteostat returned no data")
-            return _fallback_to_synthetic_weather("METEOSTAT", days)
+            raise RuntimeError("Meteostat API returned no data for the requested location and time range")
         
         # Meteostat columns: temp, rhum, wspd, etc.
         df = df.reset_index()
@@ -255,11 +254,10 @@ def fetch_meteostat_data(
         
     except ImportError:
         print("Meteostat package not installed. Install with: pip install meteostat")
-        return _fallback_to_synthetic_weather("METEOSTAT", days)
+        raise ImportError("Meteostat package is required for weather data. Install with: pip install meteostat")
     except Exception as e:
         print(f"Error fetching Meteostat data: {e}")
-        print("Falling back to synthetic weather data...")
-        return _fallback_to_synthetic_weather("METEOSTAT", days)
+        raise RuntimeError(f"Failed to fetch Meteostat weather data: {e}")
 
 
 def _fallback_to_synthetic_weather(region: str, days: int) -> pd.DataFrame:
