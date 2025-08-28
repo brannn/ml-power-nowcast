@@ -39,6 +39,8 @@ mlruns.db-*
 
 # Data files (can be large)
 data/
+*.csv
+feature_importance_*.csv
 
 # Model artifacts
 artifacts/
