@@ -22,7 +22,12 @@ import pandas as pd
 from botocore.exceptions import ClientError
 
 from src.ingest.pull_power import fetch_nyiso_data, fetch_caiso_data, generate_synthetic_power_data
-from src.ingest.pull_weather import fetch_noaa_weather_data, fetch_meteostat_data, generate_synthetic_weather_data
+from src.ingest.pull_weather import (
+    fetch_noaa_weather_data,
+    fetch_meteostat_data,
+    generate_synthetic_weather_data,
+    fetch_nyiso_zone_weather_data
+)
 
 
 def get_s3_client() -> boto3.client:
@@ -156,16 +161,18 @@ def prepopulate_weather_data(
     bucket: str,
     years: int = 3,
     force: bool = False,
+    use_synthetic: bool = False,
     noaa_token: Optional[str] = None,
     s3_client: Optional[boto3.client] = None
 ) -> None:
     """
     Pre-populate S3 with historical weather data.
-    
+
     Args:
         bucket: S3 bucket name
         years: Number of years of historical data to fetch
         force: Overwrite existing data
+        use_synthetic: Use synthetic weather data instead of real APIs
         noaa_token: NOAA API token
         s3_client: Boto3 S3 client
     """
@@ -175,23 +182,34 @@ def prepopulate_weather_data(
     days = years * 365
     print(f"🌤️  Fetching {years} years ({days} days) of weather data...")
     
-    # NYC weather (for NYISO correlation)
-    nyc_key = f"raw/weather/nyc/historical_{years}y.parquet"
-    if not force and check_s3_object_exists(bucket, nyc_key, s3_client):
-        print(f"⏭️  NYC weather data already exists: s3://{bucket}/{nyc_key}")
+    # NYISO zone-based weather (for accurate power correlation)
+    data_type = "synthetic" if use_synthetic else "real"
+    nyiso_weather_key = f"raw/weather/nyiso_zones/{data_type}_{years}y.parquet"
+
+    if not force and check_s3_object_exists(bucket, nyiso_weather_key, s3_client):
+        print(f"⏭️  NYISO zone weather data already exists: s3://{bucket}/{nyiso_weather_key}")
     else:
-        print("🔄 Fetching NYC weather data...")
-        try:
-            # Try Meteostat first (no API key required)
-            nyc_df = fetch_meteostat_data(days=days, latitude=40.7128, longitude=-74.0060)
-            upload_to_s3(nyc_df, bucket, nyc_key, s3_client)
-        except Exception as e:
-            print(f"❌ Failed to fetch NYC weather data: {e}")
-            print("🔄 Generating synthetic NYC weather data as fallback...")
-            nyc_df = generate_synthetic_weather_data(days=days)
-            nyc_df["region"] = "NYC"
-            nyc_df["data_source"] = "synthetic_fallback"
-            upload_to_s3(nyc_df, bucket, nyc_key, s3_client)
+        if use_synthetic:
+            print("🔄 Generating synthetic NYISO weather data...")
+            nyiso_weather_df = generate_synthetic_weather_data(days=days)
+            nyiso_weather_df["region"] = "NYISO"
+            nyiso_weather_df["data_source"] = "synthetic"
+            upload_to_s3(nyiso_weather_df, bucket, nyiso_weather_key, s3_client)
+        else:
+            print("🔄 Fetching NYISO zone-based weather data...")
+            try:
+                # Fetch weather for all 11 NYISO zones and create population-weighted average
+                nyiso_weather_df = fetch_nyiso_zone_weather_data(
+                    days=days,
+                    zones=None,  # All zones
+                    aggregate_method="population_weighted"
+                )
+                upload_to_s3(nyiso_weather_df, bucket, nyiso_weather_key, s3_client)
+            except Exception as e:
+                print(f"❌ Failed to fetch NYISO zone weather data: {e}")
+                print("💡 Consider using synthetic weather mode: --synthetic-weather")
+                print("   Or check Meteostat package installation")
+                raise
     
     # California weather (for CAISO correlation)
     ca_key = f"raw/weather/california/historical_{years}y.parquet"
@@ -277,6 +295,7 @@ def main() -> None:
             bucket=args.bucket,
             years=args.years,
             force=args.force,
+            use_synthetic=args.synthetic_weather,
             noaa_token=args.noaa_token,
             s3_client=s3_client
         )

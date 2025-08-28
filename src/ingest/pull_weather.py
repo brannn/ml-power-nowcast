@@ -10,12 +10,18 @@ humidity, and wind speed significantly impact electricity consumption.
 import argparse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import mlflow
 import numpy as np
 import pandas as pd
 import requests
+
+from src.config.nyiso_zones import (
+    NYISO_ZONES,
+    get_all_zone_coordinates,
+    get_population_weighted_average
+)
 
 
 def generate_synthetic_weather_data(days: int = 730) -> pd.DataFrame:
@@ -261,6 +267,149 @@ def fetch_meteostat_data(
 
 
 
+
+
+def fetch_nyiso_zone_weather_data(
+    days: int = 365,
+    zones: Optional[List[str]] = None,
+    aggregate_method: str = "population_weighted"
+) -> pd.DataFrame:
+    """
+    Fetch weather data for NYISO load zones using Meteostat.
+
+    Collects weather data from representative stations in each NYISO zone
+    and optionally aggregates into statewide averages for better correlation
+    with statewide power demand.
+
+    Args:
+        days: Number of days of historical data to fetch
+        zones: List of NYISO zone names to fetch. If None, fetches all zones
+        aggregate_method: How to combine zone data:
+            - "population_weighted": Population-weighted statewide average
+            - "simple_average": Simple average across zones
+            - "separate": Keep zones separate (returns multi-zone DataFrame)
+
+    Returns:
+        DataFrame with weather data:
+        - If aggregate_method in ["population_weighted", "simple_average"]:
+          Columns: timestamp, temp_c, humidity, wind_speed, region, data_source
+        - If aggregate_method == "separate":
+          Columns: timestamp, temp_c, humidity, wind_speed, zone, region, data_source
+
+    Raises:
+        RuntimeError: If no weather data could be retrieved
+        ValueError: If invalid zones or aggregate_method specified
+    """
+    print(f"Fetching NYISO zone-based weather data for {days} days...")
+
+    # Validate aggregate method
+    valid_methods = ["population_weighted", "simple_average", "separate"]
+    if aggregate_method not in valid_methods:
+        raise ValueError(f"Invalid aggregate_method '{aggregate_method}'. Valid: {valid_methods}")
+
+    # Use all zones if none specified
+    if zones is None:
+        zones = list(NYISO_ZONES.keys())
+
+    # Validate zone names
+    invalid_zones = [z for z in zones if z not in NYISO_ZONES]
+    if invalid_zones:
+        valid_zones = list(NYISO_ZONES.keys())
+        raise ValueError(f"Invalid zones {invalid_zones}. Valid zones: {valid_zones}")
+
+    print(f"Fetching weather for {len(zones)} NYISO zones: {zones}")
+
+    zone_data = []
+    successful_zones = []
+
+    for zone_name in zones:
+        zone_info = NYISO_ZONES[zone_name]
+        print(f"Fetching weather for {zone_name} ({zone_info.major_city})...")
+
+        try:
+            # Fetch weather data for this zone's coordinates
+            zone_weather = fetch_meteostat_data(
+                days=days,
+                latitude=zone_info.latitude,
+                longitude=zone_info.longitude
+            )
+
+            # Add zone information
+            zone_weather["zone"] = zone_name
+            zone_weather["region"] = "NYISO"
+            zone_weather["data_source"] = f"meteostat_zone_{zone_name.lower()}"
+
+            zone_data.append(zone_weather)
+            successful_zones.append(zone_name)
+
+        except Exception as e:
+            print(f"Warning: Failed to fetch weather for zone {zone_name}: {e}")
+            continue
+
+    if not zone_data:
+        raise RuntimeError("No weather data retrieved for any NYISO zones")
+
+    print(f"Successfully fetched weather for {len(successful_zones)} zones: {successful_zones}")
+
+    # Handle aggregation
+    if aggregate_method == "separate":
+        # Return all zones separately
+        result_df = pd.concat(zone_data, ignore_index=True)
+        result_df = result_df.sort_values(["zone", "timestamp"]).reset_index(drop=True)
+        return result_df[["timestamp", "temp_c", "humidity", "wind_speed", "zone", "region", "data_source"]]
+
+    else:
+        # Aggregate zones into statewide averages
+        print(f"Aggregating zone weather using {aggregate_method} method...")
+
+        # Combine all zone data
+        combined_df = pd.concat(zone_data, ignore_index=True)
+
+        # Group by timestamp and aggregate
+        if aggregate_method == "population_weighted":
+            # Population-weighted average
+            aggregated_data = []
+
+            for timestamp, group in combined_df.groupby("timestamp"):
+                zone_temps = {row["zone"]: row["temp_c"] for _, row in group.iterrows()}
+                zone_humidity = {row["zone"]: row["humidity"] for _, row in group.iterrows()}
+                zone_wind = {row["zone"]: row["wind_speed"] for _, row in group.iterrows()}
+
+                # Calculate weighted averages
+                try:
+                    avg_temp = get_population_weighted_average(zone_temps)
+                    avg_humidity = get_population_weighted_average(zone_humidity)
+                    avg_wind = get_population_weighted_average(zone_wind)
+
+                    aggregated_data.append({
+                        "timestamp": timestamp,
+                        "temp_c": avg_temp,
+                        "humidity": avg_humidity,
+                        "wind_speed": avg_wind
+                    })
+                except ValueError as e:
+                    print(f"Warning: Skipping timestamp {timestamp} due to aggregation error: {e}")
+                    continue
+
+            result_df = pd.DataFrame(aggregated_data)
+            result_df["region"] = "NYISO"
+            result_df["data_source"] = "meteostat_nyiso_population_weighted"
+
+        else:  # simple_average
+            # Simple average across zones
+            result_df = (
+                combined_df.groupby("timestamp", as_index=False)
+                .agg({
+                    "temp_c": "mean",
+                    "humidity": "mean",
+                    "wind_speed": "mean"
+                })
+            )
+            result_df["region"] = "NYISO"
+            result_df["data_source"] = "meteostat_nyiso_simple_average"
+
+        result_df = result_df.sort_values("timestamp").reset_index(drop=True)
+        return result_df[["timestamp", "temp_c", "humidity", "wind_speed", "region", "data_source"]]
 
 
 def save_weather_data(df: pd.DataFrame, output_path: str = "data/raw/weather.parquet") -> str:
