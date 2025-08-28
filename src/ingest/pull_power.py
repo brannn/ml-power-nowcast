@@ -144,18 +144,15 @@ def fetch_nyiso_data(days: int = 365) -> pd.DataFrame:
 
     except requests.RequestException as e:
         print(f"Error fetching NYISO data: {e}")
-        print("Falling back to synthetic data...")
-        return _fallback_to_synthetic("NYISO", days)
+        raise RuntimeError(f"Failed to fetch NYISO data: {e}")
 
     if not all_data:
-        print("No NYISO data retrieved, falling back to synthetic data...")
-        return _fallback_to_synthetic("NYISO", days)
+        print("No NYISO data retrieved from API")
+        raise RuntimeError("NYISO API returned no data for the requested date range")
 
     if successful_days < days * 0.1:  # Less than 10% success rate
-        print(f"Low success rate ({successful_days}/{days} days), supplementing with synthetic data...")
-        # Use what we got but fill in the rest with synthetic data
-        synthetic_df = _fallback_to_synthetic("NYISO", days - successful_days)
-        all_data.append(synthetic_df)
+        print(f"Warning: Low success rate ({successful_days}/{days} days)")
+        print("Consider using a shorter date range or checking NYISO API status")
 
     # Combine all data
     df = pd.concat(all_data, ignore_index=True)
@@ -288,8 +285,7 @@ def fetch_caiso_data(days: int = 365) -> pd.DataFrame:
 
     except Exception as e:
         print(f"Error fetching CAISO data: {e}")
-        print("Falling back to synthetic data...")
-        return _fallback_to_synthetic("CAISO", days)
+        raise RuntimeError(f"Failed to fetch CAISO data: {e}")
 
 
 def save_power_data(df: pd.DataFrame, output_path: str = "data/raw/power.parquet") -> str:

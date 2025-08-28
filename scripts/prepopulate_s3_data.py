@@ -82,18 +82,20 @@ def check_s3_object_exists(bucket: str, key: str, s3_client: boto3.client) -> bo
 
 
 def prepopulate_power_data(
-    bucket: str, 
+    bucket: str,
     years: int = 3,
     force: bool = False,
+    use_synthetic: bool = False,
     s3_client: Optional[boto3.client] = None
 ) -> None:
     """
     Pre-populate S3 with historical power data from CAISO and NYISO.
-    
+
     Args:
         bucket: S3 bucket name
         years: Number of years of historical data to fetch
         force: Overwrite existing data
+        use_synthetic: Use synthetic data instead of real APIs
         s3_client: Boto3 S3 client
     """
     if s3_client is None:
@@ -103,38 +105,51 @@ def prepopulate_power_data(
     print(f"📊 Fetching {years} years ({days} days) of power data...")
     
     # NYISO data
-    nyiso_key = f"raw/power/nyiso/historical_{years}y.parquet"
+    data_type = "synthetic" if use_synthetic else "real"
+    nyiso_key = f"raw/power/nyiso/{data_type}_{years}y.parquet"
+
     if not force and check_s3_object_exists(bucket, nyiso_key, s3_client):
         print(f"⏭️  NYISO data already exists: s3://{bucket}/{nyiso_key}")
     else:
-        print("🔄 Fetching NYISO data...")
-        try:
-            nyiso_df = fetch_nyiso_data(days=days)
-            upload_to_s3(nyiso_df, bucket, nyiso_key, s3_client)
-        except Exception as e:
-            print(f"❌ Failed to fetch NYISO data: {e}")
-            print("🔄 Generating synthetic NYISO data as fallback...")
+        if use_synthetic:
+            print("🔄 Generating synthetic NYISO data...")
             nyiso_df = generate_synthetic_power_data(days=days)
             nyiso_df["region"] = "NYISO"
-            nyiso_df["data_source"] = "synthetic_fallback"
+            nyiso_df["data_source"] = "synthetic"
             upload_to_s3(nyiso_df, bucket, nyiso_key, s3_client)
+        else:
+            print("🔄 Fetching real NYISO data...")
+            try:
+                nyiso_df = fetch_nyiso_data(days=days)
+                upload_to_s3(nyiso_df, bucket, nyiso_key, s3_client)
+            except Exception as e:
+                print(f"❌ Failed to fetch NYISO data: {e}")
+                print("💡 Consider using synthetic data mode: --synthetic-power")
+                print("   Or try a shorter time period with --years 1")
+                raise
     
     # CAISO data
-    caiso_key = f"raw/power/caiso/historical_{years}y.parquet"
+    caiso_key = f"raw/power/caiso/{data_type}_{years}y.parquet"
+
     if not force and check_s3_object_exists(bucket, caiso_key, s3_client):
         print(f"⏭️  CAISO data already exists: s3://{bucket}/{caiso_key}")
     else:
-        print("🔄 Fetching CAISO data...")
-        try:
-            caiso_df = fetch_caiso_data(days=days)
-            upload_to_s3(caiso_df, bucket, caiso_key, s3_client)
-        except Exception as e:
-            print(f"❌ Failed to fetch CAISO data: {e}")
-            print("🔄 Generating synthetic CAISO data as fallback...")
+        if use_synthetic:
+            print("🔄 Generating synthetic CAISO data...")
             caiso_df = generate_synthetic_power_data(days=days)
             caiso_df["region"] = "CAISO"
-            caiso_df["data_source"] = "synthetic_fallback"
+            caiso_df["data_source"] = "synthetic"
             upload_to_s3(caiso_df, bucket, caiso_key, s3_client)
+        else:
+            print("🔄 Fetching real CAISO data...")
+            try:
+                caiso_df = fetch_caiso_data(days=days)
+                upload_to_s3(caiso_df, bucket, caiso_key, s3_client)
+            except Exception as e:
+                print(f"❌ Failed to fetch CAISO data: {e}")
+                print("💡 Consider using synthetic data mode: --synthetic-power")
+                print("   Or try a shorter time period with --years 1")
+                raise
 
 
 def prepopulate_weather_data(
@@ -233,6 +248,8 @@ def main() -> None:
     parser.add_argument("--power-only", action="store_true", help="Only fetch power data")
     parser.add_argument("--weather-only", action="store_true", help="Only fetch weather data")
     parser.add_argument("--list-only", action="store_true", help="Only list existing data")
+    parser.add_argument("--synthetic-power", action="store_true", help="Use synthetic power data instead of real APIs")
+    parser.add_argument("--synthetic-weather", action="store_true", help="Use synthetic weather data instead of real APIs")
     parser.add_argument("--noaa-token", help="NOAA API token for weather data")
     
     args = parser.parse_args()
@@ -251,6 +268,7 @@ def main() -> None:
             bucket=args.bucket,
             years=args.years,
             force=args.force,
+            use_synthetic=args.synthetic_power,
             s3_client=s3_client
         )
     
