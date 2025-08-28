@@ -19,8 +19,13 @@ import requests
 
 from src.config.nyiso_zones import (
     NYISO_ZONES,
-    get_all_zone_coordinates,
+    get_all_zone_coordinates as get_nyiso_zone_coordinates,
     get_population_weighted_average
+)
+from src.config.caiso_zones import (
+    CAISO_ZONES,
+    get_all_zone_coordinates as get_caiso_zone_coordinates,
+    get_load_weighted_average
 )
 
 
@@ -407,6 +412,149 @@ def fetch_nyiso_zone_weather_data(
             )
             result_df["region"] = "NYISO"
             result_df["data_source"] = "meteostat_nyiso_simple_average"
+
+        result_df = result_df.sort_values("timestamp").reset_index(drop=True)
+        return result_df[["timestamp", "temp_c", "humidity", "wind_speed", "region", "data_source"]]
+
+
+def fetch_caiso_zone_weather_data(
+    days: int = 365,
+    zones: Optional[List[str]] = None,
+    aggregate_method: str = "load_weighted"
+) -> pd.DataFrame:
+    """
+    Fetch weather data for CAISO load zones using Meteostat.
+
+    Collects weather data from representative stations in each CAISO zone
+    and optionally aggregates into statewide averages for better correlation
+    with statewide power demand.
+
+    Args:
+        days: Number of days of historical data to fetch
+        zones: List of CAISO zone names to fetch. If None, fetches all zones
+        aggregate_method: How to combine zone data:
+            - "load_weighted": Load-weighted statewide average
+            - "simple_average": Simple average across zones
+            - "separate": Keep zones separate (returns multi-zone DataFrame)
+
+    Returns:
+        DataFrame with weather data:
+        - If aggregate_method in ["load_weighted", "simple_average"]:
+          Columns: timestamp, temp_c, humidity, wind_speed, region, data_source
+        - If aggregate_method == "separate":
+          Columns: timestamp, temp_c, humidity, wind_speed, zone, region, data_source
+
+    Raises:
+        RuntimeError: If no weather data could be retrieved
+        ValueError: If invalid zones or aggregate_method specified
+    """
+    print(f"Fetching CAISO zone-based weather data for {days} days...")
+
+    # Validate aggregate method
+    valid_methods = ["load_weighted", "simple_average", "separate"]
+    if aggregate_method not in valid_methods:
+        raise ValueError(f"Invalid aggregate_method '{aggregate_method}'. Valid: {valid_methods}")
+
+    # Use all zones if none specified
+    if zones is None:
+        zones = list(CAISO_ZONES.keys())
+
+    # Validate zone names
+    invalid_zones = [z for z in zones if z not in CAISO_ZONES]
+    if invalid_zones:
+        valid_zones = list(CAISO_ZONES.keys())
+        raise ValueError(f"Invalid zones {invalid_zones}. Valid zones: {valid_zones}")
+
+    print(f"Fetching weather for {len(zones)} CAISO zones: {zones}")
+
+    zone_data = []
+    successful_zones = []
+
+    for zone_name in zones:
+        zone_info = CAISO_ZONES[zone_name]
+        print(f"Fetching weather for {zone_name} ({zone_info.major_city})...")
+
+        try:
+            # Fetch weather data for this zone's coordinates
+            zone_weather = fetch_meteostat_data(
+                days=days,
+                latitude=zone_info.latitude,
+                longitude=zone_info.longitude
+            )
+
+            # Add zone information
+            zone_weather["zone"] = zone_name
+            zone_weather["region"] = "CAISO"
+            zone_weather["data_source"] = f"meteostat_zone_{zone_name.lower()}"
+
+            zone_data.append(zone_weather)
+            successful_zones.append(zone_name)
+
+        except Exception as e:
+            print(f"Warning: Failed to fetch weather for zone {zone_name}: {e}")
+            continue
+
+    if not zone_data:
+        raise RuntimeError("No weather data retrieved for any CAISO zones")
+
+    print(f"Successfully fetched weather for {len(successful_zones)} zones: {successful_zones}")
+
+    # Handle aggregation
+    if aggregate_method == "separate":
+        # Return all zones separately
+        result_df = pd.concat(zone_data, ignore_index=True)
+        result_df = result_df.sort_values(["zone", "timestamp"]).reset_index(drop=True)
+        return result_df[["timestamp", "temp_c", "humidity", "wind_speed", "zone", "region", "data_source"]]
+
+    else:
+        # Aggregate zones into statewide averages
+        print(f"Aggregating zone weather using {aggregate_method} method...")
+
+        # Combine all zone data
+        combined_df = pd.concat(zone_data, ignore_index=True)
+
+        # Group by timestamp and aggregate
+        if aggregate_method == "load_weighted":
+            # Load-weighted average
+            aggregated_data = []
+
+            for timestamp, group in combined_df.groupby("timestamp"):
+                zone_temps = {row["zone"]: row["temp_c"] for _, row in group.iterrows()}
+                zone_humidity = {row["zone"]: row["humidity"] for _, row in group.iterrows()}
+                zone_wind = {row["zone"]: row["wind_speed"] for _, row in group.iterrows()}
+
+                # Calculate weighted averages
+                try:
+                    avg_temp = get_load_weighted_average(zone_temps)
+                    avg_humidity = get_load_weighted_average(zone_humidity)
+                    avg_wind = get_load_weighted_average(zone_wind)
+
+                    aggregated_data.append({
+                        "timestamp": timestamp,
+                        "temp_c": avg_temp,
+                        "humidity": avg_humidity,
+                        "wind_speed": avg_wind
+                    })
+                except ValueError as e:
+                    print(f"Warning: Skipping timestamp {timestamp} due to aggregation error: {e}")
+                    continue
+
+            result_df = pd.DataFrame(aggregated_data)
+            result_df["region"] = "CAISO"
+            result_df["data_source"] = "meteostat_caiso_load_weighted"
+
+        else:  # simple_average
+            # Simple average across zones
+            result_df = (
+                combined_df.groupby("timestamp", as_index=False)
+                .agg({
+                    "temp_c": "mean",
+                    "humidity": "mean",
+                    "wind_speed": "mean"
+                })
+            )
+            result_df["region"] = "CAISO"
+            result_df["data_source"] = "meteostat_caiso_simple_average"
 
         result_df = result_df.sort_values("timestamp").reset_index(drop=True)
         return result_df[["timestamp", "temp_c", "humidity", "wind_speed", "region", "data_source"]]
