@@ -38,12 +38,7 @@ mlruns.db
 mlruns.db-*
 
 # Data files (can be large)
-data/raw/*.csv
-data/raw/*.parquet
-data/interim/*.csv
-data/interim/*.parquet
-data/features/*.csv
-data/features/*.parquet
+data/
 
 # Model artifacts
 artifacts/
