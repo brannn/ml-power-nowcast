@@ -7,7 +7,7 @@ Supports both real data from APIs and synthetic data generation for development.
 """
 
 import argparse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -44,7 +44,7 @@ def generate_synthetic_power_data(days: int = 730) -> pd.DataFrame:
     # Create hourly timestamps
     end_time = datetime.now()
     start_time = end_time - timedelta(days=days)
-    timestamps = pd.date_range(start=start_time, end=end_time, freq="H")
+    timestamps = pd.date_range(start=start_time, end=end_time, freq="h")
 
     # Base load pattern (MW)
     base_load = 15000  # Base load around 15 GW
@@ -81,211 +81,214 @@ def generate_synthetic_power_data(days: int = 730) -> pd.DataFrame:
 
 def fetch_nyiso_data(days: int = 365) -> pd.DataFrame:
     """
-    Fetch real power demand data from NYISO OASIS API.
+    Fetch real power demand data from NYISO P-58B 'pal' CSV files.
 
-    NYISO provides public access to real-time and historical load data
-    through their OASIS (Open Access Same-time Information System) API.
+    NYISO publishes daily CSV files with 5-minute real-time actual load data
+    by zone. This function aggregates all zones to produce statewide (NYCA) totals.
 
     Args:
         days: Number of days of historical data to fetch
 
     Returns:
-        DataFrame with power demand data from NYISO
+        DataFrame with columns: timestamp, load, region, data_source
+        - timestamp: UTC datetime
+        - load: Statewide load in MW (sum of all zones)
+        - region: 'NYISO'
+        - data_source: 'nyiso_p58b_pal'
 
     Raises:
-        requests.RequestException: If API request fails
-        ValueError: If API response is invalid
+        RuntimeError: If no data could be retrieved from NYISO
+        requests.RequestException: If API requests fail consistently
     """
-    print(f"Fetching NYISO data for {days} days...")
+    print(f"Fetching NYISO statewide load data for {days} days...")
 
-    # NYISO OASIS API endpoint for real-time actual load
-    # Note: NYISO provides data through their OASIS system, but the public CSV
-    # endpoints may have limited historical availability
-    base_url = "http://mis.nyiso.com/public/csv/pal/"
+    # NYISO P-58B Real-Time Actual Load CSV endpoint
+    base_url = "https://mis.nyiso.com/public/csv/pal/"
 
-    # Calculate date range - limit to recent data for better success rate
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=min(days, 30))  # Limit to 30 days for API reliability
+    # Calculate date range using UTC
+    end_dt = datetime.now(timezone.utc)
+    start_dt = end_dt - timedelta(days=days)
 
-    all_data = []
+    # Generate date range for daily CSV files
+    day_list = pd.date_range(start=start_dt.date(), end=end_dt.date(), freq="D", tz="UTC")
+
+    frames = []
     successful_days = 0
 
-    try:
-        # NYISO provides daily CSV files, so we need to fetch multiple files
-        current_date = start_date
-        while current_date <= end_date:
-            date_str = current_date.strftime("%Y%m%d")
-            url = f"{base_url}{date_str}pal.csv"
+    print(f"Requesting data from {start_dt.strftime('%Y-%m-%d')} to {end_dt.strftime('%Y-%m-%d')}")
 
-            print(f"Fetching NYISO data for {current_date.strftime('%Y-%m-%d')}...")
+    for day in day_list:
+        date_str = day.strftime('%Y%m%d')
+        url = f"{base_url}{date_str}pal.csv"
 
-            try:
-                response = requests.get(url, timeout=30)
-                if response.status_code == 200:
-                    # Parse CSV data
-                    from io import StringIO
-                    csv_data = pd.read_csv(StringIO(response.text))
+        try:
+            print(f"Fetching NYISO data for {day.strftime('%Y-%m-%d')}...")
+            response = requests.get(url, timeout=30)
 
-                    # NYISO CSV format: Time Stamp, Name, PTID, Load
-                    if not csv_data.empty and 'Load' in csv_data.columns:
-                        # Filter for statewide load (PTID 61757 is NYISO total)
-                        statewide_data = csv_data[csv_data['PTID'] == 61757].copy()
-                        if not statewide_data.empty:
-                            all_data.append(statewide_data)
-                            successful_days += 1
-                else:
-                    print(f"Warning: Could not fetch data for {date_str} (HTTP {response.status_code})")
-            except requests.RequestException as e:
-                print(f"Warning: Request failed for {date_str}: {e}")
+            if response.status_code != 200:
+                print(f"Warning: HTTP {response.status_code} for {date_str}")
+                continue
 
-            current_date += timedelta(days=1)
+            # Parse CSV data
+            from io import StringIO
+            df = pd.read_csv(StringIO(response.text))
 
-        print(f"Successfully fetched {successful_days} days of NYISO data")
+            # Validate required columns
+            timestamp_col = 'Time Stamp' if 'Time Stamp' in df.columns else None
+            if timestamp_col is None or 'Load' not in df.columns:
+                print(f"Warning: Missing required columns in {date_str}")
+                continue
 
-    except requests.RequestException as e:
-        print(f"Error fetching NYISO data: {e}")
-        raise RuntimeError(f"Failed to fetch NYISO data: {e}")
+            # Convert timestamp and aggregate all zones per timestamp
+            # This gives us true statewide (NYCA) load, not just one zone
+            aggregated = (
+                df[[timestamp_col, 'Load']]
+                .assign(**{timestamp_col: pd.to_datetime(df[timestamp_col])})
+                .groupby(timestamp_col, as_index=False)['Load'].sum()
+                .rename(columns={timestamp_col: 'timestamp', 'Load': 'load'})
+            )
 
-    if not all_data:
-        print("No NYISO data retrieved from API")
-        raise RuntimeError("NYISO API returned no data for the requested date range")
+            if not aggregated.empty:
+                frames.append(aggregated)
+                successful_days += 1
 
-    if successful_days < days * 0.1:  # Less than 10% success rate
-        print(f"Warning: Low success rate ({successful_days}/{days} days)")
-        print("Consider using a shorter date range or checking NYISO API status")
+        except requests.RequestException as e:
+            print(f"Warning: Request failed for {date_str}: {e}")
+            continue
+        except Exception as e:
+            print(f"Warning: Error processing {date_str}: {e}")
+            continue
 
-    # Combine all data
-    df = pd.concat(all_data, ignore_index=True)
+    print(f"Successfully processed {successful_days} days of NYISO data")
 
-    # Standardize column names and format
-    df = df.rename(columns={'Time Stamp': 'timestamp', 'Load': 'load'})
-    df['timestamp'] = pd.to_datetime(df['timestamp'])
-    df['region'] = 'NYISO'
-    df['data_source'] = 'nyiso_oasis_api'
+    # Check if we got any data
+    if not frames:
+        raise RuntimeError("NYISO: no data retrieved; check P-58B availability or date range.")
 
-    # Select only needed columns
-    df = df[['timestamp', 'load', 'region', 'data_source']].copy()
+    # Combine all daily data frames
+    result_df = pd.concat(frames, ignore_index=True).dropna()
+    result_df = result_df.sort_values('timestamp').reset_index(drop=True)
 
-    print(f"Successfully fetched {len(df)} NYISO records")
-    return df
+    # Add metadata
+    result_df['region'] = 'NYISO'
+    result_df['data_source'] = 'nyiso_p58b_pal'
+
+    # Ensure proper column order and types
+    result_df = result_df[['timestamp', 'load', 'region', 'data_source']].copy()
+
+    print(f"Successfully fetched {len(result_df)} NYISO records spanning {successful_days} days")
+    return result_df
 
 
-def _fallback_to_synthetic(region: str, days: int) -> pd.DataFrame:
-    """
-    Fallback function to generate synthetic data when API fails.
 
-    Args:
-        region: Region name for labeling
-        days: Number of days to generate
-
-    Returns:
-        DataFrame with synthetic data labeled with the specified region
-    """
-    df = generate_synthetic_power_data(days)
-    df["region"] = region
-    df["data_source"] = f"{region.lower()}_synthetic_fallback"
-    return df
 
 
 def fetch_caiso_data(days: int = 365) -> pd.DataFrame:
     """
-    Fetch real power demand data from CAISO OASIS API.
+    Fetch real power demand data from CAISO OASIS API using chunked requests.
 
-    CAISO provides public access to real-time and historical load data
-    through their OASIS (Open Access Same-time Information System) API.
+    CAISO provides system demand data through their OASIS SingleZip API.
+    Data retention is approximately 39 months. This function uses chunked
+    requests to handle large date ranges reliably.
 
     Args:
         days: Number of days of historical data to fetch
 
     Returns:
-        DataFrame with power demand data from CAISO
+        DataFrame with columns: timestamp, load, region, data_source
+        - timestamp: UTC datetime
+        - load: System demand in MW
+        - region: 'CAISO'
+        - data_source: 'caiso_oasis_sld'
 
     Raises:
-        requests.RequestException: If API request fails
-        ValueError: If API response is invalid
+        RuntimeError: If no data could be retrieved from CAISO OASIS
+        requests.RequestException: If API requests fail consistently
     """
-    print(f"Fetching CAISO data for {days} days...")
+    print(f"Fetching CAISO system demand data for {days} days...")
 
-    # CAISO OASIS API endpoint for system load
-    # Note: CAISO OASIS API can be unreliable for large date ranges
-    base_url = "http://oasis.caiso.com/oasisapi/SingleZip"
+    # CAISO OASIS API endpoint
+    base_url = "https://oasis.caiso.com/oasisapi/SingleZip"
 
-    # Calculate date range - limit to recent data for better success rate
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=min(days, 7))  # Limit to 7 days for API reliability
+    # Calculate date range using UTC
+    end_utc = datetime.now(timezone.utc)
+    start_utc = end_utc - timedelta(days=days)
 
-    try:
-        # CAISO API parameters for actual system load
+    # Chunk requests to avoid API limits (7-day chunks recommended)
+    chunk_days = 7
+    frames = []
+
+    print(f"Requesting data from {start_utc.strftime('%Y-%m-%d')} to {end_utc.strftime('%Y-%m-%d')}")
+    print(f"Using {chunk_days}-day chunks for API reliability")
+
+    current_start = start_utc
+    while current_start < end_utc:
+        chunk_end = min(current_start + timedelta(days=chunk_days), end_utc)
+
+        # CAISO API parameters for system load demand forecast (actual data)
         params = {
-            'queryname': 'SLD_RTO',  # System Load Demand Real Time Operations
-            'startdatetime': start_date.strftime('%Y%m%dT00:00-0000'),
-            'enddatetime': end_date.strftime('%Y%m%dT23:59-0000'),
-            'version': '1'
+            "queryname": "SLD_FCST",  # System Load Demand Forecast family
+            "startdatetime": current_start.strftime("%Y%m%dT%H:%M-0000"),
+            "enddatetime": chunk_end.strftime("%Y%m%dT%H:%M-0000"),
+            "version": "1",
+            "granularity": "15MIN",  # 15-minute granularity
+            "market_run_id": "ACTUAL",  # Actual data, not forecast
         }
 
-        print(f"Requesting CAISO data from {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}...")
-        print(f"API URL: {base_url}")
-        print(f"Parameters: {params}")
+        try:
+            print(f"Fetching CAISO chunk: {current_start.strftime('%Y-%m-%d')} to {chunk_end.strftime('%Y-%m-%d')}")
+            response = requests.get(base_url, params=params, timeout=90)
 
-        response = requests.get(base_url, params=params, timeout=60)
+            if response.status_code == 200 and response.content:
+                # CAISO returns ZIP file with CSV data
+                import zipfile
+                from io import BytesIO
 
-        if response.status_code != 200:
-            print(f"CAISO API returned HTTP {response.status_code}")
-            return _fallback_to_synthetic("CAISO", days)
+                with zipfile.ZipFile(BytesIO(response.content)) as zip_file:
+                    for csv_filename in zip_file.namelist():
+                        if csv_filename.lower().endswith(".csv"):
+                            with zip_file.open(csv_filename) as csv_file:
+                                df = pd.read_csv(csv_file)
 
-        # CAISO returns ZIP file with CSV data
-        import zipfile
-        from io import BytesIO
+                                # Look for standard CAISO columns
+                                if "INTERVALSTARTTIME_GMT" in df.columns and "MW" in df.columns:
+                                    chunk_data = pd.DataFrame({
+                                        "timestamp": pd.to_datetime(df["INTERVALSTARTTIME_GMT"]),
+                                        "load": pd.to_numeric(df["MW"], errors="coerce")
+                                    }).dropna()
 
-        with zipfile.ZipFile(BytesIO(response.content)) as zip_file:
-            # Extract CSV file (usually only one file in the ZIP)
-            csv_filename = zip_file.namelist()[0]
-            with zip_file.open(csv_filename) as csv_file:
-                df = pd.read_csv(csv_file)
+                                    if not chunk_data.empty:
+                                        frames.append(chunk_data)
+            else:
+                print(f"Warning: CAISO API returned HTTP {response.status_code} for chunk")
 
-        if df.empty:
-            print("CAISO API returned empty data")
-            return _fallback_to_synthetic("CAISO", days)
+        except requests.RequestException as e:
+            print(f"Warning: Request failed for chunk: {e}")
+            continue
+        except Exception as e:
+            print(f"Warning: Error processing chunk: {e}")
+            continue
 
-        # CAISO CSV format varies, but typically includes INTERVALSTARTTIME_GMT and MW columns
-        # Standardize column names
-        timestamp_cols = ['INTERVALSTARTTIME_GMT', 'INTERVALSTARTTIME', 'OPR_DT']
-        load_cols = ['MW', 'LOAD', 'DEMAND']
+        # Move to next chunk
+        current_start = chunk_end
 
-        timestamp_col = None
-        load_col = None
+    # Check if we got any data
+    if not frames:
+        raise RuntimeError("CAISO OASIS fetch returned no data. Consider Today's Outlook CSV.")
 
-        for col in timestamp_cols:
-            if col in df.columns:
-                timestamp_col = col
-                break
+    # Combine all chunk data
+    result_df = pd.concat(frames, ignore_index=True).dropna()
+    result_df = result_df.sort_values("timestamp").reset_index(drop=True)
 
-        for col in load_cols:
-            if col in df.columns:
-                load_col = col
-                break
+    # Add metadata
+    result_df["region"] = "CAISO"
+    result_df["data_source"] = "caiso_oasis_sld"
 
-        if not timestamp_col or not load_col:
-            print(f"Could not find required columns in CAISO data. Available: {list(df.columns)}")
-            return _fallback_to_synthetic("CAISO", days)
+    # Ensure proper column order
+    result_df = result_df[["timestamp", "load", "region", "data_source"]].copy()
 
-        # Create standardized DataFrame
-        result_df = pd.DataFrame({
-            'timestamp': pd.to_datetime(df[timestamp_col]),
-            'load': pd.to_numeric(df[load_col], errors='coerce'),
-            'region': 'CAISO',
-            'data_source': 'caiso_oasis_api'
-        })
-
-        # Remove any rows with invalid data
-        result_df = result_df.dropna().copy()
-
-        print(f"Successfully fetched {len(result_df)} CAISO records")
-        return result_df
-
-    except Exception as e:
-        print(f"Error fetching CAISO data: {e}")
-        raise RuntimeError(f"Failed to fetch CAISO data: {e}")
+    print(f"Successfully fetched {len(result_df)} CAISO records from {len(frames)} chunks")
+    return result_df
 
 
 def save_power_data(df: pd.DataFrame, output_path: str = "data/raw/power.parquet") -> str:
