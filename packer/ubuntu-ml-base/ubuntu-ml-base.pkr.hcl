@@ -132,21 +132,29 @@ build {
 
   # Docker installation removed - not needed for basic ML development
 
-  # Install NVIDIA drivers and CUDA (now works with system Python 3.10)
+  # Install NVIDIA drivers
   provisioner "shell" {
     inline = [
-      "# Install NVIDIA driver",
       "sudo apt-get install -y ubuntu-drivers-common",
-      "sudo ubuntu-drivers autoinstall",
-      "",
-      "# Install CUDA toolkit",
+      "sudo ubuntu-drivers autoinstall"
+    ]
+  }
+
+  # Install CUDA repository
+  provisioner "shell" {
+    inline = [
       "wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb",
       "sudo dpkg -i cuda-keyring_1.1-1_all.deb",
       "sudo apt-get update",
+      "rm cuda-keyring_1.1-1_all.deb"
+    ]
+  }
+
+  # Install CUDA toolkit (may cause disconnect due to size)
+  provisioner "shell" {
+    expect_disconnect = true
+    inline = [
       "sudo apt-get install -y cuda-toolkit-12-4",
-      "rm cuda-keyring_1.1-1_all.deb",
-      "",
-      "# Add CUDA to PATH for all users",
       "echo 'export PATH=/usr/local/cuda/bin:$PATH' | sudo tee -a /etc/environment",
       "echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' | sudo tee -a /etc/environment"
     ]
@@ -156,7 +164,7 @@ build {
   provisioner "shell" {
     inline = [
       "sudo python3 -m pip install --upgrade pip",
-      "sudo python3 -m pip install --no-cache-dir mlflow[extras] pandas numpy scikit-learn xgboost torch torchvision torchaudio fastapi uvicorn jupyter boto3 matplotlib seaborn plotly"
+      "sudo python3 -m pip install --no-cache-dir --force-reinstall --ignore-installed mlflow[extras] pandas numpy scikit-learn xgboost torch torchvision torchaudio fastapi uvicorn jupyter boto3 matplotlib seaborn plotly"
     ]
   }
 
@@ -164,7 +172,7 @@ build {
   provisioner "shell" {
     inline = [
       "cd /home/ubuntu",
-      "git clone https://github.com/brannn/model-power-nowcast.git ml-power-nowcast",
+      "git clone https://github.com/brannn/ml-power-nowcast.git ml-power-nowcast",
       "chown -R ubuntu:ubuntu ml-power-nowcast"
     ]
   }
@@ -174,8 +182,8 @@ build {
     inline = [
       "cd /home/ubuntu/ml-power-nowcast",
       "python3 -m venv .venv",
-      "source .venv/bin/activate && pip install --upgrade pip",
-      "source .venv/bin/activate && pip install -r requirements.txt",
+      ". .venv/bin/activate && pip install --upgrade pip",
+      ". .venv/bin/activate && pip install --no-cache-dir --force-reinstall -r requirements.txt",
       "chown -R ubuntu:ubuntu .venv"
     ]
   }
@@ -183,11 +191,10 @@ build {
   # Set up environment configuration
   provisioner "shell" {
     inline = [
-      "cd /home/ubuntu/ml-power-nowcast",
       "echo 'export PATH=$HOME/.local/bin:$PATH' >> /home/ubuntu/.bashrc",
       "echo 'export MLFLOW_TRACKING_URI=http://localhost:5001' >> /home/ubuntu/.bashrc",
       "echo 'export AWS_DEFAULT_REGION=us-west-2' >> /home/ubuntu/.bashrc",
-      "echo 'source /home/ubuntu/ml-power-nowcast/.venv/bin/activate' >> /home/ubuntu/.bashrc"
+      "echo '. /home/ubuntu/ml-power-nowcast/.venv/bin/activate' >> /home/ubuntu/.bashrc"
     ]
   }
 
@@ -198,8 +205,7 @@ build {
       "sudo apt-get autoclean",
       "sudo rm -rf /var/lib/apt/lists/*",
       "sudo rm -rf /tmp/*",
-      "sudo rm -rf /var/tmp/*",
-      "history -c"
+      "sudo rm -rf /var/tmp/*"
     ]
   }
 }
