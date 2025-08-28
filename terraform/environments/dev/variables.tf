@@ -67,7 +67,7 @@ variable "root_volume_size" {
 variable "use_custom_ami" {
   description = "Whether to use custom ML AMI instead of base Ubuntu"
   type        = bool
-  default     = false
+  default     = true  # Use our production-ready AMI with all dependencies pre-installed
 }
 
 variable "instance_mode" {

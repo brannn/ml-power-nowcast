@@ -1,3 +1,13 @@
+/*
+ * Packer configuration for building ML-enabled Ubuntu AMI
+ * This AMI includes all necessary dependencies for the power nowcasting project
+ *
+ * IMPORTANT OPERATING MODEL:
+ * - All time-consuming steps (OS packages, Python dependencies, GPU drivers) are done at build time
+ * - Latest code changes must be baked into new AMI before infrastructure deployment
+ * - AMI is the source of truth for deployed environment, not just the code repository
+ */
+
 packer {
   required_version = ">= 1.9"
   required_plugins {
@@ -16,7 +26,7 @@ variable "aws_region" {
 
 variable "instance_type" {
   type    = string
-  default = "m6i.xlarge"
+  default = "c5.2xlarge"  # Compute-optimized for fast AMI builds (8 vCPU, 16GB RAM, ~$0.34/hr)
 }
 
 variable "project_name" {
@@ -46,6 +56,15 @@ source "amazon-ebs" "ubuntu-ml" {
 
   # Use temporary security group for SSH access during build
   temporary_security_group_source_cidrs = ["0.0.0.0/0"]
+
+  # Prevent instances from being left running
+  shutdown_behavior = "terminate"
+
+  # Timeout to prevent runaway builds
+  aws_polling {
+    delay_seconds = 15
+    max_attempts  = 60
+  }
 
   # EBS configuration
   ebs_optimized = true
@@ -177,7 +196,7 @@ build {
     ]
   }
 
-  # Set up Python virtual environment and install dependencies
+  # Set up Python virtual environment and install dependencies (time-consuming step done at build time)
   provisioner "shell" {
     inline = [
       "cd /home/ubuntu/ml-power-nowcast",
@@ -185,6 +204,16 @@ build {
       ". .venv/bin/activate && pip install --upgrade pip",
       ". .venv/bin/activate && pip install --no-cache-dir --force-reinstall -r requirements.txt",
       "chown -R ubuntu:ubuntu .venv"
+    ]
+  }
+
+  # Prepare for GPU support (drivers installed at runtime to avoid kernel compatibility issues)
+  provisioner "shell" {
+    inline = [
+      "sudo apt-get update",
+      "sudo apt-get install -y ubuntu-drivers-common",
+      "echo 'GPU driver tools installed - drivers will be installed at runtime'",
+      "echo 'This avoids kernel compatibility issues during AMI build'"
     ]
   }
 

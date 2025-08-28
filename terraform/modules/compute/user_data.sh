@@ -33,13 +33,11 @@ apt-get install -y \
     gnupg \
     lsb-release
 
-# Install Python 3.12 and pip
-add-apt-repository ppa:deadsnakes/ppa -y
-apt-get update --fix-missing
-apt-get install -y python3.12 python3.12-venv python3.12-dev python3-pip
+# Ensure Python 3.10 development packages are installed (STANDARDIZED ON 3.10)
+apt-get install -y python3.10-venv python3.10-dev python3-pip
 
-# Make python3.12 the default python3
-update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 1
+# Verify Python 3.10 is the system default (DO NOT CHANGE)
+echo "System Python version: $(python3 --version)"
 
 # Install AWS CLI v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -78,10 +76,10 @@ echo 'export AWS_DEFAULT_REGION=us-west-2' >> /home/ubuntu/.bashrc
 mkdir -p /home/ubuntu/ml-power-nowcast
 chown ubuntu:ubuntu /home/ubuntu/ml-power-nowcast
 
-# Install common Python packages system-wide
-echo "Installing Python packages"
-python3.12 -m pip install --upgrade pip
-python3.12 -m pip install --no-cache-dir \
+# Install common Python packages system-wide (using Python 3.10)
+echo "Installing Python packages with system Python 3.10"
+python3 -m pip install --upgrade pip
+python3 -m pip install --no-cache-dir \
     mlflow \
     pandas \
     numpy \
