@@ -34,7 +34,13 @@ def generate_synthetic_weather_data(days: int = 730) -> pd.DataFrame:
 
     Returns:
         DataFrame with columns: timestamp, temp_c, humidity, wind_speed, region, data_source
+
+    Raises:
+        ValueError: If days is less than or equal to 0
     """
+    if days <= 0:
+        raise ValueError(f"Days must be positive, got {days}")
+
     print(f"Generating synthetic weather data for {days} days...")
 
     # Create hourly timestamps

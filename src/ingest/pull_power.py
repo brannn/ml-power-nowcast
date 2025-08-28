@@ -32,7 +32,13 @@ def generate_synthetic_power_data(days: int = 730) -> pd.DataFrame:
 
     Returns:
         DataFrame with columns: timestamp, load, region, data_source
+
+    Raises:
+        ValueError: If days is less than or equal to 0
     """
+    if days <= 0:
+        raise ValueError(f"Days must be positive, got {days}")
+
     print(f"Generating synthetic power demand data for {days} days...")
     
     # Create hourly timestamps
