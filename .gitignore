@@ -1,0 +1,128 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# MLflow local artifacts
+mlruns/
+mlruns_artifacts/
+mlruns.db
+mlruns.db-*
+
+# Data files (can be large)
+data/raw/*.csv
+data/raw/*.parquet
+data/interim/*.csv
+data/interim/*.parquet
+data/features/*.csv
+data/features/*.parquet
+
+# Model artifacts
+artifacts/
+models/
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+.terraform/
+.terraform.lock.hcl
+terraform.tfplan
+terraform.tfplan.*
+
+# Packer
+packer_cache/
+*.box
+
+# AWS & Secrets - CRITICAL FOR PUBLIC REPO
+.aws/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+credentials
+config
+.env.local
+.env.production
+.env.development
+secrets.json
+secrets.yaml
+secrets.yml
+
+# Terraform variable files with secrets
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+dev.tfvars
+prod.tfvars
+staging.tfvars
+
+# Packer variable files with secrets
+variables.pkrvars.hcl
+*.auto.pkrvars.hcl
+dev.pkrvars.hcl
+prod.pkrvars.hcl
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
