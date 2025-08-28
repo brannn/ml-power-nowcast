@@ -1,0 +1,272 @@
+#!/usr/bin/env python3
+"""
+Pre-populate S3 bucket with historical power and weather data.
+
+This script downloads historical data from CAISO and NYISO APIs and uploads
+it directly to S3, avoiding repeated API calls during development and testing.
+"""
+
+import argparse
+import os
+import sys
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Optional
+
+# Add project root to Python path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+import boto3
+import pandas as pd
+from botocore.exceptions import ClientError
+
+from src.ingest.pull_power import fetch_nyiso_data, fetch_caiso_data, generate_synthetic_power_data
+from src.ingest.pull_weather import fetch_noaa_weather_data, fetch_meteostat_data, generate_synthetic_weather_data
+
+
+def get_s3_client() -> boto3.client:
+    """Get configured S3 client."""
+    try:
+        return boto3.client('s3')
+    except Exception as e:
+        print(f"Error creating S3 client: {e}")
+        print("Make sure AWS credentials are configured (aws configure)")
+        raise
+
+
+def upload_to_s3(df: pd.DataFrame, bucket: str, key: str, s3_client: boto3.client) -> bool:
+    """
+    Upload DataFrame to S3 as parquet file.
+    
+    Args:
+        df: DataFrame to upload
+        bucket: S3 bucket name
+        key: S3 object key
+        s3_client: Boto3 S3 client
+        
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        # Save to temporary local file
+        temp_file = f"/tmp/{Path(key).name}"
+        df.to_parquet(temp_file, index=False)
+        
+        # Upload to S3
+        s3_client.upload_file(temp_file, bucket, key)
+        
+        # Clean up temp file
+        os.remove(temp_file)
+        
+        print(f"✅ Uploaded {len(df)} records to s3://{bucket}/{key}")
+        return True
+        
+    except ClientError as e:
+        print(f"❌ Failed to upload to s3://{bucket}/{key}: {e}")
+        return False
+    except Exception as e:
+        print(f"❌ Error uploading {key}: {e}")
+        return False
+
+
+def check_s3_object_exists(bucket: str, key: str, s3_client: boto3.client) -> bool:
+    """Check if S3 object already exists."""
+    try:
+        s3_client.head_object(Bucket=bucket, Key=key)
+        return True
+    except ClientError as e:
+        if e.response['Error']['Code'] == '404':
+            return False
+        raise
+
+
+def prepopulate_power_data(
+    bucket: str, 
+    years: int = 3,
+    force: bool = False,
+    s3_client: Optional[boto3.client] = None
+) -> None:
+    """
+    Pre-populate S3 with historical power data from CAISO and NYISO.
+    
+    Args:
+        bucket: S3 bucket name
+        years: Number of years of historical data to fetch
+        force: Overwrite existing data
+        s3_client: Boto3 S3 client
+    """
+    if s3_client is None:
+        s3_client = get_s3_client()
+    
+    days = years * 365
+    print(f"📊 Fetching {years} years ({days} days) of power data...")
+    
+    # NYISO data
+    nyiso_key = f"raw/power/nyiso/historical_{years}y.parquet"
+    if not force and check_s3_object_exists(bucket, nyiso_key, s3_client):
+        print(f"⏭️  NYISO data already exists: s3://{bucket}/{nyiso_key}")
+    else:
+        print("🔄 Fetching NYISO data...")
+        try:
+            nyiso_df = fetch_nyiso_data(days=days)
+            upload_to_s3(nyiso_df, bucket, nyiso_key, s3_client)
+        except Exception as e:
+            print(f"❌ Failed to fetch NYISO data: {e}")
+            print("🔄 Generating synthetic NYISO data as fallback...")
+            nyiso_df = generate_synthetic_power_data(days=days)
+            nyiso_df["region"] = "NYISO"
+            nyiso_df["data_source"] = "synthetic_fallback"
+            upload_to_s3(nyiso_df, bucket, nyiso_key, s3_client)
+    
+    # CAISO data
+    caiso_key = f"raw/power/caiso/historical_{years}y.parquet"
+    if not force and check_s3_object_exists(bucket, caiso_key, s3_client):
+        print(f"⏭️  CAISO data already exists: s3://{bucket}/{caiso_key}")
+    else:
+        print("🔄 Fetching CAISO data...")
+        try:
+            caiso_df = fetch_caiso_data(days=days)
+            upload_to_s3(caiso_df, bucket, caiso_key, s3_client)
+        except Exception as e:
+            print(f"❌ Failed to fetch CAISO data: {e}")
+            print("🔄 Generating synthetic CAISO data as fallback...")
+            caiso_df = generate_synthetic_power_data(days=days)
+            caiso_df["region"] = "CAISO"
+            caiso_df["data_source"] = "synthetic_fallback"
+            upload_to_s3(caiso_df, bucket, caiso_key, s3_client)
+
+
+def prepopulate_weather_data(
+    bucket: str,
+    years: int = 3,
+    force: bool = False,
+    noaa_token: Optional[str] = None,
+    s3_client: Optional[boto3.client] = None
+) -> None:
+    """
+    Pre-populate S3 with historical weather data.
+    
+    Args:
+        bucket: S3 bucket name
+        years: Number of years of historical data to fetch
+        force: Overwrite existing data
+        noaa_token: NOAA API token
+        s3_client: Boto3 S3 client
+    """
+    if s3_client is None:
+        s3_client = get_s3_client()
+    
+    days = years * 365
+    print(f"🌤️  Fetching {years} years ({days} days) of weather data...")
+    
+    # NYC weather (for NYISO correlation)
+    nyc_key = f"raw/weather/nyc/historical_{years}y.parquet"
+    if not force and check_s3_object_exists(bucket, nyc_key, s3_client):
+        print(f"⏭️  NYC weather data already exists: s3://{bucket}/{nyc_key}")
+    else:
+        print("🔄 Fetching NYC weather data...")
+        try:
+            # Try Meteostat first (no API key required)
+            nyc_df = fetch_meteostat_data(days=days, latitude=40.7128, longitude=-74.0060)
+            upload_to_s3(nyc_df, bucket, nyc_key, s3_client)
+        except Exception as e:
+            print(f"❌ Failed to fetch NYC weather data: {e}")
+            print("🔄 Generating synthetic NYC weather data as fallback...")
+            nyc_df = generate_synthetic_weather_data(days=days)
+            nyc_df["region"] = "NYC"
+            nyc_df["data_source"] = "synthetic_fallback"
+            upload_to_s3(nyc_df, bucket, nyc_key, s3_client)
+    
+    # California weather (for CAISO correlation)
+    ca_key = f"raw/weather/california/historical_{years}y.parquet"
+    if not force and check_s3_object_exists(bucket, ca_key, s3_client):
+        print(f"⏭️  California weather data already exists: s3://{bucket}/{ca_key}")
+    else:
+        print("🔄 Fetching California weather data...")
+        try:
+            # Los Angeles coordinates for California weather
+            ca_df = fetch_meteostat_data(days=days, latitude=34.0522, longitude=-118.2437)
+            upload_to_s3(ca_df, bucket, ca_key, s3_client)
+        except Exception as e:
+            print(f"❌ Failed to fetch California weather data: {e}")
+            print("🔄 Generating synthetic California weather data as fallback...")
+            ca_df = generate_synthetic_weather_data(days=days)
+            ca_df["region"] = "CALIFORNIA"
+            ca_df["data_source"] = "synthetic_fallback"
+            upload_to_s3(ca_df, bucket, ca_key, s3_client)
+
+
+def list_s3_data(bucket: str, s3_client: Optional[boto3.client] = None) -> None:
+    """List existing data in S3 bucket."""
+    if s3_client is None:
+        s3_client = get_s3_client()
+    
+    try:
+        response = s3_client.list_objects_v2(Bucket=bucket, Prefix="raw/")
+        
+        if 'Contents' not in response:
+            print(f"📭 No data found in s3://{bucket}/raw/")
+            return
+        
+        print(f"📋 Existing data in s3://{bucket}:")
+        total_size = 0
+        
+        for obj in response['Contents']:
+            size_mb = obj['Size'] / (1024 * 1024)
+            total_size += size_mb
+            modified = obj['LastModified'].strftime('%Y-%m-%d %H:%M')
+            print(f"   {obj['Key']} ({size_mb:.1f} MB, {modified})")
+        
+        print(f"📊 Total: {len(response['Contents'])} files, {total_size:.1f} MB")
+        
+    except ClientError as e:
+        print(f"❌ Error listing S3 objects: {e}")
+
+
+def main() -> None:
+    """Main function."""
+    parser = argparse.ArgumentParser(description="Pre-populate S3 with historical power and weather data")
+    parser.add_argument("--bucket", required=True, help="S3 bucket name")
+    parser.add_argument("--years", type=int, default=3, help="Years of historical data (default: 3)")
+    parser.add_argument("--force", action="store_true", help="Overwrite existing data")
+    parser.add_argument("--power-only", action="store_true", help="Only fetch power data")
+    parser.add_argument("--weather-only", action="store_true", help="Only fetch weather data")
+    parser.add_argument("--list-only", action="store_true", help="Only list existing data")
+    parser.add_argument("--noaa-token", help="NOAA API token for weather data")
+    
+    args = parser.parse_args()
+    
+    print(f"🚀 ML Power Nowcast - S3 Data Pre-population")
+    print(f"📦 Target bucket: s3://{args.bucket}")
+    
+    s3_client = get_s3_client()
+    
+    if args.list_only:
+        list_s3_data(args.bucket, s3_client)
+        return
+    
+    if not args.weather_only:
+        prepopulate_power_data(
+            bucket=args.bucket,
+            years=args.years,
+            force=args.force,
+            s3_client=s3_client
+        )
+    
+    if not args.power_only:
+        prepopulate_weather_data(
+            bucket=args.bucket,
+            years=args.years,
+            force=args.force,
+            noaa_token=args.noaa_token,
+            s3_client=s3_client
+        )
+    
+    print("\n📋 Final S3 contents:")
+    list_s3_data(args.bucket, s3_client)
+    print("\n✅ Data pre-population complete!")
+
+
+if __name__ == "__main__":
+    main()

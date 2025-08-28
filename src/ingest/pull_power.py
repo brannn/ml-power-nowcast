@@ -99,13 +99,16 @@ def fetch_nyiso_data(days: int = 365) -> pd.DataFrame:
     print(f"Fetching NYISO data for {days} days...")
 
     # NYISO OASIS API endpoint for real-time actual load
+    # Note: NYISO provides data through their OASIS system, but the public CSV
+    # endpoints may have limited historical availability
     base_url = "http://mis.nyiso.com/public/csv/pal/"
 
-    # Calculate date range
+    # Calculate date range - limit to recent data for better success rate
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=days)
+    start_date = end_date - timedelta(days=min(days, 30))  # Limit to 30 days for API reliability
 
     all_data = []
+    successful_days = 0
 
     try:
         # NYISO provides daily CSV files, so we need to fetch multiple files
@@ -114,24 +117,30 @@ def fetch_nyiso_data(days: int = 365) -> pd.DataFrame:
             date_str = current_date.strftime("%Y%m%d")
             url = f"{base_url}{date_str}pal.csv"
 
-            print(f"Fetching data for {current_date.strftime('%Y-%m-%d')}...")
+            print(f"Fetching NYISO data for {current_date.strftime('%Y-%m-%d')}...")
 
-            response = requests.get(url, timeout=30)
-            if response.status_code == 200:
-                # Parse CSV data
-                from io import StringIO
-                csv_data = pd.read_csv(StringIO(response.text))
+            try:
+                response = requests.get(url, timeout=30)
+                if response.status_code == 200:
+                    # Parse CSV data
+                    from io import StringIO
+                    csv_data = pd.read_csv(StringIO(response.text))
 
-                # NYISO CSV format: Time Stamp, Name, PTID, Load
-                if not csv_data.empty and 'Load' in csv_data.columns:
-                    # Filter for statewide load (PTID 61757 is NYISO total)
-                    statewide_data = csv_data[csv_data['PTID'] == 61757].copy()
-                    if not statewide_data.empty:
-                        all_data.append(statewide_data)
-            else:
-                print(f"Warning: Could not fetch data for {date_str} (HTTP {response.status_code})")
+                    # NYISO CSV format: Time Stamp, Name, PTID, Load
+                    if not csv_data.empty and 'Load' in csv_data.columns:
+                        # Filter for statewide load (PTID 61757 is NYISO total)
+                        statewide_data = csv_data[csv_data['PTID'] == 61757].copy()
+                        if not statewide_data.empty:
+                            all_data.append(statewide_data)
+                            successful_days += 1
+                else:
+                    print(f"Warning: Could not fetch data for {date_str} (HTTP {response.status_code})")
+            except requests.RequestException as e:
+                print(f"Warning: Request failed for {date_str}: {e}")
 
             current_date += timedelta(days=1)
+
+        print(f"Successfully fetched {successful_days} days of NYISO data")
 
     except requests.RequestException as e:
         print(f"Error fetching NYISO data: {e}")
@@ -141,6 +150,12 @@ def fetch_nyiso_data(days: int = 365) -> pd.DataFrame:
     if not all_data:
         print("No NYISO data retrieved, falling back to synthetic data...")
         return _fallback_to_synthetic("NYISO", days)
+
+    if successful_days < days * 0.1:  # Less than 10% success rate
+        print(f"Low success rate ({successful_days}/{days} days), supplementing with synthetic data...")
+        # Use what we got but fill in the rest with synthetic data
+        synthetic_df = _fallback_to_synthetic("NYISO", days - successful_days)
+        all_data.append(synthetic_df)
 
     # Combine all data
     df = pd.concat(all_data, ignore_index=True)
@@ -195,23 +210,25 @@ def fetch_caiso_data(days: int = 365) -> pd.DataFrame:
     print(f"Fetching CAISO data for {days} days...")
 
     # CAISO OASIS API endpoint for system load
+    # Note: CAISO OASIS API can be unreliable for large date ranges
     base_url = "http://oasis.caiso.com/oasisapi/SingleZip"
 
-    # Calculate date range
+    # Calculate date range - limit to recent data for better success rate
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=days)
+    start_date = end_date - timedelta(days=min(days, 7))  # Limit to 7 days for API reliability
 
     try:
-        # CAISO API parameters for system load forecast
+        # CAISO API parameters for actual system load
         params = {
-            'queryname': 'SLD_FCST',  # System Load Demand Forecast
-            'startdatetime': start_date.strftime('%Y%m%dT%H:%M-0000'),
-            'enddatetime': end_date.strftime('%Y%m%dT%H:%M-0000'),
-            'version': '1',
-            'market_run_id': 'ACTUAL'  # Get actual load data
+            'queryname': 'SLD_RTO',  # System Load Demand Real Time Operations
+            'startdatetime': start_date.strftime('%Y%m%dT00:00-0000'),
+            'enddatetime': end_date.strftime('%Y%m%dT23:59-0000'),
+            'version': '1'
         }
 
         print(f"Requesting CAISO data from {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}...")
+        print(f"API URL: {base_url}")
+        print(f"Parameters: {params}")
 
         response = requests.get(base_url, params=params, timeout=60)
 
