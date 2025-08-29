@@ -7,6 +7,7 @@ Supports both real data from APIs and synthetic data generation for development.
 """
 
 import argparse
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
@@ -15,6 +16,7 @@ import mlflow
 import numpy as np
 import pandas as pd
 import requests
+from bs4 import BeautifulSoup
 
 
 def generate_synthetic_power_data(days: int = 730) -> pd.DataFrame:
@@ -185,19 +187,21 @@ def fetch_nyiso_data(days: int = 365) -> pd.DataFrame:
 
 def fetch_caiso_data(days: int = 365) -> pd.DataFrame:
     """
-    Fetch real power demand data from CAISO OASIS API using chunked requests.
+    Fetch real actual power demand data from CAISO OASIS API using chunked requests.
 
-    CAISO provides system demand data through their OASIS SingleZip API.
-    Data retention is approximately 39 months. This function uses chunked
-    requests to handle large date ranges reliably.
+    CAISO provides actual system load data through their OASIS SingleZip API.
+    Uses SLD (System Load Demand) endpoint for actual historical load data,
+    not forecasts. Data retention is approximately 39 months.
 
     Args:
         days: Number of days of historical data to fetch
 
     Returns:
-        DataFrame with columns: timestamp, load, region, data_source
+        DataFrame with columns: timestamp, load, resource_name, zone, region, data_source
         - timestamp: UTC datetime
-        - load: System demand in MW
+        - load: Actual system/zone demand in MW
+        - resource_name: CAISO resource identifier
+        - zone: Mapped CAISO zone (SYSTEM, NP15, SP15, etc.)
         - region: 'CAISO'
         - data_source: 'caiso_oasis_sld'
 
@@ -205,7 +209,7 @@ def fetch_caiso_data(days: int = 365) -> pd.DataFrame:
         RuntimeError: If no data could be retrieved from CAISO OASIS
         requests.RequestException: If API requests fail consistently
     """
-    print(f"Fetching CAISO system demand data for {days} days...")
+    print(f"Fetching CAISO actual system demand data for {days} days...")
 
     # CAISO OASIS API endpoint
     base_url = "https://oasis.caiso.com/oasisapi/SingleZip"
@@ -214,51 +218,107 @@ def fetch_caiso_data(days: int = 365) -> pd.DataFrame:
     end_utc = datetime.now(timezone.utc)
     start_utc = end_utc - timedelta(days=days)
 
-    # Chunk requests to avoid API limits (7-day chunks recommended)
-    chunk_days = 7
+    # Chunk requests to avoid API limits (14-day chunks to reduce request count)
+    chunk_days = 14
     frames = []
 
     print(f"Requesting data from {start_utc.strftime('%Y-%m-%d')} to {end_utc.strftime('%Y-%m-%d')}")
-    print(f"Using {chunk_days}-day chunks for API reliability")
+    print(f"Using {chunk_days}-day chunks with 15-second rate limiting for API reliability")
 
     current_start = start_utc
+    chunk_count = 0
     while current_start < end_utc:
         chunk_end = min(current_start + timedelta(days=chunk_days), end_utc)
+        chunk_count += 1
 
-        # CAISO API parameters for system load demand forecast (actual data)
+        # CAISO API parameters for actual system load demand
+        # Use SLD_FCST but filter for actual load data items, not forecasts
         params = {
-            "queryname": "SLD_FCST",  # System Load Demand Forecast family
+            "queryname": "SLD_FCST",  # System Load Demand family (includes actual data)
             "startdatetime": current_start.strftime("%Y%m%dT%H:%M-0000"),
             "enddatetime": chunk_end.strftime("%Y%m%dT%H:%M-0000"),
             "version": "1",
-            "granularity": "15MIN",  # 15-minute granularity
-            "market_run_id": "ACTUAL",  # Actual data, not forecast
+            "market_run_id": "RTM",  # Real-Time Market for actual data
         }
 
         try:
-            print(f"Fetching CAISO chunk: {current_start.strftime('%Y-%m-%d')} to {chunk_end.strftime('%Y-%m-%d')}")
-            response = requests.get(base_url, params=params, timeout=90)
+            print(f"Fetching CAISO chunk {chunk_count}: {current_start.strftime('%Y-%m-%d')} to {chunk_end.strftime('%Y-%m-%d')}")
+
+            # Rate limiting: wait between requests to respect API limits
+            if chunk_count > 1:
+                print("⏳ Waiting 15 seconds to respect API rate limits...")
+                time.sleep(15)
+
+            # Retry logic for rate limiting
+            max_retries = 3
+            response = None
+            for attempt in range(max_retries):
+                response = requests.get(base_url, params=params, timeout=90)
+
+                if response.status_code == 429:
+                    wait_time = (2 ** attempt) * 5  # Exponential backoff: 5, 10, 20 seconds
+                    print(f"⚠️  Rate limited (429). Waiting {wait_time}s before retry {attempt + 1}/{max_retries}...")
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    break  # Success or other error
 
             if response.status_code == 200 and response.content:
-                # CAISO returns ZIP file with CSV data
+                # CAISO returns ZIP file with XML data
                 import zipfile
                 from io import BytesIO
 
                 with zipfile.ZipFile(BytesIO(response.content)) as zip_file:
-                    for csv_filename in zip_file.namelist():
-                        if csv_filename.lower().endswith(".csv"):
-                            with zip_file.open(csv_filename) as csv_file:
-                                df = pd.read_csv(csv_file)
+                    for xml_filename in zip_file.namelist():
+                        if xml_filename.lower().endswith(".xml"):
+                            with zip_file.open(xml_filename) as xml_file:
+                                # Parse XML content
+                                soup = BeautifulSoup(xml_file.read(), 'xml')
 
-                                # Look for standard CAISO columns
-                                if "INTERVALSTARTTIME_GMT" in df.columns and "MW" in df.columns:
-                                    chunk_data = pd.DataFrame({
-                                        "timestamp": pd.to_datetime(df["INTERVALSTARTTIME_GMT"]),
-                                        "load": pd.to_numeric(df["MW"], errors="coerce")
-                                    }).dropna()
+                                # Check for errors first
+                                error = soup.find(['error', 'ERROR'])
+                                if error:
+                                    code = error.find(['err_code', 'ERR_CODE'])
+                                    desc = error.find(['err_desc', 'ERR_DESC'])
+                                    print(f"⚠️  CAISO API error: {code.text if code else 'Unknown'} - {desc.text if desc else 'Unknown'}")
+                                    continue
 
-                                    if not chunk_data.empty:
-                                        frames.append(chunk_data)
+                                # Parse data elements
+                                data_elements = soup.find_all(['REPORT_DATA', 'report_data'])
+                                chunk_records = []
+
+                                for element in data_elements:
+                                    # Look for actual system load data (5-min RTM)
+                                    data_item = element.find(['DATA_ITEM', 'data_item'])
+                                    resource_name = element.find(['RESOURCE_NAME', 'resource_name'])
+
+                                    # Accept actual load data - try both forecast and actual data items
+                                    # SYS_FCST_5MIN_MW might include actual data in RTM market
+                                    if (data_item and data_item.text in ['SYS_FCST_5MIN_MW', 'SYS_LOAD_5MIN_MW', 'LOAD_5MIN_MW'] and
+                                        resource_name and resource_name.text):
+
+                                        # Extract timestamp and value
+                                        timestamp_elem = element.find(['INTERVAL_START_GMT', 'interval_start_gmt'])
+                                        value_elem = element.find(['VALUE', 'value'])
+
+                                        if timestamp_elem and value_elem:
+                                            try:
+                                                timestamp = pd.to_datetime(timestamp_elem.text)
+                                                load_mw = float(value_elem.text)
+                                                resource = resource_name.text
+
+                                                chunk_records.append({
+                                                    'timestamp': timestamp,
+                                                    'load': load_mw,
+                                                    'resource_name': resource
+                                                })
+                                            except (ValueError, TypeError) as e:
+                                                print(f"⚠️  Error parsing CAISO data element: {e}")
+                                                continue
+
+                                if chunk_records:
+                                    chunk_data = pd.DataFrame(chunk_records)
+                                    frames.append(chunk_data)
             else:
                 print(f"Warning: CAISO API returned HTTP {response.status_code} for chunk")
 
@@ -277,15 +337,66 @@ def fetch_caiso_data(days: int = 365) -> pd.DataFrame:
         raise RuntimeError("CAISO OASIS fetch returned no data. Consider Today's Outlook CSV.")
 
     # Combine all chunk data
+    if not frames:
+        raise RuntimeError("No data retrieved from CAISO OASIS API")
+
     result_df = pd.concat(frames, ignore_index=True).dropna()
-    result_df = result_df.sort_values("timestamp").reset_index(drop=True)
+    result_df = result_df.sort_values(["timestamp", "resource_name"]).reset_index(drop=True)
+
+    # Map CAISO resource names to our zone configuration
+    from src.config.caiso_zones import CAISO_ZONES
+
+    # Create mapping from CAISO resource names to our zone names
+    # Based on CAISO OASIS resource identifiers and geographic territories
+    resource_to_zone = {
+        # System-wide and major utility TAC areas
+        'CA ISO-TAC': 'SYSTEM',     # California ISO system total
+        'SDGE-TAC': 'SDGE',         # San Diego Gas & Electric
+        'SCE-TAC': 'SCE',           # Southern California Edison
+        'PGE-TAC': 'NP15',          # PG&E North of Path 15
+        'SMUD-TAC': 'SMUD',         # Sacramento Municipal Utility District
+        'MWD-TAC': 'SCE',           # Metropolitan Water District (SCE territory)
+        'VEA-TAC': 'SCE',           # Ventura County (SCE territory)
+
+        # Balancing Authority of Northern California (BANC) areas
+        'BANC': 'NP15',             # BANC general (Northern CA)
+        'BANCSMUD': 'SMUD',         # BANC - Sacramento Municipal Utility District
+        'BANCMID': 'PGE_VALLEY',    # BANC - Modesto Irrigation District (Central Valley)
+        'BANCRDNG': 'NP15',         # BANC - Redding area (Northern CA)
+        'BANCRSVL': 'SMUD',         # BANC - Roseville (Sacramento area)
+        'BANCWASN': 'NP15',         # BANC - Western Area Power Admin (Northern CA)
+
+        # Major municipal utilities
+        'LADWP': 'SP15',            # Los Angeles Department of Water and Power
+        'SMUD': 'SMUD',             # Sacramento Municipal Utility District (direct)
+        'PGE': 'NP15',              # Pacific Gas & Electric (general)
+
+        # Other California areas (some may be outside CAISO but in data)
+        'SCL': 'NP15',              # Seattle City Light (if in data, map to NP15)
+
+        # Note: Many other resources (AZPS, NEVP, BPAT, etc.) are outside California
+        # and will remain unmapped (zone = None) as they're not CAISO load zones
+    }
+
+    # Map resource names to zones
+    result_df['zone'] = result_df['resource_name'].map(resource_to_zone)
 
     # Add metadata
     result_df["region"] = "CAISO"
     result_df["data_source"] = "caiso_oasis_sld"
 
+    # Show what resource names we found
+    unique_resources = result_df['resource_name'].unique()
+    mapped_resources = result_df[result_df['zone'].notna()]['resource_name'].unique()
+    unmapped_resources = result_df[result_df['zone'].isna()]['resource_name'].unique()
+
+    print(f"📊 Found {len(unique_resources)} unique CAISO resource names:")
+    print(f"   ✅ Mapped: {list(mapped_resources)}")
+    if len(unmapped_resources) > 0:
+        print(f"   ❓ Unmapped: {list(unmapped_resources)}")
+
     # Ensure proper column order
-    result_df = result_df[["timestamp", "load", "region", "data_source"]].copy()
+    result_df = result_df[["timestamp", "load", "resource_name", "zone", "region", "data_source"]].copy()
 
     print(f"Successfully fetched {len(result_df)} CAISO records from {len(frames)} chunks")
     return result_df
