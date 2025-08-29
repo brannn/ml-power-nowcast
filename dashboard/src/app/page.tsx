@@ -66,7 +66,7 @@ export default function Dashboard() {
   const [systemStatus, setSystemStatus] = useState<SystemStatus | null>(null)
   const [modelMetrics, setModelMetrics] = useState<any>(null)
   const [currentWeather, setCurrentWeather] = useState<any>(null)
-  const [demandTrend, setDemandTrend] = useState<ModelMetrics | null>(null)
+  const [demandTrend, setDemandTrend] = useState<any>(null)
   const [selectedModel, setSelectedModel] = useState<string>('xgboost')
   const [currentModelInfo, setCurrentModelInfo] = useState<any>(null)
   const [loading, setLoading] = useState(false)

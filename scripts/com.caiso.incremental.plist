@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Job identifier - must be unique -->
+    <key>Label</key>
+    <string>com.caiso.incremental</string>
+    
+    <!-- Program to run -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/bran/Work/model-power-nowcast/.venv/bin/python</string>
+        <string>/Users/bran/Work/model-power-nowcast/scripts/incremental_collection_macos.py</string>
+        <string>--quiet</string>
+        <string>--hours</string>
+        <string>3</string>
+    </array>
+    
+    <!-- Working directory -->
+    <key>WorkingDirectory</key>
+    <string>/Users/bran/Work/model-power-nowcast</string>
+    
+    <!-- Environment variables -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/bran/Work/model-power-nowcast/.venv/bin:/usr/local/bin:/usr/bin:/bin</string>
+        <key>PYTHONPATH</key>
+        <string>/Users/bran/Work/model-power-nowcast</string>
+    </dict>
+    
+    <!-- Schedule: every 30 minutes -->
+    <key>StartInterval</key>
+    <integer>1800</integer>
+    
+    <!-- Run at load (when system starts) -->
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <!-- Keep job alive if it exits -->
+    <key>KeepAlive</key>
+    <false/>
+    
+    <!-- Standard output and error logs -->
+    <key>StandardOutPath</key>
+    <string>/Users/bran/Work/model-power-nowcast/logs/incremental_stdout.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/bran/Work/model-power-nowcast/logs/incremental_stderr.log</string>
+    
+    <!-- Process type -->
+    <key>ProcessType</key>
+    <string>Background</string>
+    
+    <!-- Nice level (lower priority) -->
+    <key>Nice</key>
+    <integer>10</integer>
+    
+    <!-- Throttle interval (minimum time between launches) -->
+    <key>ThrottleInterval</key>
+    <integer>60</integer>
+</dict>
+</plist>

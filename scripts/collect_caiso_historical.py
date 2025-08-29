@@ -134,28 +134,28 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__
     )
-    
+
     parser.add_argument(
         "--start-date",
         type=str,
         default="2020-08-28",
         help="Start date for collection (YYYY-MM-DD). Default: 2020-08-28"
     )
-    
+
     parser.add_argument(
-        "--end-date", 
+        "--end-date",
         type=str,
         default=datetime.now().strftime("%Y-%m-%d"),
         help="End date for collection (YYYY-MM-DD). Default: today"
     )
-    
+
     parser.add_argument(
         "--output-dir",
         type=str,
         default="data/historical",
         help="Output directory for data files. Default: data/historical"
     )
-    
+
     parser.add_argument(
         "--upload-s3",
         action="store_true",
@@ -167,11 +167,17 @@ def main():
         action="store_true",
         help="Also collect weather data for all power zones"
     )
-    
+
     parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Show collection plan without actually collecting data"
+    )
+
+    parser.add_argument(
+        "--auto-confirm",
+        action="store_true",
+        help="Skip confirmation prompt for automated runs"
     )
     
     args = parser.parse_args()
@@ -202,18 +208,22 @@ def main():
         print("✅ Collection plan validated")
         return 0
     
-    # Confirm collection
-    print("⚠️  This will collect real CAISO data using their API with 15-second rate limiting.")
-    print(f"   Estimated time: ~{estimated_minutes:.1f} minutes")
-    
-    try:
-        confirm = input("\nProceed with collection? (y/N): ").strip().lower()
-        if confirm not in ['y', 'yes']:
-            print("❌ Collection cancelled by user")
+    # Confirm collection (unless auto-confirm is enabled)
+    if not args.auto_confirm:
+        print("⚠️  This will collect real CAISO data using their API with 15-second rate limiting.")
+        print(f"   Estimated time: ~{estimated_minutes:.1f} minutes")
+
+        try:
+            confirm = input("\nProceed with collection? (y/N): ").strip().lower()
+            if confirm not in ['y', 'yes']:
+                print("❌ Collection cancelled by user")
+                return 0
+        except KeyboardInterrupt:
+            print("\n❌ Collection cancelled by user")
             return 0
-    except KeyboardInterrupt:
-        print("\n❌ Collection cancelled by user")
-        return 0
+    else:
+        print("🤖 Auto-confirm enabled - proceeding with collection...")
+        print(f"   Estimated time: ~{estimated_minutes:.1f} minutes")
     
     # Start collection
     print(f"\n🔄 Starting CAISO data collection...")
