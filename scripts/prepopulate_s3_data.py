@@ -21,7 +21,7 @@ import boto3
 import pandas as pd
 from botocore.exceptions import ClientError
 
-from src.ingest.pull_power import fetch_nyiso_data, fetch_caiso_data, generate_synthetic_power_data
+from src.ingest.pull_power import fetch_caiso_data, generate_synthetic_power_data
 from src.ingest.pull_weather import (
     fetch_noaa_weather_data,
     fetch_meteostat_data,
@@ -99,57 +99,47 @@ def prepopulate_power_data(
 
     Args:
         bucket: S3 bucket name
-        years: Number of years of historical data to fetch
+        years: Number of years of historical data to fetch (limited by API availability)
         force: Overwrite existing data
         use_synthetic: Use synthetic data instead of real APIs
         s3_client: Boto3 S3 client
     """
     if s3_client is None:
         s3_client = get_s3_client()
-    
-    days = years * 365
-    print(f"📊 Fetching {years} years ({days} days) of power data...")
-    
-    # NYISO data
-    data_type = "synthetic" if use_synthetic else "real"
-    nyiso_key = f"raw/power/nyiso/{data_type}_{years}y.parquet"
 
-    if not force and check_s3_object_exists(bucket, nyiso_key, s3_client):
-        print(f"⏭️  NYISO data already exists: s3://{bucket}/{nyiso_key}")
+    # For real data, limit to available data ranges
+    if not use_synthetic:
+        # CAISO OASIS retention is ~39 months
+        max_caiso_days = min(years * 365, 39 * 30)  # CAISO retention ~39 months
+
+        print(f"📊 Fetching real CAISO power data (limited by API availability):")
+        print(f"   CAISO: {max_caiso_days} days (OASIS retention ~39 months)")
     else:
-        if use_synthetic:
-            print("🔄 Generating synthetic NYISO data...")
-            nyiso_df = generate_synthetic_power_data(days=days)
-            nyiso_df["region"] = "NYISO"
-            nyiso_df["data_source"] = "synthetic"
-            upload_to_s3(nyiso_df, bucket, nyiso_key, s3_client)
-        else:
-            print("🔄 Fetching real NYISO data...")
-            try:
-                nyiso_df = fetch_nyiso_data(days=days)
-                upload_to_s3(nyiso_df, bucket, nyiso_key, s3_client)
-            except Exception as e:
-                print(f"❌ Failed to fetch NYISO data: {e}")
-                print("💡 Consider using synthetic data mode: --synthetic-power")
-                print("   Or try a shorter time period with --years 1")
-                raise
+        days = years * 365
+        print(f"📊 Generating {years} years ({days} days) of synthetic power data...")
     
-    # CAISO data
-    caiso_key = f"raw/power/caiso/{data_type}_{years}y.parquet"
+    # CAISO data (California focus only)
+    data_type = "synthetic" if use_synthetic else "real"
+    if use_synthetic:
+        caiso_key = f"raw/power/caiso/{data_type}_{years}y.parquet"
+        days_caiso = years * 365
+    else:
+        caiso_key = f"raw/power/caiso/{data_type}_{max_caiso_days}d.parquet"
+        days_caiso = max_caiso_days
 
     if not force and check_s3_object_exists(bucket, caiso_key, s3_client):
         print(f"⏭️  CAISO data already exists: s3://{bucket}/{caiso_key}")
     else:
         if use_synthetic:
             print("🔄 Generating synthetic CAISO data...")
-            caiso_df = generate_synthetic_power_data(days=days)
+            caiso_df = generate_synthetic_power_data(days=days_caiso)
             caiso_df["region"] = "CAISO"
             caiso_df["data_source"] = "synthetic"
             upload_to_s3(caiso_df, bucket, caiso_key, s3_client)
         else:
-            print("🔄 Fetching real CAISO data...")
+            print(f"🔄 Fetching real CAISO data ({days_caiso} days available)...")
             try:
-                caiso_df = fetch_caiso_data(days=days)
+                caiso_df = fetch_caiso_data(days=days_caiso)
                 upload_to_s3(caiso_df, bucket, caiso_key, s3_client)
             except Exception as e:
                 print(f"❌ Failed to fetch CAISO data: {e}")

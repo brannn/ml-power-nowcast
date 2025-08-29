@@ -1,63 +1,70 @@
 # ML Power Nowcast
 
-ML Power Nowcast implements a GPU-capable power demand forecasting system using MLflow for experiment tracking and model management. The project demonstrates reproducible machine learning workflows that can be deployed across local development environments and AWS EC2 instances.
+ML Power Nowcast implements a power demand forecasting system for the California Independent System Operator (CAISO) using machine learning. The project demonstrates reproducible ML workflows with real-time data collection, zone-specific weather integration, and comprehensive model training capabilities.
 
 ## Project Goals
 
-This proof of concept generates 15-60 minute power demand forecasts using publicly available datasets. The system compares classical machine learning approaches (XGBoost) against neural network models (LSTM) while maintaining full experiment reproducibility through MLflow integration. The architecture supports model serving through both MLflow's built-in server and FastAPI endpoints.
+This system generates real-time power demand forecasts for California using CAISO data and zone-specific weather information. The implementation collects actual load data from 7 granular CAISO zones (including Sacramento, Central Valley, Los Angeles, San Diego, and others) and correlates it with representative weather data for accurate demand prediction.
 
-The implementation emphasizes portability across computing environments. The same codebase operates on local development machines and AWS EC2 GPU instances without modification, requiring only environment variable changes for different deployment targets.
+The system emphasizes real data collection over synthetic generation, using the CAISO OASIS API for actual system load data and Meteostat for zone-specific weather information. All data collection respects API rate limits and maintains data integrity without fallback to synthetic data.
 
 ## Implementation Status
 
-The project implements a complete machine learning pipeline following the systematic approach outlined in the implementation plan. Current functionality includes comprehensive data ingestion with zone-based weather aggregation, feature engineering with lag variables and rolling statistics, model training for both XGBoost and LSTM architectures, evaluation with diagnostic plots and performance metrics, model registry management with promotion workflows, and production-ready serving infrastructure.
+The project implements a complete CAISO power demand forecasting pipeline with real data collection capabilities. Current functionality includes:
 
-The system has been validated through comprehensive testing with 53 passing tests covering feature engineering, model evaluation, and serving functionality. End-to-end integration testing confirms that the complete pipeline operates correctly from data ingestion through model serving.
+- **Real CAISO Data Collection**: 7 granular zones (SYSTEM, NP15, SCE, SMUD, PGE_VALLEY, SP15, SDGE) with 5-minute resolution
+- **Zone-Specific Weather**: Representative weather stations for each CAISO zone with proper geographic coverage
+- **Historical Data Collection**: 5+ years of historical data collection with 15-second rate limiting
+- **Feature Engineering**: Weather-power correlations, lag variables, and rolling statistics
+- **Model Training**: XGBoost and LSTM models with zone-specific features
+- **Real-Time Dashboard**: Live power demand visualization with model performance metrics
+
+The system operates locally with comprehensive data collection scripts and a React-based dashboard for real-time monitoring.
 
 ## Architecture
 
-The system follows a linear pipeline architecture where each stage logs comprehensive metadata to MLflow:
+The system follows a data-driven architecture focused on real CAISO data collection and zone-specific modeling:
 
 ```
-[Data Ingest] → [Feature Build] → [Model Train (GPU/CPU)] → [Eval + Plots]
-       ↓              ↓              ↓                      ↓
-MLflow artifacts & params ← MLflow metrics & model → Model Registry → Serve
+[CAISO API] → [Zone Mapping] → [Weather Collection] → [Feature Engineering]
+     ↓              ↓               ↓                      ↓
+[Historical Data] → [Real-time Data] → [ML Models] → [Dashboard Serving]
 ```
 
-Data ingestion pulls power demand and weather data from public APIs, creating timestamped datasets stored as Parquet files. Feature engineering generates lagged variables and rolling statistics, with all transformations logged as MLflow artifacts. Model training supports both CPU-based XGBoost and GPU-accelerated PyTorch LSTM models, with hyperparameters and metrics tracked automatically. The evaluation stage produces diagnostic plots and performance metrics, while the model registry manages version promotion from staging to production.
+**Data Collection**: CAISO OASIS API provides real system load data with 15-second rate limiting. Zone mapping converts CAISO resources to geographic zones (Sacramento, Central Valley, LA, etc.). Weather collection uses Meteostat for zone-specific weather data.
+
+**Processing**: Feature engineering creates weather-power correlations, lag variables, and rolling statistics. Models train on zone-specific features with proper geographic representation.
+
+**Serving**: React dashboard displays real-time power demand, weather conditions, and model performance metrics with automatic updates.
 
 ## Project Structure
 
 ```
 ml-power-nowcast/
-├── terraform/           # Infrastructure as Code
-│   ├── modules/         # Reusable Terraform modules
-│   │   ├── vpc/         # ml-dev VPC with SSM endpoints
-│   │   ├── security/    # IAM roles, security groups
-│   │   ├── compute/     # EC2 instances (g6f.xlarge/g6.xlarge)
-│   │   └── storage/     # S3 buckets for MLflow artifacts
-│   └── environments/    # Environment-specific configs
-│       └── dev/         # Shared infrastructure (supports both dev and prod instances)
-├── packer/              # AMI building
-│   └── ubuntu-ml-base/  # Ubuntu 22.04 + ML dependencies
-├── planning/            # Project planning documents
-├── scripts/             # Data management and utility scripts
-├── src/                 # ML pipeline code
-│   ├── config/          # Zone configurations (NYISO, CAISO)
-│   ├── ingest/          # Data ingestion (power, weather)
-│   ├── features/        # Feature engineering with lag and rolling features
-│   ├── models/          # Model training (XGBoost, LSTM) and evaluation
-│   └── serve/           # Model serving (FastAPI and MLflow)
-├── data/                # Data storage (gitignored)
-├── notebooks/           # Jupyter notebooks
-└── artifacts/           # Model artifacts (gitignored)
+├── scripts/             # Data collection and management scripts
+│   ├── collect_caiso_historical.py  # 5-year CAISO data collection
+│   └── README_caiso_collection.md   # Collection guide
+├── src/                 # Core ML pipeline code
+│   ├── config/          # CAISO zone configurations
+│   ├── ingest/          # Data collection (CAISO power, weather)
+│   ├── features/        # Feature engineering with weather correlations
+│   ├── models/          # Model training and evaluation
+│   ├── api/             # Regional API server for dashboard
+│   └── serve/           # Model serving infrastructure
+├── dashboard/           # React-based real-time dashboard
+│   ├── src/             # Dashboard components and pages
+│   └── public/          # Static assets
+├── data/                # Local data storage (gitignored)
+├── planning/            # Project planning and documentation
+├── notebooks/           # Analysis and development notebooks
+└── models/              # Trained model artifacts (gitignored)
 ```
 
 ## Getting Started
 
 ### Prerequisites
 
-The project requires Python 3.10 or later, AWS CLI with configured credentials, Terraform 1.6 or later, and Packer 1.9 or later. These tools enable local development, infrastructure provisioning, and custom AMI creation respectively.
+The project requires Python 3.10 or later and Node.js 18+ for the dashboard. All data collection and model training runs locally without cloud dependencies. Optional: AWS CLI for S3 data storage.
 
 ### Environment Setup
 
@@ -87,58 +94,45 @@ pip install -r requirements.txt -r requirements-dev.txt  # For development
 pip install -r requirements.txt  # For production only
 ```
 
-Copy the example environment file and configure it for your specific setup:
+### CAISO Data Collection
+
+Collect 5 years of real CAISO historical data using the provided script:
 
 ```bash
-cp .env.example .env
-# Edit .env with your AWS region and MLflow configuration
+# Test the collection plan
+python scripts/collect_caiso_historical.py --dry-run
+
+# Collect power data only (recommended first run)
+python scripts/collect_caiso_historical.py
+
+# Collect power + weather data for all zones
+python scripts/collect_caiso_historical.py --collect-weather
+
+# Upload to S3 (optional)
+python scripts/collect_caiso_historical.py --collect-weather --upload-s3
 ```
 
-### Infrastructure Deployment
+The collection script uses 15-second rate limiting and takes ~30-45 minutes for 5 years of data. It collects data from 7 CAISO zones with proper geographic representation.
 
-For cloud deployment, first build a custom AMI containing ML dependencies and NVIDIA drivers:
+### Dashboard and Real-Time Monitoring
+
+Start the real-time dashboard to monitor CAISO power demand and model performance:
 
 ```bash
-cd packer/ubuntu-ml-base
-packer build ubuntu-ml-base.pkr.hcl
+# Start the regional API server (serves CAISO data)
+cd src/api && python regional_api_server.py
+
+# In another terminal, start the dashboard
+cd dashboard && npm install && npm start
 ```
 
-Deploy the AWS infrastructure using Terraform:
+The dashboard displays:
+- Real-time CAISO power demand by zone
+- Weather conditions for each zone
+- Model performance metrics (MAPE, R², accuracy)
+- Zone-specific load patterns and forecasts
 
-```bash
-cd ../../terraform/environments/dev
-terraform init
-terraform plan -var="instance_mode=dev"
-terraform apply -var="instance_mode=dev"
-```
-
-This creates a VPC named 'ml-dev' with private subnets, SSM endpoints for secure access, and EC2 instances configured for ML workloads. Use `instance_mode=prod` to deploy production instances or `instance_mode=both` for concurrent access to both instance types.
-
-### ML Pipeline Execution
-
-For local development, start an MLflow tracking server:
-
-```bash
-export MLFLOW_TRACKING_URI=http://0.0.0.0:5001
-mlflow server --backend-store-uri sqlite:///mlruns.db \
-  --default-artifact-root ./mlruns_artifacts --host 0.0.0.0 --port 5001
-```
-
-For cloud deployments with S3 storage, pre-populate historical data to avoid repeated API calls during development:
-
-```bash
-# Configure your S3 bucket name
-export BUCKET_NAME="your-mlflow-bucket-name"
-
-# Pre-populate with real data (requires API access)
-make prepopulate-s3-run BUCKET=$BUCKET_NAME YEARS=3
-
-# Or use synthetic data for development
-python3 scripts/prepopulate_s3_data.py --bucket $BUCKET_NAME --years 3 --synthetic-power --synthetic-weather
-
-# Check existing data
-make list-s3-data BUCKET=$BUCKET_NAME
-```
+Access the dashboard at `http://localhost:3000`
 
 Execute the ML pipeline using the provided Makefile targets:
 
@@ -177,21 +171,44 @@ The test suite includes 53 tests covering feature engineering, model training, e
 
 ## Data Sources and Processing
 
-The system integrates multiple public data sources to create comprehensive training datasets. NYISO and CAISO provide real-time load data through their public APIs, with the ingestion system aggregating zone-level demand data into regional totals with hourly granularity. The implementation includes comprehensive zone mapping and data validation to ensure consistency across different grid operators.
+The system focuses exclusively on California Independent System Operator (CAISO) data for comprehensive power demand forecasting. CAISO provides real-time load data through their OASIS API, with the ingestion system collecting data from 7 granular zones including Sacramento (SMUD), Central Valley (PGE_VALLEY), Los Angeles (SP15), San Diego (SDGE), and others.
 
-Weather data comes from OpenWeatherMap API, which supplies current and historical weather observations including temperature, humidity, wind speed, and other meteorological variables. The system aggregates weather data by region using zone-based mapping to align with power demand geography, ensuring spatial consistency between weather and load data.
+Weather data comes from Meteostat, which provides free historical and current weather observations. The system collects zone-specific weather data for each CAISO zone using representative coordinates, ensuring proper geographic correlation between weather patterns and power demand across California's diverse climate regions.
 
-The data processing pipeline handles API rate limiting, data validation, and format standardization. Missing data points are identified and logged, but the system does not generate synthetic replacements to maintain data integrity. Processing includes automatic retry mechanisms and comprehensive error logging for production reliability.
+### CAISO Zone Coverage
 
-Feature engineering transforms raw time series data into machine learning features through multiple approaches. The pipeline creates lag features for 1-24 hour historical values, computes rolling statistics over multiple time windows, generates temporal features with cyclic encoding for hour and seasonal patterns, and calculates weather interaction variables such as heating and cooling degree days. This process typically generates 47 engineered features from the raw power and weather data.
+The system collects data from 7 granular CAISO zones with proper geographic representation:
 
-## Technology Stack
+- **SYSTEM**: California statewide total (23-35 GW)
+- **SMUD**: Sacramento Municipal Utility District (Sacramento area)
+- **PGE_VALLEY**: Central Valley region (Modesto, agricultural areas)
+- **SP15**: South of Path 15 (Los Angeles area via LADWP)
+- **SCE**: Southern California Edison (Inland Empire, San Bernardino)
+- **NP15**: North of Path 15 (San Francisco Bay Area, Northern CA)
+- **SDGE**: San Diego Gas & Electric (San Diego County)
 
-The system uses MLflow as the central framework for experiment tracking and model registry management. Model implementations include XGBoost for baseline comparisons and PyTorch LSTM networks for neural forecasting approaches. Data processing follows a pandas-first methodology with Parquet file storage for efficient columnar data access.
+Each zone has representative weather coordinates capturing California's climate diversity from coastal Mediterranean to hot semi-arid inland regions.
 
-Model serving operates through both MLflow's built-in model server and custom FastAPI applications. Infrastructure provisioning uses Terraform for reproducible AWS resource management, while Packer creates custom AMIs containing ML dependencies and NVIDIA drivers.
+## Real-Time Dashboard
 
-Compute resources include EC2 g6f.xlarge instances for development and testing, with g6.xlarge instances for production workloads. Both instance types provide L4 GPU acceleration for neural network training. Remote access uses AWS Systems Manager Session Manager, eliminating SSH key management and improving security posture.
+The system includes a comprehensive React-based dashboard for real-time CAISO power demand monitoring and model performance tracking.
+
+### Dashboard Features
+
+- **Real-Time Power Demand**: Live CAISO system load with automatic updates
+- **Zone-Specific Data**: Individual zone loads (Sacramento, Central Valley, LA, San Diego, etc.)
+- **Weather Integration**: Current weather conditions for each CAISO zone
+- **Model Performance**: Live MAPE, R², and accuracy metrics
+- **Historical Trends**: Power demand patterns and forecasting accuracy
+- **Model Comparison**: Performance across different models and zones
+
+### Technology Stack
+
+- **Frontend**: React 18 with TypeScript, Tailwind CSS, Recharts for visualization
+- **Backend**: Python FastAPI regional API server serving CAISO data
+- **Data Collection**: CAISO OASIS API with Meteostat weather integration
+- **Storage**: Local Parquet files with optional S3 backup
+- **Models**: XGBoost and LSTM with scikit-learn and PyTorch
 
 ## Security Considerations
 
@@ -221,61 +238,85 @@ Evaluation uses comprehensive forecasting metrics including Mean Absolute Error 
 
 The evaluation framework generates detailed performance reports with model comparison tables and diagnostic visualizations. All evaluation artifacts are logged to MLflow for experiment tracking and model registry integration. The system supports automated model promotion based on performance thresholds, enabling controlled deployment from staging to production environments.
 
-## Deployment Environments
+## Operational Model
 
-Local development uses synthetic data generation for rapid iteration without external API dependencies. This environment supports full pipeline testing and model development using CPU-only resources.
+The system operates entirely locally with real CAISO data collection, eliminating cloud dependencies for core functionality. This approach provides:
 
-AWS EC2 g6f.xlarge instances provide GPU acceleration for development and testing workflows. These instances offer cost-effective GPU access for model training experiments and hyperparameter optimization.
+### Local Development Benefits
+- **No cloud costs**: All processing runs on local hardware
+- **Real data access**: Direct CAISO OASIS API integration
+- **Rapid iteration**: Immediate feedback without deployment delays
+- **Data control**: Complete ownership of collected datasets
 
-Production deployments use EC2 g6.xlarge instances for optimized training and serving performance. The same infrastructure supports both development and production workloads through instance type selection.
+### Data Collection Strategy
+- **Historical collection**: 5+ years of CAISO data via rate-limited API calls
+- **Incremental updates**: Daily collection of fresh data
+- **Zone-specific weather**: Representative weather stations for each CAISO zone
+- **Data integrity**: No synthetic fallbacks, real data only
+
+### Scalability Options
+- **Local processing**: Sufficient for CAISO zone-level modeling
+- **Optional S3 storage**: Backup and sharing capabilities
+- **Dashboard serving**: Real-time monitoring via local React app
 
 ## Data Ingestion Architecture
 
 The system implements a comprehensive data ingestion framework designed for accuracy and geographic representativeness. Data collection operates through zone-based weather aggregation and robust power demand APIs, ensuring that weather features properly correlate with statewide power demand patterns.
 
-### Power Demand Data Collection
+### CAISO Power Demand Data Collection
 
-Power demand data originates from public APIs provided by Independent System Operators (ISOs). The implementation addresses specific API limitations and data quality requirements through targeted fixes based on comprehensive analysis of each system's data structure.
+Power demand data comes exclusively from the California Independent System Operator (CAISO) OASIS API. The implementation collects real actual load data (not forecasts) with proper zone mapping and geographic representation.
 
-**NYISO (New York Independent System Operator)** data collection uses the P-58B Real-Time Actual Load CSV files published daily. The system fetches 5-minute interval data across all load zones and aggregates zone totals to produce accurate statewide (NYCA) demand figures. This approach corrects previous implementations that incorrectly filtered for single zones rather than computing true statewide totals.
+**CAISO OASIS API Integration** uses the SLD_FCST endpoint with RTM (Real-Time Market) parameters to collect actual system load data. The system employs 14-day chunked requests with 15-second rate limiting to handle large historical date ranges reliably. This approach respects API limits while enabling collection of 5+ years of historical data.
 
-**CAISO (California Independent System Operator)** data collection employs the OASIS SingleZip API with chunked requests to handle large date ranges reliably. The implementation uses 7-day request windows with proper error handling for individual chunk failures. API parameters specify 15-minute granularity with actual load data rather than forecasts.
+**Zone Resource Mapping** converts CAISO resource identifiers to geographic zones:
+- `CA ISO-TAC` → SYSTEM (statewide total)
+- `BANCSMUD`, `BANCRSVL` → SMUD (Sacramento area)
+- `BANCMID` → PGE_VALLEY (Central Valley/Modesto)
+- `LADWP` → SP15 (Los Angeles area)
+- `SCE-TAC` → SCE (Southern California Edison)
+- `PGE-TAC` → NP15 (Northern California)
+- `SDGE-TAC` → SDGE (San Diego area)
 
-Both systems implement UTC timestamp normalization and comprehensive error handling without synthetic data fallbacks. This approach maintains data integrity by preventing contamination of real datasets with generated values.
+The system implements UTC timestamp normalization and comprehensive error handling without synthetic data fallbacks, maintaining data integrity for production model training.
 
 ### Zone-Based Weather Collection
 
-Weather data collection addresses the geographic mismatch between statewide power demand and single-point weather measurements. The system implements zone-based weather aggregation that properly represents climate diversity across entire states.
+Weather data collection addresses the geographic diversity of California's climate regions by collecting zone-specific weather data that properly correlates with power demand patterns. The system uses Meteostat for reliable, free weather data collection.
 
-**NYISO Weather Zones** encompass 11 representative locations across New York State, from Buffalo (Western NY) through Syracuse (Central NY) to New York City and Long Island. Each zone corresponds to a major load center with coordinates selected for representative weather station coverage. Population-weighted aggregation produces statewide weather averages that reflect actual load distribution, with NYC accounting for 42% of the weighting and Long Island contributing 18%.
+**CAISO Weather Zones** cover 6 major climate regions across California with representative coordinates:
 
-**CAISO Weather Zones** cover 8 major load aggregation points across California's diverse climate regions. These include NP15 (North of Path 15, San Francisco Bay Area), SP15 (South of Path 15, Los Angeles Basin), SDGE (San Diego), and additional zones representing the Central Valley, Inland Empire, and Sacramento areas. Load-weighted aggregation accounts for California's concentrated demand patterns, with the LA Basin (SP15) weighted at 35% and the Bay Area (NP15) at 25%.
+- **SMUD (Sacramento)**: 38.58°N, -121.49°W - Valley heat patterns
+- **PGE_VALLEY (Modesto)**: 37.64°N, -120.99°W - Central Valley agriculture climate
+- **SP15 (Los Angeles)**: 34.05°N, -118.24°W - Urban heat island effects
+- **SCE (San Bernardino)**: 34.15°N, -117.83°W - Inland desert climate
+- **NP15 (San Francisco)**: 37.77°N, -122.42°W - Coastal fog and marine layer
+- **SDGE (San Diego)**: 32.72°N, -117.16°W - Mild coastal Mediterranean
 
-The zone-based approach captures climate diversity that single-point measurements cannot represent. New York State weather varies significantly from Buffalo's lake-effect snow patterns to NYC's coastal moderation. California spans Mediterranean coastal climates, hot semi-arid Central Valley conditions, and desert regions in the Inland Empire.
+This zone-based approach captures California's extreme climate diversity, from coastal Mediterranean conditions to hot semi-arid Central Valley and desert regions in the Inland Empire. Each zone's weather data correlates directly with its power demand patterns, enabling accurate weather-driven load forecasting.
 
 ### Data Storage and Organization
 
-S3 storage follows a structured hierarchy that maintains clear data provenance and supports both synthetic and real data workflows. The storage structure separates power and weather data by region and data type:
+Local and S3 storage follows a structured hierarchy focused on CAISO data with clear data provenance:
 
 ```
-raw/
-├── power/
-│   ├── nyiso/
-│   │   ├── real_3y.parquet      # Real NYISO statewide data
-│   │   └── synthetic_3y.parquet # Synthetic NYISO data
-│   └── caiso/
-│       ├── real_3y.parquet      # Real CAISO statewide data
-│       └── synthetic_3y.parquet # Synthetic CAISO data
-└── weather/
-    ├── nyiso_zones/
-    │   ├── real_3y.parquet      # 11-zone population-weighted NY weather
-    │   └── synthetic_3y.parquet # Synthetic NY weather
-    └── caiso_zones/
-        ├── real_3y.parquet      # 8-zone load-weighted CA weather
-        └── synthetic_3y.parquet # Synthetic CA weather
+data/
+├── historical/                  # Historical data collection
+│   ├── caiso_5year_full.parquet    # All zones and resources (power)
+│   ├── caiso_5year_system.parquet  # SYSTEM zone only (power)
+│   └── caiso_5year_weather.parquet # All zones weather data
+├── fresh_power_today.parquet    # Today's incremental power data
+└── fresh_weather_today.parquet  # Today's incremental weather data
+
+# S3 structure (optional)
+s3://bucket/
+├── raw/power/caiso/
+│   └── historical_5year_YYYYMMDD.parquet
+└── processed/power/caiso/
+    └── system_5year_YYYYMMDD.parquet
 ```
 
-This organization enables clear separation between synthetic and real data sources while maintaining consistent naming conventions. Data source attribution tracks aggregation methods and API sources for full reproducibility.
+This organization maintains clear separation between historical collections and incremental updates, with optional S3 storage for backup and sharing. All data includes proper source attribution and zone mapping for reproducibility.
 
 ### Data Pre-Population Capabilities
 
