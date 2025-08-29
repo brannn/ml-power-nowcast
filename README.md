@@ -4,22 +4,22 @@ ML Power Nowcast implements a power demand forecasting system for the California
 
 ## Project Goals
 
-This system generates real-time power demand forecasts for California using CAISO data and zone-specific weather information. The implementation collects actual load data from 7 granular CAISO zones (including Sacramento, Central Valley, Los Angeles, San Diego, and others) and correlates it with representative weather data for accurate demand prediction.
+This system generates real-time power demand forecasts for California using CAISO data, historical weather information, and weather forecast integration. The implementation collects actual load data from 7 granular CAISO zones (including Sacramento, Central Valley, Los Angeles, San Diego, and others) and correlates it with weather data and National Weather Service forecasts for enhanced prediction accuracy.
 
-The system emphasizes real data collection over synthetic generation, using the CAISO OASIS API for actual system load data and Meteostat for zone-specific weather information. All data collection respects API rate limits and maintains data integrity without fallback to synthetic data.
+The system emphasizes real data collection over synthetic generation, using the CAISO OASIS API for actual system load data, the National Weather Service API for weather forecasts, and Meteostat for historical weather information. All data collection respects API rate limits and maintains data integrity without fallback to synthetic data.
 
 ## Implementation Status
 
 The project implements a complete CAISO power demand forecasting pipeline with real data collection capabilities. Current functionality includes:
 
-- **Real CAISO Data Collection**: 7 granular zones (SYSTEM, NP15, SCE, SMUD, PGE_VALLEY, SP15, SDGE) with 5-minute resolution
-- **Zone-Specific Weather**: Representative weather stations for each CAISO zone with proper geographic coverage
-- **Historical Data Collection**: 5+ years of historical data collection with 15-second rate limiting
-- **Feature Engineering**: Weather-power correlations, lag variables, and rolling statistics
-- **Model Training**: XGBoost and LSTM models with zone-specific features
-- **Real-Time Dashboard**: Live power demand visualization with model performance metrics
+- **Automated Data Collection**: Real-time power data every 30 minutes and weather forecasts every 6 hours via macOS launchd scheduling
+- **Weather Forecast Integration**: National Weather Service API provides 48-hour forecasts for enhanced prediction accuracy
+- **Continuous Model Training**: Automated XGBoost model retraining every 6 hours with fresh data
+- **Enhanced Feature Engineering**: 40 features including temporal patterns, lag variables, weather correlations, and forecast data
+- **Production Pipeline**: Complete automation from data collection through model deployment with no manual intervention
+- **Real-Time Predictions**: 6-48 hour power demand forecasts with confidence intervals
 
-The system operates locally with comprehensive data collection scripts and a React-based dashboard for real-time monitoring.
+The system operates as a fully automated production platform with continuous data collection, model training, and deployment. Historical data collection covers 5+ years with 15.7 million records, while real-time operations maintain fresh models and predictions.
 
 ## Architecture
 
@@ -29,35 +29,51 @@ The system follows a data-driven architecture focused on real CAISO data collect
 [CAISO API] → [Zone Mapping] → [Weather Collection] → [Feature Engineering]
      ↓              ↓               ↓                      ↓
 [Historical Data] → [Real-time Data] → [ML Models] → [Dashboard Serving]
+     ↓              ↓               ↓                      ↓
+[NWS Forecasts] → [Automated Pipeline] → [Model Training] → [Predictions]
 ```
 
-**Data Collection**: CAISO OASIS API provides real system load data with 15-second rate limiting. Zone mapping converts CAISO resources to geographic zones (Sacramento, Central Valley, LA, etc.). Weather collection uses Meteostat for zone-specific weather data.
+**Data Collection**: CAISO OASIS API provides real system load data with 15-second rate limiting. Zone mapping converts CAISO resources to geographic zones (Sacramento, Central Valley, LA, etc.). Weather collection uses Meteostat for historical weather data and National Weather Service API for forecasts.
 
-**Processing**: Feature engineering creates weather-power correlations, lag variables, and rolling statistics. Models train on zone-specific features with proper geographic representation.
+**Processing**: Feature engineering creates weather-power correlations, lag variables, rolling statistics, and forecast-derived features. Models train on zone-specific features with proper geographic representation. Automated pipeline retrains models every 6 hours.
 
-**Serving**: React dashboard displays real-time power demand, weather conditions, and model performance metrics with automatic updates.
+**Serving**: React dashboard displays real-time power demand, weather conditions, model performance metrics, and forecast-enhanced predictions with automatic updates.
 
 ## Project Structure
 
 ```
 ml-power-nowcast/
-├── scripts/             # Data collection and management scripts
-│   ├── collect_caiso_historical.py  # 5-year CAISO data collection
-│   └── README_caiso_collection.md   # Collection guide
+├── scripts/             # Data collection and automation scripts
+│   ├── collect_caiso_historical.py     # 5-year CAISO data collection
+│   ├── incremental_collection_macos.py # Real-time data collection (30min)
+│   ├── collect_weather_forecasts.py    # NWS forecast collection (6hrs)
+│   ├── automated_ml_pipeline.py        # ML training pipeline (6hrs)
+│   ├── demo_realtime_forecasting.py    # Real-time prediction demo
+│   └── setup_*.sh                      # macOS launchd job management
 ├── src/                 # Core ML pipeline code
 │   ├── config/          # CAISO zone configurations
-│   ├── ingest/          # Data collection (CAISO power, weather)
+│   ├── ingest/          # Data collection (CAISO power, weather, forecasts)
 │   ├── features/        # Feature engineering with weather correlations
+│   │   ├── build_forecast_features.py     # Weather forecast features
+│   │   └── unified_feature_pipeline.py   # Complete feature pipeline
 │   ├── models/          # Model training and evaluation
+│   │   └── enhanced_xgboost.py        # Forecast-enhanced XGBoost
+│   ├── prediction/      # Real-time prediction system
+│   │   └── realtime_forecaster.py     # Production forecasting
 │   ├── api/             # Regional API server for dashboard
 │   └── serve/           # Model serving infrastructure
 ├── dashboard/           # React-based real-time dashboard
 │   ├── src/             # Dashboard components and pages
 │   └── public/          # Static assets
 ├── data/                # Local data storage (gitignored)
+│   ├── historical/      # 5+ years historical data
+│   ├── incremental/     # Real-time incremental data
+│   ├── forecasts/       # Weather forecast data
+│   ├── master/          # Merged training datasets
+│   └── production_models/ # Current serving models
 ├── planning/            # Project planning and documentation
 ├── notebooks/           # Analysis and development notebooks
-└── models/              # Trained model artifacts (gitignored)
+└── logs/                # System logs (gitignored)
 ```
 
 ## Getting Started
@@ -114,6 +130,26 @@ python scripts/collect_caiso_historical.py --collect-weather --upload-s3
 
 The collection script uses 15-second rate limiting and takes ~30-45 minutes for 5 years of data. It collects data from 7 CAISO zones with proper geographic representation.
 
+### Automated Pipeline Setup
+
+The system includes automated data collection and model training via macOS launchd scheduling:
+
+```bash
+# Install automated power data collection (every 30 minutes)
+bash scripts/setup_incremental_collection.sh install
+
+# Install automated weather forecast collection (every 6 hours)
+bash scripts/setup_forecast_collection.sh install
+
+# Install automated ML model training (every 6 hours)
+bash scripts/setup_ml_pipeline.sh install
+
+# Check system status
+bash scripts/setup_ml_pipeline.sh status
+```
+
+The automated pipeline collects fresh power data every 30 minutes, weather forecasts every 6 hours, and retrains models every 6 hours at 2 AM, 8 AM, 2 PM, and 8 PM. All jobs include comprehensive error handling and logging.
+
 ### Dashboard and Real-Time Monitoring
 
 Start the real-time dashboard to monitor CAISO power demand and model performance:
@@ -128,11 +164,29 @@ cd dashboard && npm install && npm start
 
 The dashboard displays:
 - Real-time CAISO power demand by zone
-- Weather conditions for each zone
-- Model performance metrics (MAPE, R², accuracy)
-- Zone-specific load patterns and forecasts
+- Weather conditions and 48-hour forecasts for each zone
+- Model performance metrics (MAPE, R², accuracy) with forecast enhancement
+- Zone-specific load patterns and 6-48 hour predictions
+- Baseline vs forecast-enhanced model comparison
 
 Access the dashboard at `http://localhost:3000`
+
+### Real-Time Forecasting
+
+Generate real-time power demand predictions using the automated system:
+
+```bash
+# Run real-time forecasting demo with current data
+python scripts/demo_realtime_forecasting.py --save-results
+
+# Test weather forecast collection
+python scripts/test_nws_forecast_collection.py
+
+# Test unified feature pipeline
+python scripts/test_unified_features.py
+```
+
+The real-time forecasting system provides 6-48 hour power demand predictions using both baseline models (historical patterns) and forecast-enhanced models (with weather forecast integration). Predictions include confidence intervals and performance improvement measurements.
 
 Execute the ML pipeline using the provided Makefile targets:
 
@@ -144,9 +198,9 @@ make train-lstm   # Train LSTM neural network model with GPU support
 make evaluate     # Generate comprehensive evaluation metrics and diagnostic plots
 ```
 
-The feature engineering stage creates 47 engineered features from power and weather data, including lag features for 1-24 hour historical values, rolling statistics over multiple time windows, temporal features with cyclic encoding, and weather interaction variables such as heating and cooling degree days.
+The feature engineering stage creates 40 engineered features from power, weather, and forecast data. Features include lag features for 1-24 hour historical values, rolling statistics over multiple time windows, temporal features with cyclic encoding, weather interaction variables such as heating and cooling degree days, and 20 forecast-derived features from National Weather Service data including temperature forecasts, degree day projections, weather change rates, and extreme weather indicators.
 
-Model training supports both classical and neural approaches. XGBoost provides a robust baseline with automatic hyperparameter logging, while LSTM networks leverage GPU acceleration for sequence modeling. Both models integrate with MLflow for experiment tracking and model registry management.
+Model training implements enhanced XGBoost models with weather forecast integration. The system trains both baseline models using historical patterns and forecast-enhanced models that incorporate weather forecast features. Automated training occurs every 6 hours with fresh data, and models are deployed to production automatically with comprehensive validation and backup procedures.
 
 Deploy trained models for serving using either approach:
 
