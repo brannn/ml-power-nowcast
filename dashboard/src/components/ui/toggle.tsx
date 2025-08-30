@@ -20,9 +20,9 @@ export default function Toggle({
   const { theme } = useTheme()
 
   return (
-    <div className={`flex items-center gap-3 text-sm ${className}`}>
+    <div className={`flex items-center gap-1.5 text-xs py-1 ${className}`}>
       {/* Left Label */}
-      <span className={`font-medium ${
+      <span className={`font-normal text-xs ${
         !isRight
           ? (theme === 'dark' ? 'text-white' : 'text-slate-900')
           : (theme === 'dark' ? 'text-slate-400' : 'text-slate-500')
@@ -33,22 +33,22 @@ export default function Toggle({
       {/* Toggle Switch */}
       <button
         onClick={onToggle}
-        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+        className={`relative inline-flex h-4 w-7 items-center rounded-full transition-colors focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1 ${
           isRight
             ? 'bg-blue-600'
-            : (theme === 'dark' ? 'bg-slate-600' : 'bg-slate-300')
+            : (theme === 'dark' ? 'bg-slate-600' : 'bg-slate-400')
         }`}
       >
         {/* Sliding Circle */}
         <span
-          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-            isRight ? 'translate-x-6' : 'translate-x-1'
+          className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${
+            isRight ? 'translate-x-3.5' : 'translate-x-0.5'
           }`}
         />
       </button>
 
       {/* Right Label */}
-      <span className={`font-medium ${
+      <span className={`font-normal text-xs ${
         isRight
           ? (theme === 'dark' ? 'text-white' : 'text-slate-900')
           : (theme === 'dark' ? 'text-slate-400' : 'text-slate-500')

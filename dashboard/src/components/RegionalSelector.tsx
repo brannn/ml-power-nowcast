@@ -60,25 +60,25 @@ export default function RegionalSelector() {
           <Button
             variant="outline"
             size="sm"
-            className="gap-2 h-[42px]"
+            className="gap-1.5 h-[32px] text-xs px-2"
           >
             {isStatewide ? (
-              <Globe className="h-4 w-4 text-blue-600" />
+              <Globe className="h-3 w-3 text-blue-600" />
             ) : (
-              <MapPin className="h-4 w-4 text-green-600" />
+              <MapPin className="h-3 w-3 text-green-600" />
             )}
-            {isStatewide ? 'California' : `${currentZone.major_city} (${currentZone.name})`}
-            <ChevronDown className="h-4 w-4" />
+            {isStatewide ? 'Statewide' : `${currentZone.major_city} (${currentZone.name})`}
+            <ChevronDown className="h-3 w-3" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-96 p-0" align="end">
+        <PopoverContent className="w-80 p-0" align="end">
           <Card className="border-0 shadow-lg">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-lg flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-blue-600" />
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm flex items-center gap-2">
+                <MapPin className="h-4 w-4 text-blue-600" />
                 Select California Region
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-xs">
                 Choose a CAISO zone or view statewide aggregated data
               </CardDescription>
             </CardHeader>

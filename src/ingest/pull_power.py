@@ -348,31 +348,29 @@ def fetch_caiso_data(days: int = 365) -> pd.DataFrame:
 
     # Create mapping from CAISO resource names to our zone names
     # Based on CAISO OASIS resource identifiers and geographic territories
+    # FIXED MAPPING: Use only primary utility data sources for clean zone modeling
     resource_to_zone = {
-        # System-wide and major utility TAC areas
+        # System-wide and major utility TAC areas (PRIMARY SOURCES ONLY)
         'CA ISO-TAC': 'SYSTEM',     # California ISO system total
         'SDGE-TAC': 'SDGE',         # San Diego Gas & Electric
-        'SCE-TAC': 'SCE',           # Southern California Edison
-        'PGE-TAC': 'NP15',          # PG&E North of Path 15
+        'SCE-TAC': 'SCE',           # Southern California Edison (PRIMARY ONLY)
+        'PGE-TAC': 'NP15',          # PG&E North of Path 15 (PRIMARY ONLY)
         'SMUD-TAC': 'SMUD',         # Sacramento Municipal Utility District
-        'MWD-TAC': 'SCE',           # Metropolitan Water District (SCE territory)
-        'VEA-TAC': 'SCE',           # Ventura County (SCE territory)
 
-        # Balancing Authority of Northern California (BANC) areas
-        'BANC': 'NP15',             # BANC general (Northern CA)
-        'BANCSMUD': 'SMUD',         # BANC - Sacramento Municipal Utility District
+        # REMOVED PROBLEMATIC MIXED SOURCES:
+        # 'MWD-TAC': 'SCE',         # Metropolitan Water District - REMOVED (water pumping, not utility load)
+        # 'VEA-TAC': 'SCE',         # Ventura County - REMOVED (small utility, creates noise)
+        # 'BANC': 'NP15',           # BANC general - REMOVED (overlaps with PGE-TAC)
+        # 'PGE': 'NP15',            # PG&E general - REMOVED (overlaps with PGE-TAC)
+        # 'SCL': 'NP15',            # Seattle City Light - REMOVED (wrong state!)
+        # 'BANCRDNG': 'NP15',       # BANC Redding - REMOVED (small utility)
+        # 'BANCWASN': 'NP15',       # BANC Western Area - REMOVED (small utility)
+        # 'BANCRSVL': 'SMUD',       # BANC Roseville - REMOVED (small utility)
+
+        # Keep only clean, primary utility sources
+        'BANCSMUD': 'SMUD',         # BANC - Sacramento Municipal Utility District (primary SMUD source)
         'BANCMID': 'PGE_VALLEY',    # BANC - Modesto Irrigation District (Central Valley)
-        'BANCRDNG': 'NP15',         # BANC - Redding area (Northern CA)
-        'BANCRSVL': 'SMUD',         # BANC - Roseville (Sacramento area)
-        'BANCWASN': 'NP15',         # BANC - Western Area Power Admin (Northern CA)
-
-        # Major municipal utilities
         'LADWP': 'SP15',            # Los Angeles Department of Water and Power
-        'SMUD': 'SMUD',             # Sacramento Municipal Utility District (direct)
-        'PGE': 'NP15',              # Pacific Gas & Electric (general)
-
-        # Other California areas (some may be outside CAISO but in data)
-        'SCL': 'NP15',              # Seattle City Light (if in data, map to NP15)
 
         # Note: Many other resources (AZPS, NEVP, BPAT, etc.) are outside California
         # and will remain unmapped (zone = None) as they're not CAISO load zones

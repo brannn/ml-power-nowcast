@@ -64,7 +64,7 @@ ml-power-nowcast/
       windowing.py
     models/
       train_xgb.py
-      train_lstm.py
+      train_lightgbm.py
       evaluate.py
     serve/
       fastapi_app.py
@@ -135,7 +135,7 @@ mlflow server \
 ## 7) Makefile targets (quality‑of‑life)
 
 ```makefile
-.PHONY: ingest features train-xgb train-lstm evaluate serve-mlflow api
+.PHONY: ingest features train-xgb train-lightgbm evaluate serve-mlflow api
 
 ingest:
 \tpython -m src.ingest.pull_power --days 120
@@ -147,8 +147,8 @@ features:
 train-xgb:
 \tpython -m src.models.train_xgb --horizon 30 --n_estimators 500 --max_depth 6
 
-train-lstm:
-\tpython -m src.models.train_lstm --horizon 30 --hidden_size 64 --layers 2 --epochs 10 --batch_size 256
+train-lightgbm:
+\tpython -m src.models.train_lightgbm --horizon 30 --num_leaves 31 --learning_rate 0.1
 
 evaluate:
 \tpython -m src.models.evaluate --horizon 30
@@ -222,19 +222,18 @@ with mlflow.start_run(run_name="xgb@h30"):
 
 ---
 
-## 10) Neural model (LSTM/TFT‑lite) on GPU
+## 10) Advanced tree-based models (LightGBM/CatBoost)
 
-`src/models/train_lstm.py` (sketch):
+`src/models/train_lightgbm.py` (implemented):
 ```python
-import torch, mlflow, mlflow.pytorch
+import lightgbm as lgb, mlflow, mlflow.lightgbm
 mlflow.set_experiment("power-nowcast")
-with mlflow.start_run(run_name="lstm@h30"):
-    mlflow.pytorch.autolog(log_models=True)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    # model = LSTMRegressor(...).to(device)
-    # ... training loop, early stopping ...
+with mlflow.start_run(run_name="lightgbm@h30"):
+    mlflow.lightgbm.autolog(log_models=True)
+    # model = lgb.LGBMRegressor(...)
+    # ... training with early stopping ...
     # mlflow.log_metrics({"MAE": mae, "RMSE": rmse})
-    # mlflow.pytorch.log_model(model, "model")
+    # mlflow.lightgbm.log_model(model, "model")
 ```
 
 ---

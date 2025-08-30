@@ -28,6 +28,7 @@ import pandas as pd
 from dataclasses import dataclass
 
 from ..models.enhanced_xgboost import EnhancedXGBoostModel
+from ..models.lightgbm_model import LightGBMModel
 from ..features.unified_feature_pipeline import (
     build_unified_features,
     UnifiedFeatureConfig,
@@ -87,6 +88,7 @@ class PredictionResult:
     horizon_hours: int
     baseline_prediction: float
     enhanced_prediction: Optional[float]
+    lightgbm_prediction: Optional[float]
     confidence_intervals: Dict[float, Tuple[float, float]]
     forecast_improvement_pct: Optional[float]
     prediction_metadata: Dict[str, any]
@@ -126,6 +128,7 @@ class RealtimeForecaster:
         self.config = config
         self.baseline_model = None
         self.enhanced_model = None
+        self.lightgbm_model = None
         self.is_initialized = False
         
     def initialize(self) -> None:
@@ -151,8 +154,25 @@ class RealtimeForecaster:
                 logger.info(f"Loaded enhanced model from {self.config.enhanced_model_path}")
             else:
                 logger.warning("No enhanced model path provided or file not found")
-            
-            if not self.baseline_model and not self.enhanced_model:
+
+
+
+            # Load LightGBM model (find the latest one)
+            lightgbm_model_dir = Path("data/trained_models")
+            if lightgbm_model_dir.exists():
+                lightgbm_files = list(lightgbm_model_dir.glob("lightgbm_model_*.joblib"))
+                if lightgbm_files:
+                    # Get the most recent LightGBM model
+                    latest_lightgbm = max(lightgbm_files, key=lambda p: p.stat().st_mtime)
+                    try:
+                        self.lightgbm_model = LightGBMModel.load_model(latest_lightgbm)
+                        logger.info(f"Loaded LightGBM model from {latest_lightgbm}")
+                    except Exception as e:
+                        logger.warning(f"Failed to load LightGBM model: {e}")
+                else:
+                    logger.warning("No LightGBM model files found")
+
+            if not self.baseline_model and not self.enhanced_model and not self.lightgbm_model:
                 raise ModelLoadError("No models could be loaded")
             
             self.is_initialized = True
@@ -160,80 +180,259 @@ class RealtimeForecaster:
             
         except Exception as e:
             raise ModelLoadError(f"Failed to initialize forecaster: {e}")
-    
-    def prepare_prediction_features(
-        self, 
-        prediction_time: datetime,
-        zone: str
+
+    def prepare_horizon_features(
+        self,
+        target_time: datetime,
+        zone: str,
+        latest_records: pd.DataFrame
     ) -> Tuple[pd.DataFrame, pd.DataFrame]:
         """
-        Prepare features for baseline and enhanced predictions.
-        
+        Prepare features for a specific horizon using pre-loaded power data.
+
         Args:
-            prediction_time: Time for which to make predictions
-            zone: CAISO zone to predict
-            
+            target_time: Target time for prediction
+            zone: CAISO zone
+            latest_records: Pre-loaded recent power records
+
         Returns:
             Tuple of (baseline_features, enhanced_features)
-            
-        Raises:
-            PredictionError: If feature preparation fails
         """
         try:
-            logger.debug(f"Preparing prediction features for {zone} at {prediction_time}")
-            
-            # Create unified feature configuration
-            unified_config = UnifiedFeatureConfig(
-                forecast_config=ForecastFeatureConfig(
-                    forecast_horizons=[6, 24]  # Match training configuration
-                ),
-                target_zones=[zone],
-                lag_hours=[1, 24],
-                include_temporal_features=True,
-                include_weather_interactions=True
-            )
-            
-            # Build unified features (this will include current data + forecasts)
-            unified_df = build_unified_features(
-                power_data_path=Path("data/master/caiso_california_only.parquet"),
-                weather_data_path=None,
-                forecast_data_dir=Path("data/forecasts"),
-                config=unified_config
-            )
-            
-            # Filter to the specific zone and recent data
-            zone_df = unified_df[unified_df['zone'] == zone].copy()
-            
-            # Get the most recent complete record for prediction
-            zone_df = zone_df.sort_values('timestamp')
-            latest_record = zone_df.tail(1).copy()
-            
-            if len(latest_record) == 0:
-                raise PredictionError(f"No data available for zone {zone}")
-            
-            # Prepare baseline features (no forecast features)
+            # Create a single row for the target time with temporal features
+            feature_row = pd.DataFrame({
+                'timestamp': [target_time],
+                'zone': [zone]
+            })
+
+            # Create temporal features for the target time
+            feature_row['hour'] = target_time.hour
+            feature_row['day_of_week'] = target_time.weekday()
+            feature_row['day_of_year'] = target_time.timetuple().tm_yday
+            feature_row['month'] = target_time.month
+            feature_row['quarter'] = (target_time.month - 1) // 3 + 1
+            feature_row['is_weekend'] = int(target_time.weekday() >= 5)
+
+            # Create cyclical features
+            import numpy as np
+            feature_row['hour_sin'] = np.sin(2 * np.pi * target_time.hour / 24)
+            feature_row['hour_cos'] = np.cos(2 * np.pi * target_time.hour / 24)
+            feature_row['day_of_week_sin'] = np.sin(2 * np.pi * target_time.weekday() / 7)
+            feature_row['day_of_week_cos'] = np.cos(2 * np.pi * target_time.weekday() / 7)
+            feature_row['day_of_year_sin'] = np.sin(2 * np.pi * target_time.timetuple().tm_yday / 365.25)
+            feature_row['day_of_year_cos'] = np.cos(2 * np.pi * target_time.timetuple().tm_yday / 365.25)
+
+            # Add lag features from the most recent data
+            if len(latest_records) >= 1:
+                feature_row['load_lag_1h'] = latest_records.iloc[-1]['load']
+            if len(latest_records) >= 24:
+                feature_row['load_lag_24h'] = latest_records.iloc[-24]['load']
+
+            # Prepare baseline features in exact order expected by the model
             baseline_features = [
                 'hour', 'day_of_week', 'month', 'quarter', 'is_weekend',
                 'hour_sin', 'hour_cos', 'day_of_week_sin', 'day_of_week_cos',
                 'day_of_year_sin', 'day_of_year_cos',
                 'load_lag_1h', 'load_lag_24h'
             ]
-            
-            baseline_df = latest_record[[col for col in baseline_features if col in latest_record.columns]].copy()
-            
-            # Prepare enhanced features (include forecast features)
-            enhanced_features = baseline_features + [
-                'temp_forecast_6h', 'temp_forecast_24h',
-                'cooling_forecast_6h', 'heating_forecast_6h',
-                'temp_change_rate_6h', 'weather_volatility_6h'
-            ]
-            
-            enhanced_df = latest_record[[col for col in enhanced_features if col in latest_record.columns]].copy()
-            
-            logger.debug(f"Prepared features: baseline={len(baseline_df.columns)}, enhanced={len(enhanced_df.columns)}")
-            
+
+            # Ensure all baseline features are present and in correct order
+            baseline_df = pd.DataFrame()
+            for feature in baseline_features:
+                if feature in feature_row.columns:
+                    baseline_df[feature] = feature_row[feature]
+                else:
+                    # Fill missing features with defaults
+                    if 'lag' in feature:
+                        baseline_df[feature] = 0.0  # Default lag value
+                    else:
+                        baseline_df[feature] = feature_row.get(feature, 0.0)
+
+            # Create extreme temporal features for maximum pattern learning
+            from src.models.production_config import create_extreme_temporal_features
+
+            # Convert baseline_df to proper format for enhanced feature creation
+            temp_df = baseline_df.copy()
+            temp_df['timestamp'] = target_time
+            temp_df['zone'] = zone
+            temp_df['load'] = 0.0  # Placeholder
+
+            # Add basic temporal features that enhanced features depend on
+            temp_df['hour'] = target_time.hour
+            temp_df['day_of_week'] = target_time.weekday()
+            temp_df['month'] = target_time.month
+            temp_df['quarter'] = (target_time.month - 1) // 3 + 1
+            temp_df['is_weekend'] = int(target_time.weekday() >= 5)
+
+            # Add cyclical features
+            import numpy as np
+            temp_df['hour_sin'] = np.sin(2 * np.pi * target_time.hour / 24)
+            temp_df['hour_cos'] = np.cos(2 * np.pi * target_time.hour / 24)
+            temp_df['day_of_week_sin'] = np.sin(2 * np.pi * target_time.weekday() / 7)
+            temp_df['day_of_week_cos'] = np.cos(2 * np.pi * target_time.weekday() / 7)
+            temp_df['day_of_year_sin'] = np.sin(2 * np.pi * target_time.timetuple().tm_yday / 365.25)
+            temp_df['day_of_year_cos'] = np.cos(2 * np.pi * target_time.timetuple().tm_yday / 365.25)
+
+            # Create extreme temporal features
+            enhanced_temp_df = create_extreme_temporal_features(temp_df)
+
+            # Extract enhanced features (keep zone for feature preparation)
+            enhanced_df = enhanced_temp_df.drop(columns=['timestamp', 'load'], errors='ignore')
+
+            # Add weather forecast features with reasonable defaults
+            enhanced_df['temp_forecast_6h'] = 20.0  # Default temperature
+            enhanced_df['temp_forecast_24h'] = 20.0
+            enhanced_df['cooling_forecast_6h'] = max(20.0 - 18.0, 0)  # Cooling degree days
+            enhanced_df['heating_forecast_6h'] = max(18.0 - 20.0, 0)  # Heating degree days
+            enhanced_df['temp_change_rate_6h'] = 0.0  # No temperature change
+            enhanced_df['weather_volatility_6h'] = 0.0  # No weather volatility
+
             return baseline_df, enhanced_df
-            
+
+        except Exception as e:
+            raise PredictionError(f"Failed to prepare horizon features: {e}")
+
+    def _create_enhanced_features_with_pipeline(
+        self,
+        target_time: datetime,
+        zone: str,
+        latest_records: pd.DataFrame,
+        baseline_df: pd.DataFrame
+    ) -> pd.DataFrame:
+        """
+        Create enhanced features using the unified feature pipeline.
+        Falls back to default values if pipeline fails.
+        """
+        try:
+            # Create extended dataset for feature pipeline
+            extended_records = latest_records.copy()
+
+            # Add target time as future record
+            target_row = pd.DataFrame({
+                'timestamp': [target_time],
+                'zone': [zone],
+                'load': [np.nan]  # Future load is unknown
+            })
+
+            # Combine historical and target data
+            combined_df = pd.concat([extended_records, target_row], ignore_index=True)
+            combined_df['timestamp'] = pd.to_datetime(combined_df['timestamp'])
+            combined_df = combined_df.sort_values('timestamp').reset_index(drop=True)
+
+            # Configure unified feature pipeline
+            config = UnifiedFeatureConfig(
+                forecast_config=ForecastFeatureConfig(
+                    forecast_horizons=[6, 24],
+                    base_temperature=18.0
+                ),
+                include_lag_features=True,
+                lag_hours=[1, 24],
+                include_temporal_features=True,
+                include_weather_interactions=False,  # No weather data available
+                target_zones=[zone]
+            )
+
+            # Save temporary data for pipeline
+            temp_path = Path("data/temp_prediction_data.parquet")
+            temp_path.parent.mkdir(exist_ok=True)
+            combined_df.to_parquet(temp_path, index=False)
+
+            try:
+                # Build features using unified pipeline
+                features_df = build_unified_features(
+                    power_data_path=temp_path,
+                    weather_data_path=None,
+                    forecast_data_dir=None,
+                    config=config
+                )
+
+                # Get features for target time
+                target_features = features_df[
+                    features_df['timestamp'] == target_time
+                ].copy()
+
+                if len(target_features) > 0:
+                    # Extract enhanced features
+                    enhanced_columns = list(baseline_df.columns) + [
+                        col for col in target_features.columns
+                        if 'forecast' in col.lower() or 'temp_' in col or 'cooling_' in col or 'heating_' in col
+                    ]
+
+                    available_enhanced = [col for col in enhanced_columns if col in target_features.columns]
+                    enhanced_df = target_features[available_enhanced].copy()
+
+                    # Add any missing forecast features with defaults
+                    forecast_defaults = {
+                        'temp_forecast_6h': 20.0,
+                        'temp_forecast_24h': 20.0,
+                        'cooling_forecast_6h': 0.0,
+                        'heating_forecast_6h': 0.0,
+                        'temp_change_rate_6h': 0.0,
+                        'weather_volatility_6h': 0.0
+                    }
+
+                    for feature, default_value in forecast_defaults.items():
+                        if feature not in enhanced_df.columns:
+                            enhanced_df[feature] = default_value
+
+                    return enhanced_df
+
+            finally:
+                # Clean up temporary file
+                temp_path.unlink(missing_ok=True)
+
+        except Exception as e:
+            logger.warning(f"Enhanced feature pipeline failed: {e}, using defaults")
+
+        # Fallback: use baseline features with default forecast values
+        enhanced_df = baseline_df.copy()
+        enhanced_df['temp_forecast_6h'] = 20.0
+        enhanced_df['temp_forecast_24h'] = 20.0
+        enhanced_df['cooling_forecast_6h'] = 0.0
+        enhanced_df['heating_forecast_6h'] = 0.0
+        enhanced_df['temp_change_rate_6h'] = 0.0
+        enhanced_df['weather_volatility_6h'] = 0.0
+
+        return enhanced_df
+
+    def prepare_prediction_features(
+        self,
+        target_time: datetime,
+        zone: str
+    ) -> Tuple[pd.DataFrame, pd.DataFrame]:
+        """
+        Prepare features for baseline and enhanced predictions at a specific target time.
+        Legacy method - use prepare_horizon_features for better performance.
+
+        Args:
+            target_time: Target time for which to make predictions
+            zone: CAISO zone to predict
+
+        Returns:
+            Tuple of (baseline_features, enhanced_features)
+
+        Raises:
+            PredictionError: If feature preparation fails
+        """
+        try:
+            logger.debug(f"Preparing prediction features for {zone} at {target_time}")
+
+            # Load the most recent power data to get lag features
+            # Use absolute path from project root
+            from pathlib import Path
+            project_root = Path(__file__).parent.parent.parent
+            data_path = project_root / "data" / "master" / "caiso_california_only.parquet"
+            power_df = pd.read_parquet(data_path)
+            zone_power = power_df[power_df['zone'] == zone].copy()
+            zone_power['timestamp'] = pd.to_datetime(zone_power['timestamp'])
+            zone_power = zone_power.sort_values('timestamp')
+
+            # Get the most recent records for lag features
+            latest_records = zone_power.tail(25).copy()  # Get enough for 24h lag
+
+            # Use the optimized method
+            return self.prepare_horizon_features(target_time, zone, latest_records)
+
         except Exception as e:
             raise PredictionError(f"Failed to prepare prediction features: {e}")
     
@@ -245,30 +444,51 @@ class RealtimeForecaster:
     ) -> List[PredictionResult]:
         """
         Make baseline and enhanced predictions for specified horizons.
-        
+
         Args:
             prediction_time: Time for which to make predictions
             zone: CAISO zone to predict
             horizons: List of prediction horizons in hours
-            
+
         Returns:
             List of PredictionResult objects
-            
+
         Raises:
             PredictionError: If prediction generation fails
         """
         if not self.is_initialized:
             raise PredictionError("Forecaster not initialized. Call initialize() first.")
-        
+
         logger.info(f"Making predictions for {zone} at {prediction_time}")
-        
+
         try:
-            # Prepare features
-            baseline_features, enhanced_features = self.prepare_prediction_features(prediction_time, zone)
-            
+            # Load power data once for all horizons
+            # Use absolute path from project root
+            from pathlib import Path
+            project_root = Path(__file__).parent.parent.parent
+            data_path = project_root / "data" / "master" / "caiso_california_only.parquet"
+            power_df = pd.read_parquet(data_path)
+            zone_power = power_df[power_df['zone'] == zone].copy()
+            zone_power['timestamp'] = pd.to_datetime(zone_power['timestamp'])
+            zone_power = zone_power.sort_values('timestamp')
+
+            # Get the most recent records for lag features
+            latest_records = zone_power.tail(25).copy()  # Get enough for 24h lag
+
+            if len(latest_records) == 0:
+                raise PredictionError(f"No power data available for zone {zone}")
+
             results = []
-            
+
             for horizon in horizons:
+                # Calculate the target timestamp for this horizon
+                target_time = prediction_time + timedelta(hours=horizon)
+
+                # Prepare features specific to this horizon's timestamp
+                baseline_features, enhanced_features = self.prepare_horizon_features(
+                    target_time, zone, latest_records
+                )
+
                 # Make baseline prediction
                 baseline_pred = None
                 if self.baseline_model:
@@ -276,7 +496,7 @@ class RealtimeForecaster:
                         baseline_pred = self.baseline_model.predict(baseline_features)[0]
                     except Exception as e:
                         logger.warning(f"Baseline prediction failed for horizon {horizon}h: {e}")
-                
+
                 # Make enhanced prediction
                 enhanced_pred = None
                 if self.enhanced_model:
@@ -284,7 +504,16 @@ class RealtimeForecaster:
                         enhanced_pred = self.enhanced_model.predict(enhanced_features)[0]
                     except Exception as e:
                         logger.warning(f"Enhanced prediction failed for horizon {horizon}h: {e}")
-                
+
+                # Make LightGBM prediction
+                lightgbm_pred = None
+                if self.lightgbm_model:
+                    try:
+                        lightgbm_pred = self.lightgbm_model.predict(enhanced_features)[0]
+                    except Exception as e:
+                        logger.warning(f"LightGBM prediction failed for horizon {horizon}h: {e}")
+
+
                 # Calculate improvement
                 improvement_pct = None
                 if baseline_pred and enhanced_pred and baseline_pred != 0:
@@ -306,18 +535,20 @@ class RealtimeForecaster:
                 
                 # Create prediction result
                 result = PredictionResult(
-                    timestamp=prediction_time + timedelta(hours=horizon),
+                    timestamp=target_time,
                     zone=zone,
                     horizon_hours=horizon,
                     baseline_prediction=baseline_pred,
                     enhanced_prediction=enhanced_pred,
+                    lightgbm_prediction=lightgbm_pred,
                     confidence_intervals=confidence_intervals,
                     forecast_improvement_pct=improvement_pct,
                     prediction_metadata={
                         'prediction_made_at': prediction_time,
                         'forecast_features_available': forecast_available,
                         'baseline_model_available': self.baseline_model is not None,
-                        'enhanced_model_available': self.enhanced_model is not None
+                        'enhanced_model_available': self.enhanced_model is not None,
+                        'lightgbm_model_available': self.lightgbm_model is not None
                     }
                 )
                 

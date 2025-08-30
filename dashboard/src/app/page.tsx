@@ -153,8 +153,16 @@ export default function Dashboard() {
       if (response.ok) {
         const data = await response.json()
         setCurrentWeather(data)
+      } else if (response.status === 503) {
+        // Weather data unavailable
+        setCurrentWeather(null)
+        console.warn('Weather data unavailable')
+      } else {
+        setCurrentWeather(null)
+        console.error('Failed to fetch weather:', response.status)
       }
     } catch (err) {
+      setCurrentWeather(null)
       console.error('Failed to fetch current weather:', err)
     }
   }
@@ -228,7 +236,9 @@ export default function Dashboard() {
     })
   }
 
-  const currentLoad = predictions.length > 0 ? predictions[0].predicted_load : 0
+  // Use actual current load from demand trend data, not predictions
+  const currentLoad = demandTrend?.current_load || 0
+  const nextHourPrediction = predictions.length > 0 ? predictions[0].predicted_load : 0
   const peakLoad = predictions.length > 0 ? Math.max(...predictions.map(p => p.predicted_load)) : 0
 
   return (
@@ -240,8 +250,9 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
+          {/* Title and Main Controls */}
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
               <h1 className={`text-4xl font-bold flex items-center gap-3 ${
                 theme === 'dark' ? 'text-white' : 'text-slate-900'
               }`}>
@@ -252,39 +263,43 @@ export default function Dashboard() {
                 </div>
                 The Grid Ahead
               </h1>
-              <p className={`mt-2 text-base ${
-                theme === 'dark' ? 'text-slate-400' : 'text-slate-500'
-              }`}>
-                Predicting power demand on the California Independent System Operator (CAISO) with ML
-              </p>
+              <div className="flex items-center justify-between mt-2">
+                <p className={`text-base ${
+                  theme === 'dark' ? 'text-slate-400' : 'text-slate-500'
+                }`}>
+                  Predicting power demand on the California Independent System Operator (CAISO) with ML
+                </p>
+
+                {/* Settings Controls - Right aligned with subtitle */}
+                <div className="flex items-center gap-3 ml-6">
+                  {/* Unit Toggle */}
+                  <Toggle
+                    leftLabel="Metric"
+                    rightLabel="Imperial"
+                    isRight={unitSystem === 'imperial'}
+                    onToggle={toggleUnits}
+                  />
+
+                  {/* Theme Toggle */}
+                  <Toggle
+                    leftLabel="Light"
+                    rightLabel="Dark"
+                    isRight={theme === 'dark'}
+                    onToggle={toggleTheme}
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          
 
-          {/* Controls Section - Under Title */}
-          <div className="flex items-center gap-3 flex-wrap">
+          {/* Main Controls Section */}
+          <div className="flex items-center gap-3 flex-wrap pt-4">
             {/* Regional Selector */}
             <RegionalSelector />
 
             {/* Model Selector */}
             <ModelSelector
               onModelChange={handleModelChange}
-            />
-
-            {/* Unit Toggle */}
-            <Toggle
-              leftLabel="Metric"
-              rightLabel="Imperial"
-              isRight={unitSystem === 'imperial'}
-              onToggle={toggleUnits}
-            />
-
-            {/* Theme Toggle */}
-            <Toggle
-              leftLabel="Light"
-              rightLabel="Dark"
-              isRight={theme === 'dark'}
-              onToggle={toggleTheme}
             />
           </div>
         </div>
@@ -320,7 +335,7 @@ export default function Dashboard() {
             <CardContent className="space-y-2">
               <div className="text-2xl font-bold">{currentLoad.toFixed(0)} MW</div>
               <p className="text-xs text-muted-foreground">
-                Next hour prediction
+                Real-time system load
               </p>
               <div className="border-t pt-2">
                 <div className="text-sm font-medium">
@@ -337,26 +352,26 @@ export default function Dashboard() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">6-Hour Peak</CardTitle>
+              <CardTitle className="text-sm font-medium">Next Hour Prediction</CardTitle>
               <div className={`p-1.5 rounded-md ${
-                theme === 'dark' ? 'bg-green-900/50' : 'bg-green-100'
+                theme === 'dark' ? 'bg-purple-900/50' : 'bg-purple-100'
               }`}>
-                <TrendingUp className="h-4 w-4 text-green-600" />
+                <TrendingUp className="h-4 w-4 text-purple-600" />
               </div>
             </CardHeader>
             <CardContent className="space-y-2">
-              <div className="text-2xl font-bold">{peakLoad.toFixed(0)} MW</div>
+              <div className="text-2xl font-bold">{nextHourPrediction.toFixed(0)} MW</div>
               <p className="text-xs text-muted-foreground">
-                Maximum expected demand
+                Forecast for next hour
               </p>
               <div className="border-t pt-2">
                 <div className="text-sm font-medium">
-                  +{((peakLoad - currentLoad) / currentLoad * 100).toFixed(1)}%
+                  {nextHourPrediction > currentLoad ? '+' : ''}{((nextHourPrediction - currentLoad) / currentLoad * 100).toFixed(1)}%
                 </div>
                 <div className={`text-xs ${
                   theme === 'dark' ? 'text-slate-400' : 'text-slate-500'
                 }`}>
-                  Above current demand
+                  {nextHourPrediction > currentLoad ? 'Increase expected' : 'Decrease expected'}
                 </div>
               </div>
             </CardContent>
@@ -421,7 +436,9 @@ export default function Dashboard() {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <div className="p-1.5 bg-blue-100 rounded-md">
+                      <div className={`p-1.5 rounded-md ${
+                        theme === 'dark' ? 'bg-blue-900/50' : 'bg-blue-100'
+                      }`}>
                         <TrendingUp className="h-4 w-4 text-blue-600" />
                       </div>
                       6-Hour Demand Forecast
@@ -441,7 +458,9 @@ export default function Dashboard() {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <div className="p-1.5 bg-slate-100 rounded-md">
+                      <div className={`p-1.5 rounded-md ${
+                        theme === 'dark' ? 'bg-slate-700/50' : 'bg-slate-100'
+                      }`}>
                         <Settings className="h-4 w-4 text-slate-600" />
                       </div>
                       Current Conditions
@@ -466,7 +485,7 @@ export default function Dashboard() {
                           ? 'bg-orange-900/40 text-orange-300 border-orange-800'
                           : 'bg-orange-100 text-orange-800'
                       }`}>
-                        {currentWeather ? formatTemperature(currentWeather.temperature) : formatTemperature(28.5)}
+                        {currentWeather ? formatTemperature(currentWeather.temperature) : 'Unavailable'}
                       </Badge>
                     </div>
 
@@ -488,7 +507,7 @@ export default function Dashboard() {
                           ? 'bg-blue-900/40 text-blue-300 border-blue-800'
                           : 'bg-blue-100 text-blue-800'
                       }`}>
-                        {currentWeather ? `${currentWeather.humidity.toFixed(0)}%` : '65%'}
+                        {currentWeather ? `${currentWeather.humidity.toFixed(0)}%` : 'Unavailable'}
                       </Badge>
                     </div>
 
@@ -510,7 +529,7 @@ export default function Dashboard() {
                           ? 'bg-green-900/40 text-green-300 border-green-800'
                           : 'bg-green-100 text-green-800'
                       }`}>
-                        {currentWeather ? formatWindSpeed(currentWeather.wind_speed) : formatWindSpeed(3.2)}
+                        {currentWeather ? formatWindSpeed(currentWeather.wind_speed) : 'Unavailable'}
                       </Badge>
                     </div>
                   </CardContent>
@@ -548,7 +567,7 @@ export default function Dashboard() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <HistoricalChart apiBase={API_BASE} />
+                <HistoricalChart apiBase={API_BASE} selectedZone={selectedZone} selectedModel={selectedModel} />
               </CardContent>
             </Card>
           </TabsContent>

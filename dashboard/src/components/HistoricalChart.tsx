@@ -33,9 +33,11 @@ interface HistoricalDataPoint {
 
 interface HistoricalChartProps {
   apiBase: string
+  selectedZone: string
+  selectedModel: string
 }
 
-export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
+export default function HistoricalChart({ apiBase, selectedZone, selectedModel }: HistoricalChartProps) {
   const [historicalData, setHistoricalData] = useState<HistoricalDataPoint[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -44,9 +46,9 @@ export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
     const fetchHistoricalData = async () => {
       setLoading(true)
       setError(null)
-      
+
       try {
-        const response = await fetch(`${apiBase}/historical?days=7`)
+        const response = await fetch(`${apiBase}/historical?days=7&zone=${selectedZone}&model_id=${selectedModel}`)
         if (!response.ok) {
           throw new Error(`Failed to fetch historical data: ${response.status}`)
         }
@@ -61,7 +63,7 @@ export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
     }
 
     fetchHistoricalData()
-  }, [apiBase])
+  }, [apiBase, selectedZone, selectedModel])
 
   if (loading) {
     return (
@@ -99,18 +101,27 @@ export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
     )
   }
 
+  // Sample data to hourly intervals for smooth chart rendering
+  const sampleData = (data: any[], targetPoints: number = 168) => {
+    if (data.length <= targetPoints) return data;
+    const interval = Math.ceil(data.length / targetPoints);
+    return data.filter((_, index) => index % interval === 0);
+  };
+
+  const sampledData = sampleData(historicalData);
+
   // Prepare data for Chart.js
-  const labels = historicalData.map(point => {
+  const labels = sampledData.map(point => {
     const date = new Date(point.timestamp)
-    return date.toLocaleDateString('en-US', { 
-      month: 'short', 
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
       day: 'numeric',
       hour: '2-digit'
     })
   })
 
-  const actualData = historicalData.map(point => point.actual_load)
-  const predictedData = historicalData.map(point => point.predicted_load)
+  const actualData = sampledData.map(point => point.actual_load)
+  const predictedData = sampledData.map(point => point.predicted_load)
 
   const data = {
     labels,
@@ -124,8 +135,10 @@ export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
         pointBackgroundColor: 'rgb(34, 197, 94)',
         pointBorderColor: 'white',
         pointBorderWidth: 2,
-        pointRadius: 3,
-        tension: 0.4,
+        pointRadius: 0, // Hide individual points
+        tension: 0.7, // High smoothing for actual data
+        cubicInterpolationMode: 'monotone' as const,
+        spanGaps: true,
       },
       {
         label: 'Predicted Demand',
@@ -136,9 +149,10 @@ export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
         pointBackgroundColor: 'rgb(59, 130, 246)',
         pointBorderColor: 'white',
         pointBorderWidth: 2,
-        pointRadius: 3,
-        tension: 0.4,
-        borderDash: [5, 5],
+        pointRadius: 0, // Hide individual points to reduce visual noise
+        tension: 0.9, // Maximum smoothing
+        cubicInterpolationMode: 'monotone' as const, // Smoother interpolation
+        spanGaps: true, // Connect across gaps smoothly
       },
     ],
   }
@@ -200,7 +214,7 @@ export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
           text: 'Time',
           font: {
             size: 14,
-            weight: 'bold',
+            weight: 'bold' as const,
           },
         },
         grid: {
@@ -217,7 +231,7 @@ export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
           text: 'Power Demand (MW)',
           font: {
             size: 14,
-            weight: 'bold',
+            weight: 'bold' as const,
           },
         },
         grid: {
@@ -237,7 +251,7 @@ export default function HistoricalChart({ apiBase }: HistoricalChartProps) {
     },
     animation: {
       duration: 1000,
-      easing: 'easeInOutQuart',
+      easing: 'easeInOutQuart' as const,
     },
   }
 

@@ -20,17 +20,22 @@ numpy>=1.26.4
 # Machine learning
 scikit-learn>=1.5.1
 xgboost>=2.1.1
-lightgbm>=4.5.0
+lightgbm>=4.5.0  # Gradient boosting framework (faster than XGBoost)
 
-# Deep learning (PyTorch with CUDA support)
-torch>=2.4.0
-torchvision>=0.19.0
-torchaudio>=2.4.0
+
+
+# Tabular neural networks
+pytorch-tabnet>=4.1.0  # Google's TabNet for tabular data
+
+# TensorFlow ecosystem (with Apple Silicon Metal support)
+tensorflow-macos>=2.16.0  # TensorFlow optimized for macOS
+tensorflow-metal>=1.1.0   # Metal acceleration for Apple Silicon
 
 # API and serving
 fastapi>=0.112.0
 uvicorn[standard]>=0.30.5
 pydantic>=2.8.2
+aiohttp>=3.12.0  # Async HTTP client for live weather API calls
 
 # Data sources and utilities
 holidays>=0.56

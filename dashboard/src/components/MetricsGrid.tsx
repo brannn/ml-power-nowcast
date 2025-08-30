@@ -88,7 +88,15 @@ export default function MetricsGrid({ metrics, modelInfo }: MetricsGridProps) {
       <Card className="border-2">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <div className={`p-2 rounded-lg ${performance.level === 'Excellent' ? 'bg-green-100' : performance.level === 'Very Good' ? 'bg-blue-100' : performance.level === 'Good' ? 'bg-yellow-100' : 'bg-red-100'}`}>
+            <div className={`p-2 rounded-lg ${
+              performance.level === 'Excellent'
+                ? (theme === 'dark' ? 'bg-green-900/50' : 'bg-green-100')
+                : performance.level === 'Very Good'
+                ? (theme === 'dark' ? 'bg-blue-900/50' : 'bg-blue-100')
+                : performance.level === 'Good'
+                ? (theme === 'dark' ? 'bg-yellow-900/50' : 'bg-yellow-100')
+                : (theme === 'dark' ? 'bg-red-900/50' : 'bg-red-100')
+            }`}>
               <PerformanceIcon className={`h-5 w-5 ${performance.level === 'Excellent' ? 'text-green-600' : performance.level === 'Very Good' ? 'text-blue-600' : performance.level === 'Good' ? 'text-yellow-600' : 'text-red-600'}`} />
             </div>
             Model Performance Summary
@@ -146,7 +154,9 @@ export default function MetricsGrid({ metrics, modelInfo }: MetricsGridProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Mean Absolute Error</CardTitle>
-            <div className="p-1.5 bg-red-100 rounded-md">
+            <div className={`p-1.5 rounded-md ${
+              theme === 'dark' ? 'bg-red-900/50' : 'bg-red-100'
+            }`}>
               <Target className="h-4 w-4 text-red-600" />
             </div>
           </CardHeader>
@@ -167,7 +177,9 @@ export default function MetricsGrid({ metrics, modelInfo }: MetricsGridProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Root Mean Square Error</CardTitle>
-            <div className="p-1.5 bg-orange-100 rounded-md">
+            <div className={`p-1.5 rounded-md ${
+              theme === 'dark' ? 'bg-orange-900/50' : 'bg-orange-100'
+            }`}>
               <BarChart3 className="h-4 w-4 text-orange-600" />
             </div>
           </CardHeader>
@@ -188,7 +200,9 @@ export default function MetricsGrid({ metrics, modelInfo }: MetricsGridProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">R² Score</CardTitle>
-            <div className="p-1.5 bg-green-100 rounded-md">
+            <div className={`p-1.5 rounded-md ${
+              theme === 'dark' ? 'bg-green-900/50' : 'bg-green-100'
+            }`}>
               <TrendingUp className="h-4 w-4 text-green-600" />
             </div>
           </CardHeader>
@@ -209,7 +223,9 @@ export default function MetricsGrid({ metrics, modelInfo }: MetricsGridProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Last Updated</CardTitle>
-            <div className="p-1.5 bg-blue-100 rounded-md">
+            <div className={`p-1.5 rounded-md ${
+              theme === 'dark' ? 'bg-blue-900/50' : 'bg-blue-100'
+            }`}>
               <Clock className="h-4 w-4 text-blue-600" />
             </div>
           </CardHeader>
@@ -270,14 +286,14 @@ export default function MetricsGrid({ metrics, modelInfo }: MetricsGridProps) {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-2">Business Impact</h4>
+              <h4 className="font-semibold mb-2">Learning Insights</h4>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
                   <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${
                     theme === 'dark' ? 'bg-yellow-400' : 'bg-yellow-500'
                   }`}></div>
                   <span>
-                    Grid operators can rely on predictions for capacity planning
+                    California's power demand follows predictable daily and seasonal patterns
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -285,7 +301,7 @@ export default function MetricsGrid({ metrics, modelInfo }: MetricsGridProps) {
                     theme === 'dark' ? 'bg-red-400' : 'bg-red-500'
                   }`}></div>
                   <span>
-                    Accurate forecasts help prevent blackouts and optimize costs
+                    Weather strongly influences demand - hot days drive AC usage peaks
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -293,7 +309,7 @@ export default function MetricsGrid({ metrics, modelInfo }: MetricsGridProps) {
                     theme === 'dark' ? 'bg-indigo-400' : 'bg-indigo-500'
                   }`}></div>
                   <span>
-                    {performance.level.toLowerCase()} performance enables real-time operations
+                    LSTM models excel at capturing temporal sequences in power data
                   </span>
                 </li>
               </ul>

@@ -18,7 +18,7 @@ help:
 	@echo "  ingest         - Ingest power and weather data"
 	@echo "  features       - Build features with lags and rolling windows"
 	@echo "  train-xgb      - Train XGBoost baseline model"
-	@echo "  train-lstm     - Train LSTM neural model"
+
 	@echo "  evaluate       - Evaluate models and generate plots"
 	@echo ""
 	@echo "Serving:"
@@ -73,8 +73,7 @@ features:
 train-xgb:
 	python3 -m src.models.train_xgb --horizon 30 --n_estimators 500 --max_depth 6
 
-train-lstm:
-	python3 -m src.models.train_lstm --horizon 30 --hidden_size 64 --layers 2 --epochs 10 --batch_size 256
+
 
 evaluate:
 	python3 -m src.models.evaluate --horizon 30

@@ -69,7 +69,7 @@ numpy>=1.26
 scikit-learn>=1.5
 xgboost>=2.0
 lightgbm>=4.3
-torch>=2.3
+
 fastapi>=0.112
 uvicorn[standard]>=0.30
 holidays>=0.56

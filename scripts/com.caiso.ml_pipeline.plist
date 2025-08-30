@@ -12,8 +12,9 @@
         <string>/Users/bran/Work/model-power-nowcast/.venv/bin/python</string>
         <string>/Users/bran/Work/model-power-nowcast/scripts/automated_ml_pipeline.py</string>
         <string>--target-zones</string>
-        <string>NP15</string>
-        <string>--quiet</string>
+        <string>SYSTEM</string>
+        <string>--log-level</string>
+        <string>INFO</string>
     </array>
     
     <!-- Working directory -->

@@ -40,6 +40,13 @@ interface PredictionChartProps {
 export default function PredictionChart({ predictions }: PredictionChartProps) {
   const chartRef = useRef<ChartJS<'line'>>(null)
 
+  // Force chart update when predictions change
+  useEffect(() => {
+    if (chartRef.current) {
+      chartRef.current.update('none') // Update without animation for immediate response
+    }
+  }, [predictions])
+
   if (!predictions || predictions.length === 0) {
     return (
       <div className="flex items-center justify-center h-64 text-muted-foreground">
@@ -51,12 +58,15 @@ export default function PredictionChart({ predictions }: PredictionChartProps) {
     )
   }
 
-  // Prepare data for Chart.js
+  // Prepare data for Chart.js with Pacific Time formatting
   const labels = predictions.map(p => {
     const date = new Date(p.timestamp)
-    return date.toLocaleTimeString('en-US', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
+    // Format as Pacific Time (PT/PST/PDT)
+    return date.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'America/Los_Angeles',
+      hour12: false // Use 24-hour format for clarity
     })
   })
 
@@ -138,7 +148,7 @@ export default function PredictionChart({ predictions }: PredictionChartProps) {
             if (datasetLabel === 'Predicted Demand') {
               return `${datasetLabel}: ${value.toFixed(0)} MW`
             }
-            return null // Hide confidence bounds from tooltip
+            return '' // Hide confidence bounds from tooltip
           },
           afterBody: function(tooltipItems: any[]) {
             const index = tooltipItems[0].dataIndex
@@ -163,14 +173,17 @@ export default function PredictionChart({ predictions }: PredictionChartProps) {
         display: true,
         title: {
           display: true,
-          text: 'Time',
+          text: 'Time (Pacific)',
           font: {
             size: 14,
-            weight: 'bold',
+            weight: 'bold' as const,
           },
         },
         grid: {
           color: 'rgba(0, 0, 0, 0.1)',
+        },
+        ticks: {
+          maxTicksLimit: 8,
         },
       },
       y: {
@@ -180,7 +193,7 @@ export default function PredictionChart({ predictions }: PredictionChartProps) {
           text: 'Power Demand (MW)',
           font: {
             size: 14,
-            weight: 'bold',
+            weight: 'bold' as const,
           },
         },
         grid: {
@@ -200,13 +213,21 @@ export default function PredictionChart({ predictions }: PredictionChartProps) {
     },
     animation: {
       duration: 1000,
-      easing: 'easeInOutQuart',
+      easing: 'easeInOutQuart' as const,
     },
   }
 
+  // Create a key based on the predictions to force re-render when data changes
+  const chartKey = predictions.map(p => `${p.hour_ahead}-${p.predicted_load}`).join(',')
+
   return (
     <div className="h-80 w-full">
-      <Line ref={chartRef} data={data} options={options} />
+      <Line
+        key={chartKey}
+        ref={chartRef}
+        data={data}
+        options={options}
+      />
     </div>
   )
 }

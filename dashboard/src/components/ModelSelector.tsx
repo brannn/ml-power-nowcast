@@ -98,6 +98,8 @@ export default function ModelSelector({ onModelChange, className = '' }: ModelSe
     switch (type) {
       case 'xgboost':
         return TrendingUp
+      case 'lightgbm':
+        return Zap
       case 'lstm':
         return Brain
       case 'ensemble':
@@ -111,6 +113,8 @@ export default function ModelSelector({ onModelChange, className = '' }: ModelSe
     switch (type) {
       case 'xgboost':
         return theme === 'dark' ? 'text-green-400' : 'text-green-600'
+      case 'lightgbm':
+        return theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600'
       case 'lstm':
         return theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
       case 'ensemble':
@@ -124,6 +128,8 @@ export default function ModelSelector({ onModelChange, className = '' }: ModelSe
     switch (type) {
       case 'xgboost':
         return 'bg-green-100 text-green-800 border-green-200'
+      case 'lightgbm':
+        return 'bg-yellow-100 text-yellow-800 border-yellow-200'
       case 'lstm':
         return 'bg-blue-100 text-blue-800 border-blue-200'
       case 'ensemble':
@@ -144,31 +150,31 @@ export default function ModelSelector({ onModelChange, className = '' }: ModelSe
           <Button
             variant="outline"
             size="sm"
-            className="gap-2 h-[42px] min-w-[200px] justify-between"
+            className="gap-1.5 h-[32px] min-w-[140px] justify-between text-xs px-2"
             disabled={loading}
           >
             {currentModelInfo ? (
               <>
                 {(() => {
                   const Icon = getModelIcon(currentModelInfo.type)
-                  return <Icon className={`h-4 w-4 ${getModelColor(currentModelInfo.type)}`} />
+                  return <Icon className={`h-3 w-3 ${getModelColor(currentModelInfo.type)}`} />
                 })()}
                 <span className="flex-1 text-left">{currentModelInfo.name}</span>
               </>
             ) : (
               <>
-                <Zap className="h-4 w-4" />
+                <Zap className="h-3 w-3" />
                 <span className="flex-1 text-left">Select Model</span>
               </>
             )}
-            <ChevronDown className="h-4 w-4" />
+            <ChevronDown className="h-3 w-3" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-96 p-0" align="start">
-          <div className={`p-4 border-b ${
+        <PopoverContent className="w-80 p-0" align="start">
+          <div className={`p-3 border-b ${
             theme === 'dark' ? 'border-slate-700' : 'border-slate-200'
           }`}>
-            <h3 className="font-semibold text-sm">Select ML Model</h3>
+            <h3 className="font-semibold text-xs">Select ML Model</h3>
             <p className={`text-xs mt-1 ${
               theme === 'dark' ? 'text-slate-400' : 'text-slate-500'
             }`}>

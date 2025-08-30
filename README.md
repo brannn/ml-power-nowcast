@@ -194,7 +194,7 @@ Execute the ML pipeline using the provided Makefile targets:
 make ingest       # Download and process power/weather data
 make features     # Generate lagged and rolling features with temporal encoding
 make train-xgb    # Train XGBoost baseline model with MLflow tracking
-make train-lstm   # Train LSTM neural network model with GPU support
+
 make evaluate     # Generate comprehensive evaluation metrics and diagnostic plots
 ```
 
@@ -262,7 +262,7 @@ The system includes a comprehensive React-based dashboard for real-time CAISO po
 - **Backend**: Python FastAPI regional API server serving CAISO data
 - **Data Collection**: CAISO OASIS API with Meteostat weather integration
 - **Storage**: Local Parquet files with optional S3 backup
-- **Models**: XGBoost and LSTM with scikit-learn and PyTorch
+- **Models**: XGBoost and LightGBM with scikit-learn
 
 ## Security Considerations
 
@@ -284,7 +284,7 @@ Quality assurance includes automated code formatting with black, linting with fl
 
 ## Model Training and Evaluation
 
-The system implements two complementary modeling approaches for power demand forecasting. XGBoost provides a robust baseline using gradient boosting with automatic feature importance analysis and hyperparameter logging through MLflow. LSTM neural networks leverage PyTorch for sequence modeling with GPU acceleration, capturing temporal dependencies in power demand patterns.
+The system implements tree-based modeling approaches for power demand forecasting. XGBoost provides a robust baseline using gradient boosting with automatic feature importance analysis and hyperparameter logging through MLflow. LightGBM offers enhanced performance with faster training and superior accuracy for tabular data patterns.
 
 Model training follows time series best practices with temporal splits to prevent data leakage. The training pipeline automatically logs experiments to MLflow, tracking hyperparameters, metrics, and model artifacts for reproducibility. Both models integrate with the MLflow Model Registry for version management and deployment workflows.
 
