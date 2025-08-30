@@ -28,11 +28,11 @@ The system is organized into several key modules that handle different aspects o
 
 **enhanced_xgboost.py**: Implements the Enhanced XGBoost model class with custom preprocessing, training procedures, and evaluation metrics.
 
-**lightgbm_model.py**: Provides alternative LightGBM implementation for comparison and ensemble methods.
+**lightgbm_model.py**: Provides zone-specific LightGBM implementation with dedicated model training for each utility zone. Recent enhancements include proper feature handling and zone-specific model loading to eliminate scaling issues in ensemble predictions.
 
 #### API Services (`src/api/`)
 
-**regional_api_server.py**: Serves trained models through REST API endpoints with zone-specific model loading and prediction generation.
+**regional_api_server.py**: Serves trained models through REST API endpoints with zone-specific model loading and prediction generation. Enhanced to support consolidated zones like LA_METRO and improved weather data integration with zone-specific weather endpoints.
 
 #### Prediction Services (`src/prediction/`)
 
@@ -62,6 +62,32 @@ The script performs data validation, feature engineering, zone-specific model tr
 **retrain_production_model.py**: Handles model retraining with existing configurations.
 
 **test_improved_model.py**: Validates model improvements and performance comparisons.
+
+## Recent Technical Improvements
+
+### Ensemble Model Architecture Enhancements
+
+**Zone-Specific LightGBM Implementation**: The system now trains dedicated LightGBM models for each zone rather than using a single unified model. This change addresses critical scaling issues where unified models produced unrealistic predictions when applied to individual zones.
+
+**Model Loading and Prediction Pipeline**: Enhanced the RealtimeForecaster class to properly load zone-specific models and handle fallback scenarios. The system now includes proper error handling and validation for model loading across all ensemble components.
+
+**Prediction Validation and Bounds Checking**: Implemented improved validation logic to detect and handle unrealistic predictions, ensuring ensemble outputs remain within expected ranges for each zone.
+
+### Weather Data Integration Improvements
+
+**Zone-Specific Weather Data Merging**: Enhanced the data loading pipeline to properly merge zone-specific weather data with power demand data using timestamp-based joins. This improvement ensures accurate weather context for predictions.
+
+**Weather API Endpoint Enhancements**: Updated the regional API server to support consolidated zones like LA_METRO by using representative weather data from constituent zones (SCE data for LA_METRO area).
+
+**Dashboard Weather Integration**: Implemented dynamic weather data display that updates based on zone selection, providing accurate current conditions for each utility region.
+
+### API Server and Dashboard Reliability
+
+**Consolidated Zone Support**: Enhanced the API server to handle virtual zones like LA_METRO that combine data from multiple utility zones, providing seamless integration for dashboard display.
+
+**Error Handling and Graceful Degradation**: Improved error handling throughout the prediction pipeline to provide meaningful error messages and fallback behavior when data or models are unavailable.
+
+**Real-Time Data Serving**: Enhanced the API endpoints to provide consistent data formatting and proper error responses, improving dashboard reliability and user experience.
 
 ## Configuration Management
 

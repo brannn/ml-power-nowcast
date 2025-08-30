@@ -27,12 +27,12 @@ export const CAISO_ZONES: Record<string, CAISOZone> = {
   },
   NP15: {
     name: 'NP15',
-    full_name: 'North of Path 15',
+    full_name: 'Northern California',
     latitude: 37.7749,
     longitude: -122.4194,
-    major_city: 'San Francisco',
-    description: 'Northern California including SF Bay Area, Sacramento Valley',
-    load_weight: 0.25,
+    major_city: 'Northern CA',
+    description: 'All of Northern California (PG&E territory north of Path 15)',
+    load_weight: 0.42,
     climate_region: 'Mediterranean coastal'
   },
   ZP26: {
@@ -45,14 +45,34 @@ export const CAISO_ZONES: Record<string, CAISOZone> = {
     load_weight: 0.08,
     climate_region: 'Hot semi-arid'
   },
+  SCE: {
+    name: 'SCE',
+    full_name: 'Southern California Edison',
+    latitude: 34.0522,
+    longitude: -118.2437,
+    major_city: 'SCE Territory',
+    description: 'Southern California Edison utility territory (part of LA metro)',
+    load_weight: 0.43,
+    climate_region: 'Mediterranean/semi-arid'
+  },
   SP15: {
     name: 'SP15',
-    full_name: 'South of Path 15',
+    full_name: 'LADWP Territory',
+    latitude: 34.0522,
+    longitude: -118.2437,
+    major_city: 'LADWP Territory',
+    description: 'Los Angeles Department of Water and Power service area (part of LA metro)',
+    load_weight: 0.13,
+    climate_region: 'Mediterranean/semi-arid'
+  },
+  LA_METRO: {
+    name: 'LA_METRO',
+    full_name: 'Los Angeles Metro Area',
     latitude: 34.0522,
     longitude: -118.2437,
     major_city: 'Los Angeles',
-    description: 'Southern California including LA Basin, Orange County',
-    load_weight: 0.35,
+    description: 'Combined LA metropolitan area (SCE + LADWP territories)',
+    load_weight: 0.68,
     climate_region: 'Mediterranean/semi-arid'
   },
   SDGE: {
@@ -62,7 +82,7 @@ export const CAISO_ZONES: Record<string, CAISOZone> = {
     longitude: -117.1611,
     major_city: 'San Diego',
     description: 'San Diego County and Imperial Valley',
-    load_weight: 0.08,
+    load_weight: 0.09,
     climate_region: 'Semi-arid coastal'
   },
   SCE: {
@@ -109,8 +129,8 @@ export const CAISO_ZONES: Record<string, CAISOZone> = {
 
 // Zone categories for better organization
 export const ZONE_CATEGORIES = {
-  'Major Regions': ['STATEWIDE', 'NP15', 'SP15', 'SDGE', 'SCE'],
-  'Utility Territories': ['PGE_BAY', 'PGE_VALLEY', 'SMUD'],
+  'Major Metro Areas': ['STATEWIDE', 'LA_METRO', 'NP15', 'SDGE'],
+  'Individual Utilities': ['SCE', 'SP15', 'PGE_BAY', 'PGE_VALLEY', 'SMUD'],
   'Geographic Areas': ['ZP26']
 }
 

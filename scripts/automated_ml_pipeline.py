@@ -828,12 +828,36 @@ def main():
         # Step 4: Train zone-specific models
         zone_models = train_zone_specific_models(unified_df, target_zones, logger)
 
-        # Step 4b: Train LightGBM model
-        lightgbm_model = train_lightgbm_model(unified_df, logger)
-        if lightgbm_model:
-            logger.info("✅ LightGBM model training completed")
+        # Step 4b: Train zone-specific LightGBM models (FIXED: was training on unified data)
+        logger.info("🔧 Training zone-specific LightGBM models...")
+        lightgbm_models = {}
+        for zone in target_zones:
+            logger.info(f"🎯 Training LightGBM model for zone: {zone}")
+
+            # Filter data for this zone
+            zone_df = unified_df[unified_df['zone'] == zone].copy()
+            if len(zone_df) == 0:
+                logger.warning(f"⚠️ No data found for zone {zone}, skipping LightGBM")
+                lightgbm_models[zone] = None
+                continue
+
+            lightgbm_model = train_lightgbm_model(zone_df, logger)
+            if lightgbm_model:
+                # Save zone-specific LightGBM model
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                model_path = Path(f"data/trained_models/lightgbm_model_{zone}_{timestamp}.joblib")
+                model_path.parent.mkdir(parents=True, exist_ok=True)
+                lightgbm_model.save_model(model_path)
+                logger.info(f"✅ LightGBM model for {zone} saved to {model_path}")
+                lightgbm_models[zone] = lightgbm_model
+            else:
+                logger.warning(f"⚠️  LightGBM model training failed for zone {zone}")
+                lightgbm_models[zone] = None
+
+        if any(lightgbm_models.values()):
+            logger.info("✅ Zone-specific LightGBM model training completed")
         else:
-            logger.warning("⚠️  LightGBM model training failed, continuing with XGBoost models")
+            logger.warning("⚠️  All LightGBM model training failed, continuing with XGBoost models")
 
         if not zone_models and not lightgbm_model:
             logger.error("❌ No models trained successfully")

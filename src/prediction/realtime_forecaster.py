@@ -157,20 +157,38 @@ class RealtimeForecaster:
 
 
 
-            # Load LightGBM model (find the latest one)
+            # Load zone-specific LightGBM model (FIXED: was loading global model)
             lightgbm_model_dir = Path("data/trained_models")
-            if lightgbm_model_dir.exists():
-                lightgbm_files = list(lightgbm_model_dir.glob("lightgbm_model_*.joblib"))
-                if lightgbm_files:
-                    # Get the most recent LightGBM model
-                    latest_lightgbm = max(lightgbm_files, key=lambda p: p.stat().st_mtime)
+            if lightgbm_model_dir.exists() and self.config.target_zones:
+                # Try to load zone-specific LightGBM model for the first target zone
+                target_zone = self.config.target_zones[0]
+                zone_lightgbm_files = list(lightgbm_model_dir.glob(f"lightgbm_model_{target_zone}_*.joblib"))
+
+                if zone_lightgbm_files:
+                    # Get the most recent zone-specific LightGBM model
+                    latest_lightgbm = max(zone_lightgbm_files, key=lambda p: p.stat().st_mtime)
                     try:
                         self.lightgbm_model = LightGBMModel.load_model(latest_lightgbm)
-                        logger.info(f"Loaded LightGBM model from {latest_lightgbm}")
+                        logger.info(f"Loaded zone-specific LightGBM model for {target_zone} from {latest_lightgbm}")
                     except Exception as e:
-                        logger.warning(f"Failed to load LightGBM model: {e}")
+                        logger.warning(f"Failed to load zone-specific LightGBM model for {target_zone}: {e}")
                 else:
-                    logger.warning("No LightGBM model files found")
+                    # Fallback to global LightGBM model (legacy support)
+                    lightgbm_files = list(lightgbm_model_dir.glob("lightgbm_model_*.joblib"))
+                    # Filter out zone-specific models to get global ones
+                    global_lightgbm_files = [f for f in lightgbm_files if not any(zone in f.name for zone in ['NP15', 'SCE', 'SDGE', 'SP15', 'SMUD', 'PGE_VALLEY', 'SYSTEM'])]
+
+                    if global_lightgbm_files:
+                        latest_lightgbm = max(global_lightgbm_files, key=lambda p: p.stat().st_mtime)
+                        try:
+                            self.lightgbm_model = LightGBMModel.load_model(latest_lightgbm)
+                            logger.warning(f"Using global LightGBM model for {target_zone} from {latest_lightgbm} (zone-specific model not found)")
+                        except Exception as e:
+                            logger.warning(f"Failed to load global LightGBM model: {e}")
+                    else:
+                        logger.warning(f"No LightGBM model files found for zone {target_zone}")
+            else:
+                logger.warning("No LightGBM model directory found or no target zones specified")
 
             if not self.baseline_model and not self.enhanced_model and not self.lightgbm_model:
                 raise ModelLoadError("No models could be loaded")

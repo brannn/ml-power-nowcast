@@ -147,6 +147,8 @@ export default function Dashboard() {
     }
   }
 
+
+
   const fetchCurrentWeather = async () => {
     try {
       const response = await fetch(`${API_BASE}/weather/${selectedZone}`)

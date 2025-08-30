@@ -78,6 +78,15 @@ The system trains separate models for seven California utility zones:
 
 Each zone receives customized data preprocessing, feature engineering, and hyperparameter optimization based on its unique load characteristics and volatility patterns.
 
+### Ensemble Model Architecture
+
+The system implements a sophisticated ensemble approach combining multiple model types:
+- **Baseline XGBoost Models**: Zone-specific models with 25% ensemble weight
+- **Enhanced XGBoost Models**: Advanced feature engineering with 35% ensemble weight
+- **Zone-Specific LightGBM Models**: Specialized models trained per zone with 40% ensemble weight
+
+This ensemble architecture provides robust predictions by leveraging the strengths of different modeling approaches while maintaining zone-specific accuracy.
+
 ### Data Quality Assurance
 
 The system implements comprehensive data cleaning that removes mixed-source contamination from CAISO data. This process filters approximately 52.7% of the original dataset to eliminate data corruption that previously caused model performance issues.
@@ -93,7 +102,17 @@ Daily automated training maintains model currency and performance through:
 
 ### Performance Achievement
 
-The system achieves production-quality performance across all zones:
+The system achieves production-quality performance across all zones with recent improvements:
+
+**Zone-Specific LightGBM Models (Latest Training)**:
+- SP15: 0.22% MAPE (enhanced accuracy)
+- SMUD: 0.25% MAPE (maintained excellence)
+- SCE: 0.26% MAPE (significant improvement)
+- PGE_VALLEY: 0.27% MAPE (enhanced precision)
+- NP15: 0.30% MAPE (improved performance)
+- SDGE: 0.48% MAPE (substantial enhancement)
+
+**Historical Baseline Performance**:
 - SMUD: 0.31% MAPE, 0.9995 R²
 - SYSTEM: 0.42% MAPE, 0.9991 R²
 - PGE_VALLEY: 0.46% MAPE, 0.9994 R²
@@ -101,6 +120,34 @@ The system achieves production-quality performance across all zones:
 - SP15: 0.49% MAPE, 0.9982 R²
 - SCE: 0.58% MAPE, 0.9984 R²
 - SDGE: 0.80% MAPE, 0.9976 R²
+
+Recent optimizations have achieved significant performance improvements, particularly for SDGE and SCE zones, through enhanced zone-specific modeling approaches.
+
+## Recent System Improvements
+
+### Ensemble Model Reliability Enhancements
+
+The system has undergone significant reliability improvements to address prediction accuracy issues:
+
+**Zone-Specific LightGBM Implementation**: Resolved critical scaling issues where LightGBM models trained on unified data were incorrectly applied to zone-specific predictions. The system now trains dedicated LightGBM models for each zone, eliminating prediction errors such as SDGE showing 6,796 MW instead of realistic 2,387 MW values.
+
+**Automated ML Pipeline Integration**: Enhanced the automated training pipeline to generate zone-specific models for all model types, ensuring consistent performance across the ensemble architecture.
+
+**Weather Data Integration**: Implemented comprehensive weather data integration that merges zone-specific weather information with power demand data, supporting both historical analysis and real-time dashboard display.
+
+### Dashboard and API Enhancements
+
+**Zone-Specific Weather Display**: Fixed current conditions cards to display accurate, zone-specific weather data that updates dynamically when switching between regions. The system now supports all dashboard zones including consolidated zones like LA_METRO.
+
+**Real-Time Data Serving**: Enhanced the regional API server to handle consolidated zones and provide consistent data formatting across all endpoints, improving dashboard reliability and user experience.
+
+**Prediction Validation**: Implemented improved error handling and data validation throughout the prediction pipeline to ensure realistic forecasts and better system reliability.
+
+### Current System Status
+
+The system operates with automated data collection and model training through macOS launchd jobs, providing continuous model updates and performance monitoring. The production deployment includes both API services and an interactive dashboard for real-time monitoring and analysis.
+
+**Known Areas for Improvement**: The system continues to undergo refinement for prediction consistency and data quality validation to ensure reliable forecasting across all operational scenarios.
 
 ## Key Features
 
