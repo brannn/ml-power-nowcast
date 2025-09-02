@@ -3,10 +3,12 @@
 Current Weather Collection for CAISO Zones
 
 Lightweight script to collect current weather conditions for each CAISO zone
-using OpenWeatherMap API. Updates every 15 minutes for dashboard display.
+using Open-Meteo API (free, no API key required) with OpenWeatherMap fallback.
+Updates every 15 minutes for dashboard display.
 
 Author: ML Power Nowcast System
 Created: 2025-09-02
+Updated: 2025-09-02 (Added Open-Meteo support)
 """
 
 import logging
@@ -36,9 +38,76 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# OpenWeatherMap API configuration
+# Weather API configurations
 API_KEY = os.getenv("OPENWEATHERMAP_API_KEY")
-BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
+OPENWEATHER_BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
+OPENMETEO_BASE_URL = "https://api.open-meteo.com/v1/forecast"
+
+
+def get_current_weather_openmeteo(lat: float, lon: float, zone_name: str) -> Optional[Dict]:
+    """
+    Get current weather conditions using Open-Meteo API (free, no API key required).
+    
+    Args:
+        lat: Latitude coordinate
+        lon: Longitude coordinate  
+        zone_name: CAISO zone name for logging
+        
+    Returns:
+        Dictionary with weather data or None if failed
+    """
+    try:
+        params = {
+            'latitude': lat,
+            'longitude': lon,
+            'current': 'temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code',
+            'temperature_unit': 'celsius',
+            'wind_speed_unit': 'kmh',
+            'timezone': 'America/Los_Angeles'
+        }
+        
+        response = requests.get(OPENMETEO_BASE_URL, params=params, timeout=10)
+        response.raise_for_status()
+        
+        data = response.json()
+        current = data.get('current', {})
+        
+        weather_data = {
+            'zone': zone_name,
+            'timestamp': datetime.now(timezone.utc),
+            'temp_c': current.get('temperature_2m'),
+            'humidity': current.get('relative_humidity_2m'),
+            'wind_speed': current.get('wind_speed_10m'),
+            'weather_code': current.get('weather_code', 0),
+            'description': weather_code_to_description(current.get('weather_code', 0)),
+            'city': CAISO_ZONES[zone_name].major_city,
+            'data_source': 'open-meteo'
+        }
+        
+        logger.info(f"🌤️ {zone_name} (Open-Meteo - {weather_data['city']}): {weather_data['temp_c']:.1f}°C, "
+                   f"{weather_data['humidity']}% humidity, {weather_data['wind_speed']:.1f} km/h - {weather_data['description']}")
+        return weather_data
+        
+    except requests.exceptions.RequestException as e:
+        logger.error(f"❌ Open-Meteo API request failed for {zone_name}: {e}")
+        return None
+    except Exception as e:
+        logger.error(f"❌ Error processing Open-Meteo data for {zone_name}: {e}")
+        return None
+
+
+def weather_code_to_description(code: int) -> str:
+    """Convert Open-Meteo weather code to human-readable description."""
+    weather_codes = {
+        0: 'clear sky',
+        1: 'mainly clear', 2: 'partly cloudy', 3: 'overcast',
+        45: 'fog', 48: 'depositing rime fog',
+        51: 'light drizzle', 53: 'moderate drizzle', 55: 'dense drizzle',
+        61: 'slight rain', 63: 'moderate rain', 65: 'heavy rain',
+        80: 'slight rain showers', 81: 'moderate rain showers', 82: 'violent rain showers',
+        95: 'thunderstorm', 96: 'thunderstorm with slight hail', 99: 'thunderstorm with heavy hail'
+    }
+    return weather_codes.get(code, f'weather code {code}')
 
 def get_current_weather(lat: float, lon: float, zone_name: str, demo_mode: bool = False) -> Optional[Dict]:
     """
@@ -80,9 +149,14 @@ def get_current_weather(lat: float, lon: float, zone_name: str, demo_mode: bool 
                    f"{weather_data['humidity']}% humidity, {weather_data['wind_speed']:.1f} km/h")
         return weather_data
     
-    # Check if API key is available for real API calls
+    # Try Open-Meteo first (free, no API key required)
+    weather_data = get_current_weather_openmeteo(lat, lon, zone_name)
+    if weather_data:
+        return weather_data
+    
+    # Fallback to OpenWeatherMap if API key is available
     if not API_KEY or API_KEY == "your_api_key_here":
-        logger.error(f"❌ OpenWeatherMap API key not configured for real API calls to {zone_name}")
+        logger.warning(f"⚠️ No OpenWeatherMap fallback available for {zone_name} (no API key)")
         return None
     
     try:
@@ -93,7 +167,7 @@ def get_current_weather(lat: float, lon: float, zone_name: str, demo_mode: bool 
             'units': 'metric'  # Celsius for consistency
         }
         
-        response = requests.get(BASE_URL, params=params, timeout=10)
+        response = requests.get(OPENWEATHER_BASE_URL, params=params, timeout=10)
         response.raise_for_status()
         
         data = response.json()

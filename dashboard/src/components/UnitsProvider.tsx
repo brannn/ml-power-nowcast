@@ -1,0 +1,82 @@
+'use client'
+
+import { createContext, useContext, useEffect, useState } from 'react'
+
+type UnitSystem = 'metric' | 'imperial'
+
+interface UnitsContextType {
+  unitSystem: UnitSystem
+  toggleUnits: () => void
+  convertTemperature: (celsius: number) => number
+  convertWindSpeed: (ms: number) => number
+  formatTemperature: (celsius: number) => string
+  formatWindSpeed: (ms: number) => string
+}
+
+const UnitsContext = createContext<UnitsContextType | undefined>(undefined)
+
+export function UnitsProvider({ children }: { children: React.ReactNode }) {
+  const [unitSystem, setUnitSystem] = useState<UnitSystem>('metric')
+
+  useEffect(() => {
+    // Check for saved unit preference
+    const savedUnits = localStorage.getItem('unitSystem') as UnitSystem
+    if (savedUnits) {
+      setUnitSystem(savedUnits)
+    } else {
+      // Default to metric for international users, imperial for US
+      const isUS = Intl.DateTimeFormat().resolvedOptions().timeZone?.includes('America')
+      setUnitSystem(isUS ? 'imperial' : 'metric')
+    }
+  }, [])
+
+  useEffect(() => {
+    // Save unit preference
+    localStorage.setItem('unitSystem', unitSystem)
+  }, [unitSystem])
+
+  const toggleUnits = () => {
+    setUnitSystem(prev => prev === 'metric' ? 'imperial' : 'metric')
+  }
+
+  const convertTemperature = (celsius: number) => {
+    return unitSystem === 'metric' ? celsius : (celsius * 9/5) + 32
+  }
+
+  const convertWindSpeed = (ms: number) => {
+    return unitSystem === 'metric' ? ms : ms * 2.237 // m/s to mph
+  }
+
+  const formatTemperature = (celsius: number) => {
+    const converted = convertTemperature(celsius)
+    const unit = unitSystem === 'metric' ? '°C' : '°F'
+    return `${converted.toFixed(1)}${unit}`
+  }
+
+  const formatWindSpeed = (ms: number) => {
+    const converted = convertWindSpeed(ms)
+    const unit = unitSystem === 'metric' ? 'm/s' : 'mph'
+    return `${converted.toFixed(1)} ${unit}`
+  }
+
+  return (
+    <UnitsContext.Provider value={{
+      unitSystem,
+      toggleUnits,
+      convertTemperature,
+      convertWindSpeed,
+      formatTemperature,
+      formatWindSpeed
+    }}>
+      {children}
+    </UnitsContext.Provider>
+  )
+}
+
+export function useUnits() {
+  const context = useContext(UnitsContext)
+  if (context === undefined) {
+    throw new Error('useUnits must be used within a UnitsProvider')
+  }
+  return context
+}
