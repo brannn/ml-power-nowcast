@@ -1,0 +1,336 @@
+2025-08-31 00:06:50,564 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 00:06:50,566 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:06:50,566 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:06:50,566 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:06:50,566 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:06:50,566 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 00:06:50,566 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 00:06:50,566 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:37:54,246 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 00:37:54,248 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:37:54,248 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:37:54,249 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:37:54,249 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 00:37:54,249 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 00:37:54,249 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 00:37:54,249 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 01:57:38,689 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 01:57:38,692 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 01:57:38,692 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 01:57:38,692 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 01:57:38,692 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 01:57:38,692 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 01:57:38,692 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 01:57:38,692 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 02:29:04,169 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 02:29:04,173 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 02:29:04,173 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 02:29:04,173 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 02:29:04,173 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 02:29:04,173 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 02:29:04,173 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 02:29:04,173 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:00:28,879 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 03:00:28,881 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:00:28,881 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:00:28,882 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:00:28,882 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:00:28,882 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 03:00:28,882 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 03:00:28,882 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:31:53,225 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 03:31:53,227 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:31:53,227 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:31:53,228 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:31:53,228 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 03:31:53,228 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 03:31:53,228 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 03:31:53,228 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:03:17,533 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 04:03:17,536 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:03:17,537 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:03:17,537 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:03:17,537 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:03:17,537 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 04:03:17,537 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 04:03:17,537 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:34:42,330 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 04:34:42,333 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:34:42,333 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:34:42,333 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:34:42,333 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 04:34:42,333 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 04:34:42,333 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 04:34:42,333 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:06:08,220 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 05:06:08,223 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:06:08,223 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:06:08,223 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:06:08,223 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:06:08,224 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 05:06:08,224 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 05:06:08,224 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:37:32,069 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 05:37:32,072 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:37:32,072 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:37:32,072 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:37:32,072 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 05:37:32,072 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 05:37:32,072 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 05:37:32,072 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:08:56,730 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 06:08:56,732 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:08:56,732 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:08:56,732 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:08:56,732 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:08:56,732 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 06:08:56,732 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 06:08:56,732 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:40:21,378 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 06:40:21,381 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:40:21,381 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:40:21,381 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:40:21,381 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 06:40:21,381 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 06:40:21,382 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 06:40:21,382 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:11:46,132 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 07:11:46,134 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:11:46,135 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:11:46,135 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:11:46,135 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:11:46,135 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 07:11:46,135 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 07:11:46,135 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:43:10,451 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 07:43:10,453 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:43:10,453 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:43:10,453 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:43:10,453 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 07:43:10,453 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 07:43:10,453 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 07:43:10,453 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:14:35,238 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 08:14:35,241 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:14:35,241 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:14:35,242 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:14:35,242 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:14:35,242 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 08:14:35,242 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 08:14:35,242 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:45:38,389 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 08:45:38,392 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:45:38,392 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:45:38,393 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:45:38,393 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 08:45:38,393 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 08:45:38,393 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 08:45:38,393 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:16:49,444 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 09:16:49,447 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:16:49,447 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:16:49,447 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:16:49,447 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:16:49,447 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 09:16:49,447 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 09:16:49,447 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:48:06,620 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 09:48:06,623 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:48:06,624 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:48:06,624 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:48:06,624 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 09:48:06,624 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 09:48:06,624 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 09:48:06,624 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 10:36:36,691 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 10:36:36,693 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 10:36:36,693 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 10:36:36,693 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 10:36:36,693 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 10:36:36,693 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 10:36:36,693 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 10:36:36,693 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:07:50,901 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 11:07:50,903 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:07:50,903 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:07:50,903 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:07:50,903 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:07:50,903 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 11:07:50,903 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 11:07:50,904 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:54:13,127 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 11:54:13,130 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:54:13,130 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:54:13,130 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:54:13,130 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 11:54:13,130 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 11:54:13,130 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 11:54:13,131 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:25:27,721 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 12:25:27,724 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:25:27,724 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:25:27,724 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:25:27,724 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:25:27,724 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 12:25:27,724 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 12:25:27,724 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:56:44,867 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 12:56:44,870 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:56:44,870 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:56:44,870 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:56:44,870 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 12:56:44,870 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 12:56:44,871 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 12:56:44,871 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 13:27:58,725 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 13:27:58,726 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 13:27:58,726 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 13:27:58,726 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 13:27:58,726 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 13:27:58,726 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 13:27:58,727 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 13:27:58,727 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:06:20,191 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 14:06:20,196 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:06:20,196 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:06:20,196 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:06:20,196 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:06:20,196 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 14:06:20,196 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 14:06:20,196 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:37:39,892 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 14:37:39,895 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:37:39,895 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:37:39,895 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:37:39,895 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 14:37:39,895 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 14:37:39,895 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 14:37:39,895 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:38:55,143 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 15:38:55,146 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:38:55,146 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:38:55,147 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:38:55,147 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:38:55,147 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 15:38:55,147 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 15:38:55,147 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:51:42,908 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 15:51:42,909 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:51:42,909 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:51:42,909 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:51:42,909 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 15:51:42,909 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 15:51:42,909 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 15:51:42,909 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 16:22:51,159 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 16:22:51,161 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 16:22:51,161 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 16:22:51,161 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 16:22:51,161 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 16:22:51,161 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 16:22:51,161 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 16:22:51,161 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:09:28,896 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 17:09:28,897 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:09:28,897 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:09:28,897 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:09:28,897 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:09:28,897 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 17:09:28,897 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 17:09:28,897 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:40:50,075 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 17:40:50,077 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:40:50,077 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:40:50,077 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:40:50,077 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 17:40:50,077 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 17:40:50,077 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 17:40:50,077 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:27:45,412 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 18:27:45,415 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:27:45,415 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:27:45,415 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:27:45,415 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:27:45,415 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 18:27:45,415 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 18:27:45,415 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:59:02,512 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 18:59:02,515 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:59:02,515 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:59:02,515 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:59:02,515 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 18:59:02,515 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 18:59:02,515 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 18:59:02,515 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 19:30:48,007 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 19:30:48,011 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 19:30:48,011 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 19:30:48,011 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 19:30:48,011 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 19:30:48,011 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 19:30:48,011 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 19:30:48,011 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:03:02,233 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 20:03:02,237 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:03:02,237 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:03:02,237 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:03:02,237 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:03:02,237 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 20:03:02,238 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 20:03:02,238 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:34:35,168 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 20:34:35,173 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:34:35,173 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:34:35,173 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:34:35,173 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 20:34:35,173 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 20:34:35,173 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 20:34:35,173 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:05:56,952 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 21:05:56,957 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:05:56,957 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:05:56,958 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:05:56,958 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:05:56,958 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 21:05:56,958 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 21:05:56,958 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:37:16,523 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 21:37:16,526 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:37:16,526 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:37:16,526 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:37:16,526 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 21:37:16,526 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 21:37:16,526 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 21:37:16,526 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:08:38,929 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 22:08:38,932 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:08:38,932 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:08:38,932 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:08:38,932 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:08:38,932 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 22:08:38,933 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 22:08:38,933 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:40:03,624 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 22:40:03,627 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:40:03,627 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:40:03,627 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:40:03,627 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 22:40:03,627 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 22:40:03,627 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 22:40:03,627 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:11:20,411 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 23:11:20,414 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:11:20,414 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:11:20,414 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:11:20,414 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:11:20,414 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 23:11:20,414 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 23:11:20,414 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:42:40,824 - WARNING - Found temporal gaps in 7 zones
+2025-08-31 23:42:40,826 - WARNING -   SYSTEM: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:42:40,827 - WARNING -   NP15: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:42:40,827 - WARNING -   SCE: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:42:40,827 - WARNING -   SMUD: 263 gaps, largest: 0 days 02:35:00
+2025-08-31 23:42:40,827 - WARNING -   PGE_VALLEY: 236 gaps, largest: 0 days 02:35:00
+2025-08-31 23:42:40,827 - WARNING -   SP15: 234 gaps, largest: 0 days 02:35:00
+2025-08-31 23:42:40,827 - WARNING -   SDGE: 263 gaps, largest: 0 days 02:35:00

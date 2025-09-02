@@ -1,0 +1,1 @@
+DataFrame.dtypes for data must be int, float, bool or category. When categorical type is supplied, the experimental DMatrix parameter`enable_categorical` must be set to `True`.  Invalid columns:region_power: object, data_source_power: object, region_weather: object, data_source_weather: object

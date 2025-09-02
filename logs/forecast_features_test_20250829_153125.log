@@ -1,0 +1,53 @@
+2025-08-29 15:31:25,395 - __main__ - INFO - 🚀 Starting forecast feature engineering test
+2025-08-29 15:31:25,395 - __main__ - INFO - ============================================================
+2025-08-29 15:31:25,451 - __main__ - INFO - Loaded forecast data: 48 records
+2025-08-29 15:31:25,451 - __main__ - INFO - Columns: ['timestamp', 'zone', 'temp_c', 'humidity', 'wind_speed_kmh', 'forecast_source', 'forecast_issued', 'forecast_horizon_hours']
+2025-08-29 15:31:25,453 - __main__ - INFO - Date range: 2025-08-29 15:00:00-07:00 to 2025-08-31 14:00:00-07:00
+2025-08-29 15:31:25,453 - __main__ - INFO - 🔍 Testing forecast data validation...
+2025-08-29 15:31:25,455 - __main__ - INFO - ✅ Valid data validation passed
+2025-08-29 15:31:25,455 - __main__ - INFO - ✅ Missing column validation correctly failed
+2025-08-29 15:31:25,455 - __main__ - INFO - ✅ Empty DataFrame validation correctly failed
+2025-08-29 15:31:25,455 - __main__ - INFO - 🌡️  Testing core forecast feature creation...
+2025-08-29 15:31:25,455 - src.features.build_forecast_features - INFO - Building comprehensive forecast features
+2025-08-29 15:31:25,455 - src.features.build_forecast_features - INFO - Input data: 48 records, 1 zones
+2025-08-29 15:31:25,455 - src.features.build_forecast_features - INFO - Creating core forecast features
+2025-08-29 15:31:25,459 - src.features.build_forecast_features - INFO - Created core forecast features for 4 horizons
+2025-08-29 15:31:25,459 - src.features.build_forecast_features - INFO - Creating weather change features
+2025-08-29 15:31:25,461 - src.features.build_forecast_features - INFO - Created weather change features
+2025-08-29 15:31:25,461 - src.features.build_forecast_features - INFO - Creating extreme weather features
+2025-08-29 15:31:25,462 - src.features.build_forecast_features - INFO - Created extreme weather features
+2025-08-29 15:31:25,462 - src.features.build_forecast_features - INFO - Creating forecast uncertainty features
+2025-08-29 15:31:25,463 - src.features.build_forecast_features - INFO - Created forecast uncertainty features
+2025-08-29 15:31:25,463 - src.features.build_forecast_features - INFO - Created 32 forecast features
+2025-08-29 15:31:25,463 - __main__ - INFO - ✅ Created 32 forecast features
+2025-08-29 15:31:25,463 - __main__ - INFO -    Original columns: 8
+2025-08-29 15:31:25,463 - __main__ - INFO -    New columns: 40
+2025-08-29 15:31:25,463 - __main__ - INFO - ✅ All expected core features created
+2025-08-29 15:31:25,463 - __main__ - INFO -    temp_forecast_6h: 42 non-null values
+2025-08-29 15:31:25,463 - __main__ - INFO -    temp_forecast_24h: 24 non-null values
+2025-08-29 15:31:25,463 - __main__ - INFO -    cooling_forecast_6h: 42 non-null values
+2025-08-29 15:31:25,463 - __main__ - INFO -    heating_forecast_6h: 42 non-null values
+2025-08-29 15:31:25,463 - __main__ - INFO - 🌪️  Testing advanced forecast features...
+2025-08-29 15:31:25,463 - __main__ - INFO - ✅ temp_change_rate_6h: 42 values
+2025-08-29 15:31:25,463 - __main__ - INFO - ✅ temp_change_rate_12h: 36 values
+2025-08-29 15:31:25,463 - __main__ - INFO - ✅ weather_volatility_6h: 43 values
+2025-08-29 15:31:25,463 - __main__ - WARNING - ⚠️  heat_wave_incoming: not found
+2025-08-29 15:31:25,463 - __main__ - WARNING - ⚠️  cold_snap_incoming: not found
+2025-08-29 15:31:25,464 - __main__ - INFO - ✅ rapid_temp_change: {0: np.int64(48)}
+2025-08-29 15:31:25,464 - __main__ - INFO - ✅ extreme_temp_probability: {0: np.int64(47), 1: np.int64(1)}
+2025-08-29 15:31:25,464 - __main__ - INFO - ✅ forecast_uncertainty_score: 48 values, mean=0.469
+2025-08-29 15:31:25,464 - __main__ - INFO - ✅ weather_pattern_stability: 43 values, mean=0.512
+2025-08-29 15:31:25,464 - __main__ - INFO - ✅ forecast_confidence: 25 values, mean=0.474
+2025-08-29 15:31:25,464 - __main__ - INFO - ✅ Advanced features test completed
+2025-08-29 15:31:25,464 - __main__ - INFO - 🔍 Testing forecast feature quality...
+2025-08-29 15:31:25,465 - __main__ - INFO - 🎯 Feature Quality Score: 100/100
+2025-08-29 15:31:25,465 - __main__ - INFO - ✅ EXCELLENT - Feature quality is excellent
+2025-08-29 15:31:25,472 - __main__ - INFO - 💾 Test feature data saved: data/test_features/forecast_features_test_20250829_153125.parquet
+2025-08-29 15:31:25,472 - __main__ - INFO -    Records: 48
+2025-08-29 15:31:25,472 - __main__ - INFO -    Features: 40
+2025-08-29 15:31:25,472 - __main__ - INFO -    File size: 30.7 KB
+2025-08-29 15:31:25,472 - __main__ - INFO - 📝 Feature list saved: data/test_features/forecast_feature_list_20250829_153125.txt
+2025-08-29 15:31:25,472 - __main__ - INFO - ============================================================
+2025-08-29 15:31:25,472 - __main__ - INFO - ✅ Forecast feature engineering test completed successfully!
+2025-08-29 15:31:25,472 - __main__ - INFO -    Created 40 total features
+2025-08-29 15:31:25,472 - __main__ - INFO -    Ready for ML model integration

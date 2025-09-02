@@ -1,0 +1,10 @@
+artifact_location: file:///Users/bran/Work/model-power-nowcast/mlruns/795039477520141587/models/m-cd0ffc2e7baa4a068836937a4ed12218/artifacts
+creation_timestamp: 1756531224509
+experiment_id: '795039477520141587'
+last_updated_timestamp: 1756531226341
+model_id: m-cd0ffc2e7baa4a068836937a4ed12218
+model_type: null
+name: model
+source_run_id: ab0817a814254e7caac6f39bb8184e85
+status: 2
+status_message: null

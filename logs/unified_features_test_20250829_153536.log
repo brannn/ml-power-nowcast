@@ -1,0 +1,99 @@
+2025-08-29 15:35:36,496 - __main__ - INFO - 🚀 Starting unified feature engineering pipeline test
+2025-08-29 15:35:36,496 - __main__ - INFO - ============================================================
+2025-08-29 15:35:36,496 - __main__ - INFO - 🔍 Checking data availability...
+2025-08-29 15:35:36,496 - __main__ - INFO - ✅ Found power data: data/master/caiso_california_only.parquet
+2025-08-29 15:35:36,496 - __main__ - WARNING - ⚠️  No historical weather data found
+2025-08-29 15:35:36,496 - __main__ - INFO - ✅ Found forecast data: data/forecasts
+2025-08-29 15:35:36,496 - __main__ - INFO - 🔧 Testing basic unified pipeline...
+2025-08-29 15:35:36,496 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 15:35:36,496 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 15:35:36,496 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 15:35:36,496 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 15:35:36,496 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 15:35:37,582 - src.features.unified_feature_pipeline - INFO - Loaded power data: 2,967,530 records, 1 zones
+2025-08-29 15:35:37,586 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-29 22:10:00+00:00
+2025-08-29 15:35:37,586 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 15:35:37,589 - src.features.unified_feature_pipeline - INFO - Loaded forecast weather data: 48 records, 1 zones
+2025-08-29 15:35:37,589 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 15:35:37,614 - src.features.unified_feature_pipeline - INFO - Merging forecast weather data
+2025-08-29 15:35:37,614 - src.features.build_forecast_features - INFO - Building comprehensive forecast features
+2025-08-29 15:35:37,614 - src.features.build_forecast_features - INFO - Input data: 48 records, 1 zones
+2025-08-29 15:35:37,614 - src.features.build_forecast_features - INFO - Creating core forecast features
+2025-08-29 15:35:37,616 - src.features.build_forecast_features - INFO - Created core forecast features for 2 horizons
+2025-08-29 15:35:37,616 - src.features.build_forecast_features - INFO - Creating weather change features
+2025-08-29 15:35:37,618 - src.features.build_forecast_features - INFO - Created weather change features
+2025-08-29 15:35:37,618 - src.features.build_forecast_features - INFO - Creating extreme weather features
+2025-08-29 15:35:37,619 - src.features.build_forecast_features - INFO - Created extreme weather features
+2025-08-29 15:35:37,619 - src.features.build_forecast_features - INFO - Creating forecast uncertainty features
+2025-08-29 15:35:37,620 - src.features.build_forecast_features - INFO - Created forecast uncertainty features
+2025-08-29 15:35:37,620 - src.features.build_forecast_features - INFO - Created 20 forecast features
+2025-08-29 15:35:38,040 - src.features.unified_feature_pipeline - INFO - After forecast merge: 2967530 records
+2025-08-29 15:35:38,460 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 2967530 records, 26 columns
+2025-08-29 15:35:38,460 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 15:35:38,789 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 15:35:38,806 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 15:35:40,471 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 15:35:40,516 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 15:35:40,623 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 15:35:40,645 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 2967530 records, 40 features
+2025-08-29 15:35:40,666 - __main__ - INFO - ✅ Unified pipeline completed successfully
+2025-08-29 15:35:40,666 - __main__ - INFO -    Records: 2,967,530
+2025-08-29 15:35:40,666 - __main__ - INFO -    Features: 40
+2025-08-29 15:35:40,702 - __main__ - INFO -    Zones: ['NP15']
+2025-08-29 15:35:40,705 - __main__ - INFO -    Date range: 2020-08-28 19:00:00+00:00 to 2025-08-29 22:10:00+00:00
+2025-08-29 15:35:40,705 - __main__ - INFO - 📊 Testing feature completeness...
+2025-08-29 15:35:40,705 - __main__ - INFO - ✅ base features: all 3 present
+2025-08-29 15:35:40,705 - __main__ - INFO - ✅ temporal features: all 3 present
+2025-08-29 15:35:40,705 - __main__ - WARNING - ⚠️  No weather features found
+2025-08-29 15:35:40,706 - __main__ - WARNING - ⚠️  No weather_derived features found
+2025-08-29 15:35:40,706 - __main__ - INFO - ✅ lag features: all 2 present
+2025-08-29 15:35:40,706 - __main__ - INFO - ✅ forecast features: all 2 present
+2025-08-29 15:35:40,706 - __main__ - WARNING - ⚠️  No interaction features found
+2025-08-29 15:35:40,706 - __main__ - ERROR - ❌ Missing feature categories: ['weather', 'weather_derived', 'interaction']
+2025-08-29 15:35:40,706 - __main__ - WARNING - ⚠️  Feature completeness test had issues
+2025-08-29 15:35:40,706 - __main__ - INFO - 🔍 Testing unified feature data quality...
+2025-08-29 15:35:40,765 - __main__ - INFO - 🎯 Unified Feature Quality Score: 85/100
+2025-08-29 15:35:40,765 - __main__ - INFO - ✅ GOOD - Unified feature quality is good with minor issues
+2025-08-29 15:35:40,765 - __main__ - WARNING - 🚨 Quality issues found:
+2025-08-29 15:35:40,765 - __main__ - WARNING -    1. Poor forecast coverage for temp_forecast_6h: 100.0% null
+2025-08-29 15:35:40,765 - __main__ - WARNING -    2. Poor forecast coverage for cooling_forecast_6h: 100.0% null
+2025-08-29 15:35:40,765 - __main__ - WARNING -    3. Poor forecast coverage for heating_forecast_6h: 100.0% null
+2025-08-29 15:35:40,766 - __main__ - INFO - 📈 Analyzing feature coverage...
+2025-08-29 15:35:40,766 - __main__ - INFO - Feature Coverage by Category:
+2025-08-29 15:35:40,804 - __main__ - INFO -   Base: 3 features, 100.0% avg coverage
+2025-08-29 15:35:40,824 - __main__ - INFO -   Temporal: 12 features, 100.0% avg coverage
+2025-08-29 15:35:40,834 - __main__ - INFO -   Weather Historical: 4 features, 0.0% avg coverage
+2025-08-29 15:35:40,855 - __main__ - INFO -   Weather Forecast: 13 features, 0.0% avg coverage
+2025-08-29 15:35:40,857 - __main__ - INFO -   Lag Features: 2 features, 100.0% avg coverage
+2025-08-29 15:35:40,974 - __main__ - INFO -   Other: 6 features, 50.0% avg coverage
+2025-08-29 15:35:40,974 - __main__ - INFO - Total features: 40
+2025-08-29 15:35:41,121 - __main__ - WARNING - Features with <50% coverage:
+2025-08-29 15:35:41,121 - __main__ - WARNING -   weather_volatility_6h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   temp_forecast_stability: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   weather_pattern_stability: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   forecast_confidence: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   temp_forecast_6h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   cooling_forecast_6h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   heating_forecast_6h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   humidity_forecast_6h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   wind_forecast_6h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   temp_forecast_24h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   cooling_forecast_24h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   heating_forecast_24h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   humidity_forecast_24h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   wind_forecast_24h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   temp_change_rate_6h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   humidity_change_rate_6h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   temp_change_rate_24h: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   rapid_temp_change: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   extreme_temp_probability: 0.0%
+2025-08-29 15:35:41,121 - __main__ - WARNING -   forecast_uncertainty_score: 0.0%
+2025-08-29 15:35:41,930 - __main__ - INFO - 💾 Test unified feature data saved: data/test_unified/unified_features_test_20250829_153541.parquet
+2025-08-29 15:35:41,930 - __main__ - INFO -    Records: 2,967,530
+2025-08-29 15:35:41,930 - __main__ - INFO -    Features: 40
+2025-08-29 15:35:41,930 - __main__ - INFO -    File size: 54030.0 KB
+2025-08-29 15:35:42,153 - __main__ - INFO - 📝 Feature summary saved: data/test_unified/unified_feature_summary_20250829_153541.txt
+2025-08-29 15:35:42,153 - __main__ - INFO - ============================================================
+2025-08-29 15:35:42,153 - __main__ - INFO - ✅ Unified feature engineering pipeline test completed!
+2025-08-29 15:35:42,153 - __main__ - INFO -    Created unified dataset with 40 features
+2025-08-29 15:35:42,153 - __main__ - INFO -    Ready for ML model training and evaluation

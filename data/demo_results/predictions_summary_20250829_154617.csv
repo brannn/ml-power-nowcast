@@ -1,0 +1,4 @@
+timestamp,zone,horizon_hours,baseline_prediction,enhanced_prediction,improvement_pct,forecast_available
+2025-08-30T04:46:12.792686+00:00,NP15,6,5771.7603,5837.624,1.1411383,False
+2025-08-30T10:46:12.792686+00:00,NP15,12,5771.7603,5837.624,1.1411383,False
+2025-08-30T22:46:12.792686+00:00,NP15,24,5771.7603,5837.624,1.1411383,False

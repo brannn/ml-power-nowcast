@@ -1,0 +1,2256 @@
+[
+  {
+    "timestamp": "2025-08-26T08:05:00+00:00",
+    "actual_load": 26847.53,
+    "predicted_load": 27778.243109904346,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T08:25:00+00:00",
+    "actual_load": 26371.3,
+    "predicted_load": 27233.35201215656,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T08:45:00+00:00",
+    "actual_load": 25755.97,
+    "predicted_load": 25852.75149216167,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T09:05:00+00:00",
+    "actual_load": 25305.11,
+    "predicted_load": 25558.177272107438,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T09:25:00+00:00",
+    "actual_load": 24964.17,
+    "predicted_load": 24625.8250322092,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T09:45:00+00:00",
+    "actual_load": 24528.14,
+    "predicted_load": 24173.219845136307,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T10:05:00+00:00",
+    "actual_load": 24334.58,
+    "predicted_load": 24647.085702875163,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T10:25:00+00:00",
+    "actual_load": 24090.7,
+    "predicted_load": 23747.469184047808,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T10:45:00+00:00",
+    "actual_load": 23938.96,
+    "predicted_load": 23336.637528806146,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T11:05:00+00:00",
+    "actual_load": 24015.41,
+    "predicted_load": 23260.489899828153,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T11:25:00+00:00",
+    "actual_load": 24079.21,
+    "predicted_load": 23912.770611190026,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T11:45:00+00:00",
+    "actual_load": 24127.05,
+    "predicted_load": 23663.902158572015,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T12:05:00+00:00",
+    "actual_load": 24611.34,
+    "predicted_load": 24902.04689376074,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T12:25:00+00:00",
+    "actual_load": 24954.09,
+    "predicted_load": 24908.098482608693,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T12:45:00+00:00",
+    "actual_load": 25289.27,
+    "predicted_load": 25699.296676242986,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T13:05:00+00:00",
+    "actual_load": 26045.11,
+    "predicted_load": 25801.293202129593,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T13:25:00+00:00",
+    "actual_load": 26484.31,
+    "predicted_load": 25738.90212386126,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T13:45:00+00:00",
+    "actual_load": 27031.1,
+    "predicted_load": 26696.272846481777,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T14:05:00+00:00",
+    "actual_load": 27550.99,
+    "predicted_load": 28062.536404130922,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T14:25:00+00:00",
+    "actual_load": 27700.98,
+    "predicted_load": 27147.949536287255,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T14:45:00+00:00",
+    "actual_load": 27510.98,
+    "predicted_load": 27294.225768356697,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T15:05:00+00:00",
+    "actual_load": 27618.88,
+    "predicted_load": 27383.622393177302,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T15:25:00+00:00",
+    "actual_load": 27774.9,
+    "predicted_load": 28141.8856739597,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T15:45:00+00:00",
+    "actual_load": 27581.18,
+    "predicted_load": 26636.996918173434,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T16:05:00+00:00",
+    "actual_load": 27435.3,
+    "predicted_load": 27847.59622089066,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T16:25:00+00:00",
+    "actual_load": 27495.02,
+    "predicted_load": 26886.278696488687,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T16:45:00+00:00",
+    "actual_load": 27273.42,
+    "predicted_load": 27360.67440754975,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T17:05:00+00:00",
+    "actual_load": 27342.09,
+    "predicted_load": 27466.24730374805,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T17:25:00+00:00",
+    "actual_load": 27082.46,
+    "predicted_load": 27488.102193657734,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T17:45:00+00:00",
+    "actual_load": 26910.79,
+    "predicted_load": 26700.480483813557,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T18:05:00+00:00",
+    "actual_load": 27023.07,
+    "predicted_load": 27363.285281089233,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T18:25:00+00:00",
+    "actual_load": 27153.45,
+    "predicted_load": 26694.595326401282,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T18:45:00+00:00",
+    "actual_load": 27252.05,
+    "predicted_load": 27063.54934146675,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T19:05:00+00:00",
+    "actual_load": 27616.79,
+    "predicted_load": 27975.220859216246,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T19:25:00+00:00",
+    "actual_load": 27981.42,
+    "predicted_load": 27911.34958322359,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T19:45:00+00:00",
+    "actual_load": 28191.53,
+    "predicted_load": 28805.777665582515,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T20:05:00+00:00",
+    "actual_load": 28787.64,
+    "predicted_load": 27543.668477979983,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T20:25:00+00:00",
+    "actual_load": 29391.45,
+    "predicted_load": 29710.97950733996,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T20:45:00+00:00",
+    "actual_load": 30073.36,
+    "predicted_load": 29071.809770172895,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T21:05:00+00:00",
+    "actual_load": 30597.03,
+    "predicted_load": 30215.07617361228,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T21:25:00+00:00",
+    "actual_load": 30967.59,
+    "predicted_load": 32024.611158708343,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T21:45:00+00:00",
+    "actual_load": 31413.16,
+    "predicted_load": 31534.715299353607,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T22:05:00+00:00",
+    "actual_load": 32213.1,
+    "predicted_load": 32036.1958469698,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T22:25:00+00:00",
+    "actual_load": 33011.57,
+    "predicted_load": 33187.90669112028,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T22:45:00+00:00",
+    "actual_load": 33688.73,
+    "predicted_load": 33705.31056133564,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T23:05:00+00:00",
+    "actual_load": 34132.93,
+    "predicted_load": 34504.369416351205,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T23:25:00+00:00",
+    "actual_load": 34907.19,
+    "predicted_load": 33423.83696867704,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-26T23:45:00+00:00",
+    "actual_load": 35618.27,
+    "predicted_load": 36388.85837268095,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T00:05:00+00:00",
+    "actual_load": 36043.59,
+    "predicted_load": 37074.69009989257,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T00:25:00+00:00",
+    "actual_load": 36611.18,
+    "predicted_load": 36442.36698554587,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T00:45:00+00:00",
+    "actual_load": 37135.16,
+    "predicted_load": 38002.93393156754,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T01:05:00+00:00",
+    "actual_load": 37336.07,
+    "predicted_load": 36885.47627238861,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T01:25:00+00:00",
+    "actual_load": 37578.21,
+    "predicted_load": 37446.007849421716,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T01:45:00+00:00",
+    "actual_load": 37617.59,
+    "predicted_load": 36734.31788671407,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T02:05:00+00:00",
+    "actual_load": 37162.74,
+    "predicted_load": 36775.79512332977,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T02:25:00+00:00",
+    "actual_load": 36812.09,
+    "predicted_load": 36079.4947377905,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T02:45:00+00:00",
+    "actual_load": 36007.33,
+    "predicted_load": 36909.316987699196,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T03:05:00+00:00",
+    "actual_load": 35705.14,
+    "predicted_load": 35094.54650133388,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T03:25:00+00:00",
+    "actual_load": 35372.56,
+    "predicted_load": 37079.03619416966,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T03:45:00+00:00",
+    "actual_load": 35006.85,
+    "predicted_load": 33877.14240115267,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T04:05:00+00:00",
+    "actual_load": 34645.75,
+    "predicted_load": 32929.05304489759,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T04:25:00+00:00",
+    "actual_load": 34047.05,
+    "predicted_load": 32784.65250874955,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T04:45:00+00:00",
+    "actual_load": 33524.87,
+    "predicted_load": 32795.43772580008,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T05:05:00+00:00",
+    "actual_load": 32622.88,
+    "predicted_load": 35197.180803530886,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T05:25:00+00:00",
+    "actual_load": 31575.01,
+    "predicted_load": 31129.093588997534,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T05:45:00+00:00",
+    "actual_load": 30637.64,
+    "predicted_load": 30287.701193612327,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T06:05:00+00:00",
+    "actual_load": 29782.76,
+    "predicted_load": 30501.73489876026,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T06:25:00+00:00",
+    "actual_load": 29012.6,
+    "predicted_load": 28909.967357451103,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T06:45:00+00:00",
+    "actual_load": 28215.77,
+    "predicted_load": 26569.785555013354,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T07:05:00+00:00",
+    "actual_load": 27661.42,
+    "predicted_load": 28370.576591750138,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T07:25:00+00:00",
+    "actual_load": 27230.56,
+    "predicted_load": 28317.146071558323,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T07:45:00+00:00",
+    "actual_load": 26699.42,
+    "predicted_load": 26671.81696035097,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T08:05:00+00:00",
+    "actual_load": 26185.39,
+    "predicted_load": 27318.2687368221,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T08:25:00+00:00",
+    "actual_load": 25664.94,
+    "predicted_load": 25388.82542068892,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T08:45:00+00:00",
+    "actual_load": 25133.64,
+    "predicted_load": 25072.11371099611,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T09:05:00+00:00",
+    "actual_load": 24719.18,
+    "predicted_load": 25542.277236685884,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T09:25:00+00:00",
+    "actual_load": 24319.71,
+    "predicted_load": 24518.28543956905,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T09:45:00+00:00",
+    "actual_load": 23942.72,
+    "predicted_load": 23553.992419750615,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T10:05:00+00:00",
+    "actual_load": 23726.48,
+    "predicted_load": 24247.107949185014,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T10:25:00+00:00",
+    "actual_load": 23525.3,
+    "predicted_load": 23995.21700751243,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T10:45:00+00:00",
+    "actual_load": 23303.2,
+    "predicted_load": 22755.029756572112,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T11:05:00+00:00",
+    "actual_load": 23355.03,
+    "predicted_load": 23804.472418497604,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T11:25:00+00:00",
+    "actual_load": 23419.8,
+    "predicted_load": 23855.042021839592,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T11:45:00+00:00",
+    "actual_load": 23435.8,
+    "predicted_load": 23202.566770905778,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T12:05:00+00:00",
+    "actual_load": 23849.84,
+    "predicted_load": 22972.34259342571,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T12:25:00+00:00",
+    "actual_load": 24233.15,
+    "predicted_load": 24455.42144014982,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T12:45:00+00:00",
+    "actual_load": 24609.96,
+    "predicted_load": 25256.061485853752,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T13:05:00+00:00",
+    "actual_load": 25359.4,
+    "predicted_load": 25223.64897747395,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T13:25:00+00:00",
+    "actual_load": 25741.39,
+    "predicted_load": 25476.271821880295,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T13:45:00+00:00",
+    "actual_load": 25999.56,
+    "predicted_load": 26623.545454606487,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T14:05:00+00:00",
+    "actual_load": 26415.99,
+    "predicted_load": 26737.144888350682,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T14:25:00+00:00",
+    "actual_load": 26523.96,
+    "predicted_load": 26245.89635839655,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T14:45:00+00:00",
+    "actual_load": 26291.3,
+    "predicted_load": 26048.86102576898,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T15:05:00+00:00",
+    "actual_load": 26393.66,
+    "predicted_load": 26406.77978386075,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T15:25:00+00:00",
+    "actual_load": 26388.02,
+    "predicted_load": 25051.44061294682,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T15:45:00+00:00",
+    "actual_load": 26184.53,
+    "predicted_load": 26895.12366456027,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T16:05:00+00:00",
+    "actual_load": 26334.76,
+    "predicted_load": 25925.243406329693,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T16:25:00+00:00",
+    "actual_load": 25954.67,
+    "predicted_load": 26193.691316605225,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T16:45:00+00:00",
+    "actual_load": 25967.7,
+    "predicted_load": 25347.52397879925,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T17:05:00+00:00",
+    "actual_load": 25914.2,
+    "predicted_load": 26085.67572938469,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T17:25:00+00:00",
+    "actual_load": 25806.75,
+    "predicted_load": 26545.254373783886,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T17:45:00+00:00",
+    "actual_load": 26294.86,
+    "predicted_load": 25162.061744846425,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T18:05:00+00:00",
+    "actual_load": 26116.76,
+    "predicted_load": 26845.413871121124,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T18:25:00+00:00",
+    "actual_load": 26412.15,
+    "predicted_load": 26037.82189616619,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T18:45:00+00:00",
+    "actual_load": 26691.0,
+    "predicted_load": 26729.52052917139,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T19:05:00+00:00",
+    "actual_load": 27027.23,
+    "predicted_load": 26414.367394752702,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T19:25:00+00:00",
+    "actual_load": 27381.89,
+    "predicted_load": 26536.89236635764,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T19:45:00+00:00",
+    "actual_load": 28166.0,
+    "predicted_load": 27556.149940371553,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T20:05:00+00:00",
+    "actual_load": 28941.14,
+    "predicted_load": 29474.506874788505,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T20:25:00+00:00",
+    "actual_load": 29509.94,
+    "predicted_load": 29454.287639526825,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T20:45:00+00:00",
+    "actual_load": 30338.27,
+    "predicted_load": 31104.737425009476,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T21:05:00+00:00",
+    "actual_load": 31156.92,
+    "predicted_load": 31061.69744488322,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T21:25:00+00:00",
+    "actual_load": 31923.67,
+    "predicted_load": 32564.762552050714,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T21:45:00+00:00",
+    "actual_load": 33038.61,
+    "predicted_load": 33530.4642367255,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T22:05:00+00:00",
+    "actual_load": 33876.14,
+    "predicted_load": 33859.96439414033,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T22:25:00+00:00",
+    "actual_load": 34553.95,
+    "predicted_load": 34366.35787679753,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T22:45:00+00:00",
+    "actual_load": 35052.26,
+    "predicted_load": 35275.72057128554,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T23:05:00+00:00",
+    "actual_load": 35318.81,
+    "predicted_load": 35349.91125640367,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T23:25:00+00:00",
+    "actual_load": 35992.61,
+    "predicted_load": 34750.60931923549,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-27T23:45:00+00:00",
+    "actual_load": 36370.34,
+    "predicted_load": 34713.26822345465,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T00:05:00+00:00",
+    "actual_load": 36448.0,
+    "predicted_load": 37332.358671756505,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T00:25:00+00:00",
+    "actual_load": 36871.09,
+    "predicted_load": 37687.34046500812,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T00:45:00+00:00",
+    "actual_load": 37045.1,
+    "predicted_load": 37295.55635924822,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T01:05:00+00:00",
+    "actual_load": 37197.13,
+    "predicted_load": 37625.2255058409,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T01:25:00+00:00",
+    "actual_load": 37285.87,
+    "predicted_load": 37933.779562898635,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T01:45:00+00:00",
+    "actual_load": 37634.54,
+    "predicted_load": 38504.76920785349,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T02:05:00+00:00",
+    "actual_load": 37171.03,
+    "predicted_load": 37600.11104066612,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T02:25:00+00:00",
+    "actual_load": 36801.88,
+    "predicted_load": 36978.731705435486,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T02:45:00+00:00",
+    "actual_load": 36231.5,
+    "predicted_load": 35696.208098258314,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T03:05:00+00:00",
+    "actual_load": 36104.02,
+    "predicted_load": 37058.19857185158,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T03:25:00+00:00",
+    "actual_load": 35283.0,
+    "predicted_load": 35411.44672851272,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T03:45:00+00:00",
+    "actual_load": 34766.21,
+    "predicted_load": 34621.60848178595,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T04:05:00+00:00",
+    "actual_load": 34384.94,
+    "predicted_load": 34907.64362875274,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T04:25:00+00:00",
+    "actual_load": 33811.95,
+    "predicted_load": 34393.09017749773,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T04:45:00+00:00",
+    "actual_load": 33232.62,
+    "predicted_load": 32844.417486927785,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T05:05:00+00:00",
+    "actual_load": 32310.27,
+    "predicted_load": 32103.686390206727,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T05:25:00+00:00",
+    "actual_load": 31378.51,
+    "predicted_load": 30754.70585600592,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T05:45:00+00:00",
+    "actual_load": 30529.24,
+    "predicted_load": 29644.30135984584,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T06:05:00+00:00",
+    "actual_load": 29643.59,
+    "predicted_load": 29892.001796743752,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T06:25:00+00:00",
+    "actual_load": 28804.29,
+    "predicted_load": 28188.575927231523,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T06:45:00+00:00",
+    "actual_load": 28129.72,
+    "predicted_load": 28620.359891363107,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T07:05:00+00:00",
+    "actual_load": 27577.58,
+    "predicted_load": 27584.937545397355,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T07:25:00+00:00",
+    "actual_load": 27124.7,
+    "predicted_load": 26763.20623851571,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T07:45:00+00:00",
+    "actual_load": 26659.65,
+    "predicted_load": 26862.394796276574,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T08:05:00+00:00",
+    "actual_load": 26113.08,
+    "predicted_load": 26267.145026804767,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T08:25:00+00:00",
+    "actual_load": 25582.83,
+    "predicted_load": 25514.738469809607,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T08:45:00+00:00",
+    "actual_load": 25163.23,
+    "predicted_load": 25709.641969087363,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T09:05:00+00:00",
+    "actual_load": 24674.98,
+    "predicted_load": 23955.97949935965,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T09:25:00+00:00",
+    "actual_load": 24284.66,
+    "predicted_load": 23864.149885944422,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T09:45:00+00:00",
+    "actual_load": 23976.75,
+    "predicted_load": 23806.444168294252,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T10:05:00+00:00",
+    "actual_load": 23814.18,
+    "predicted_load": 23551.859910740364,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T10:25:00+00:00",
+    "actual_load": 23530.75,
+    "predicted_load": 23790.821947172255,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T10:45:00+00:00",
+    "actual_load": 23408.16,
+    "predicted_load": 23842.732928609606,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T11:05:00+00:00",
+    "actual_load": 23500.01,
+    "predicted_load": 23511.733484947938,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T11:25:00+00:00",
+    "actual_load": 23577.47,
+    "predicted_load": 24224.20179444345,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T11:45:00+00:00",
+    "actual_load": 23655.36,
+    "predicted_load": 24347.10911444826,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T12:05:00+00:00",
+    "actual_load": 24041.67,
+    "predicted_load": 23886.564982749383,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T12:25:00+00:00",
+    "actual_load": 24406.76,
+    "predicted_load": 25125.71856625205,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T12:45:00+00:00",
+    "actual_load": 24854.91,
+    "predicted_load": 24011.883154615032,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T13:05:00+00:00",
+    "actual_load": 25634.27,
+    "predicted_load": 25975.535935201864,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T13:25:00+00:00",
+    "actual_load": 26027.41,
+    "predicted_load": 26453.077503910597,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T13:45:00+00:00",
+    "actual_load": 26450.17,
+    "predicted_load": 26154.546822015025,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T14:05:00+00:00",
+    "actual_load": 26940.22,
+    "predicted_load": 26984.893983132617,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T14:25:00+00:00",
+    "actual_load": 27052.44,
+    "predicted_load": 27370.029856976238,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T14:45:00+00:00",
+    "actual_load": 26998.7,
+    "predicted_load": 26541.637410567197,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T15:05:00+00:00",
+    "actual_load": 26982.38,
+    "predicted_load": 27855.428159047508,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T15:25:00+00:00",
+    "actual_load": 26945.76,
+    "predicted_load": 27466.028772679714,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T15:45:00+00:00",
+    "actual_load": 26706.99,
+    "predicted_load": 26465.458897969696,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T16:05:00+00:00",
+    "actual_load": 26584.1,
+    "predicted_load": 26875.065778910353,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T16:25:00+00:00",
+    "actual_load": 26526.54,
+    "predicted_load": 27608.03187254568,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T16:45:00+00:00",
+    "actual_load": 26434.14,
+    "predicted_load": 26881.999049058017,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T17:05:00+00:00",
+    "actual_load": 26532.41,
+    "predicted_load": 27171.185943521985,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T17:25:00+00:00",
+    "actual_load": 26220.57,
+    "predicted_load": 26750.099199990018,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T17:45:00+00:00",
+    "actual_load": 26315.25,
+    "predicted_load": 26516.371174270873,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T18:05:00+00:00",
+    "actual_load": 26532.39,
+    "predicted_load": 25381.581603770497,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T18:25:00+00:00",
+    "actual_load": 26326.69,
+    "predicted_load": 25484.186218456678,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T18:45:00+00:00",
+    "actual_load": 26548.51,
+    "predicted_load": 27010.37816621868,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T19:05:00+00:00",
+    "actual_load": 26892.15,
+    "predicted_load": 26180.7383792752,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T19:25:00+00:00",
+    "actual_load": 27265.06,
+    "predicted_load": 26874.703693030257,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T19:45:00+00:00",
+    "actual_load": 27877.04,
+    "predicted_load": 28258.53020466523,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T20:05:00+00:00",
+    "actual_load": 28299.67,
+    "predicted_load": 27492.240519529016,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T20:25:00+00:00",
+    "actual_load": 28763.67,
+    "predicted_load": 29106.286660604575,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T20:45:00+00:00",
+    "actual_load": 28818.07,
+    "predicted_load": 29121.275271758142,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T21:05:00+00:00",
+    "actual_load": 29166.68,
+    "predicted_load": 29212.229311206458,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T21:25:00+00:00",
+    "actual_load": 29699.74,
+    "predicted_load": 29746.475552176293,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T21:45:00+00:00",
+    "actual_load": 30251.36,
+    "predicted_load": 30169.46535784761,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T22:05:00+00:00",
+    "actual_load": 30611.35,
+    "predicted_load": 29788.845730376524,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T22:25:00+00:00",
+    "actual_load": 31169.19,
+    "predicted_load": 29100.74857500139,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T22:45:00+00:00",
+    "actual_load": 31617.66,
+    "predicted_load": 31025.434795183668,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T23:05:00+00:00",
+    "actual_load": 31839.87,
+    "predicted_load": 32264.095263628933,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T23:25:00+00:00",
+    "actual_load": 32479.76,
+    "predicted_load": 32586.623491869053,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-28T23:45:00+00:00",
+    "actual_load": 32960.89,
+    "predicted_load": 32667.364725095853,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T00:05:00+00:00",
+    "actual_load": 33146.98,
+    "predicted_load": 33876.77799053585,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T00:25:00+00:00",
+    "actual_load": 33599.15,
+    "predicted_load": 33027.917136992844,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T00:45:00+00:00",
+    "actual_load": 33833.82,
+    "predicted_load": 33720.70319134042,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T01:05:00+00:00",
+    "actual_load": 34068.06,
+    "predicted_load": 34125.34770628421,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T01:25:00+00:00",
+    "actual_load": 34435.23,
+    "predicted_load": 34726.35297060197,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T01:45:00+00:00",
+    "actual_load": 34974.77,
+    "predicted_load": 35757.77360065877,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T02:05:00+00:00",
+    "actual_load": 34791.47,
+    "predicted_load": 34458.944715165315,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T02:25:00+00:00",
+    "actual_load": 34714.71,
+    "predicted_load": 35424.82889205573,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T02:45:00+00:00",
+    "actual_load": 34346.32,
+    "predicted_load": 33431.632769375385,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T03:05:00+00:00",
+    "actual_load": 34379.0,
+    "predicted_load": 34675.585090746645,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T03:25:00+00:00",
+    "actual_load": 34168.47,
+    "predicted_load": 33908.815860057526,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T03:45:00+00:00",
+    "actual_load": 33704.91,
+    "predicted_load": 32697.927832010326,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T04:05:00+00:00",
+    "actual_load": 33417.66,
+    "predicted_load": 34214.96096247923,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T04:25:00+00:00",
+    "actual_load": 32999.46,
+    "predicted_load": 33608.10566400055,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T04:45:00+00:00",
+    "actual_load": 32352.45,
+    "predicted_load": 32927.55239314819,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T05:05:00+00:00",
+    "actual_load": 31497.0,
+    "predicted_load": 31387.58262663433,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T05:25:00+00:00",
+    "actual_load": 30668.15,
+    "predicted_load": 30897.24999543307,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T05:45:00+00:00",
+    "actual_load": 29786.94,
+    "predicted_load": 29698.153603799146,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T06:05:00+00:00",
+    "actual_load": 29039.46,
+    "predicted_load": 28491.510617370473,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T06:25:00+00:00",
+    "actual_load": 28286.67,
+    "predicted_load": 28647.58836925456,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T06:45:00+00:00",
+    "actual_load": 27563.04,
+    "predicted_load": 27870.598459738238,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T07:05:00+00:00",
+    "actual_load": 27042.93,
+    "predicted_load": 27793.470250857037,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T07:25:00+00:00",
+    "actual_load": 26607.83,
+    "predicted_load": 27504.66578966146,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T07:45:00+00:00",
+    "actual_load": 26174.36,
+    "predicted_load": 26208.999421836015,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T08:05:00+00:00",
+    "actual_load": 25665.18,
+    "predicted_load": 26181.594879469194,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T08:25:00+00:00",
+    "actual_load": 25191.0,
+    "predicted_load": 25651.772192660494,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T08:45:00+00:00",
+    "actual_load": 24692.04,
+    "predicted_load": 24400.585926291533,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T09:05:00+00:00",
+    "actual_load": 24214.89,
+    "predicted_load": 24049.746020326398,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T09:25:00+00:00",
+    "actual_load": 23839.33,
+    "predicted_load": 24488.339674554252,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T09:45:00+00:00",
+    "actual_load": 23510.52,
+    "predicted_load": 23540.756621597233,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T10:05:00+00:00",
+    "actual_load": 23303.71,
+    "predicted_load": 22820.748667981665,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T10:25:00+00:00",
+    "actual_load": 23070.47,
+    "predicted_load": 23309.995178375535,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T10:45:00+00:00",
+    "actual_load": 22909.94,
+    "predicted_load": 22906.330779755594,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T11:05:00+00:00",
+    "actual_load": 22947.68,
+    "predicted_load": 23369.450845061856,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T11:25:00+00:00",
+    "actual_load": 22977.86,
+    "predicted_load": 22411.478589211252,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T11:45:00+00:00",
+    "actual_load": 23028.26,
+    "predicted_load": 22968.617290672457,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T12:05:00+00:00",
+    "actual_load": 23381.69,
+    "predicted_load": 24030.5556353364,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T12:25:00+00:00",
+    "actual_load": 23703.03,
+    "predicted_load": 23762.503815534954,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T12:45:00+00:00",
+    "actual_load": 24047.26,
+    "predicted_load": 24113.725645875562,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T13:05:00+00:00",
+    "actual_load": 24792.69,
+    "predicted_load": 24465.44516642882,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T13:25:00+00:00",
+    "actual_load": 25160.42,
+    "predicted_load": 25558.960834907844,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T13:45:00+00:00",
+    "actual_load": 25295.1,
+    "predicted_load": 23935.747738369933,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T14:05:00+00:00",
+    "actual_load": 25736.31,
+    "predicted_load": 25640.586748471844,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T14:25:00+00:00",
+    "actual_load": 25860.28,
+    "predicted_load": 26025.270384255986,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T14:45:00+00:00",
+    "actual_load": 25760.23,
+    "predicted_load": 25684.722833946977,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T15:05:00+00:00",
+    "actual_load": 25798.9,
+    "predicted_load": 25985.22761720728,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T15:25:00+00:00",
+    "actual_load": 25830.3,
+    "predicted_load": 25364.807729315176,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T15:45:00+00:00",
+    "actual_load": 25652.64,
+    "predicted_load": 26004.098938137253,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T16:05:00+00:00",
+    "actual_load": 25663.53,
+    "predicted_load": 26012.7969502294,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T16:25:00+00:00",
+    "actual_load": 25463.3,
+    "predicted_load": 25540.700596514893,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T16:45:00+00:00",
+    "actual_load": 25413.72,
+    "predicted_load": 25244.850244697758,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T17:05:00+00:00",
+    "actual_load": 25354.71,
+    "predicted_load": 25052.548941181358,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T17:25:00+00:00",
+    "actual_load": 25261.67,
+    "predicted_load": 24618.168064424968,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T17:45:00+00:00",
+    "actual_load": 25566.06,
+    "predicted_load": 25233.27911449276,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T18:05:00+00:00",
+    "actual_load": 25462.66,
+    "predicted_load": 25411.345076613612,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T18:25:00+00:00",
+    "actual_load": 25736.39,
+    "predicted_load": 26222.742326047606,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T18:45:00+00:00",
+    "actual_load": 26097.56,
+    "predicted_load": 25437.423454309745,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T19:20:00+00:00",
+    "actual_load": 26796.12,
+    "predicted_load": 26357.879061136813,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T19:40:00+00:00",
+    "actual_load": 27423.62,
+    "predicted_load": 27464.466510765396,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T20:00:00+00:00",
+    "actual_load": 28036.22,
+    "predicted_load": 27067.640948337546,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T20:20:00+00:00",
+    "actual_load": 28725.48,
+    "predicted_load": 28488.225870919145,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T20:40:00+00:00",
+    "actual_load": 29331.42,
+    "predicted_load": 29021.54611265592,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T21:00:00+00:00",
+    "actual_load": 30031.9,
+    "predicted_load": 29808.378716918556,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T21:20:00+00:00",
+    "actual_load": 30629.82,
+    "predicted_load": 30948.810757474024,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T21:40:00+00:00",
+    "actual_load": 31393.94,
+    "predicted_load": 31490.453978445847,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T22:00:00+00:00",
+    "actual_load": 32377.6,
+    "predicted_load": 31066.54767712816,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T22:20:00+00:00",
+    "actual_load": 33188.33,
+    "predicted_load": 32595.65844117223,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T22:40:00+00:00",
+    "actual_load": 33948.22,
+    "predicted_load": 34571.53275514269,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T23:00:00+00:00",
+    "actual_load": 34560.24,
+    "predicted_load": 35885.08283803279,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T23:20:00+00:00",
+    "actual_load": 35144.48,
+    "predicted_load": 34861.977440372364,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-29T23:40:00+00:00",
+    "actual_load": 35810.57,
+    "predicted_load": 36032.95819812571,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T00:00:00+00:00",
+    "actual_load": 36294.59,
+    "predicted_load": 36016.024995685766,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T00:20:00+00:00",
+    "actual_load": 36718.97,
+    "predicted_load": 36844.80355441981,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T00:40:00+00:00",
+    "actual_load": 37325.82,
+    "predicted_load": 38268.517512163984,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T01:00:00+00:00",
+    "actual_load": 37549.45,
+    "predicted_load": 36512.10489417995,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T01:20:00+00:00",
+    "actual_load": 37626.31,
+    "predicted_load": 37749.5423191715,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T01:40:00+00:00",
+    "actual_load": 37337.73,
+    "predicted_load": 37171.887091215394,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T02:00:00+00:00",
+    "actual_load": 36789.31,
+    "predicted_load": 36337.77694903764,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T02:20:00+00:00",
+    "actual_load": 36331.75,
+    "predicted_load": 37314.376129449185,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T02:40:00+00:00",
+    "actual_load": 35743.16,
+    "predicted_load": 36112.21493746335,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T03:00:00+00:00",
+    "actual_load": 35412.54,
+    "predicted_load": 35492.10059243976,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T03:20:00+00:00",
+    "actual_load": 35061.44,
+    "predicted_load": 33967.89297056821,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T03:40:00+00:00",
+    "actual_load": 34572.34,
+    "predicted_load": 34170.37502808786,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T04:00:00+00:00",
+    "actual_load": 34016.67,
+    "predicted_load": 33899.28587640752,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T04:20:00+00:00",
+    "actual_load": 33613.63,
+    "predicted_load": 33643.66258533878,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T04:40:00+00:00",
+    "actual_load": 32999.1,
+    "predicted_load": 32378.739164755203,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T05:00:00+00:00",
+    "actual_load": 32246.89,
+    "predicted_load": 31840.85949096577,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T05:20:00+00:00",
+    "actual_load": 31428.49,
+    "predicted_load": 31315.949194667475,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T05:40:00+00:00",
+    "actual_load": 30638.71,
+    "predicted_load": 30753.748116078787,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T06:00:00+00:00",
+    "actual_load": 29845.64,
+    "predicted_load": 29798.37325073516,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T06:20:00+00:00",
+    "actual_load": 29020.67,
+    "predicted_load": 29155.1432962324,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T06:40:00+00:00",
+    "actual_load": 28359.77,
+    "predicted_load": 28612.34334252135,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T07:00:00+00:00",
+    "actual_load": 27846.1,
+    "predicted_load": 27739.238704289746,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T07:20:00+00:00",
+    "actual_load": 27388.42,
+    "predicted_load": 28105.354866054764,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T07:40:00+00:00",
+    "actual_load": 26892.4,
+    "predicted_load": 26123.084922826056,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T08:00:00+00:00",
+    "actual_load": 26289.35,
+    "predicted_load": 27729.771090533086,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T08:20:00+00:00",
+    "actual_load": 25713.36,
+    "predicted_load": 25091.78049768825,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T08:40:00+00:00",
+    "actual_load": 25186.69,
+    "predicted_load": 24005.89009142333,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T09:00:00+00:00",
+    "actual_load": 24658.74,
+    "predicted_load": 24401.436782236146,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T09:20:00+00:00",
+    "actual_load": 24184.74,
+    "predicted_load": 24189.742292399314,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T09:40:00+00:00",
+    "actual_load": 23836.01,
+    "predicted_load": 24345.9308613603,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T10:00:00+00:00",
+    "actual_load": 23535.27,
+    "predicted_load": 22907.559764965717,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T10:20:00+00:00",
+    "actual_load": 23220.35,
+    "predicted_load": 23433.47749896696,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T10:40:00+00:00",
+    "actual_load": 22960.29,
+    "predicted_load": 23286.508253135915,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T11:00:00+00:00",
+    "actual_load": 22832.49,
+    "predicted_load": 22622.12446686615,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T11:20:00+00:00",
+    "actual_load": 22701.78,
+    "predicted_load": 23284.269482076932,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T11:40:00+00:00",
+    "actual_load": 22547.01,
+    "predicted_load": 22256.14417186399,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T12:00:00+00:00",
+    "actual_load": 22519.09,
+    "predicted_load": 22477.738348786588,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T12:20:00+00:00",
+    "actual_load": 22540.46,
+    "predicted_load": 22394.15840914382,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T12:40:00+00:00",
+    "actual_load": 22597.82,
+    "predicted_load": 23009.558991472168,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T13:00:00+00:00",
+    "actual_load": 22785.75,
+    "predicted_load": 23208.04029299743,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T13:20:00+00:00",
+    "actual_load": 22845.48,
+    "predicted_load": 22276.065425905894,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T13:40:00+00:00",
+    "actual_load": 22708.14,
+    "predicted_load": 22000.831383225468,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T14:00:00+00:00",
+    "actual_load": 22678.41,
+    "predicted_load": 21971.93117157654,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T14:20:00+00:00",
+    "actual_load": 22709.18,
+    "predicted_load": 22254.390061625385,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T14:40:00+00:00",
+    "actual_load": 22625.19,
+    "predicted_load": 21837.735412184527,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T15:00:00+00:00",
+    "actual_load": 22730.02,
+    "predicted_load": 23345.330278082933,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T15:20:00+00:00",
+    "actual_load": 22670.08,
+    "predicted_load": 23214.958105508205,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T15:40:00+00:00",
+    "actual_load": 22689.3,
+    "predicted_load": 21812.062567820754,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T16:00:00+00:00",
+    "actual_load": 22266.88,
+    "predicted_load": 21814.95288930586,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T16:20:00+00:00",
+    "actual_load": 22280.75,
+    "predicted_load": 23256.09572128362,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T16:40:00+00:00",
+    "actual_load": 22218.27,
+    "predicted_load": 22365.586107082338,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T17:00:00+00:00",
+    "actual_load": 22157.6,
+    "predicted_load": 21943.3809198671,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T17:20:00+00:00",
+    "actual_load": 22404.15,
+    "predicted_load": 22283.425493535087,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T17:40:00+00:00",
+    "actual_load": 22489.23,
+    "predicted_load": 22922.4203098935,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T18:00:00+00:00",
+    "actual_load": 22795.41,
+    "predicted_load": 22501.995768318237,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T18:20:00+00:00",
+    "actual_load": 23112.5,
+    "predicted_load": 23164.336483654533,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T18:40:00+00:00",
+    "actual_load": 23613.36,
+    "predicted_load": 23892.183787252732,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T19:00:00+00:00",
+    "actual_load": 24194.26,
+    "predicted_load": 23866.880835879278,
+    "temperature": 20.0,
+    "humidity": 50.0
+  },
+  {
+    "timestamp": "2025-08-30T19:20:00+00:00",
+    "actual_load": 24800.29,
+    "predicted_load": 24663.488857484357,
+    "temperature": 20.0,
+    "humidity": 50.0
+  }
+]

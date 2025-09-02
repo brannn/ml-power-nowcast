@@ -1,0 +1,23 @@
+artifact_path: file:///Users/bran/Work/model-power-nowcast/mlruns/795039477520141587/models/m-a768ae203406434797973b8009a03e9f/artifacts
+flavors:
+  python_function:
+    config:
+      device: null
+    data: data
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pytorch
+    pickle_module_name: mlflow.pytorch.pickle_module
+    python_version: 3.12.6
+  pytorch:
+    code: null
+    model_data: data
+    pytorch_version: 2.8.0
+mlflow_version: 3.3.2
+model_id: m-a768ae203406434797973b8009a03e9f
+model_size_bytes: 222209
+model_uuid: m-a768ae203406434797973b8009a03e9f
+prompts: null
+run_id: 1953166ba21347e5812733610f59d3c9
+utc_time_created: '2025-08-30 06:45:20.634697'

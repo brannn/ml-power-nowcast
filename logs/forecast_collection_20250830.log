@@ -1,0 +1,64 @@
+2025-08-30 03:43:19,737 - __main__ - INFO - Processing zone: NP15
+2025-08-30 03:43:19,737 - __main__ - INFO - Collecting forecasts for zone NP15 (Northern California (San Francisco))
+2025-08-30 03:43:19,953 - src.ingest.pull_weather_forecasts - INFO - Grid coordinates: MTR/85,105 for 37.7749, -122.4194
+2025-08-30 03:43:21,542 - src.ingest.pull_weather_forecasts - INFO - Collected 48 forecast points for zone NP15
+2025-08-30 03:43:22,732 - src.ingest.pull_weather_forecasts - INFO - Validated 48/48 forecasts
+2025-08-30 03:43:22,736 - __main__ - INFO - Successfully collected 48 forecasts for zone NP15
+2025-08-30 03:43:22,782 - __main__ - INFO - Saved forecast data: data/forecasts/raw/weather_forecasts/nws/np15/np15_forecast_20250830_034322.parquet
+2025-08-30 03:43:22,782 - __main__ - INFO -   Records: 48, Size: 6.3 KB
+2025-08-30 03:43:23,031 - botocore.credentials - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-08-30 03:43:23,965 - __main__ - INFO - Uploaded to S3: s3://ml-power-nowcast-data-1756420517/raw/weather_forecasts/nws/np15/np15_forecast_latest.parquet
+2025-08-30 03:43:23,968 - __main__ - INFO - 📊 Forecast Collection Summary:
+2025-08-30 03:43:23,968 - __main__ - INFO -   Zones attempted: 1
+2025-08-30 03:43:23,968 - __main__ - INFO -   Zones successful: 1
+2025-08-30 03:43:23,968 - __main__ - INFO -   Zones failed: 0
+2025-08-30 03:43:23,968 - __main__ - INFO -   Total forecasts: 48
+2025-08-30 03:43:23,968 - __main__ - INFO -   Max forecast horizon: 46 hours
+2025-08-30 09:43:25,565 - __main__ - INFO - Processing zone: NP15
+2025-08-30 09:43:25,566 - __main__ - INFO - Collecting forecasts for zone NP15 (Northern California (San Francisco))
+2025-08-30 09:43:25,726 - src.ingest.pull_weather_forecasts - INFO - Grid coordinates: MTR/85,105 for 37.7749, -122.4194
+2025-08-30 09:43:27,159 - src.ingest.pull_weather_forecasts - INFO - Collected 48 forecast points for zone NP15
+2025-08-30 09:43:28,220 - src.ingest.pull_weather_forecasts - INFO - Validated 48/48 forecasts
+2025-08-30 09:43:28,223 - __main__ - INFO - Successfully collected 48 forecasts for zone NP15
+2025-08-30 09:43:28,270 - __main__ - INFO - Saved forecast data: data/forecasts/raw/weather_forecasts/nws/np15/np15_forecast_20250830_094328.parquet
+2025-08-30 09:43:28,270 - __main__ - INFO -   Records: 48, Size: 6.3 KB
+2025-08-30 09:43:28,534 - botocore.credentials - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-08-30 09:43:29,562 - __main__ - INFO - Uploaded to S3: s3://ml-power-nowcast-data-1756420517/raw/weather_forecasts/nws/np15/np15_forecast_latest.parquet
+2025-08-30 09:43:29,563 - __main__ - INFO - 📊 Forecast Collection Summary:
+2025-08-30 09:43:29,563 - __main__ - INFO -   Zones attempted: 1
+2025-08-30 09:43:29,563 - __main__ - INFO -   Zones successful: 1
+2025-08-30 09:43:29,563 - __main__ - INFO -   Zones failed: 0
+2025-08-30 09:43:29,563 - __main__ - INFO -   Total forecasts: 48
+2025-08-30 09:43:29,563 - __main__ - INFO -   Max forecast horizon: 40 hours
+2025-08-30 15:43:31,085 - __main__ - INFO - Processing zone: NP15
+2025-08-30 15:43:31,085 - __main__ - INFO - Collecting forecasts for zone NP15 (Northern California (San Francisco))
+2025-08-30 15:43:31,481 - src.ingest.pull_weather_forecasts - INFO - Grid coordinates: MTR/85,105 for 37.7749, -122.4194
+2025-08-30 15:43:33,060 - src.ingest.pull_weather_forecasts - INFO - Collected 48 forecast points for zone NP15
+2025-08-30 15:43:34,134 - src.ingest.pull_weather_forecasts - INFO - Validated 48/48 forecasts
+2025-08-30 15:43:34,136 - __main__ - INFO - Successfully collected 48 forecasts for zone NP15
+2025-08-30 15:43:34,186 - __main__ - INFO - Saved forecast data: data/forecasts/raw/weather_forecasts/nws/np15/np15_forecast_20250830_154334.parquet
+2025-08-30 15:43:34,186 - __main__ - INFO -   Records: 48, Size: 6.3 KB
+2025-08-30 15:43:34,470 - botocore.credentials - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-08-30 15:43:35,419 - __main__ - INFO - Uploaded to S3: s3://ml-power-nowcast-data-1756420517/raw/weather_forecasts/nws/np15/np15_forecast_latest.parquet
+2025-08-30 15:43:35,420 - __main__ - INFO - 📊 Forecast Collection Summary:
+2025-08-30 15:43:35,420 - __main__ - INFO -   Zones attempted: 1
+2025-08-30 15:43:35,420 - __main__ - INFO -   Zones successful: 1
+2025-08-30 15:43:35,420 - __main__ - INFO -   Zones failed: 0
+2025-08-30 15:43:35,420 - __main__ - INFO -   Total forecasts: 48
+2025-08-30 15:43:35,420 - __main__ - INFO -   Max forecast horizon: 46 hours
+2025-08-30 21:56:53,506 - __main__ - INFO - Processing zone: NP15
+2025-08-30 21:56:53,506 - __main__ - INFO - Collecting forecasts for zone NP15 (Northern California (San Francisco))
+2025-08-30 21:56:53,653 - src.ingest.pull_weather_forecasts - INFO - Grid coordinates: MTR/85,105 for 37.7749, -122.4194
+2025-08-30 21:56:54,908 - src.ingest.pull_weather_forecasts - INFO - Collected 48 forecast points for zone NP15
+2025-08-30 21:56:55,997 - src.ingest.pull_weather_forecasts - INFO - Validated 48/48 forecasts
+2025-08-30 21:56:56,006 - __main__ - INFO - Successfully collected 48 forecasts for zone NP15
+2025-08-30 21:56:56,081 - __main__ - INFO - Saved forecast data: data/forecasts/raw/weather_forecasts/nws/np15/np15_forecast_20250830_215656.parquet
+2025-08-30 21:56:56,081 - __main__ - INFO -   Records: 48, Size: 6.3 KB
+2025-08-30 21:56:56,382 - botocore.credentials - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-08-30 21:56:57,247 - __main__ - INFO - Uploaded to S3: s3://ml-power-nowcast-data-1756420517/raw/weather_forecasts/nws/np15/np15_forecast_latest.parquet
+2025-08-30 21:56:57,249 - __main__ - INFO - 📊 Forecast Collection Summary:
+2025-08-30 21:56:57,249 - __main__ - INFO -   Zones attempted: 1
+2025-08-30 21:56:57,249 - __main__ - INFO -   Zones successful: 1
+2025-08-30 21:56:57,249 - __main__ - INFO -   Zones failed: 0
+2025-08-30 21:56:57,249 - __main__ - INFO -   Total forecasts: 48
+2025-08-30 21:56:57,250 - __main__ - INFO -   Max forecast horizon: 40 hours

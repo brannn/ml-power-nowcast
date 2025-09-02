@@ -1,0 +1,27 @@
+2025-08-29 15:23:15,002 - __main__ - INFO - 🚀 Starting NWS forecast collection test for NP15 zone
+2025-08-29 15:23:15,002 - __main__ - INFO - ============================================================
+2025-08-29 15:23:15,002 - __main__ - INFO - 🔍 Testing NWS grid coordinate resolution for NP15...
+2025-08-29 15:23:15,393 - src.ingest.pull_weather_forecasts - INFO - Grid coordinates: MTR/85,105 for 37.7749, -122.4194
+2025-08-29 15:23:16,399 - __main__ - INFO - ✅ Grid coordinates resolved: MTR/85,105
+2025-08-29 15:23:16,399 - __main__ - INFO -    Location: Northern California (San Francisco)
+2025-08-29 15:23:16,399 - __main__ - INFO -    Coordinates: 37.7749, -122.4194
+2025-08-29 15:23:16,400 - __main__ - INFO - 🌤️  Testing NWS hourly forecast collection for NP15...
+2025-08-29 15:23:16,805 - src.ingest.pull_weather_forecasts - INFO - Collected 24 forecast points for zone NP15
+2025-08-29 15:23:17,807 - __main__ - INFO - ✅ Collected 24 forecast points
+2025-08-29 15:23:17,808 - src.ingest.pull_weather_forecasts - INFO - Validated 24/24 forecasts
+2025-08-29 15:23:17,808 - __main__ - INFO - ✅ Validated 24 forecast points
+2025-08-29 15:23:17,811 - __main__ - INFO - 📊 Forecast data summary:
+2025-08-29 15:23:17,812 - __main__ - INFO -    Time range: 2025-08-29 15:00:00-07:00 to 2025-08-30 14:00:00-07:00
+2025-08-29 15:23:17,812 - __main__ - INFO -    Temperature range: 14.4°C to 23.3°C
+2025-08-29 15:23:17,812 - __main__ - INFO -    Humidity range: 57.0% to 89.0%
+2025-08-29 15:23:17,813 - __main__ - INFO -    Wind speed range: 11.3 to 29.0 km/h
+2025-08-29 15:23:17,813 - __main__ - INFO - 🔍 Testing forecast data quality...
+2025-08-29 15:23:17,815 - __main__ - INFO - 🎯 Data Quality Score: 100/100
+2025-08-29 15:23:17,815 - __main__ - INFO - ✅ EXCELLENT - Data quality is excellent
+2025-08-29 15:23:17,847 - __main__ - INFO - 💾 Test forecast data saved: data/test_forecasts/nws_np15_forecast_test_20250829_152317.parquet
+2025-08-29 15:23:17,847 - __main__ - INFO -    Records: 24
+2025-08-29 15:23:17,847 - __main__ - INFO -    File size: 5.9 KB
+2025-08-29 15:23:17,847 - __main__ - INFO - ============================================================
+2025-08-29 15:23:17,847 - __main__ - INFO - ✅ NWS forecast collection test completed successfully!
+2025-08-29 15:23:17,847 - __main__ - INFO -    Collected 24 forecast points for NP15 zone
+2025-08-29 15:23:17,847 - __main__ - INFO -    Ready for integration into incremental collection pipeline

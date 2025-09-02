@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/bran/Work/model-power-nowcast/mlruns/795039477520141587/c5bd46c93323444ca4e97d581655155b/artifacts
+end_time: 1756530845126
+entry_point_name: ''
+experiment_id: '795039477520141587'
+lifecycle_stage: active
+run_id: c5bd46c93323444ca4e97d581655155b
+run_name: lstm_h1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756530190467
+status: 3
+tags: []
+user_id: bran

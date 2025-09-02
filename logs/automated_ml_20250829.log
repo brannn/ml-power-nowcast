@@ -1,0 +1,673 @@
+2025-08-29 15:51:31,292 - __main__ - INFO - 🤖 Starting Automated ML Pipeline
+2025-08-29 15:51:31,292 - __main__ - INFO - ============================================================
+2025-08-29 15:51:31,292 - __main__ - INFO - Continuous model updates for production deployment
+2025-08-29 15:51:31,292 - __main__ - INFO - 🔄 Refreshing master dataset with incremental data
+2025-08-29 15:51:33,329 - __main__ - INFO - ✅ Master dataset refreshed successfully
+2025-08-29 15:51:33,329 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 15:51:33,330 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 15:51:33,330 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 15:51:33,330 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 15:51:33,330 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 15:51:33,330 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 15:51:34,281 - src.features.unified_feature_pipeline - INFO - Loaded power data: 2,967,536 records, 1 zones
+2025-08-29 15:51:34,284 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-29 22:40:00+00:00
+2025-08-29 15:51:34,285 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 15:51:34,289 - src.features.unified_feature_pipeline - INFO - Loaded forecast weather data: 48 records, 1 zones
+2025-08-29 15:51:34,289 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 15:51:34,314 - src.features.unified_feature_pipeline - INFO - Merging forecast weather data
+2025-08-29 15:51:34,314 - src.features.build_forecast_features - INFO - Building comprehensive forecast features
+2025-08-29 15:51:34,314 - src.features.build_forecast_features - INFO - Input data: 48 records, 1 zones
+2025-08-29 15:51:34,314 - src.features.build_forecast_features - INFO - Creating core forecast features
+2025-08-29 15:51:34,317 - src.features.build_forecast_features - INFO - Created core forecast features for 2 horizons
+2025-08-29 15:51:34,317 - src.features.build_forecast_features - INFO - Creating weather change features
+2025-08-29 15:51:34,319 - src.features.build_forecast_features - INFO - Created weather change features
+2025-08-29 15:51:34,319 - src.features.build_forecast_features - INFO - Creating extreme weather features
+2025-08-29 15:51:34,320 - src.features.build_forecast_features - INFO - Created extreme weather features
+2025-08-29 15:51:34,320 - src.features.build_forecast_features - INFO - Creating forecast uncertainty features
+2025-08-29 15:51:34,321 - src.features.build_forecast_features - INFO - Created forecast uncertainty features
+2025-08-29 15:51:34,321 - src.features.build_forecast_features - INFO - Created 20 forecast features
+2025-08-29 15:51:34,691 - src.features.unified_feature_pipeline - INFO - After forecast merge: 2967536 records
+2025-08-29 15:51:35,107 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 2967536 records, 26 columns
+2025-08-29 15:51:35,107 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 15:51:35,444 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 15:51:35,464 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 15:51:37,038 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 15:51:37,081 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 15:51:37,180 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 15:51:37,199 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 2967536 records, 40 features
+2025-08-29 15:51:37,219 - __main__ - INFO - 🔍 Validating training data quality
+2025-08-29 15:51:37,257 - __main__ - INFO - ✅ Data freshness: -1 days old
+2025-08-29 15:51:37,288 - __main__ - INFO - ✅ Load data range: 8.5 - 21575.5 MW
+2025-08-29 15:51:37,288 - __main__ - INFO - ✅ Training data validation passed
+2025-08-29 15:51:37,289 - __main__ - INFO - 🤖 Training production models
+2025-08-29 15:51:37,323 - __main__ - ERROR - ❌ Model training failed: Invalid comparison between dtype=datetime64[ns, UTC] and datetime
+2025-08-29 15:51:37,323 - __main__ - ERROR - ❌ No models trained successfully
+2025-08-29 15:52:03,884 - __main__ - INFO - 🤖 Starting Automated ML Pipeline
+2025-08-29 15:52:03,884 - __main__ - INFO - ============================================================
+2025-08-29 15:52:03,884 - __main__ - INFO - Continuous model updates for production deployment
+2025-08-29 15:52:03,884 - __main__ - INFO - 🔄 Refreshing master dataset with incremental data
+2025-08-29 15:52:05,771 - __main__ - INFO - ✅ Master dataset refreshed successfully
+2025-08-29 15:52:05,771 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 15:52:05,771 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 15:52:05,771 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 15:52:05,771 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 15:52:05,772 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 15:52:05,772 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 15:52:06,701 - src.features.unified_feature_pipeline - INFO - Loaded power data: 2,967,536 records, 1 zones
+2025-08-29 15:52:06,704 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-29 22:40:00+00:00
+2025-08-29 15:52:06,704 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 15:52:06,708 - src.features.unified_feature_pipeline - INFO - Loaded forecast weather data: 48 records, 1 zones
+2025-08-29 15:52:06,708 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 15:52:06,732 - src.features.unified_feature_pipeline - INFO - Merging forecast weather data
+2025-08-29 15:52:06,732 - src.features.build_forecast_features - INFO - Building comprehensive forecast features
+2025-08-29 15:52:06,732 - src.features.build_forecast_features - INFO - Input data: 48 records, 1 zones
+2025-08-29 15:52:06,732 - src.features.build_forecast_features - INFO - Creating core forecast features
+2025-08-29 15:52:06,735 - src.features.build_forecast_features - INFO - Created core forecast features for 2 horizons
+2025-08-29 15:52:06,735 - src.features.build_forecast_features - INFO - Creating weather change features
+2025-08-29 15:52:06,735 - src.features.build_forecast_features - INFO - Created weather change features
+2025-08-29 15:52:06,736 - src.features.build_forecast_features - INFO - Creating extreme weather features
+2025-08-29 15:52:06,736 - src.features.build_forecast_features - INFO - Created extreme weather features
+2025-08-29 15:52:06,736 - src.features.build_forecast_features - INFO - Creating forecast uncertainty features
+2025-08-29 15:52:06,737 - src.features.build_forecast_features - INFO - Created forecast uncertainty features
+2025-08-29 15:52:06,737 - src.features.build_forecast_features - INFO - Created 20 forecast features
+2025-08-29 15:52:07,099 - src.features.unified_feature_pipeline - INFO - After forecast merge: 2967536 records
+2025-08-29 15:52:07,506 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 2967536 records, 26 columns
+2025-08-29 15:52:07,506 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 15:52:07,847 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 15:52:07,865 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 15:52:09,596 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 15:52:09,638 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 15:52:09,731 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 15:52:09,749 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 2967536 records, 40 features
+2025-08-29 15:52:09,768 - __main__ - INFO - 🔍 Validating training data quality
+2025-08-29 15:52:09,805 - __main__ - INFO - ✅ Data freshness: -1 days old
+2025-08-29 15:52:09,836 - __main__ - INFO - ✅ Load data range: 8.5 - 21575.5 MW
+2025-08-29 15:52:09,836 - __main__ - INFO - ✅ Training data validation passed
+2025-08-29 15:52:09,837 - __main__ - INFO - 🤖 Training production models
+2025-08-29 15:52:09,900 - __main__ - INFO - Using recent data for training: 310,956 records
+2025-08-29 15:52:09,900 - __main__ - INFO - Training baseline model...
+2025-08-29 15:52:09,900 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 15:52:09,900 - src.models.enhanced_xgboost - INFO - Selected 13 features from 13 candidates
+2025-08-29 15:52:09,907 - src.models.enhanced_xgboost - INFO - Training data prepared: 310956 samples, 13 features
+2025-08-29 15:52:09,908 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 15:52:10,796 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 15:52:10,796 - src.models.enhanced_xgboost - INFO -   MAE: 1961.52
+2025-08-29 15:52:10,797 - src.models.enhanced_xgboost - INFO -   RMSE: 3038.19
+2025-08-29 15:52:10,797 - src.models.enhanced_xgboost - INFO -   R²: 0.4041
+2025-08-29 15:52:10,797 - src.models.enhanced_xgboost - INFO -   MAPE: 687.62%
+2025-08-29 15:52:10,931 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 15:52:10,932 - src.models.enhanced_xgboost - INFO -   MAE: 1391.95
+2025-08-29 15:52:10,932 - src.models.enhanced_xgboost - INFO -   RMSE: 2288.63
+2025-08-29 15:52:10,932 - src.models.enhanced_xgboost - INFO -   R²: 0.5160
+2025-08-29 15:52:10,932 - src.models.enhanced_xgboost - INFO -   MAPE: 535.54%
+2025-08-29 15:52:10,932 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 15:52:10,933 - __main__ - INFO - ✅ Baseline model trained - MAPE: 687.62%
+2025-08-29 15:52:10,933 - __main__ - INFO - Training enhanced model...
+2025-08-29 15:52:10,933 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 15:52:10,933 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_12h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 15:52:10,933 - src.models.enhanced_xgboost - INFO - Selected 19 features from 30 candidates
+2025-08-29 15:52:10,945 - src.models.enhanced_xgboost - INFO - Training data prepared: 310956 samples, 19 features
+2025-08-29 15:52:10,945 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 15:52:12,953 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 15:52:12,954 - src.models.enhanced_xgboost - INFO -   MAE: 2052.57
+2025-08-29 15:52:12,954 - src.models.enhanced_xgboost - INFO -   RMSE: 3250.54
+2025-08-29 15:52:12,954 - src.models.enhanced_xgboost - INFO -   R²: 0.3179
+2025-08-29 15:52:12,954 - src.models.enhanced_xgboost - INFO -   MAPE: 670.95%
+2025-08-29 15:52:13,256 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 15:52:13,256 - src.models.enhanced_xgboost - INFO -   MAE: 1256.37
+2025-08-29 15:52:13,256 - src.models.enhanced_xgboost - INFO -   RMSE: 2083.91
+2025-08-29 15:52:13,256 - src.models.enhanced_xgboost - INFO -   R²: 0.5987
+2025-08-29 15:52:13,256 - src.models.enhanced_xgboost - INFO -   MAPE: 475.79%
+2025-08-29 15:52:13,257 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 15:52:13,258 - __main__ - INFO - ✅ Enhanced model trained - MAPE: 670.95%
+2025-08-29 15:52:13,258 - __main__ - INFO - 🎯 Enhanced model improvement: 2.42%
+2025-08-29 15:52:13,263 - __main__ - INFO - 🚀 Deploying models for production
+2025-08-29 15:52:13,267 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/baseline_model_current.joblib
+2025-08-29 15:52:13,270 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_155213/baseline_model.joblib
+2025-08-29 15:52:13,270 - __main__ - INFO - ✅ Baseline model deployed: data/production_models/baseline_model_current.joblib
+2025-08-29 15:52:13,278 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/enhanced_model_current.joblib
+2025-08-29 15:52:13,285 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_155213/enhanced_model.joblib
+2025-08-29 15:52:13,285 - __main__ - INFO - ✅ Enhanced model deployed: data/production_models/enhanced_model_current.joblib
+2025-08-29 15:52:13,286 - __main__ - INFO - ✅ Model deployment completed successfully
+2025-08-29 15:52:13,287 - __main__ - INFO - ============================================================
+2025-08-29 15:52:13,287 - __main__ - INFO - ✅ Automated ML Pipeline completed successfully!
+2025-08-29 15:52:13,287 - __main__ - INFO -    Fresh models deployed for production use
+2025-08-29 15:52:13,287 - __main__ - INFO -    Dashboard can now serve updated predictions
+2025-08-29 15:52:21,033 - __main__ - INFO - 🔄 Refreshing master dataset with incremental data
+2025-08-29 15:52:22,801 - __main__ - INFO - ✅ Master dataset refreshed successfully
+2025-08-29 15:52:22,801 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 15:52:22,801 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 15:52:22,801 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 15:52:22,801 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 15:52:22,801 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 15:52:22,801 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 15:52:23,750 - src.features.unified_feature_pipeline - INFO - Loaded power data: 2,967,536 records, 1 zones
+2025-08-29 15:52:23,753 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-29 22:40:00+00:00
+2025-08-29 15:52:23,753 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 15:52:23,756 - src.features.unified_feature_pipeline - INFO - Loaded forecast weather data: 48 records, 1 zones
+2025-08-29 15:52:23,756 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 15:52:23,780 - src.features.unified_feature_pipeline - INFO - Merging forecast weather data
+2025-08-29 15:52:23,780 - src.features.build_forecast_features - INFO - Building comprehensive forecast features
+2025-08-29 15:52:23,780 - src.features.build_forecast_features - INFO - Input data: 48 records, 1 zones
+2025-08-29 15:52:23,780 - src.features.build_forecast_features - INFO - Creating core forecast features
+2025-08-29 15:52:23,783 - src.features.build_forecast_features - INFO - Created core forecast features for 2 horizons
+2025-08-29 15:52:23,783 - src.features.build_forecast_features - INFO - Creating weather change features
+2025-08-29 15:52:23,783 - src.features.build_forecast_features - INFO - Created weather change features
+2025-08-29 15:52:23,783 - src.features.build_forecast_features - INFO - Creating extreme weather features
+2025-08-29 15:52:23,784 - src.features.build_forecast_features - INFO - Created extreme weather features
+2025-08-29 15:52:23,784 - src.features.build_forecast_features - INFO - Creating forecast uncertainty features
+2025-08-29 15:52:23,785 - src.features.build_forecast_features - INFO - Created forecast uncertainty features
+2025-08-29 15:52:23,785 - src.features.build_forecast_features - INFO - Created 20 forecast features
+2025-08-29 15:52:24,120 - src.features.unified_feature_pipeline - INFO - After forecast merge: 2967536 records
+2025-08-29 15:52:24,504 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 2967536 records, 26 columns
+2025-08-29 15:52:24,504 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 15:52:24,841 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 15:52:24,859 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 15:52:26,446 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 15:52:26,491 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 15:52:26,582 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 15:52:26,601 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 2967536 records, 40 features
+2025-08-29 15:52:26,622 - __main__ - INFO - 🔍 Validating training data quality
+2025-08-29 15:52:26,657 - __main__ - INFO - ✅ Data freshness: -1 days old
+2025-08-29 15:52:26,688 - __main__ - INFO - ✅ Load data range: 8.5 - 21575.5 MW
+2025-08-29 15:52:26,688 - __main__ - INFO - ✅ Training data validation passed
+2025-08-29 15:52:26,688 - __main__ - INFO - 🤖 Training production models
+2025-08-29 15:52:26,749 - __main__ - INFO - Using recent data for training: 310,956 records
+2025-08-29 15:52:26,749 - __main__ - INFO - Training baseline model...
+2025-08-29 15:52:26,749 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 15:52:26,749 - src.models.enhanced_xgboost - INFO - Selected 13 features from 13 candidates
+2025-08-29 15:52:26,756 - src.models.enhanced_xgboost - INFO - Training data prepared: 310956 samples, 13 features
+2025-08-29 15:52:26,756 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 15:52:27,694 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 15:52:27,694 - src.models.enhanced_xgboost - INFO -   MAE: 1961.52
+2025-08-29 15:52:27,694 - src.models.enhanced_xgboost - INFO -   RMSE: 3038.19
+2025-08-29 15:52:27,694 - src.models.enhanced_xgboost - INFO -   R²: 0.4041
+2025-08-29 15:52:27,694 - src.models.enhanced_xgboost - INFO -   MAPE: 687.62%
+2025-08-29 15:52:27,824 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 15:52:27,824 - src.models.enhanced_xgboost - INFO -   MAE: 1391.95
+2025-08-29 15:52:27,824 - src.models.enhanced_xgboost - INFO -   RMSE: 2288.63
+2025-08-29 15:52:27,824 - src.models.enhanced_xgboost - INFO -   R²: 0.5160
+2025-08-29 15:52:27,824 - src.models.enhanced_xgboost - INFO -   MAPE: 535.54%
+2025-08-29 15:52:27,825 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 15:52:27,826 - __main__ - INFO - ✅ Baseline model trained - MAPE: 687.62%
+2025-08-29 15:52:27,826 - __main__ - INFO - Training enhanced model...
+2025-08-29 15:52:27,826 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 15:52:27,826 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_12h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 15:52:27,826 - src.models.enhanced_xgboost - INFO - Selected 19 features from 30 candidates
+2025-08-29 15:52:27,837 - src.models.enhanced_xgboost - INFO - Training data prepared: 310956 samples, 19 features
+2025-08-29 15:52:27,837 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 15:52:29,860 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 15:52:29,860 - src.models.enhanced_xgboost - INFO -   MAE: 2052.57
+2025-08-29 15:52:29,860 - src.models.enhanced_xgboost - INFO -   RMSE: 3250.54
+2025-08-29 15:52:29,860 - src.models.enhanced_xgboost - INFO -   R²: 0.3179
+2025-08-29 15:52:29,860 - src.models.enhanced_xgboost - INFO -   MAPE: 670.95%
+2025-08-29 15:52:30,166 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 15:52:30,166 - src.models.enhanced_xgboost - INFO -   MAE: 1256.37
+2025-08-29 15:52:30,166 - src.models.enhanced_xgboost - INFO -   RMSE: 2083.91
+2025-08-29 15:52:30,166 - src.models.enhanced_xgboost - INFO -   R²: 0.5987
+2025-08-29 15:52:30,166 - src.models.enhanced_xgboost - INFO -   MAPE: 475.79%
+2025-08-29 15:52:30,166 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 15:52:30,168 - __main__ - INFO - ✅ Enhanced model trained - MAPE: 670.95%
+2025-08-29 15:52:30,168 - __main__ - INFO - 🎯 Enhanced model improvement: 2.42%
+2025-08-29 15:52:30,172 - __main__ - INFO - 🚀 Deploying models for production
+2025-08-29 15:52:30,176 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/baseline_model_current.joblib
+2025-08-29 15:52:30,179 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_155230/baseline_model.joblib
+2025-08-29 15:52:30,179 - __main__ - INFO - ✅ Baseline model deployed: data/production_models/baseline_model_current.joblib
+2025-08-29 15:52:30,187 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/enhanced_model_current.joblib
+2025-08-29 15:52:30,195 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_155230/enhanced_model.joblib
+2025-08-29 15:52:30,195 - __main__ - INFO - ✅ Enhanced model deployed: data/production_models/enhanced_model_current.joblib
+2025-08-29 15:52:30,195 - __main__ - INFO - ✅ Model deployment completed successfully
+2025-08-29 20:00:07,754 - __main__ - INFO - 🔄 Refreshing master dataset with incremental data
+2025-08-29 20:00:14,527 - __main__ - INFO - ✅ Master dataset refreshed successfully
+2025-08-29 20:00:14,527 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 20:00:14,528 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 20:00:14,528 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 20:00:14,528 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 20:00:14,528 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 20:00:14,528 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 20:00:17,840 - src.features.unified_feature_pipeline - INFO - Loaded power data: 2,967,583 records, 1 zones
+2025-08-29 20:00:17,851 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-30 02:35:00+00:00
+2025-08-29 20:00:17,853 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 20:00:17,864 - src.features.unified_feature_pipeline - INFO - Loaded forecast weather data: 48 records, 1 zones
+2025-08-29 20:00:17,864 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 20:00:17,918 - src.features.unified_feature_pipeline - INFO - Merging forecast weather data
+2025-08-29 20:00:17,918 - src.features.build_forecast_features - INFO - Building comprehensive forecast features
+2025-08-29 20:00:17,918 - src.features.build_forecast_features - INFO - Input data: 48 records, 1 zones
+2025-08-29 20:00:17,918 - src.features.build_forecast_features - INFO - Creating core forecast features
+2025-08-29 20:00:17,928 - src.features.build_forecast_features - INFO - Created core forecast features for 2 horizons
+2025-08-29 20:00:17,928 - src.features.build_forecast_features - INFO - Creating weather change features
+2025-08-29 20:00:17,933 - src.features.build_forecast_features - INFO - Created weather change features
+2025-08-29 20:00:17,933 - src.features.build_forecast_features - INFO - Creating extreme weather features
+2025-08-29 20:00:17,937 - src.features.build_forecast_features - INFO - Created extreme weather features
+2025-08-29 20:00:17,937 - src.features.build_forecast_features - INFO - Creating forecast uncertainty features
+2025-08-29 20:00:17,940 - src.features.build_forecast_features - INFO - Created forecast uncertainty features
+2025-08-29 20:00:17,940 - src.features.build_forecast_features - INFO - Created 20 forecast features
+2025-08-29 20:00:19,027 - src.features.unified_feature_pipeline - INFO - After forecast merge: 2967583 records
+2025-08-29 20:00:20,856 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 2967583 records, 26 columns
+2025-08-29 20:00:20,857 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 20:00:22,053 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 20:00:22,127 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 20:00:28,111 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 20:00:28,329 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 20:00:28,824 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 20:00:28,906 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 2967583 records, 40 features
+2025-08-29 20:00:28,975 - __main__ - INFO - 🔍 Validating training data quality
+2025-08-29 20:00:29,167 - __main__ - INFO - ✅ Data freshness: -1 days old
+2025-08-29 20:00:29,247 - __main__ - INFO - ✅ Load data range: 8.5 - 21575.5 MW
+2025-08-29 20:00:29,247 - __main__ - INFO - ✅ Training data validation passed
+2025-08-29 20:00:29,249 - __main__ - INFO - 🤖 Training production models
+2025-08-29 20:00:29,494 - __main__ - INFO - Using recent data for training: 310,703 records
+2025-08-29 20:00:29,494 - __main__ - INFO - Training baseline model...
+2025-08-29 20:00:29,494 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 20:00:29,495 - src.models.enhanced_xgboost - INFO - Selected 13 features from 13 candidates
+2025-08-29 20:00:29,520 - src.models.enhanced_xgboost - INFO - Training data prepared: 310703 samples, 13 features
+2025-08-29 20:00:29,521 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 20:00:31,943 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 20:00:31,943 - src.models.enhanced_xgboost - INFO -   MAE: 1906.21
+2025-08-29 20:00:31,943 - src.models.enhanced_xgboost - INFO -   RMSE: 3050.78
+2025-08-29 20:00:31,943 - src.models.enhanced_xgboost - INFO -   R²: 0.3988
+2025-08-29 20:00:31,943 - src.models.enhanced_xgboost - INFO -   MAPE: 630.56%
+2025-08-29 20:00:32,371 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 20:00:32,371 - src.models.enhanced_xgboost - INFO -   MAE: 1389.41
+2025-08-29 20:00:32,371 - src.models.enhanced_xgboost - INFO -   RMSE: 2284.67
+2025-08-29 20:00:32,371 - src.models.enhanced_xgboost - INFO -   R²: 0.5179
+2025-08-29 20:00:32,371 - src.models.enhanced_xgboost - INFO -   MAPE: 532.91%
+2025-08-29 20:00:32,371 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 20:00:32,375 - __main__ - INFO - ✅ Baseline model trained - MAPE: 630.56%
+2025-08-29 20:00:32,375 - __main__ - INFO - Training enhanced model...
+2025-08-29 20:00:32,375 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 20:00:32,376 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_12h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 20:00:32,376 - src.models.enhanced_xgboost - INFO - Selected 19 features from 30 candidates
+2025-08-29 20:00:32,411 - src.models.enhanced_xgboost - INFO - Training data prepared: 310703 samples, 19 features
+2025-08-29 20:00:32,412 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 20:00:38,388 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 20:00:38,388 - src.models.enhanced_xgboost - INFO -   MAE: 1941.97
+2025-08-29 20:00:38,388 - src.models.enhanced_xgboost - INFO -   RMSE: 3166.34
+2025-08-29 20:00:38,388 - src.models.enhanced_xgboost - INFO -   R²: 0.3524
+2025-08-29 20:00:38,388 - src.models.enhanced_xgboost - INFO -   MAPE: 616.63%
+2025-08-29 20:00:40,039 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 20:00:40,039 - src.models.enhanced_xgboost - INFO -   MAE: 1258.29
+2025-08-29 20:00:40,039 - src.models.enhanced_xgboost - INFO -   RMSE: 2088.05
+2025-08-29 20:00:40,040 - src.models.enhanced_xgboost - INFO -   R²: 0.5973
+2025-08-29 20:00:40,040 - src.models.enhanced_xgboost - INFO -   MAPE: 476.08%
+2025-08-29 20:00:40,040 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 20:00:40,044 - __main__ - INFO - ✅ Enhanced model trained - MAPE: 616.63%
+2025-08-29 20:00:40,044 - __main__ - INFO - 🎯 Enhanced model improvement: 2.21%
+2025-08-29 20:00:40,060 - __main__ - INFO - 🚀 Deploying models for production
+2025-08-29 20:00:40,069 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/baseline_model_current.joblib
+2025-08-29 20:00:40,075 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_200040/baseline_model.joblib
+2025-08-29 20:00:40,075 - __main__ - INFO - ✅ Baseline model deployed: data/production_models/baseline_model_current.joblib
+2025-08-29 20:00:40,097 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/enhanced_model_current.joblib
+2025-08-29 20:00:40,118 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_200040/enhanced_model.joblib
+2025-08-29 20:00:40,118 - __main__ - INFO - ✅ Enhanced model deployed: data/production_models/enhanced_model_current.joblib
+2025-08-29 20:00:40,120 - __main__ - INFO - ✅ Model deployment completed successfully
+2025-08-29 20:00:40,120 - __main__ - INFO - 🧹 Cleaning up model backups older than 7 days
+2025-08-29 20:00:40,122 - __main__ - INFO - ✅ No old backups to clean up
+2025-08-29 21:08:21,761 - __main__ - INFO - 🤖 Starting Automated ML Pipeline
+2025-08-29 21:08:21,761 - __main__ - INFO - ============================================================
+2025-08-29 21:08:21,761 - __main__ - INFO - Continuous model updates for production deployment
+2025-08-29 21:08:21,761 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 21:08:21,761 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 21:08:21,761 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 21:08:21,761 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 21:08:21,761 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 21:08:21,761 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 21:08:22,645 - src.features.unified_feature_pipeline - INFO - Loaded power data: 0 records, 0 zones
+2025-08-29 21:08:22,645 - src.features.unified_feature_pipeline - INFO - Date range: NaT to NaT
+2025-08-29 21:08:22,646 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 21:08:22,646 - src.features.unified_feature_pipeline - WARNING - No forecast data files found
+2025-08-29 21:08:22,646 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 21:08:22,646 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 0 records, 6 columns
+2025-08-29 21:08:22,646 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 21:08:22,648 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 21:08:22,648 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 21:08:22,648 - __main__ - ERROR - ❌ Automated ML Pipeline failed: Failed to build unified features: No objects to concatenate
+2025-08-29 21:08:45,512 - __main__ - INFO - 🤖 Starting Automated ML Pipeline
+2025-08-29 21:08:45,512 - __main__ - INFO - ============================================================
+2025-08-29 21:08:45,512 - __main__ - INFO - Continuous model updates for production deployment
+2025-08-29 21:08:45,512 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 21:08:45,512 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 21:08:45,512 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 21:08:45,512 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 21:08:45,512 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 21:08:45,512 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 21:08:46,892 - src.features.unified_feature_pipeline - INFO - Loaded power data: 524,633 records, 1 zones
+2025-08-29 21:08:46,893 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-30 03:35:00+00:00
+2025-08-29 21:08:46,894 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 21:08:46,894 - src.features.unified_feature_pipeline - WARNING - No forecast data files found
+2025-08-29 21:08:46,894 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 21:08:46,949 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 524633 records, 6 columns
+2025-08-29 21:08:46,949 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 21:08:47,004 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 21:08:47,006 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 21:08:47,154 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 21:08:47,162 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 21:08:47,169 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 21:08:47,175 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 524633 records, 20 features
+2025-08-29 21:08:47,177 - __main__ - INFO - 🔍 Validating training data quality
+2025-08-29 21:08:47,181 - __main__ - INFO - ✅ Data freshness: -1 days old
+2025-08-29 21:08:47,186 - __main__ - INFO - ✅ Load data range: 9925.4 - 51725.4 MW
+2025-08-29 21:08:47,186 - __main__ - INFO - ✅ Training data validation passed
+2025-08-29 21:08:47,186 - __main__ - INFO - 🤖 Training production models
+2025-08-29 21:08:47,194 - __main__ - INFO - Using recent data for training: 51,857 records
+2025-08-29 21:08:47,194 - __main__ - INFO - Training baseline model...
+2025-08-29 21:08:47,194 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 21:08:47,194 - src.models.enhanced_xgboost - INFO - Selected 13 features from 13 candidates
+2025-08-29 21:08:47,196 - src.models.enhanced_xgboost - INFO - Training data prepared: 51857 samples, 13 features
+2025-08-29 21:08:47,196 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 21:08:47,681 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 21:08:47,681 - src.models.enhanced_xgboost - INFO -   MAE: 208.01
+2025-08-29 21:08:47,681 - src.models.enhanced_xgboost - INFO -   RMSE: 418.98
+2025-08-29 21:08:47,681 - src.models.enhanced_xgboost - INFO -   R²: 0.9932
+2025-08-29 21:08:47,681 - src.models.enhanced_xgboost - INFO -   MAPE: 0.62%
+2025-08-29 21:08:47,706 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 21:08:47,706 - src.models.enhanced_xgboost - INFO -   MAE: 49.89
+2025-08-29 21:08:47,706 - src.models.enhanced_xgboost - INFO -   RMSE: 77.84
+2025-08-29 21:08:47,706 - src.models.enhanced_xgboost - INFO -   R²: 0.9997
+2025-08-29 21:08:47,706 - src.models.enhanced_xgboost - INFO -   MAPE: 0.23%
+2025-08-29 21:08:47,706 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 21:08:47,706 - __main__ - INFO - ✅ Baseline model trained - MAPE: 0.62%
+2025-08-29 21:08:47,706 - __main__ - INFO - Training enhanced model...
+2025-08-29 21:08:47,706 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 21:08:47,707 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 21:08:47,707 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 21:08:47,708 - src.models.enhanced_xgboost - INFO - Training data prepared: 51857 samples, 13 features
+2025-08-29 21:08:47,708 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 21:08:48,862 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 21:08:48,862 - src.models.enhanced_xgboost - INFO -   MAE: 173.60
+2025-08-29 21:08:48,862 - src.models.enhanced_xgboost - INFO -   RMSE: 394.90
+2025-08-29 21:08:48,862 - src.models.enhanced_xgboost - INFO -   R²: 0.9939
+2025-08-29 21:08:48,862 - src.models.enhanced_xgboost - INFO -   MAPE: 0.51%
+2025-08-29 21:08:48,921 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 21:08:48,921 - src.models.enhanced_xgboost - INFO -   MAE: 39.66
+2025-08-29 21:08:48,921 - src.models.enhanced_xgboost - INFO -   RMSE: 61.40
+2025-08-29 21:08:48,921 - src.models.enhanced_xgboost - INFO -   R²: 0.9998
+2025-08-29 21:08:48,921 - src.models.enhanced_xgboost - INFO -   MAPE: 0.18%
+2025-08-29 21:08:48,921 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 21:08:48,921 - __main__ - INFO - ✅ Enhanced model trained - MAPE: 0.51%
+2025-08-29 21:08:48,921 - __main__ - INFO - 🎯 Enhanced model improvement: 17.65%
+2025-08-29 21:08:48,923 - __main__ - INFO - 🚀 Deploying models for production
+2025-08-29 21:08:48,926 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/baseline_model_current.joblib
+2025-08-29 21:08:48,930 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_210848/baseline_model.joblib
+2025-08-29 21:08:48,930 - __main__ - INFO - ✅ Baseline model deployed: data/production_models/baseline_model_current.joblib
+2025-08-29 21:08:48,940 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/enhanced_model_current.joblib
+2025-08-29 21:08:48,948 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_210848/enhanced_model.joblib
+2025-08-29 21:08:48,948 - __main__ - INFO - ✅ Enhanced model deployed: data/production_models/enhanced_model_current.joblib
+2025-08-29 21:08:48,949 - __main__ - INFO - ✅ Model deployment completed successfully
+2025-08-29 21:08:48,949 - __main__ - INFO - 📊 Generating dashboard data
+2025-08-29 21:08:48,949 - __main__ - INFO - Generating historical performance data...
+2025-08-29 21:08:48,957 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 21:08:48,957 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 21:08:48,957 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 21:08:48,957 - src.models.enhanced_xgboost - INFO - Training data prepared: 349 samples, 13 features
+2025-08-29 21:08:48,966 - __main__ - INFO - ✅ Generated 349 historical data points
+2025-08-29 21:08:48,966 - __main__ - INFO - Generating model performance metrics...
+2025-08-29 21:08:48,966 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 21:08:48,967 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 21:08:48,967 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 21:08:48,967 - src.models.enhanced_xgboost - INFO - Training data prepared: 2090 samples, 13 features
+2025-08-29 21:08:48,975 - __main__ - INFO - ✅ Model metrics - MAPE: 0.60%, R²: 0.993, Accuracy: 98.9%
+2025-08-29 21:08:48,975 - __main__ - INFO - ✅ Dashboard data generation completed
+2025-08-29 21:08:48,976 - __main__ - INFO - ============================================================
+2025-08-29 21:08:48,976 - __main__ - INFO - ✅ Automated ML Pipeline completed successfully!
+2025-08-29 21:08:48,976 - __main__ - INFO -    Fresh models deployed for production use
+2025-08-29 21:08:48,976 - __main__ - INFO -    Dashboard can now serve updated predictions
+2025-08-29 21:11:09,308 - __main__ - INFO - 🤖 Starting Automated ML Pipeline
+2025-08-29 21:11:09,308 - __main__ - INFO - ============================================================
+2025-08-29 21:11:09,308 - __main__ - INFO - Continuous model updates for production deployment
+2025-08-29 21:11:09,308 - __main__ - INFO - 🔄 Refreshing master dataset with incremental data
+2025-08-29 21:11:15,735 - __main__ - INFO - ✅ Master dataset refreshed successfully
+2025-08-29 21:11:15,736 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 21:11:15,737 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 21:11:15,737 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 21:11:15,737 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 21:11:15,737 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 21:11:15,737 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 21:11:18,014 - src.features.unified_feature_pipeline - INFO - Loaded power data: 524,639 records, 1 zones
+2025-08-29 21:11:18,017 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-30 04:05:00+00:00
+2025-08-29 21:11:18,018 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 21:11:18,019 - src.features.unified_feature_pipeline - WARNING - No forecast data files found
+2025-08-29 21:11:18,019 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 21:11:18,174 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 524639 records, 6 columns
+2025-08-29 21:11:18,174 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 21:11:18,342 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 21:11:18,349 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 21:11:18,688 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 21:11:18,708 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 21:11:18,726 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 21:11:18,736 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 524639 records, 20 features
+2025-08-29 21:11:18,743 - __main__ - INFO - 🔍 Validating training data quality
+2025-08-29 21:11:18,752 - __main__ - INFO - ✅ Data freshness: -1 days old
+2025-08-29 21:11:18,762 - __main__ - INFO - ✅ Load data range: 9925.4 - 51725.4 MW
+2025-08-29 21:11:18,762 - __main__ - INFO - ✅ Training data validation passed
+2025-08-29 21:11:18,762 - __main__ - INFO - 🤖 Training production models
+2025-08-29 21:11:18,781 - __main__ - INFO - Using recent data for training: 51,862 records
+2025-08-29 21:11:18,781 - __main__ - INFO - Training baseline model...
+2025-08-29 21:11:18,781 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 21:11:18,781 - src.models.enhanced_xgboost - INFO - Selected 13 features from 13 candidates
+2025-08-29 21:11:18,786 - src.models.enhanced_xgboost - INFO - Training data prepared: 51862 samples, 13 features
+2025-08-29 21:11:18,786 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 21:11:19,725 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 21:11:19,725 - src.models.enhanced_xgboost - INFO -   MAE: 244.29
+2025-08-29 21:11:19,725 - src.models.enhanced_xgboost - INFO -   RMSE: 455.47
+2025-08-29 21:11:19,725 - src.models.enhanced_xgboost - INFO -   R²: 0.9919
+2025-08-29 21:11:19,725 - src.models.enhanced_xgboost - INFO -   MAPE: 0.75%
+2025-08-29 21:11:19,799 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 21:11:19,799 - src.models.enhanced_xgboost - INFO -   MAE: 49.88
+2025-08-29 21:11:19,799 - src.models.enhanced_xgboost - INFO -   RMSE: 77.91
+2025-08-29 21:11:19,799 - src.models.enhanced_xgboost - INFO -   R²: 0.9997
+2025-08-29 21:11:19,799 - src.models.enhanced_xgboost - INFO -   MAPE: 0.23%
+2025-08-29 21:11:19,800 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 21:11:19,800 - __main__ - INFO - ✅ Baseline model trained - MAPE: 0.75%
+2025-08-29 21:11:19,800 - __main__ - INFO - Training enhanced model...
+2025-08-29 21:11:19,800 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 21:11:19,801 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 21:11:19,801 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 21:11:19,805 - src.models.enhanced_xgboost - INFO - Training data prepared: 51862 samples, 13 features
+2025-08-29 21:11:19,805 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 21:11:21,683 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 21:11:21,684 - src.models.enhanced_xgboost - INFO -   MAE: 191.11
+2025-08-29 21:11:21,684 - src.models.enhanced_xgboost - INFO -   RMSE: 402.28
+2025-08-29 21:11:21,684 - src.models.enhanced_xgboost - INFO -   R²: 0.9937
+2025-08-29 21:11:21,684 - src.models.enhanced_xgboost - INFO -   MAPE: 0.57%
+2025-08-29 21:11:21,856 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 21:11:21,856 - src.models.enhanced_xgboost - INFO -   MAE: 39.68
+2025-08-29 21:11:21,856 - src.models.enhanced_xgboost - INFO -   RMSE: 61.43
+2025-08-29 21:11:21,856 - src.models.enhanced_xgboost - INFO -   R²: 0.9998
+2025-08-29 21:11:21,856 - src.models.enhanced_xgboost - INFO -   MAPE: 0.18%
+2025-08-29 21:11:21,856 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 21:11:21,857 - __main__ - INFO - ✅ Enhanced model trained - MAPE: 0.57%
+2025-08-29 21:11:21,857 - __main__ - INFO - 🎯 Enhanced model improvement: 23.58%
+2025-08-29 21:11:21,859 - __main__ - INFO - 🚀 Deploying models for production
+2025-08-29 21:11:21,866 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/baseline_model_current.joblib
+2025-08-29 21:11:21,873 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_211121/baseline_model.joblib
+2025-08-29 21:11:21,873 - __main__ - INFO - ✅ Baseline model deployed: data/production_models/baseline_model_current.joblib
+2025-08-29 21:11:21,890 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/enhanced_model_current.joblib
+2025-08-29 21:11:21,907 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_211121/enhanced_model.joblib
+2025-08-29 21:11:21,907 - __main__ - INFO - ✅ Enhanced model deployed: data/production_models/enhanced_model_current.joblib
+2025-08-29 21:11:21,908 - __main__ - INFO - ✅ Model deployment completed successfully
+2025-08-29 21:11:21,908 - __main__ - INFO - 📊 Generating dashboard data
+2025-08-29 21:11:21,908 - __main__ - INFO - Generating historical performance data...
+2025-08-29 21:11:21,921 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 21:11:21,921 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 21:11:21,921 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 21:11:21,922 - src.models.enhanced_xgboost - INFO - Training data prepared: 350 samples, 13 features
+2025-08-29 21:11:21,945 - __main__ - INFO - ✅ Generated 350 historical data points
+2025-08-29 21:11:21,945 - __main__ - INFO - Generating model performance metrics...
+2025-08-29 21:11:21,945 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 21:11:21,945 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 21:11:21,946 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 21:11:21,946 - src.models.enhanced_xgboost - INFO - Training data prepared: 2095 samples, 13 features
+2025-08-29 21:11:21,957 - __main__ - INFO - ✅ Model metrics - MAPE: 0.67%, R²: 0.992, Accuracy: 98.9%
+2025-08-29 21:11:21,957 - __main__ - INFO - ✅ Dashboard data generation completed
+2025-08-29 21:11:21,959 - __main__ - INFO - 🧹 Cleaning up model backups older than 7 days
+2025-08-29 21:11:21,959 - __main__ - INFO - ✅ No old backups to clean up
+2025-08-29 21:11:21,960 - __main__ - INFO - ============================================================
+2025-08-29 21:11:21,960 - __main__ - INFO - ✅ Automated ML Pipeline completed successfully!
+2025-08-29 21:11:21,960 - __main__ - INFO -    Fresh models deployed for production use
+2025-08-29 21:11:21,960 - __main__ - INFO -    Dashboard can now serve updated predictions
+2025-08-29 22:28:59,509 - __main__ - INFO - 🤖 Starting Automated ML Pipeline
+2025-08-29 22:28:59,509 - __main__ - INFO - ============================================================
+2025-08-29 22:28:59,509 - __main__ - INFO - Continuous model updates for production deployment
+2025-08-29 22:28:59,509 - __main__ - INFO - 🔄 Refreshing master dataset with incremental data
+2025-08-29 22:29:13,005 - __main__ - INFO - ✅ Master dataset refreshed successfully
+2025-08-29 22:29:13,006 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 22:29:13,007 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 22:29:13,007 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 22:29:13,007 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 22:29:13,007 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 22:29:13,007 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 22:29:13,714 - src.features.unified_feature_pipeline - INFO - Loaded power data: 524,651 records, 1 zones
+2025-08-29 22:29:13,715 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-30 05:05:00+00:00
+2025-08-29 22:29:13,715 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 22:29:13,715 - src.features.unified_feature_pipeline - WARNING - No forecast data files found
+2025-08-29 22:29:13,715 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 22:29:13,766 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 524651 records, 6 columns
+2025-08-29 22:29:13,767 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 22:29:13,817 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 22:29:13,819 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 22:29:13,936 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 22:29:13,942 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 22:29:13,949 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 22:29:13,952 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 524651 records, 20 features
+2025-08-29 22:29:13,955 - __main__ - INFO - 🔍 Validating training data quality
+2025-08-29 22:29:13,958 - __main__ - INFO - ✅ Data freshness: -1 days old
+2025-08-29 22:29:13,963 - __main__ - INFO - ✅ Load data range: 9925.4 - 51725.4 MW
+2025-08-29 22:29:13,963 - __main__ - INFO - ✅ Training data validation passed
+2025-08-29 22:29:13,963 - __main__ - INFO - 🤖 Training production models
+2025-08-29 22:29:13,971 - __main__ - INFO - Using recent data for training: 51,859 records
+2025-08-29 22:29:13,971 - __main__ - INFO - Training baseline model...
+2025-08-29 22:29:13,971 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 22:29:13,971 - src.models.enhanced_xgboost - INFO - Selected 13 features from 13 candidates
+2025-08-29 22:29:13,973 - src.models.enhanced_xgboost - INFO - Training data prepared: 51859 samples, 13 features
+2025-08-29 22:29:13,973 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 22:29:14,391 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 22:29:14,391 - src.models.enhanced_xgboost - INFO -   MAE: 197.90
+2025-08-29 22:29:14,391 - src.models.enhanced_xgboost - INFO -   RMSE: 420.78
+2025-08-29 22:29:14,391 - src.models.enhanced_xgboost - INFO -   R²: 0.9931
+2025-08-29 22:29:14,391 - src.models.enhanced_xgboost - INFO -   MAPE: 0.58%
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - INFO -   MAE: 49.97
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - INFO -   RMSE: 77.70
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - INFO -   R²: 0.9997
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - INFO -   MAPE: 0.23%
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 22:29:14,414 - __main__ - INFO - ✅ Baseline model trained - MAPE: 0.58%
+2025-08-29 22:29:14,414 - __main__ - INFO - Training enhanced model...
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 22:29:14,414 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 22:29:14,416 - src.models.enhanced_xgboost - INFO - Training data prepared: 51859 samples, 13 features
+2025-08-29 22:29:14,416 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 22:29:15,362 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 22:29:15,362 - src.models.enhanced_xgboost - INFO -   MAE: 202.24
+2025-08-29 22:29:15,362 - src.models.enhanced_xgboost - INFO -   RMSE: 404.13
+2025-08-29 22:29:15,362 - src.models.enhanced_xgboost - INFO -   R²: 0.9936
+2025-08-29 22:29:15,362 - src.models.enhanced_xgboost - INFO -   MAPE: 0.62%
+2025-08-29 22:29:15,417 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 22:29:15,417 - src.models.enhanced_xgboost - INFO -   MAE: 39.47
+2025-08-29 22:29:15,417 - src.models.enhanced_xgboost - INFO -   RMSE: 60.95
+2025-08-29 22:29:15,417 - src.models.enhanced_xgboost - INFO -   R²: 0.9998
+2025-08-29 22:29:15,417 - src.models.enhanced_xgboost - INFO -   MAPE: 0.18%
+2025-08-29 22:29:15,417 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 22:29:15,417 - __main__ - INFO - ✅ Enhanced model trained - MAPE: 0.62%
+2025-08-29 22:29:15,418 - __main__ - INFO - 🧠 Training LSTM model
+2025-08-29 22:29:15,653 - __main__ - INFO - Running LSTM training: /Users/bran/Work/model-power-nowcast/.venv/bin/python -m src.models.train_lstm --features data/features/lstm_features.parquet --horizon 1 --hidden-size 64 --num-layers 2 --epochs 20
+2025-08-29 22:34:05,805 - __main__ - INFO - 🤖 Starting Automated ML Pipeline
+2025-08-29 22:34:05,805 - __main__ - INFO - ============================================================
+2025-08-29 22:34:05,805 - __main__ - INFO - Continuous model updates for production deployment
+2025-08-29 22:34:05,805 - __main__ - INFO - 🔄 Refreshing master dataset with incremental data
+2025-08-29 22:34:08,321 - __main__ - INFO - ✅ Master dataset refreshed successfully
+2025-08-29 22:34:08,321 - __main__ - INFO - 🔧 Building unified features for training
+2025-08-29 22:34:08,321 - src.features.unified_feature_pipeline - INFO - Building unified feature dataset
+2025-08-29 22:34:08,321 - src.features.unified_feature_pipeline - INFO - Power data: data/master/caiso_california_only.parquet
+2025-08-29 22:34:08,321 - src.features.unified_feature_pipeline - INFO - Weather data: None
+2025-08-29 22:34:08,321 - src.features.unified_feature_pipeline - INFO - Forecast data: data/forecasts
+2025-08-29 22:34:08,321 - src.features.unified_feature_pipeline - INFO - Loading power data from data/master/caiso_california_only.parquet
+2025-08-29 22:34:09,024 - src.features.unified_feature_pipeline - INFO - Loaded power data: 524,651 records, 1 zones
+2025-08-29 22:34:09,025 - src.features.unified_feature_pipeline - INFO - Date range: 2020-08-28 19:00:00+00:00 to 2025-08-30 05:05:00+00:00
+2025-08-29 22:34:09,025 - src.features.unified_feature_pipeline - INFO - Loading forecast weather data from data/forecasts
+2025-08-29 22:34:09,025 - src.features.unified_feature_pipeline - WARNING - No forecast data files found
+2025-08-29 22:34:09,025 - src.features.unified_feature_pipeline - INFO - Merging power, weather, and forecast datasets
+2025-08-29 22:34:09,077 - src.features.unified_feature_pipeline - INFO - Dataset merge completed: 524651 records, 6 columns
+2025-08-29 22:34:09,077 - src.features.unified_feature_pipeline - INFO - Creating temporal features
+2025-08-29 22:34:09,128 - src.features.unified_feature_pipeline - INFO - Created temporal features
+2025-08-29 22:34:09,130 - src.features.unified_feature_pipeline - INFO - Creating power lag features for lags: [1, 24]
+2025-08-29 22:34:09,259 - src.features.unified_feature_pipeline - INFO - Created 2 lag features
+2025-08-29 22:34:09,266 - src.features.unified_feature_pipeline - INFO - Creating weather interaction features
+2025-08-29 22:34:09,275 - src.features.unified_feature_pipeline - INFO - Created weather interaction features
+2025-08-29 22:34:09,278 - src.features.unified_feature_pipeline - INFO - Unified feature dataset completed: 524651 records, 20 features
+2025-08-29 22:34:09,280 - __main__ - INFO - 🔍 Validating training data quality
+2025-08-29 22:34:09,284 - __main__ - INFO - ✅ Data freshness: -1 days old
+2025-08-29 22:34:09,289 - __main__ - INFO - ✅ Load data range: 9925.4 - 51725.4 MW
+2025-08-29 22:34:09,289 - __main__ - INFO - ✅ Training data validation passed
+2025-08-29 22:34:09,289 - __main__ - INFO - 🤖 Training production models
+2025-08-29 22:34:09,297 - __main__ - INFO - Using recent data for training: 51,858 records
+2025-08-29 22:34:09,297 - __main__ - INFO - Training baseline model...
+2025-08-29 22:34:09,297 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 22:34:09,297 - src.models.enhanced_xgboost - INFO - Selected 13 features from 13 candidates
+2025-08-29 22:34:09,299 - src.models.enhanced_xgboost - INFO - Training data prepared: 51858 samples, 13 features
+2025-08-29 22:34:09,299 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 22:34:09,769 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 22:34:09,769 - src.models.enhanced_xgboost - INFO -   MAE: 197.39
+2025-08-29 22:34:09,769 - src.models.enhanced_xgboost - INFO -   RMSE: 414.88
+2025-08-29 22:34:09,769 - src.models.enhanced_xgboost - INFO -   R²: 0.9933
+2025-08-29 22:34:09,769 - src.models.enhanced_xgboost - INFO -   MAPE: 0.59%
+2025-08-29 22:34:09,798 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 22:34:09,798 - src.models.enhanced_xgboost - INFO -   MAE: 49.99
+2025-08-29 22:34:09,798 - src.models.enhanced_xgboost - INFO -   RMSE: 77.81
+2025-08-29 22:34:09,798 - src.models.enhanced_xgboost - INFO -   R²: 0.9997
+2025-08-29 22:34:09,798 - src.models.enhanced_xgboost - INFO -   MAPE: 0.23%
+2025-08-29 22:34:09,798 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 22:34:09,798 - __main__ - INFO - ✅ Baseline model trained - MAPE: 0.59%
+2025-08-29 22:34:09,798 - __main__ - INFO - Training enhanced model...
+2025-08-29 22:34:09,798 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 22:34:09,799 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 22:34:09,799 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 22:34:09,800 - src.models.enhanced_xgboost - INFO - Training data prepared: 51858 samples, 13 features
+2025-08-29 22:34:09,801 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 22:34:10,894 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 22:34:10,894 - src.models.enhanced_xgboost - INFO -   MAE: 190.89
+2025-08-29 22:34:10,894 - src.models.enhanced_xgboost - INFO -   RMSE: 404.46
+2025-08-29 22:34:10,894 - src.models.enhanced_xgboost - INFO -   R²: 0.9936
+2025-08-29 22:34:10,894 - src.models.enhanced_xgboost - INFO -   MAPE: 0.57%
+2025-08-29 22:34:10,961 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 22:34:10,961 - src.models.enhanced_xgboost - INFO -   MAE: 39.53
+2025-08-29 22:34:10,961 - src.models.enhanced_xgboost - INFO -   RMSE: 61.02
+2025-08-29 22:34:10,961 - src.models.enhanced_xgboost - INFO -   R²: 0.9998
+2025-08-29 22:34:10,961 - src.models.enhanced_xgboost - INFO -   MAPE: 0.18%
+2025-08-29 22:34:10,961 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 22:34:10,961 - __main__ - INFO - ✅ Enhanced model trained - MAPE: 0.57%
+2025-08-29 22:34:10,961 - __main__ - INFO - 🎯 Enhanced model improvement: 3.01%
+2025-08-29 22:34:10,963 - __main__ - INFO - 🧠 Training LSTM model
+2025-08-29 22:34:11,218 - __main__ - INFO - Running LSTM training: /Users/bran/Work/model-power-nowcast/.venv/bin/python -m src.models.train_lstm --features data/features/lstm_features.parquet --horizon 1 --hidden-size 64 --num-layers 2 --epochs 20
+2025-08-29 22:45:49,763 - __main__ - INFO - ✅ LSTM model training completed successfully
+2025-08-29 22:45:49,779 - __main__ - INFO - ✅ LSTM model training completed
+2025-08-29 22:45:49,779 - __main__ - INFO - 🚀 Deploying models for production
+2025-08-29 22:45:49,784 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/baseline_model_current.joblib
+2025-08-29 22:45:49,786 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_224549/baseline_model.joblib
+2025-08-29 22:45:49,786 - __main__ - INFO - ✅ Baseline model deployed: data/production_models/baseline_model_current.joblib
+2025-08-29 22:45:49,796 - src.models.enhanced_xgboost - INFO - Model saved to data/production_models/enhanced_model_current.joblib
+2025-08-29 22:45:49,806 - src.models.enhanced_xgboost - INFO - Model saved to data/model_backups/20250829_224549/enhanced_model.joblib
+2025-08-29 22:45:49,806 - __main__ - INFO - ✅ Enhanced model deployed: data/production_models/enhanced_model_current.joblib
+2025-08-29 22:45:49,806 - __main__ - INFO - ✅ Model deployment completed successfully
+2025-08-29 22:45:49,806 - __main__ - INFO - 📊 Generating dashboard data
+2025-08-29 22:45:49,806 - __main__ - INFO - Generating historical performance data...
+2025-08-29 22:45:49,813 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 22:45:49,813 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 22:45:49,813 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 22:45:49,814 - src.models.enhanced_xgboost - INFO - Training data prepared: 348 samples, 13 features
+2025-08-29 22:45:49,822 - __main__ - INFO - ✅ Generated 348 historical data points
+2025-08-29 22:45:49,822 - __main__ - INFO - Generating model performance metrics...
+2025-08-29 22:45:49,822 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 22:45:49,822 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_6h', 'temp_forecast_12h', 'temp_forecast_24h', 'cooling_forecast_6h', 'heating_forecast_6h', 'temp_change_rate_6h', 'weather_volatility_6h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 22:45:49,822 - src.models.enhanced_xgboost - INFO - Selected 13 features from 30 candidates
+2025-08-29 22:45:49,823 - src.models.enhanced_xgboost - INFO - Training data prepared: 2088 samples, 13 features
+2025-08-29 22:45:49,829 - __main__ - INFO - ✅ Model metrics - MAPE: 0.68%, R²: 0.992, Accuracy: 98.8%
+2025-08-29 22:45:49,829 - __main__ - INFO - ✅ Dashboard data generation completed
+2025-08-29 22:45:49,830 - __main__ - INFO - 🧹 Cleaning up model backups older than 7 days
+2025-08-29 22:45:49,830 - __main__ - INFO - ✅ No old backups to clean up
+2025-08-29 22:45:49,830 - __main__ - INFO - ============================================================
+2025-08-29 22:45:49,830 - __main__ - INFO - ✅ Automated ML Pipeline completed successfully!
+2025-08-29 22:45:49,830 - __main__ - INFO -    Fresh models deployed for production use
+2025-08-29 22:45:49,830 - __main__ - INFO -    Dashboard can now serve updated predictions

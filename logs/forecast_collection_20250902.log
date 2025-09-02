@@ -1,0 +1,32 @@
+2025-09-02 01:25:01,218 - __main__ - INFO - Processing zone: NP15
+2025-09-02 01:25:01,219 - __main__ - INFO - Collecting forecasts for zone NP15 (Northern California (San Francisco))
+2025-09-02 01:25:01,433 - src.ingest.pull_weather_forecasts - INFO - Grid coordinates: MTR/85,105 for 37.7749, -122.4194
+2025-09-02 01:25:03,194 - src.ingest.pull_weather_forecasts - INFO - Collected 48 forecast points for zone NP15
+2025-09-02 01:25:04,375 - src.ingest.pull_weather_forecasts - INFO - Validated 48/48 forecasts
+2025-09-02 01:25:04,378 - __main__ - INFO - Successfully collected 48 forecasts for zone NP15
+2025-09-02 01:25:04,413 - __main__ - INFO - Saved forecast data: data/forecasts/raw/weather_forecasts/nws/np15/np15_forecast_20250902_012504.parquet
+2025-09-02 01:25:04,413 - __main__ - INFO -   Records: 48, Size: 6.2 KB
+2025-09-02 01:25:04,625 - botocore.credentials - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-09-02 01:25:05,503 - __main__ - INFO - Uploaded to S3: s3://ml-power-nowcast-data-1756420517/raw/weather_forecasts/nws/np15/np15_forecast_latest.parquet
+2025-09-02 01:25:05,505 - __main__ - INFO - 📊 Forecast Collection Summary:
+2025-09-02 01:25:05,505 - __main__ - INFO -   Zones attempted: 1
+2025-09-02 01:25:05,505 - __main__ - INFO -   Zones successful: 1
+2025-09-02 01:25:05,505 - __main__ - INFO -   Zones failed: 0
+2025-09-02 01:25:05,505 - __main__ - INFO -   Total forecasts: 48
+2025-09-02 01:25:05,505 - __main__ - INFO -   Max forecast horizon: 46 hours
+2025-09-02 07:25:07,055 - __main__ - INFO - Processing zone: NP15
+2025-09-02 07:25:07,055 - __main__ - INFO - Collecting forecasts for zone NP15 (Northern California (San Francisco))
+2025-09-02 07:25:07,334 - src.ingest.pull_weather_forecasts - INFO - Grid coordinates: MTR/85,105 for 37.7749, -122.4194
+2025-09-02 07:25:08,832 - src.ingest.pull_weather_forecasts - INFO - Collected 48 forecast points for zone NP15
+2025-09-02 07:25:09,999 - src.ingest.pull_weather_forecasts - INFO - Validated 48/48 forecasts
+2025-09-02 07:25:10,002 - __main__ - INFO - Successfully collected 48 forecasts for zone NP15
+2025-09-02 07:25:10,042 - __main__ - INFO - Saved forecast data: data/forecasts/raw/weather_forecasts/nws/np15/np15_forecast_20250902_072510.parquet
+2025-09-02 07:25:10,043 - __main__ - INFO -   Records: 48, Size: 6.2 KB
+2025-09-02 07:25:10,277 - botocore.credentials - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-09-02 07:25:11,245 - __main__ - INFO - Uploaded to S3: s3://ml-power-nowcast-data-1756420517/raw/weather_forecasts/nws/np15/np15_forecast_latest.parquet
+2025-09-02 07:25:11,248 - __main__ - INFO - 📊 Forecast Collection Summary:
+2025-09-02 07:25:11,248 - __main__ - INFO -   Zones attempted: 1
+2025-09-02 07:25:11,248 - __main__ - INFO -   Zones successful: 1
+2025-09-02 07:25:11,248 - __main__ - INFO -   Zones failed: 0
+2025-09-02 07:25:11,248 - __main__ - INFO -   Total forecasts: 48
+2025-09-02 07:25:11,248 - __main__ - INFO -   Max forecast horizon: 46 hours

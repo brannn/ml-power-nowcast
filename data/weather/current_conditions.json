@@ -1,0 +1,72 @@
+[
+  {
+    "zone": "NP15",
+    "timestamp": "2025-09-02 04:38:53.221372+00:00",
+    "temp_c": 22.149410095957254,
+    "humidity": 64,
+    "wind_speed": 10.458518415236554,
+    "description": "overcast",
+    "city": "Oakland",
+    "data_source": "demo_mode"
+  },
+  {
+    "zone": "SP15",
+    "timestamp": "2025-09-02 04:38:53.221409+00:00",
+    "temp_c": 28.199985794722338,
+    "humidity": 49,
+    "wind_speed": 11.948945932469684,
+    "description": "few clouds",
+    "city": "Los Angeles",
+    "data_source": "demo_mode"
+  },
+  {
+    "zone": "SCE",
+    "timestamp": "2025-09-02 04:38:53.221423+00:00",
+    "temp_c": 32.7413601676543,
+    "humidity": 60,
+    "wind_speed": 8.219896495394433,
+    "description": "overcast",
+    "city": "San Bernardino",
+    "data_source": "demo_mode"
+  },
+  {
+    "zone": "SDGE",
+    "timestamp": "2025-09-02 04:38:53.221433+00:00",
+    "temp_c": 21.286362492998197,
+    "humidity": 57,
+    "wind_speed": 13.3029566285731,
+    "description": "overcast",
+    "city": "San Diego",
+    "data_source": "demo_mode"
+  },
+  {
+    "zone": "SMUD",
+    "timestamp": "2025-09-02 04:38:53.221442+00:00",
+    "temp_c": 28.956556291914165,
+    "humidity": 56,
+    "wind_speed": 15.896797826564528,
+    "description": "clear sky",
+    "city": "Sacramento",
+    "data_source": "demo_mode"
+  },
+  {
+    "zone": "PGE_VALLEY",
+    "timestamp": "2025-09-02 04:38:53.221451+00:00",
+    "temp_c": 23.055961188041127,
+    "humidity": 62,
+    "wind_speed": 19.80243968153664,
+    "description": "partly cloudy",
+    "city": "Modesto",
+    "data_source": "demo_mode"
+  },
+  {
+    "zone": "ZP26",
+    "timestamp": "2025-09-02 04:38:53.221459+00:00",
+    "temp_c": 30.97113341794892,
+    "humidity": 66,
+    "wind_speed": 18.65066886157514,
+    "description": "partly cloudy",
+    "city": "Fresno",
+    "data_source": "demo_mode"
+  }
+]

@@ -1,0 +1,1313 @@
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-28 to 2025-08-29
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-28 to 2025-08-29
+⚠️  Rate limited (429). Waiting 5s before retry 1/3...
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-28 to 2025-08-29
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-28 to 2025-08-29
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-28 to 2025-08-29
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-28 to 2025-08-29
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-29 to 2025-08-30
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-29 to 2025-08-30
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-30 to 2025-08-31
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-30 to 2025-08-31
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-08-31 to 2025-09-01
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-08-31 to 2025-09-01
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks
+Fetching CAISO actual system demand data for 1 days...
+Requesting data from 2025-09-01 to 2025-09-02
+Using 14-day chunks with 15-second rate limiting for API reliability
+Fetching CAISO chunk 1: 2025-09-01 to 2025-09-02
+📊 Found 35 unique CAISO resource names:
+   ✅ Mapped: ['BANCMID', 'BANCSMUD', 'CA ISO-TAC', 'LADWP', 'PGE-TAC', 'SCE-TAC', 'SDGE-TAC']
+   ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BANC', 'BANCRDNG', 'BANCRSVL', 'BANCWASN', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'MWD-TAC', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PGE', 'PNM', 'PSEI', 'SCL', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'VEA-TAC', 'WALC', 'WALCAEPCO', 'WALCDSW']
+Successfully fetched 10080 CAISO records from 1 chunks

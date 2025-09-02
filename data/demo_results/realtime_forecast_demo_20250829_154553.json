@@ -1,0 +1,75 @@
+{
+  "generated_at": "2025-08-29T22:45:53.138882+00:00",
+  "total_predictions": 5,
+  "zones": [
+    "NP15"
+  ],
+  "horizons": [
+    1,
+    6,
+    12,
+    48,
+    24
+  ],
+  "forecast_availability": {
+    "predictions_with_forecasts": 0,
+    "predictions_without_forecasts": 5,
+    "forecast_coverage_pct": 0.0
+  },
+  "performance_summary": {
+    "mean_improvement_pct": "1.1411383",
+    "median_improvement_pct": "1.1411383",
+    "std_improvement_pct": "0.0",
+    "min_improvement_pct": "1.1411383",
+    "max_improvement_pct": "1.1411383",
+    "predictions_with_improvement": 5,
+    "target_improvement_achieved": "False"
+  },
+  "predictions": [
+    {
+      "timestamp": "2025-08-29T23:45:48.812329+00:00",
+      "zone": "NP15",
+      "horizon_hours": 1,
+      "baseline_prediction": "5771.7603",
+      "enhanced_prediction": "5837.624",
+      "improvement_pct": "1.1411383",
+      "forecast_available": "False"
+    },
+    {
+      "timestamp": "2025-08-30T04:45:48.812329+00:00",
+      "zone": "NP15",
+      "horizon_hours": 6,
+      "baseline_prediction": "5771.7603",
+      "enhanced_prediction": "5837.624",
+      "improvement_pct": "1.1411383",
+      "forecast_available": "False"
+    },
+    {
+      "timestamp": "2025-08-30T10:45:48.812329+00:00",
+      "zone": "NP15",
+      "horizon_hours": 12,
+      "baseline_prediction": "5771.7603",
+      "enhanced_prediction": "5837.624",
+      "improvement_pct": "1.1411383",
+      "forecast_available": "False"
+    },
+    {
+      "timestamp": "2025-08-30T22:45:48.812329+00:00",
+      "zone": "NP15",
+      "horizon_hours": 24,
+      "baseline_prediction": "5771.7603",
+      "enhanced_prediction": "5837.624",
+      "improvement_pct": "1.1411383",
+      "forecast_available": "False"
+    },
+    {
+      "timestamp": "2025-08-31T22:45:48.812329+00:00",
+      "zone": "NP15",
+      "horizon_hours": 48,
+      "baseline_prediction": "5771.7603",
+      "enhanced_prediction": "5837.624",
+      "improvement_pct": "1.1411383",
+      "forecast_available": "False"
+    }
+  ]
+}

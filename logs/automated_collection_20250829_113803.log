@@ -1,0 +1,4 @@
+2025-08-29 11:38:03,659 - INFO - setup_logging:58 - Automation logging started - log file: logs/automated_collection_20250829_113803.log
+2025-08-29 11:38:03,659 - INFO - main:260 - Starting automated collection process
+2025-08-29 11:38:03,680 - INFO - load:1358 - Found credentials in shared credentials file: ~/.aws/credentials
+2025-08-29 11:38:05,125 - INFO - run_collection_command:131 - Running command: python scripts/collect_caiso_historical.py --auto-confirm --start-date 2025-01-25

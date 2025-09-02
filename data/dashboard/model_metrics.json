@@ -1,0 +1,8 @@
+{
+  "generated_at": "2025-09-02T08:04:44.836574",
+  "model_type": "enhanced",
+  "mape": 0.37648568215371636,
+  "r2_score": 0.9991127568088215,
+  "accuracy": 100.0,
+  "data_points": 1287
+}

@@ -1,0 +1,55 @@
+2025-08-29 11:42:43,819 - INFO - setup_logging:58 - Automation logging started - log file: logs/automated_collection_20250829_114243.log
+2025-08-29 11:42:43,819 - INFO - main:297 - Starting automated collection process
+2025-08-29 11:42:43,851 - INFO - load:1358 - Found credentials in shared credentials file: ~/.aws/credentials
+2025-08-29 11:42:45,134 - INFO - run_collection_command:131 - Running command: python scripts/collect_caiso_historical.py --auto-confirm --start-date 2025-01-27 --end-date 2025-01-28
+2025-08-29 11:42:49,052 - INFO - run_collection_command:156 - COLLECTION: 2025-08-29 11:42:49,052 - INFO - Collection completed: 10,080 records in 0.1 minutes
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 🚀 CAISO Historical Data Collection
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: ==================================================
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 📊 COLLECTION PLAN:
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Start Date: 2025-01-27
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: End Date: 2025-01-28
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Total Days: 1 (0.0 years)
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: API Chunks: 1 (14-day chunks)
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Estimated Time: ~0.2 minutes
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Rate Limiting: 15 seconds between chunks
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 🤖 Auto-confirm enabled - proceeding with collection...
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Estimated time: ~0.2 minutes
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 🔄 Starting CAISO data collection...
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Period: 2025-01-27 to 2025-01-28
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Fetching CAISO actual system demand data for 1 days...
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Requesting data from 2025-08-28 to 2025-08-29
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Using 14-day chunks with 15-second rate limiting for API reliability
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Fetching CAISO chunk 1: 2025-08-28 to 2025-08-29
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 📊 Found 35 unique CAISO resource names:
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: ✅ Mapped: ['BANC', 'BANCMID', 'BANCRDNG', 'BANCRSVL', 'BANCSMUD', 'BANCWASN', 'CA ISO-TAC', 'LADWP', 'MWD-TAC', 'PGE', 'PGE-TAC', 'SCE-TAC', 'SCL', 'SDGE-TAC', 'VEA-TAC']
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: ❓ Unmapped: ['AVA', 'AVRN', 'AZPS', 'BCHA', 'BPAT', 'EPE', 'IPCO', 'NEVP', 'NWMT', 'PACE', 'PACW', 'PNM', 'PSEI', 'SRP', 'TEPC', 'TIDC', 'TPWR', 'WALC', 'WALCAEPCO', 'WALCDSW']
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Successfully fetched 10080 CAISO records from 1 chunks
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: ✅ COLLECTION COMPLETE!
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Duration: 0.1 minutes
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Records: 10,080
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Date range: 2025-08-28 18:45:00+00:00 to 2025-08-29 18:40:00+00:00
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 💾 Saving data locally...
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: ✅ Full dataset: data/historical/caiso_5year_full.parquet (10,080 records)
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: ✅ System data: data/historical/caiso_5year_system.parquet (288 records)
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 📊 System load range: 22887.0 - 34974.8 MW
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 📊 Average system load: 28189.7 MW
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 📊 Zone breakdown:
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: NP15: 1,728 records
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: SCE: 864 records
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: SMUD: 576 records
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: PGE_VALLEY: 288 records
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: SYSTEM: 288 records
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: SP15: 288 records
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: SDGE: 288 records
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: 🎉 SUCCESS: 5-year CAISO historical data collection complete!
+2025-08-29 11:42:49,053 - INFO - run_collection_command:156 - COLLECTION: Local files: data/historical
+2025-08-29 11:42:49,211 - INFO - run_collection_command:164 - Command completed successfully
+2025-08-29 11:42:49,298 - INFO - verify_collection_results:202 - Power data: 10,080 records
+2025-08-29 11:42:49,299 - INFO - verify_collection_results:210 - Weather data: 143 records
+2025-08-29 11:42:49,300 - INFO - verify_collection_results:218 - System data: 288 records
+2025-08-29 11:42:49,300 - INFO - main:372 - Collection completed successfully
+2025-08-29 11:42:49,300 - INFO - main:373 - Total duration: 0.1 minutes

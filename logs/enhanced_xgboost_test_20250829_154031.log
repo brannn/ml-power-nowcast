@@ -1,0 +1,97 @@
+2025-08-29 15:40:31,072 - __main__ - INFO - 🚀 Starting enhanced XGBoost model test
+2025-08-29 15:40:31,072 - __main__ - INFO - ============================================================
+2025-08-29 15:40:31,072 - __main__ - INFO - Loading test data for enhanced XGBoost model
+2025-08-29 15:40:31,400 - __main__ - INFO - Loaded existing unified test data: data/test_unified/unified_features_test_20250829_153541.parquet
+2025-08-29 15:40:31,400 - __main__ - INFO -   Records: 2,967,530, Features: 40
+2025-08-29 15:40:31,427 - __main__ - INFO - Using last 100k records for training: 100,000 samples
+2025-08-29 15:40:31,427 - __main__ - INFO - 🔧 Creating baseline model (no forecast features)
+2025-08-29 15:40:31,427 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 15:40:31,427 - src.models.enhanced_xgboost - INFO - Selected 13 features from 13 candidates
+2025-08-29 15:40:31,433 - src.models.enhanced_xgboost - INFO - Training data prepared: 100000 samples, 13 features
+2025-08-29 15:40:31,433 - __main__ - INFO - Baseline model features: 13
+2025-08-29 15:40:31,433 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 15:40:32,348 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 15:40:32,348 - src.models.enhanced_xgboost - INFO -   MAE: 2321.24
+2025-08-29 15:40:32,348 - src.models.enhanced_xgboost - INFO -   RMSE: 3323.96
+2025-08-29 15:40:32,348 - src.models.enhanced_xgboost - INFO -   R²: 0.3017
+2025-08-29 15:40:32,348 - src.models.enhanced_xgboost - INFO -   MAPE: 882.20%
+2025-08-29 15:40:32,406 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 15:40:32,407 - src.models.enhanced_xgboost - INFO -   MAE: 1498.08
+2025-08-29 15:40:32,407 - src.models.enhanced_xgboost - INFO -   RMSE: 2440.44
+2025-08-29 15:40:32,407 - src.models.enhanced_xgboost - INFO -   R²: 0.5725
+2025-08-29 15:40:32,407 - src.models.enhanced_xgboost - INFO -   MAPE: 503.49%
+2025-08-29 15:40:32,407 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 15:40:32,407 - __main__ - INFO - ✅ Baseline model training completed
+2025-08-29 15:40:32,407 - __main__ - INFO - 🌤️  Creating enhanced model (with forecast features)
+2025-08-29 15:40:32,407 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 15:40:32,407 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_12h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 15:40:32,407 - src.models.enhanced_xgboost - INFO - Selected 19 features from 30 candidates
+2025-08-29 15:40:32,414 - src.models.enhanced_xgboost - INFO - Training data prepared: 100000 samples, 19 features
+2025-08-29 15:40:32,414 - __main__ - INFO - Enhanced model features: 19
+2025-08-29 15:40:32,414 - src.models.enhanced_xgboost - INFO - Training enhanced XGBoost model
+2025-08-29 15:40:34,872 - src.models.enhanced_xgboost - INFO - Validation Performance Metrics:
+2025-08-29 15:40:34,872 - src.models.enhanced_xgboost - INFO -   MAE: 2567.82
+2025-08-29 15:40:34,872 - src.models.enhanced_xgboost - INFO -   RMSE: 3768.47
+2025-08-29 15:40:34,872 - src.models.enhanced_xgboost - INFO -   R²: 0.1024
+2025-08-29 15:40:34,872 - src.models.enhanced_xgboost - INFO -   MAPE: 1013.28%
+2025-08-29 15:40:35,061 - src.models.enhanced_xgboost - INFO - Training Performance Metrics:
+2025-08-29 15:40:35,061 - src.models.enhanced_xgboost - INFO -   MAE: 1047.60
+2025-08-29 15:40:35,061 - src.models.enhanced_xgboost - INFO -   RMSE: 1773.48
+2025-08-29 15:40:35,061 - src.models.enhanced_xgboost - INFO -   R²: 0.7742
+2025-08-29 15:40:35,061 - src.models.enhanced_xgboost - INFO -   MAPE: 351.15%
+2025-08-29 15:40:35,061 - src.models.enhanced_xgboost - INFO - Model training completed successfully
+2025-08-29 15:40:35,061 - __main__ - INFO - ✅ Enhanced model training completed
+2025-08-29 15:40:35,062 - __main__ - INFO - 📊 Comparing model performance
+2025-08-29 15:40:35,062 - __main__ - INFO - MAE Comparison:
+2025-08-29 15:40:35,062 - __main__ - INFO -   Baseline: 2321.236
+2025-08-29 15:40:35,062 - __main__ - INFO -   Enhanced: 2567.824
+2025-08-29 15:40:35,062 - __main__ - INFO -   Improvement: +10.62%
+2025-08-29 15:40:35,062 - __main__ - INFO - RMSE Comparison:
+2025-08-29 15:40:35,062 - __main__ - INFO -   Baseline: 3323.957
+2025-08-29 15:40:35,062 - __main__ - INFO -   Enhanced: 3768.469
+2025-08-29 15:40:35,062 - __main__ - INFO -   Improvement: +13.37%
+2025-08-29 15:40:35,062 - __main__ - INFO - MAPE Comparison:
+2025-08-29 15:40:35,062 - __main__ - INFO -   Baseline: 882.201
+2025-08-29 15:40:35,062 - __main__ - INFO -   Enhanced: 1013.278
+2025-08-29 15:40:35,062 - __main__ - INFO -   Improvement: +14.86%
+2025-08-29 15:40:35,062 - __main__ - WARNING - ⚠️  Below target: -14.9% MAPE improvement (target: 5.0%)
+2025-08-29 15:40:35,062 - __main__ - INFO - 🔍 Analyzing feature importance
+2025-08-29 15:40:35,067 - __main__ - INFO - Top 10 features in baseline model:
+2025-08-29 15:40:35,067 - __main__ - INFO -   10. load_lag_24h              179853872.0
+2025-08-29 15:40:35,067 - __main__ - INFO -    9. load_lag_1h               153802528.0
+2025-08-29 15:40:35,067 - __main__ - INFO -    5. hour_cos                  73366104.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    1. hour                      33421048.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    4. hour_sin                  32316950.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    2. day_of_week               31063118.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    7. day_of_week_cos           28408820.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    6. day_of_week_sin           28113330.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    8. day_of_year_sin           26464322.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    3. month                     17792500.0
+2025-08-29 15:40:35,068 - __main__ - INFO - Top 10 features in enhanced model:
+2025-08-29 15:40:35,068 - __main__ - INFO -   10. load_lag_24h              35349472.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    9. load_lag_1h               31326622.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    5. hour_cos                  21621160.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    7. day_of_week_cos           12158409.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    4. hour_sin                  11994091.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    8. day_of_year_sin           11051001.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    6. day_of_week_sin           10964450.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    1. hour                      10390908.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    2. day_of_week               8966488.0
+2025-08-29 15:40:35,068 - __main__ - INFO -    3. month                     8137025.5
+2025-08-29 15:40:35,068 - __main__ - WARNING - No forecast features found in enhanced model importance
+2025-08-29 15:40:35,068 - src.models.enhanced_xgboost - INFO - Preparing training data
+2025-08-29 15:40:35,068 - src.models.enhanced_xgboost - WARNING - Missing features: ['temp_c', 'humidity', 'wind_speed_kmh', 'temp_c_squared', 'cooling_degree_days', 'heating_degree_days', 'temp_humidity_interaction', 'heat_index_approx', 'temp_forecast_12h', 'heat_wave_incoming', 'cold_snap_incoming']
+2025-08-29 15:40:35,068 - src.models.enhanced_xgboost - INFO - Selected 19 features from 30 candidates
+2025-08-29 15:40:35,072 - src.models.enhanced_xgboost - INFO - Training data prepared: 100000 samples, 19 features
+2025-08-29 15:40:35,072 - __main__ - INFO - 💾 Testing model persistence
+2025-08-29 15:40:35,087 - src.models.enhanced_xgboost - INFO - Model saved to data/test_models/enhanced_xgboost_test_20250829_154035.joblib
+2025-08-29 15:40:35,103 - src.models.enhanced_xgboost - INFO - Model loaded from data/test_models/enhanced_xgboost_test_20250829_154035.joblib
+2025-08-29 15:40:35,106 - __main__ - INFO - ✅ Model persistence test passed
+2025-08-29 15:40:35,110 - src.models.enhanced_xgboost - INFO - Model saved to data/trained_models/baseline_xgboost_20250829_154035.joblib
+2025-08-29 15:40:35,110 - __main__ - INFO - Saved baseline model: data/trained_models/baseline_xgboost_20250829_154035.joblib
+2025-08-29 15:40:35,123 - src.models.enhanced_xgboost - INFO - Model saved to data/trained_models/enhanced_xgboost_20250829_154035.joblib
+2025-08-29 15:40:35,123 - __main__ - INFO - Saved enhanced model: data/trained_models/enhanced_xgboost_20250829_154035.joblib
+2025-08-29 15:40:35,123 - __main__ - INFO - ============================================================
+2025-08-29 15:40:35,123 - __main__ - INFO - ✅ Enhanced XGBoost model test completed successfully!
+2025-08-29 15:40:35,123 - __main__ - INFO -    Enhanced model MAPE: 1013.28%
+2025-08-29 15:40:35,123 - __main__ - INFO -    Ready for production deployment and further evaluation

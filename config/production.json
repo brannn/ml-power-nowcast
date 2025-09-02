@@ -1,0 +1,60 @@
+{
+  "pipeline": {
+    "data_source": "caiso",
+    "s3_bucket": "ml-power-nowcast-data-1756420517",
+    "retrain_interval_hours": 24,
+    "prediction_horizon_hours": 6,
+    "feature_lags": [1, 2, 3, 6, 12, 24],
+    "rolling_windows": [3, 6, 12]
+  },
+  
+  "model": {
+    "type": "xgboost",
+    "n_estimators": 300,
+    "max_depth": 6,
+    "learning_rate": 0.05,
+    "min_samples_for_retrain": 1000
+  },
+  
+  "data_ingestion": {
+    "caiso_chunk_days": 7,
+    "weather_api_key": null,
+    "backup_to_local": true,
+    "data_retention_days": 90
+  },
+  
+  "s3": {
+    "region": "us-west-1",
+    "paths": {
+      "raw_data": "data/raw/",
+      "processed_data": "data/processed/",
+      "forecasts": "forecasts/",
+      "models": "models/",
+      "metrics": "metrics/"
+    }
+  },
+  
+  "api": {
+    "local_port": 8000,
+    "s3_data_port": 8001,
+    "cors_origins": ["https://power-demand-dashboard.fly.dev"],
+    "rate_limit_per_minute": 60
+  },
+  
+  "monitoring": {
+    "log_level": "INFO",
+    "log_retention_days": 30,
+    "alert_on_stale_data_hours": 2,
+    "alert_on_prediction_error_threshold": 10.0
+  },
+  
+  "dashboard": {
+    "update_interval_minutes": 15,
+    "max_data_age_minutes": 60,
+    "default_weather": {
+      "temperature": 28.5,
+      "humidity": 65,
+      "wind_speed": 3.2
+    }
+  }
+}

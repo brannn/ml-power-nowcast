@@ -1,0 +1,22 @@
+artifact_path: file:///Users/bran/Work/model-power-nowcast/mlruns/795039477520141587/models/m-3ff1c1de38804e648e574ff28a48543c/artifacts
+flavors:
+  python_function:
+    data: model.xgb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.12.6
+  xgboost:
+    code: null
+    data: model.xgb
+    model_class: xgboost.sklearn.XGBRegressor
+    model_format: xgb
+    xgb_version: 3.0.4
+mlflow_version: 3.3.2
+model_id: m-3ff1c1de38804e648e574ff28a48543c
+model_size_bytes: 122969
+model_uuid: m-3ff1c1de38804e648e574ff28a48543c
+prompts: null
+run_id: d752529bcc6b4b52bd46c14c82ff737c
+utc_time_created: '2025-08-28 14:38:33.764000'

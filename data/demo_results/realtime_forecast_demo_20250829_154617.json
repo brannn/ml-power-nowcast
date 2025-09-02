@@ -1,0 +1,55 @@
+{
+  "generated_at": "2025-08-29T22:46:17.100405+00:00",
+  "total_predictions": 3,
+  "zones": [
+    "NP15"
+  ],
+  "horizons": [
+    24,
+    12,
+    6
+  ],
+  "forecast_availability": {
+    "predictions_with_forecasts": 0,
+    "predictions_without_forecasts": 3,
+    "forecast_coverage_pct": 0.0
+  },
+  "performance_summary": {
+    "mean_improvement_pct": "1.1411383",
+    "median_improvement_pct": "1.1411383",
+    "std_improvement_pct": "0.0",
+    "min_improvement_pct": "1.1411383",
+    "max_improvement_pct": "1.1411383",
+    "predictions_with_improvement": 3,
+    "target_improvement_achieved": "False"
+  },
+  "predictions": [
+    {
+      "timestamp": "2025-08-30T04:46:12.792686+00:00",
+      "zone": "NP15",
+      "horizon_hours": 6,
+      "baseline_prediction": "5771.7603",
+      "enhanced_prediction": "5837.624",
+      "improvement_pct": "1.1411383",
+      "forecast_available": "False"
+    },
+    {
+      "timestamp": "2025-08-30T10:46:12.792686+00:00",
+      "zone": "NP15",
+      "horizon_hours": 12,
+      "baseline_prediction": "5771.7603",
+      "enhanced_prediction": "5837.624",
+      "improvement_pct": "1.1411383",
+      "forecast_available": "False"
+    },
+    {
+      "timestamp": "2025-08-30T22:46:12.792686+00:00",
+      "zone": "NP15",
+      "horizon_hours": 24,
+      "baseline_prediction": "5771.7603",
+      "enhanced_prediction": "5837.624",
+      "improvement_pct": "1.1411383",
+      "forecast_available": "False"
+    }
+  ]
+}

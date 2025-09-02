@@ -1,0 +1,6 @@
+artifact_location: file:///Users/bran/Work/model-power-nowcast/mlruns/795039477520141587
+creation_time: 1756391812802
+experiment_id: '795039477520141587'
+last_update_time: 1756391812802
+lifecycle_stage: active
+name: power-nowcast
