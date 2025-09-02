@@ -1,0 +1,608 @@
+version: 1.0.0
+scopes:
+  global:
+    documentation:
+      - id: DOCS-001
+        rule: "Technical documentation must avoid superlatives and self-promotional language"
+        severity: critical
+        detector: docs.style.superlatives.v1
+        auto_fix: false
+        example_violation: "This amazing, incredible, world-class feature provides cutting-edge performance"
+        example_fix: "This feature provides measured performance improvements based on benchmark results"
+        tags: ["documentation", "style", "professional", "tone"]
+      
+      - id: DOCS-002
+        rule: "Do not use emoji icons or decorative symbols in technical documentation"
+        severity: critical
+        detector: docs.style.no_emoji.v1
+        auto_fix: true
+        example_violation: "## Getting Started 🚀 ✨"
+        example_fix: "## Getting Started"
+        tags: ["documentation", "style", "professional"]
+      
+      - id: DOCS-003
+        rule: "Prefer prose and narrative explanations over excessive bullet points"
+        severity: warning
+        detector: docs.style.bullets.v1
+        auto_fix: false
+        example_violation: "Features:\n- Fast\n- Reliable\n- Scalable\n- Secure"
+        example_fix: "The system processes requests efficiently while maintaining reliability standards. It scales horizontally to accommodate increased load and implements security measures throughout the architecture."
+        tags: ["documentation", "structure", "readability"]
+      
+      - id: DOCS-004
+        rule: "Code examples must be complete and functional with necessary imports and context"
+        severity: critical
+        detector: docs.code.complete.v1
+        auto_fix: false
+        example_violation: "```python\nresult = process(data)\n```"
+        example_fix: "```python\nfrom data_processor import process\nimport json\n\n# Load configuration and data\nwith open('config.json') as f:\n    config = json.load(f)\n    \ndata = load_data('input.csv', config)\nresult = process(data)\n```"
+        tags: ["documentation", "code-examples", "completeness"]
+      
+      - id: DOCS-005
+        rule: "Include specific version numbers and exact command syntax in instructions"
+        severity: critical
+        detector: docs.technical.precision.v1
+        auto_fix: false
+        example_violation: "Install the latest version using pip"
+        example_fix: "Install version 2.4.1: pip install package==2.4.1"
+        tags: ["documentation", "precision", "technical-accuracy"]
+      
+      - id: DOCS-006
+        rule: "Document error conditions with actual error messages and resolution steps"
+        severity: critical
+        detector: docs.errors.complete.v1
+        auto_fix: false
+        example_violation: "If it fails, check the logs"
+        example_fix: "If the process fails with 'ConnectionError: Unable to reach database at localhost:5432', verify:\n1. Database service is running: systemctl status postgresql\n2. Connection string in config.yml matches your database settings\n3. Network connectivity: telnet localhost 5432"
+        tags: ["documentation", "errors", "troubleshooting"]
+      
+      - id: DOCS-007
+        rule: "API documentation must include complete parameter descriptions, types, and return values"
+        severity: critical
+        detector: docs.api.complete.v1
+        auto_fix: false
+        example_violation: "POST /api/process - Processes data"
+        example_fix: "POST /api/process\nProcesses incoming data according to configured rules.\n\nParameters:\n  - data (object, required): Input data structure\n    - format (string): Data format ('json' | 'csv' | 'xml')\n    - content (string): Base64-encoded data content\n  - validate (boolean, optional): Enable validation (default: true)\n  - timeout (integer, optional): Processing timeout in seconds (default: 30)\n\nReturns:\n  - 200 OK: {result: object, status: 'success', processing_time: number}\n  - 400 Bad Request: {error: string, details: object}\n  - 408 Timeout: {error: 'Processing timeout exceeded'}"
+        tags: ["documentation", "api", "completeness"]
+      
+      - id: DOCS-008
+        rule: "README files must include overview, installation, usage, and configuration sections"
+        severity: warning
+        detector: docs.readme.structure.v1
+        auto_fix: false
+        example_violation: "README with only a title and brief description"
+        example_fix: "README with sections: Overview, Prerequisites, Installation, Configuration, Usage, API Reference, Troubleshooting, Contributing"
+        tags: ["documentation", "readme", "structure"]
+      
+      - id: DOCS-009
+        rule: "Use clear cross-references with specific section titles or explicit links"
+        severity: warning
+        detector: docs.references.explicit.v1
+        auto_fix: false
+        example_violation: "As mentioned above, configure the settings"
+        example_fix: "As described in the 'Configuration' section, update the settings.yaml file"
+        tags: ["documentation", "cross-references", "clarity"]
+      
+      - id: DOCS-010
+        rule: "Organize information in logical progression from general to specific"
+        severity: warning
+        detector: docs.structure.logical.v1
+        auto_fix: false
+        example_violation: "Starting with implementation details before explaining concepts"
+        example_fix: "Overview → Core Concepts → Installation → Basic Usage → Advanced Features → API Reference"
+        tags: ["documentation", "structure", "organization"]
+      
+      - id: DOCS-011
+        rule: "Configuration documentation must specify all options with types and defaults"
+        severity: critical
+        detector: docs.config.complete.v1
+        auto_fix: false
+        example_violation: "Set the timeout value in config"
+        example_fix: "timeout (integer, optional): Request timeout in milliseconds. Default: 5000. Range: 1000-30000"
+        tags: ["documentation", "configuration", "completeness"]
+      
+      - id: DOCS-012
+        rule: "Avoid marketing terminology and promotional adjectives in technical content"
+        severity: critical
+        detector: docs.style.marketing.v1
+        auto_fix: false
+        example_violation: "revolutionary, game-changing, best-in-class, powerful, blazing fast"
+        example_fix: "Use precise, descriptive language: 'processes 10,000 requests/second' instead of 'blazing fast'"
+        tags: ["documentation", "style", "professional"]
+      
+      - id: DOCS-013
+        rule: "Provide explanatory text before and after code blocks"
+        severity: warning
+        detector: docs.code.context.v1
+        auto_fix: false
+        example_violation: "```python\ncode here\n```"
+        example_fix: "The following example demonstrates connecting to the database:\n```python\ncode here\n```\nThis establishes a connection pool with automatic retry logic."
+        tags: ["documentation", "code-examples", "context"]
+      
+      - id: DOCS-014
+        rule: "Troubleshooting sections must address real problems with diagnostic steps"
+        severity: warning
+        detector: docs.troubleshooting.practical.v1
+        auto_fix: false
+        example_violation: "If you have problems, contact support"
+        example_fix: "Common Issues:\n\nConnection Timeout:\nSymptom: 'TimeoutError after 30 seconds'\nCause: Network latency or firewall blocking port 8080\nDiagnosis:\n1. Test connectivity: curl -v http://server:8080/health\n2. Check firewall: sudo iptables -L -n | grep 8080\nResolution: Configure firewall or increase timeout in config.yml"
+        tags: ["documentation", "troubleshooting", "practical"]
+
+    python_standards:
+      - id: PY-001
+        rule: "Python code must be PEP-8 compliant with exceptions for file docstrings and line length (max 120 chars)"
+        severity: critical
+        detector: python.pep8.modified.v1
+        auto_fix: false
+        example_violation: "def myFunction(x,y,z): return x+y+z"
+        example_fix: "def my_function(x, y, z):\n    return x + y + z"
+        tags: ["python", "pep8", "style", "formatting"]
+      
+      - id: PY-002
+        rule: "All functions, methods, and classes must have comprehensive type hints including return types"
+        severity: critical
+        detector: python.typehints.comprehensive.v1
+        auto_fix: false
+        example_violation: "def process_data(data, config):\n    return data.transform(config)"
+        example_fix: "def process_data(data: pl.DataFrame, config: dict[str, Any]) -> pl.DataFrame:\n    return data.transform(config)"
+        tags: ["python", "type-hints", "typing", "quality"]
+      
+      - id: PY-003
+        rule: "Test files must also include complete type hints for all functions and fixtures"
+        severity: critical
+        detector: python.test.typehints.v1
+        auto_fix: false
+        example_violation: "def test_process():\n    result = process(data)\n    assert result"
+        example_fix: "def test_process() -> None:\n    data: pl.DataFrame = create_test_data()\n    result: pl.DataFrame = process(data)\n    assert not result.is_empty()"
+        tags: ["python", "testing", "type-hints", "quality"]
+      
+      - id: PY-004
+        rule: "Test coverage must be meaningful - tests should verify behavior, not just achieve coverage metrics"
+        severity: critical
+        detector: python.test.meaningful.v1
+        auto_fix: false
+        example_violation: "def test_init():\n    obj = MyClass()\n    assert obj is not None"
+        example_fix: "def test_initialization_with_valid_config():\n    config = {'timeout': 30, 'retries': 3}\n    obj = MyClass(config)\n    assert obj.timeout == 30\n    assert obj.retries == 3"
+        tags: ["python", "testing", "quality", "coverage"]
+      
+      - id: PY-005
+        rule: "Never modify tests just to make them pass - fix the code or update tests to reflect new requirements"
+        severity: critical
+        detector: python.test.integrity.v1
+        auto_fix: false
+        example_violation: "# Changed assertion from == 5 to == 6 to make test pass"
+        example_fix: "# Fixed calculation logic in main code to return correct value"
+        tags: ["python", "testing", "integrity", "quality"]
+      
+      - id: PY-006
+        rule: "Use Polars instead of Pandas for DataFrame operations"
+        severity: critical
+        detector: python.dataframe.polars.v1
+        auto_fix: false
+        example_violation: "import pandas as pd\ndf = pd.DataFrame(data)"
+        example_fix: "import polars as pl\ndf = pl.DataFrame(data)"
+        tags: ["python", "dataframes", "polars", "performance"]
+      
+      - id: PY-007
+        rule: "Use FastAPI for developing APIs and backend services"
+        severity: critical
+        detector: python.api.fastapi.v1
+        auto_fix: false
+        example_violation: "from flask import Flask\napp = Flask(__name__)"
+        example_fix: "from fastapi import FastAPI\napp = FastAPI()"
+        tags: ["python", "api", "fastapi", "backend"]
+      
+      - id: PY-008
+        rule: "Always work within a Python virtual environment (venv)"
+        severity: critical
+        detector: python.venv.required.v1
+        auto_fix: false
+        example_violation: "pip install requests"
+        example_fix: "python -m venv venv\nsource venv/bin/activate  # or venv\\Scripts\\activate on Windows\npip install requests"
+        tags: ["python", "venv", "environment", "dependencies"]
+      
+      - id: PY-009
+        rule: "Python 3.10 is the minimum version, prefer Python 3.12 or newer"
+        severity: critical
+        detector: python.version.minimum.v1
+        auto_fix: false
+        example_violation: "#!/usr/bin/env python3.8"
+        example_fix: "#!/usr/bin/env python3.12"
+        tags: ["python", "version", "compatibility"]
+      
+      - id: PY-010
+        rule: "Use Ruff for linting but never in auto-correct mode - review and fix issues manually"
+        severity: critical
+        detector: python.linting.ruff.v1
+        auto_fix: false
+        example_violation: "ruff check --fix ."
+        example_fix: "ruff check .\n# Review issues and fix manually"
+        tags: ["python", "linting", "ruff", "quality"]
+      
+      - id: PY-011
+        rule: "Use descriptive variable names following snake_case convention"
+        severity: warning
+        detector: python.naming.snake_case.v1
+        auto_fix: false
+        example_violation: "x = getData()\nusrLst = []\ncamelCaseVar = 42"
+        example_fix: "user_data = get_data()\nuser_list = []\nsnake_case_variable = 42"
+        tags: ["python", "naming", "style", "readability"]
+      
+      - id: PY-012
+        rule: "Import statements must be organized: standard library, third-party, local imports"
+        severity: warning
+        detector: python.imports.organized.v1
+        auto_fix: false
+        example_violation: "from mymodule import func\nimport os\nimport polars as pl"
+        example_fix: "import os\n\nimport polars as pl\n\nfrom mymodule import func"
+        tags: ["python", "imports", "organization", "style"]
+      
+      - id: PY-013
+        rule: "Use pathlib.Path instead of os.path for file operations"
+        severity: warning
+        detector: python.pathlib.preferred.v1
+        auto_fix: false
+        example_violation: "import os\nfile_path = os.path.join('data', 'file.txt')"
+        example_fix: "from pathlib import Path\nfile_path = Path('data') / 'file.txt'"
+        tags: ["python", "pathlib", "file-operations", "modern"]
+      
+      - id: PY-014
+        rule: "Async functions must have type hints and proper error handling"
+        severity: critical
+        detector: python.async.complete.v1
+        auto_fix: false
+        example_violation: "async def fetch_data(url):\n    return await client.get(url)"
+        example_fix: "async def fetch_data(url: str) -> dict[str, Any]:\n    try:\n        response = await client.get(url)\n        return response.json()\n    except httpx.HTTPError as e:\n        logger.error(f'Failed to fetch {url}: {e}')\n        raise"
+        tags: ["python", "async", "type-hints", "error-handling"]
+
+    code_quality:
+      - id: QUAL-001
+        rule: "Documentation must be maintained current with code changes"
+        severity: critical
+        detector: docs.maintenance.current.v1
+        auto_fix: false
+        example_violation: "Documentation references deprecated methods or old API versions"
+        example_fix: "Documentation accurately reflects current implementation and API version"
+        tags: ["documentation", "maintenance", "accuracy"]
+      
+      - id: QUAL-002
+        rule: "Use concise and educational tone focused on practical utility"
+        severity: warning
+        detector: docs.tone.educational.v1
+        auto_fix: false
+        example_violation: "Let me walk you through this awesome feature that you'll love"
+        example_fix: "This section explains the authentication flow and its configuration options"
+        tags: ["documentation", "tone", "professional"]
+      
+      - id: QUAL-003
+        rule: "Documentation changes must undergo review for technical accuracy"
+        severity: warning
+        detector: docs.review.required.v1
+        auto_fix: false
+        tags: ["documentation", "review", "quality"]
+
+  ml_power_nowcast:
+    zone_specific_modeling:
+      - id: ML-001
+        rule: "Zone-specific models must be trained separately for each CAISO utility zone"
+        severity: critical
+        detector: ml.zone_modeling.separate.v1
+        auto_fix: false
+        example_violation: "training unified model for all zones simultaneously"
+        example_fix: "train separate models for SYSTEM, NP15, SP15, SCE, SDGE, SMUD, PGE_VALLEY zones"
+        tags: ["ml", "zone-modeling", "caiso", "architecture"]
+      
+      - id: ML-002
+        rule: "Zone-specific hyperparameters must be applied based on volatility characteristics"
+        severity: critical
+        detector: ml.hyperparams.zone_specific.v1
+        auto_fix: false
+        example_violation: "using identical hyperparameters across all zones"
+        example_fix: "apply deeper regularization for volatile zones (NP15, SCE, SMUD), optimized parameters for stable zones"
+        tags: ["ml", "hyperparameters", "volatility", "optimization"]
+      
+      - id: ML-003
+        rule: "Zone-specific preprocessing must handle volatility and data quality issues"
+        severity: critical
+        detector: ml.preprocessing.zone_aware.v1
+        auto_fix: false
+        example_violation: "identical preprocessing pipeline for all zones"
+        example_fix: "apply aggressive outlier removal for volatile zones, light smoothing for NP15/SMUD, zone-specific IQR bounds"
+        tags: ["ml", "preprocessing", "data-quality", "zone-specific"]
+
+    ensemble_architecture:
+      - id: ML-004
+        rule: "Ensemble weights must follow established architecture: baseline XGBoost (25%), enhanced XGBoost (35%), zone-specific LightGBM (40%)"
+        severity: critical
+        detector: ml.ensemble.weights.v1
+        auto_fix: false
+        example_violation: "equal weighting or arbitrary ensemble ratios"
+        example_fix: "baseline_weight=0.25, enhanced_weight=0.35, lightgbm_weight=0.40"
+        tags: ["ml", "ensemble", "architecture", "weighting"]
+      
+      - id: ML-005
+        rule: "LightGBM models must be trained zone-specifically, never as unified models applied to individual zones"
+        severity: critical
+        detector: ml.lightgbm.zone_specific.v1
+        auto_fix: false
+        example_violation: "training single LightGBM model on all data then applying to individual zones"
+        example_fix: "train dedicated LightGBM model for each zone with zone-filtered data"
+        tags: ["ml", "lightgbm", "zone-specific", "scaling-fix"]
+      
+      - id: ML-006
+        rule: "Model predictions must include bounds checking to prevent unrealistic forecasts"
+        severity: critical
+        detector: ml.prediction.bounds_check.v1
+        auto_fix: false
+        example_violation: "SDGE predictions of 6,796 MW (unrealistic for 2,387 MW typical load)"
+        example_fix: "validate predictions against historical min/max bounds per zone with buffer"
+        tags: ["ml", "prediction", "validation", "bounds-checking"]
+
+    data_quality:
+      - id: ML-007
+        rule: "CAISO data must be filtered to remove mixed-source contamination before training"
+        severity: critical
+        detector: ml.data.caiso_filtering.v1
+        auto_fix: false
+        example_violation: "using raw CAISO data with water district and municipal utility contamination"
+        example_fix: "filter to primary sources only: SCE-TAC, PGE-TAC, SDGE-TAC, SMUD-TAC, CA ISO-TAC, LADWP"
+        tags: ["ml", "data-quality", "caiso", "filtering"]
+      
+      - id: ML-008
+        rule: "Power demand data must never contain negative values or unrealistic outliers"
+        severity: critical
+        detector: ml.data.power_validation.v1
+        auto_fix: false
+        example_violation: "negative power demands or values exceeding 150% of zone historical maximum"
+        example_fix: "remove negative loads, apply zone-specific IQR outlier detection with 3x bounds for volatile zones"
+        tags: ["ml", "data-validation", "outliers", "power-demand"]
+      
+      - id: ML-009
+        rule: "Weather data must be zone-specific and geographically representative"
+        severity: critical
+        detector: ml.data.weather_geographic.v1
+        auto_fix: false
+        example_violation: "using single statewide weather station for all zones"
+        example_fix: "use representative coordinates per zone: NP15 (SF), SCE (San Bernardino), SDGE (San Diego), etc."
+        tags: ["ml", "weather", "geographic", "zone-mapping"]
+
+    performance_standards:
+      - id: ML-010
+        rule: "Model performance must achieve sub-1% MAPE for production deployment"
+        severity: critical
+        detector: ml.performance.mape_threshold.v1
+        auto_fix: false
+        example_violation: "deploying model with 2.5% MAPE"
+        example_fix: "ensure MAPE < 1.0% across all zones before production deployment"
+        tags: ["ml", "performance", "mape", "deployment"]
+      
+      - id: ML-011
+        rule: "Models must demonstrate temporal variation across test hours to avoid lag overfitting"
+        severity: critical
+        detector: ml.validation.temporal_variation.v1
+        auto_fix: false
+        example_violation: "model shows identical predictions across different hours (flat line)"
+        example_fix: "validate min 3.5% variation across test hours [6, 9, 12, 15, 18, 21], tune lag feature weights"
+        tags: ["ml", "validation", "temporal-patterns", "overfitting"]
+      
+      - id: ML-012
+        rule: "Feature importance must be balanced - lag features <60%, temporal features >35%"
+        severity: critical
+        detector: ml.features.importance_balance.v1
+        auto_fix: false
+        example_violation: "85% importance on lag features, 10% on temporal features"
+        example_fix: "reduce lag feature weights, enhance temporal features, target 40-60% lag, 35-50% temporal"
+        tags: ["ml", "features", "importance", "balance"]
+
+    operational_requirements:
+      - id: ML-013
+        rule: "Automated training pipeline must include comprehensive error handling and rollback"
+        severity: critical
+        detector: ml.operations.error_handling.v1
+        auto_fix: false
+        example_violation: "pipeline fails without backup deployment or error recovery"
+        example_fix: "implement try-catch blocks, model backup before deployment, automatic rollback on validation failure"
+        tags: ["ml", "operations", "automation", "reliability"]
+      
+      - id: ML-014
+        rule: "Production models must have timestamped backups before each deployment"
+        severity: critical
+        detector: ml.operations.backup_required.v1
+        auto_fix: false
+        example_violation: "overwriting production models without backup"
+        example_fix: "create timestamped backup in data/model_backups/{timestamp}/ before deployment"
+        tags: ["ml", "operations", "backup", "versioning"]
+      
+      - id: ML-015
+        rule: "Model deployment metadata must include performance metrics and backup location"
+        severity: critical
+        detector: ml.operations.deployment_metadata.v1
+        auto_fix: false
+        example_violation: "deployment without performance tracking or backup reference"
+        example_fix: "include deployment_metadata.json with MAPE, R², backup_location, deployed_at timestamp"
+        tags: ["ml", "operations", "metadata", "tracking"]
+
+    feature_engineering:
+      - id: ML-016
+        rule: "Regional pattern features must be zone-specific and reflect operational characteristics"
+        severity: warning
+        detector: ml.features.regional_patterns.v1
+        auto_fix: false
+        example_violation: "generic temporal features applied identically across all zones"
+        example_fix: "NP15: tech_peak_hours, SCE: desert_cooling, SMUD: valley_heat patterns"
+        tags: ["ml", "features", "regional", "zone-specific"]
+      
+      - id: ML-017
+        rule: "Lag features must be limited and weighted to prevent temporal pattern suppression"
+        severity: warning
+        detector: ml.features.lag_weighting.v1
+        auto_fix: false
+        example_violation: "using 48+ lag features with equal weights"
+        example_fix: "limit to essential lags [1, 24, 168], apply lag_feature_weight < 0.3"
+        tags: ["ml", "features", "lag", "temporal-balance"]
+      
+      - id: ML-018
+        rule: "Weather forecast features must enhance predictions beyond historical weather data"
+        severity: warning
+        detector: ml.features.forecast_value.v1
+        auto_fix: false
+        example_violation: "forecast features provide no improvement over historical weather"
+        example_fix: "include forecast temperature changes, extreme weather indicators, forecast uncertainty metrics"
+        tags: ["ml", "features", "weather-forecast", "value-add"]
+
+    api_integration:
+      - id: ML-019
+        rule: "API server must support all production zones plus consolidated zones (LA_METRO)"
+        severity: critical
+        detector: ml.api.zone_support.v1
+        auto_fix: false
+        example_violation: "API returns 404 for valid CAISO zones or consolidated zones"
+        example_fix: "support SYSTEM, NP15, SP15, SCE, SDGE, SMUD, PGE_VALLEY plus LA_METRO consolidation"
+        tags: ["ml", "api", "zones", "integration"]
+      
+      - id: ML-020
+        rule: "Real-time predictions must include confidence intervals and model ensemble details"
+        severity: warning
+        detector: ml.api.prediction_metadata.v1
+        auto_fix: false
+        example_violation: "API returns only point predictions without uncertainty or model info"
+        example_fix: "include confidence_interval, ensemble_weights, model_versions in prediction response"
+        tags: ["ml", "api", "uncertainty", "transparency"]
+
+    real_time_operations:
+      - id: ML-021
+        rule: "Data collection must respect API rate limits with 15-second intervals for CAISO OASIS"
+        severity: critical
+        detector: ml.data_collection.rate_limiting.v1
+        auto_fix: false
+        example_violation: "making rapid successive API calls without rate limiting"
+        example_fix: "implement 15-second sleep between CAISO API requests, use exponential backoff for retries"
+        tags: ["ml", "data-collection", "rate-limiting", "caiso"]
+      
+      - id: ML-022
+        rule: "Automated pipelines must use local-first architecture without cloud dependencies for core functionality"
+        severity: critical
+        detector: ml.architecture.local_first.v1
+        auto_fix: false
+        example_violation: "requiring AWS S3 or cloud services for basic model training and serving"
+        example_fix: "ensure local data storage, local model training, optional cloud backup for non-essential features"
+        tags: ["ml", "architecture", "local-first", "independence"]
+      
+      - id: ML-023
+        rule: "macOS launchd jobs must include comprehensive error handling and logging"
+        severity: critical
+        detector: ml.automation.error_handling.v1
+        auto_fix: false
+        example_violation: "launchd jobs fail silently without logging or error recovery"
+        example_fix: "implement try-catch blocks, detailed logging to timestamped files, error notification"
+        tags: ["ml", "automation", "macos", "reliability"]
+      
+      - id: ML-024
+        rule: "Real-time dashboard must update zone-specific weather data dynamically"
+        severity: warning
+        detector: ml.dashboard.weather_updates.v1
+        auto_fix: false
+        example_violation: "dashboard shows static weather data or incorrect zone weather"
+        example_fix: "implement zone-specific weather API endpoints, dynamic updates on zone selection"
+        tags: ["ml", "dashboard", "weather", "real-time"]
+
+    data_integrity:
+      - id: ML-025
+        rule: "Never mix synthetic and real data in training or evaluation datasets"
+        severity: critical
+        detector: ml.data.synthetic_separation.v1
+        auto_fix: false
+        example_violation: "combining synthetic power data with real CAISO data in training set"
+        example_fix: "maintain strict separation, clear data provenance, explicit synthetic data marking"
+        tags: ["ml", "data-integrity", "synthetic", "provenance"]
+      
+      - id: ML-026
+        rule: "UTC timestamp normalization must be applied across all temporal data"
+        severity: critical
+        detector: ml.data.timestamp_normalization.v1
+        auto_fix: false
+        example_violation: "mixing local timezone data with UTC data causing alignment issues"
+        example_fix: "convert all timestamps to UTC during ingestion, maintain timezone metadata"
+        tags: ["ml", "data-integrity", "timestamps", "normalization"]
+      
+      - id: ML-027
+        rule: "Data validation must prevent negative power values and unrealistic outliers"
+        severity: critical
+        detector: ml.data.power_validation.v1
+        auto_fix: false
+        example_violation: "accepting negative power demands or values >150% of historical maximum"
+        example_fix: "implement zone-specific validation bounds, IQR-based outlier detection"
+        tags: ["ml", "data-validation", "power-demand", "outliers"]
+
+    model_evaluation:
+      - id: ML-028
+        rule: "Model evaluation must use temporal splits to prevent data leakage"
+        severity: critical
+        detector: ml.evaluation.temporal_splits.v1
+        auto_fix: false
+        example_violation: "using random train-test splits on time series data"
+        example_fix: "implement time-based splits, ensure test data comes after training data temporally"
+        tags: ["ml", "evaluation", "temporal", "data-leakage"]
+      
+      - id: ML-029
+        rule: "Performance metrics must include MAPE, R², RMSE, and MAE for comprehensive evaluation"
+        severity: warning
+        detector: ml.evaluation.comprehensive_metrics.v1
+        auto_fix: false
+        example_violation: "reporting only single metric like MSE without context"
+        example_fix: "calculate and report MAPE, R², RMSE, MAE for each zone and overall"
+        tags: ["ml", "evaluation", "metrics", "comprehensive"]
+      
+      - id: ML-030
+        rule: "Diagnostic plots must include prediction vs actual, residuals, and backtest charts"
+        severity: warning
+        detector: ml.evaluation.diagnostic_plots.v1
+        auto_fix: false
+        example_violation: "model evaluation without visual diagnostic analysis"
+        example_fix: "generate scatter plots, residual histograms, time series backtest visualizations"
+        tags: ["ml", "evaluation", "diagnostics", "visualization"]
+
+    infrastructure:
+      - id: ML-031
+        rule: "Production models must be stored in zone-specific directory structure"
+        severity: critical
+        detector: ml.infrastructure.model_storage.v1
+        auto_fix: false
+        example_violation: "storing all models in single directory without zone organization"
+        example_fix: "use data/production_models/{ZONE}/ structure with deployment metadata"
+        tags: ["ml", "infrastructure", "model-storage", "organization"]
+      
+      - id: ML-032
+        rule: "Model serving must support both FastAPI microservice and MLflow deployment"
+        severity: warning
+        detector: ml.infrastructure.serving_options.v1
+        auto_fix: false
+        example_violation: "single serving approach without deployment flexibility"
+        example_fix: "provide FastAPI app with health checks and MLflow serving compatibility"
+        tags: ["ml", "infrastructure", "serving", "flexibility"]
+      
+      - id: ML-033
+        rule: "Test suite must achieve comprehensive coverage of feature engineering, training, and serving"
+        severity: warning
+        detector: ml.infrastructure.test_coverage.v1
+        auto_fix: false
+        example_violation: "minimal testing or missing integration tests"
+        example_fix: "53+ tests covering feature creation, model training, API endpoints, end-to-end pipeline"
+        tags: ["ml", "infrastructure", "testing", "coverage"]
+
+metadata:
+  description: "Combined documentation standards and ML power nowcasting system standards"
+  maintainer: "Documentation Team & ML Engineering Team"
+  last_updated: "2025-09-02"
+  policy_count: 66
+  scopes: ["global", "ml_power_nowcast"]
+  references:
+    - "reference/DOCUMENTATION.md"
+    - "https://developers.google.com/style"
+    - "https://docs.microsoft.com/style-guide"
+    - "README.md"
+    - "docs/model-training-operations.md"
+    - "docs/technical-implementation.md"
+    - "docs/operations-deployment.md"
+  domains: ["documentation", "ml_power_forecasting"]
+  caiso_zones: ["SYSTEM", "NP15", "SP15", "SCE", "SDGE", "SMUD", "PGE_VALLEY"]

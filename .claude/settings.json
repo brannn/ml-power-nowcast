@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Git"
+    ],
+    "deny": [],
+    "ask": [
+      "Deployment_changes",
+      "Git:push:main",
+      "File:delete:batch"
+    ]
+  },
+  "behavior": {
+    "security_first": false,
+    "require_confirmation_for_critical": true,
+    "documentation_standards": {
+      "require_examples": true,
+      "no_superlatives": true,
+      "no_emojis": true
+    }
+  },
+  "automation": {
+    "auto_validate_on_save": false,
+    "suggest_fixes": true,
+    "remember_preferences": true
+  }
+}

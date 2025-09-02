@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://egokit.dev/schemas/ego.schema.json",
+  "title": "EgoKit Ego Configuration Schema",
+  "description": "Schema for EgoKit ego/persona configuration",
+  "type": "object",
+  "required": ["version", "ego"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[a-zA-Z0-9\\-]+)?(?:\\+[a-zA-Z0-9\\-]+)?$",
+      "description": "Semantic version of the ego configuration"
+    },
+    "ego": {
+      "$ref": "#/definitions/egoConfig"
+    }
+  },
+  "definitions": {
+    "egoConfig": {
+      "type": "object",
+      "required": ["role", "tone"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Primary role identity for the AI agent"
+        },
+        "tone": {
+          "$ref": "#/definitions/toneConfig"
+        },
+        "defaults": {
+          "type": "object",
+          "additionalProperties": {"type": "string"},
+          "description": "Default behavioral patterns"
+        },
+        "reviewer_checklist": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Review criteria checklist"
+        },
+        "ask_when_unsure": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Scenarios requiring user clarification"
+        },
+        "modes": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/definitions/modeConfig"},
+          "description": "Named operating modes"
+        }
+      }
+    },
+    "toneConfig": {
+      "type": "object",
+      "required": ["voice", "verbosity"],
+      "properties": {
+        "voice": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Voice characteristics"
+        },
+        "verbosity": {
+          "type": "string",
+          "enum": ["minimal", "balanced", "detailed", "paragraph-first", "high-signal"],
+          "description": "Verbosity level"
+        },
+        "formatting": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Formatting preferences"
+        }
+      }
+    },
+    "modeConfig": {
+      "type": "object",
+      "required": ["verbosity"],
+      "properties": {
+        "verbosity": {
+          "type": "string",
+          "enum": ["minimal", "balanced", "detailed", "paragraph-first", "high-signal"],
+          "description": "Mode-specific verbosity override"
+        },
+        "focus": {
+          "type": "string",
+          "description": "Mode-specific focus area"
+        }
+      }
+    }
+  }
+}

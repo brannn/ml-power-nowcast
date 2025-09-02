@@ -1,0 +1,2 @@
+2025-09-02 12:39:31,955 - WARNING - Dataset merge failed: /Library/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python: can't open file '/Users/bran/Work/model-power-nowcast/scripts/merge_datasets.py': [Errno 2] No such file or directory
+

@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://egokit.dev/schemas/charter.schema.json",
+  "title": "EgoKit Policy Charter Schema",
+  "description": "Schema for EgoKit policy charter configuration",
+  "type": "object",
+  "required": ["version", "scopes"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[a-zA-Z0-9\\-]+)?(?:\\+[a-zA-Z0-9\\-]+)?$",
+      "description": "Semantic version of the policy charter"
+    },
+    "scopes": {
+      "type": "object",
+      "description": "Hierarchical policy scopes",
+      "additionalProperties": {
+        "oneOf": [
+          {"$ref": "#/definitions/scopeRules"},
+          {
+            "type": "object",
+            "additionalProperties": {"$ref": "#/definitions/scopeRules"}
+          }
+        ]
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional charter metadata"
+    }
+  },
+  "definitions": {
+    "scopeRules": {
+      "type": "object",
+      "properties": {
+        "security": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/policyRule"}
+        },
+        "code_quality": {
+          "type": "array", 
+          "items": {"$ref": "#/definitions/policyRule"}
+        },
+        "docs": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/policyRule"}
+        },
+        "licensing": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/policyRule"}
+        },
+        "additional_rules": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/policyRule"}
+        }
+      }
+    },
+    "policyRule": {
+      "type": "object",
+      "required": ["id", "rule", "severity", "detector"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Z]{2,6}-\\d{3}$",
+          "description": "Unique rule identifier (e.g., SEC-001)"
+        },
+        "rule": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable rule description"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["critical", "warning", "info"],
+          "description": "Enforcement severity level"
+        },
+        "detector": {
+          "type": "string",
+          "pattern": "^[a-z_.]+\\.v\\d+$",
+          "description": "Detector module name (e.g., secret.regex.v1)"
+        },
+        "auto_fix": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether auto-fix is available"
+        },
+        "example_violation": {
+          "type": "string",
+          "description": "Example of rule violation"
+        },
+        "example_fix": {
+          "type": "string", 
+          "description": "Example of correct implementation"
+        },
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Rule categorization tags"
+        }
+      }
+    }
+  }
+}

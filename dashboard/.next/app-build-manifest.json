@@ -1,21 +1,5 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/9f1d4_next_dist_e02d9550._.js",
-      "static/chunks/dashboard_src_app_favicon_ico_mjs_c640fdd2._.js",
-      "static/chunks/[root-of-the-server]__72facaa7._.css",
-      "static/chunks/dashboard_10f4938f._.js",
-      "static/chunks/dashboard_src_app_layout_tsx_0c54ef10._.js",
-      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_7aa8dd5f._.js",
-      "static/chunks/9f1d4_next_dist_compiled_react-dom_55f4c81e._.js",
-      "static/chunks/9f1d4_next_dist_compiled_next-devtools_index_19522cbf.js",
-      "static/chunks/9f1d4_next_dist_compiled_e6c5a958._.js",
-      "static/chunks/9f1d4_next_dist_client_fd239501._.js",
-      "static/chunks/9f1d4_next_dist_cb62c3e4._.js",
-      "static/chunks/9f1d4_@swc_helpers_cjs_79ec8595._.js",
-      "static/chunks/dashboard_a0ff3932._.js",
-      "static/chunks/turbopack-dashboard_8316af16._.js"
-    ],
     "/page": [
       "static/chunks/9f1d4_next_dist_e02d9550._.js",
       "static/chunks/dashboard_src_app_favicon_ico_mjs_c640fdd2._.js",
