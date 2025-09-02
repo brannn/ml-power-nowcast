@@ -1,1 +1,1 @@
-"""Tests for EgoKit."""
+# Test package for ML Power Nowcast

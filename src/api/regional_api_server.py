@@ -945,6 +945,7 @@ async def get_historical_data(days: int = 7, zone: str = "STATEWIDE", model_id: 
 
 @app.get("/weather/{zone}", response_model=CurrentWeather)
 async def get_current_weather(zone: str):
+<<<<<<< HEAD
     """Get current weather conditions for a specific zone from real-time data."""
     
     # Define the path to current weather conditions
@@ -1003,10 +1004,36 @@ async def get_current_weather(zone: str):
                 zone="LA_METRO",
                 temperature=28.0,
                 humidity=55,
+=======
+    """Get current weather conditions for a specific zone."""
+
+    # Handle LA_METRO as consolidated zone (SCE + SP15 for LA Metro area)
+    if zone == "LA_METRO":
+        # Use SCE data as representative for LA Metro weather
+        if "SCE" in regional_data:
+            zone_data = regional_data["SCE"]
+            latest_weather = zone_data.iloc[-1]
+
+            return CurrentWeather(
+                zone="LA_METRO",
+                temperature=float(latest_weather.get('temp_c', 28.0)),  # LA typical temp
+                humidity=float(latest_weather.get('humidity', 55.0)),   # LA typical humidity
+                wind_speed=float(latest_weather.get('wind_speed', 4.0)), # LA typical wind
+                timestamp=datetime.now().isoformat(),
+                climate_region="Mediterranean/semi-arid"
+            )
+        else:
+            # Fallback if no SCE data
+            return CurrentWeather(
+                zone="LA_METRO",
+                temperature=28.0,
+                humidity=55.0,
+>>>>>>> adcb55c4c81e30b329b5636d7bb93d8814a96de2
                 wind_speed=4.0,
                 timestamp=datetime.now().isoformat(),
                 climate_region="Mediterranean/semi-arid"
             )
+<<<<<<< HEAD
         
         # Check if zone exists
         if zone not in CAISO_ZONES and zone != 'STATEWIDE':
@@ -1026,6 +1053,29 @@ async def get_current_weather(zone: str):
     except Exception as e:
         logger.error(f"Error reading current weather conditions: {e}")
         raise HTTPException(status_code=503, detail=f"Weather data unavailable for zone: {zone}")
+=======
+
+    if zone not in CAISO_ZONES and zone != 'STATEWIDE':
+        raise HTTPException(status_code=400, detail=f"Unknown zone: {zone}")
+
+    if zone not in regional_data:
+        raise HTTPException(status_code=503, detail=f"No data available for zone: {zone}")
+
+    zone_data = regional_data[zone]
+    zone_info = CAISO_ZONES.get(zone, CAISO_ZONES['NP15'])  # Fallback to NP15
+
+    # Get latest weather data from the zone
+    latest_weather = zone_data.iloc[-1]
+
+    return CurrentWeather(
+        zone=zone,
+        temperature=float(latest_weather.get('temp_c', 22.0)),
+        humidity=float(latest_weather.get('humidity', 65.0)),
+        wind_speed=float(latest_weather.get('wind_speed', 5.0)),
+        timestamp=datetime.now().isoformat(),
+        climate_region=getattr(zone_info, 'climate_region', 'Mixed')
+    )
+>>>>>>> adcb55c4c81e30b329b5636d7bb93d8814a96de2
 
 @app.get("/trend/{zone}", response_model=DemandTrend)
 async def get_demand_trend(zone: str):

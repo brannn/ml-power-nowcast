@@ -1,0 +1,75 @@
+# ML Power Nowcast - Requirements
+#
+# Version Strategy:
+# - Use >= for minimum versions to allow compatible updates
+# - Pin major versions to avoid breaking changes
+# - Update regularly and test thoroughly
+#
+# For production deployment, consider using pip-tools to generate
+# a requirements-lock.txt with exact versions for reproducibility
+
+# MLflow and experiment tracking
+mlflow>=2.15.1
+mlflow[extras]>=2.15.1
+
+# Data manipulation and storage
+pandas>=2.2.2
+pyarrow>=17.0.0
+numpy>=1.26.4
+
+# Machine learning
+scikit-learn>=1.5.1
+xgboost>=2.1.1
+lightgbm>=4.5.0  # Gradient boosting framework (faster than XGBoost)
+
+
+
+# Tabular neural networks
+pytorch-tabnet>=4.1.0  # Google's TabNet for tabular data
+
+# TensorFlow ecosystem (with Apple Silicon Metal support)
+tensorflow-macos>=2.16.0  # TensorFlow optimized for macOS
+tensorflow-metal>=1.1.0   # Metal acceleration for Apple Silicon
+
+# API and serving
+fastapi>=0.112.0
+uvicorn[standard]>=0.30.5
+pydantic>=2.8.2
+aiohttp>=3.12.0  # Async HTTP client for live weather API calls
+
+# Data sources and utilities
+holidays>=0.56
+meteostat>=1.6.8
+requests>=2.32.3
+urllib3>=2.2.2  # HTTP client library (used by requests)
+certifi>=2024.7.4  # SSL certificate bundle
+
+# Data validation and schema enforcement
+jsonschema>=4.23.0  # JSON schema validation for API responses
+
+# Standard library enhancements (explicit for clarity)
+# Note: zipfile, io, tempfile, pathlib, argparse, datetime, typing are built-in
+# but we list external packages that extend their functionality
+
+# Visualization and analysis
+matplotlib>=3.9.2
+seaborn>=0.13.2
+plotly>=5.22.0
+
+# Note: Development dependencies (testing, linting, notebooks) are in requirements-dev.txt
+
+# AWS integration
+boto3>=1.34.162
+awscli>=1.33.39
+
+# Environment management
+python-dotenv>=1.0.1
+
+# Monitoring and logging
+structlog>=24.4.0
+tenacity>=9.0.0  # Retry logic for API calls
+ratelimit>=2.2.1  # Rate limiting for API requests
+
+# Time zone handling (important for power grid data)
+pytz>=2024.1  # Time zone definitions
+tzdata>=2024.1  # Time zone data
