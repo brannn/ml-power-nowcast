@@ -8,9 +8,9 @@ interface UnitsContextType {
   unitSystem: UnitSystem
   toggleUnits: () => void
   convertTemperature: (celsius: number) => number
-  convertWindSpeed: (ms: number) => number
+  convertWindSpeed: (kmh: number) => number
   formatTemperature: (celsius: number) => string
-  formatWindSpeed: (ms: number) => string
+  formatWindSpeed: (kmh: number) => string
 }
 
 const UnitsContext = createContext<UnitsContextType | undefined>(undefined)
@@ -43,8 +43,8 @@ export function UnitsProvider({ children }: { children: React.ReactNode }) {
     return unitSystem === 'metric' ? celsius : (celsius * 9/5) + 32
   }
 
-  const convertWindSpeed = (ms: number) => {
-    return unitSystem === 'metric' ? ms : ms * 2.237 // m/s to mph
+  const convertWindSpeed = (kmh: number) => {
+    return unitSystem === 'metric' ? kmh : kmh * 0.621371 // km/h to mph
   }
 
   const formatTemperature = (celsius: number) => {
@@ -53,9 +53,9 @@ export function UnitsProvider({ children }: { children: React.ReactNode }) {
     return `${converted.toFixed(1)}${unit}`
   }
 
-  const formatWindSpeed = (ms: number) => {
-    const converted = convertWindSpeed(ms)
-    const unit = unitSystem === 'metric' ? 'm/s' : 'mph'
+  const formatWindSpeed = (kmh: number) => {
+    const converted = convertWindSpeed(kmh)
+    const unit = unitSystem === 'metric' ? 'km/h' : 'mph'
     return `${converted.toFixed(1)} ${unit}`
   }
 
