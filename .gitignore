@@ -131,8 +131,12 @@ temp/
 dashboard/.next/
 dashboard/out/
 dashboard/build/
-dashboard/node_modules/
 .next/
+
+# Node.js dependencies (prevent future issues)
+node_modules/
+dashboard/node_modules/
+*/node_modules/
 
 # Infrastructure (not needed)
 terraform/

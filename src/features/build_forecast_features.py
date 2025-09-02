@@ -132,24 +132,33 @@ def create_core_forecast_features(
         logger.debug(f"Processing zone {zone}: {len(zone_df)} records")
         
         # Create forecast features for each horizon
+        # NOTE: This creates historical proxy features for training
+        # In production, these should be replaced with actual forecast API data
         for horizon in config.forecast_horizons:
-            # Temperature forecasts
-            zone_df[f'temp_forecast_{horizon}h'] = zone_df['temp_c'].shift(-horizon)
+            # Use historical data as forecast proxy (persistence forecast)
+            # This eliminates data leakage while maintaining feature structure
+            zone_df[f'temp_forecast_{horizon}h'] = zone_df['temp_c'].rolling(
+                window=min(24, len(zone_df)), min_periods=1
+            ).mean()
             
-            # Humidity forecasts (if available)
+            # Humidity forecasts (if available) - use persistence
             if 'humidity' in zone_df.columns and zone_df['humidity'].notna().any():
-                zone_df[f'humidity_forecast_{horizon}h'] = zone_df['humidity'].shift(-horizon)
+                zone_df[f'humidity_forecast_{horizon}h'] = zone_df['humidity'].rolling(
+                    window=min(12, len(zone_df)), min_periods=1
+                ).mean()
             
-            # Wind speed forecasts (if available)
+            # Wind speed forecasts (if available) - use persistence  
             if 'wind_speed_kmh' in zone_df.columns and zone_df['wind_speed_kmh'].notna().any():
-                zone_df[f'wind_forecast_{horizon}h'] = zone_df['wind_speed_kmh'].shift(-horizon)
+                zone_df[f'wind_forecast_{horizon}h'] = zone_df['wind_speed_kmh'].rolling(
+                    window=min(6, len(zone_df)), min_periods=1
+                ).mean()
             
-            # Cooling degree day forecasts
+            # Cooling degree day forecasts based on temperature forecast
             zone_df[f'cooling_forecast_{horizon}h'] = np.maximum(
                 zone_df[f'temp_forecast_{horizon}h'] - config.base_temperature, 0
             )
             
-            # Heating degree day forecasts
+            # Heating degree day forecasts based on temperature forecast
             zone_df[f'heating_forecast_{horizon}h'] = np.maximum(
                 config.base_temperature - zone_df[f'temp_forecast_{horizon}h'], 0
             )
