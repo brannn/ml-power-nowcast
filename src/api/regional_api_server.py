@@ -465,17 +465,153 @@ def load_sample_data():
         logger.error(f"Error loading data: {e}")
         raise
 
+def _generate_composite_la_metro_predictions(weather: WeatherInput, hours_ahead: int = 6, model_id: str = None) -> List[PredictionPoint]:
+    """
+    Generate LA_METRO composite predictions following ML-005 policy.
+    
+    Properly aggregates SCE and SP15 zone-specific model predictions instead of
+    using flawed scaling logic. This maintains zone-specific model integrity.
+    
+    Args:
+        weather: Weather input data for predictions
+        hours_ahead: Number of hours to predict (default: 6)
+        model_id: Model type to use (baseline, enhanced, lightgbm, ensemble)
+    
+    Returns:
+        List of PredictionPoint objects with aggregated LA_METRO predictions
+        
+    Raises:
+        HTTPException: If zone-specific forecasters are unavailable
+    """
+    global zone_forecasters
+    
+    logger.info(f"Generating ML-005 compliant LA_METRO predictions by aggregating SCE + SP15 models")
+    
+    try:
+        # Get zone-specific forecasters for both zones
+        sce_forecaster = zone_forecasters.get("SCE")
+        sp15_forecaster = zone_forecasters.get("SP15")
+        
+        if not sce_forecaster or not sp15_forecaster:
+            raise HTTPException(
+                status_code=503,
+                detail="LA_METRO requires both SCE and SP15 zone-specific forecasters to be available"
+            )
+        
+        prediction_time = datetime.now(timezone.utc)
+        horizons = list(range(1, hours_ahead + 1))
+        
+        # Generate predictions for both zones separately (ML-005 compliant)
+        sce_predictions = sce_forecaster.make_predictions(
+            prediction_time=prediction_time,
+            zone="SCE",
+            horizons=horizons
+        )
+        
+        sp15_predictions = sp15_forecaster.make_predictions(
+            prediction_time=prediction_time,
+            zone="SP15", 
+            horizons=horizons
+        )
+        
+        if not sce_predictions or not sp15_predictions:
+            raise HTTPException(
+                status_code=503,
+                detail="Failed to generate predictions from SCE or SP15 zone-specific models"
+            )
+        
+        # Aggregate predictions by time horizon
+        prediction_points = []
+        for i, horizon in enumerate(horizons):
+            if i >= len(sce_predictions) or i >= len(sp15_predictions):
+                continue
+                
+            sce_pred = sce_predictions[i]
+            sp15_pred = sp15_predictions[i]
+            
+            # Select appropriate prediction based on model_id for each zone
+            sce_load = _extract_prediction_by_model(sce_pred, model_id)
+            sp15_load = _extract_prediction_by_model(sp15_pred, model_id)
+            
+            if sce_load is None or sp15_load is None:
+                continue
+            
+            # Aggregate zone predictions (proper ML-005 compliant approach)
+            combined_load = sce_load + sp15_load
+            
+            # Aggregate confidence intervals using error propagation
+            sce_confidence_range = sce_load * 0.05
+            sp15_confidence_range = sp15_load * 0.05
+            combined_confidence_range = (sce_confidence_range**2 + sp15_confidence_range**2)**0.5
+            
+            prediction_points.append(PredictionPoint(
+                timestamp=sce_pred.timestamp.isoformat(),
+                predicted_load=float(combined_load),
+                confidence_lower=float(combined_load - combined_confidence_range),
+                confidence_upper=float(combined_load + combined_confidence_range),
+                hour_ahead=horizon
+            ))
+            
+            logger.debug(f"LA_METRO H+{horizon}: SCE({sce_load:.1f}) + SP15({sp15_load:.1f}) = {combined_load:.1f} MW")
+        
+        logger.info(f"Generated {len(prediction_points)} LA_METRO composite predictions using zone-specific models")
+        return prediction_points
+        
+    except Exception as e:
+        logger.error(f"Error generating LA_METRO composite predictions: {e}")
+        raise HTTPException(
+            status_code=503,
+            detail=f"LA_METRO prediction aggregation failed: {str(e)}"
+        )
+
+
+def _extract_prediction_by_model(pred, model_id: str) -> Optional[float]:
+    """Extract prediction value based on model_id following same logic as main function."""
+    if model_id == "baseline":
+        return pred.baseline_prediction
+    elif model_id == "enhanced":
+        return pred.enhanced_prediction if pred.enhanced_prediction is not None else pred.baseline_prediction
+    elif model_id == "lightgbm":
+        return pred.lightgbm_prediction if pred.lightgbm_prediction is not None else (
+            pred.enhanced_prediction if pred.enhanced_prediction is not None else pred.baseline_prediction
+        )
+    elif model_id == "ensemble":
+        # Ensemble: Weighted average of available predictions
+        predictions = []
+        weights = []
+        if pred.baseline_prediction is not None:
+            predictions.append(pred.baseline_prediction)
+            weights.append(0.25)  # 25% weight
+        if pred.enhanced_prediction is not None:
+            predictions.append(pred.enhanced_prediction)
+            weights.append(0.35)  # 35% weight
+        if pred.lightgbm_prediction is not None:
+            predictions.append(pred.lightgbm_prediction)
+            weights.append(0.40)  # 40% weight
+        
+        if predictions:
+            total_weight = sum(weights)
+            normalized_weights = [w / total_weight for w in weights]
+            return sum(p * w for p, w in zip(predictions, normalized_weights))
+        else:
+            return pred.baseline_prediction
+    else:
+        # Default to enhanced for backward compatibility
+        return pred.enhanced_prediction if pred.enhanced_prediction is not None else pred.baseline_prediction
+
+
 def generate_regional_predictions(zone: str, weather: WeatherInput, hours_ahead: int = 6, model_id: str = None) -> List[PredictionPoint]:
     """Generate predictions using zone-specific real models only - NO SYNTHETIC DATA."""
     global forecaster, forecaster_loaded, zone_forecasters
 
     try:
+        # Handle LA_METRO as composite zone following ML-005 policy
+        if zone == "LA_METRO":
+            return _generate_composite_la_metro_predictions(weather, hours_ahead, model_id)
+        
         # Map dashboard zone names to data zone names
         if zone == "STATEWIDE":
             actual_zone = "SYSTEM"
-        elif zone == "LA_METRO":
-            # Virtual zone - we'll handle this specially
-            actual_zone = "SCE"  # Use SCE as primary for LA Metro predictions
         else:
             actual_zone = zone
 
@@ -500,12 +636,6 @@ def generate_regional_predictions(zone: str, weather: WeatherInput, hours_ahead:
             zone=actual_zone,
             horizons=horizons
         )
-
-        if not predictions:
-            raise HTTPException(
-                status_code=503,
-                detail=f"No predictions available for zone {zone}. Check if models are properly loaded."
-            )
 
         if not predictions:
             raise HTTPException(
@@ -552,25 +682,6 @@ def generate_regional_predictions(zone: str, weather: WeatherInput, hours_ahead:
 
             if predicted_load is None:
                 continue
-
-            # For LA_METRO, scale the SCE prediction to account for combined load
-            if zone == "LA_METRO":
-                # Get current loads for scaling
-                sce_current = 0.0
-                sp15_current = 0.0
-
-                if regional_data and "SCE" in regional_data and len(regional_data["SCE"]) > 0:
-                    sce_current = float(regional_data["SCE"].iloc[-1]['load'])
-
-                if regional_data and "SP15" in regional_data and len(regional_data["SP15"]) > 0:
-                    sp15_current = float(regional_data["SP15"].iloc[-1]['load'])
-
-                combined_current = sce_current + sp15_current
-
-                if sce_current > 0 and combined_current > 0:
-                    # Scale prediction by the ratio of combined load to SCE load
-                    scale_factor = combined_current / sce_current
-                    predicted_load = predicted_load * scale_factor
 
             # Calculate confidence intervals (simplified - in production this would come from the model)
             confidence_range = predicted_load * 0.05  # 5% confidence range
@@ -765,51 +876,64 @@ async def get_system_status(zone: str = "STATEWIDE", model_id: str = None):
     # Get real prediction from zone-specific forecaster (moved outside zone data check)
     if current_load > 0:
         try:
-            # Map zone names for forecaster lookup
-            if zone == "STATEWIDE":
-                forecaster_zone = "SYSTEM"
-            elif zone == "LA_METRO":
-                forecaster_zone = "SCE"  # Use SCE as primary for LA Metro predictions
-            else:
-                forecaster_zone = zone
-
-            # Use zone-specific forecaster if available
-            zone_forecaster = zone_forecasters.get(forecaster_zone)
-            if zone_forecaster:
-                predictions = zone_forecaster.make_predictions(
-                    prediction_time=datetime.now(timezone.utc),
-                    zone=forecaster_zone,
-                    horizons=[1]
-                )
-                if predictions and len(predictions) > 0:
-                    pred = predictions[0]
-                    # Use enhanced prediction if available, otherwise baseline
-                    if hasattr(pred, 'enhanced_prediction') and pred.enhanced_prediction:
-                        base_prediction = float(pred.enhanced_prediction)
-                    elif hasattr(pred, 'baseline_prediction') and pred.baseline_prediction:
-                        base_prediction = float(pred.baseline_prediction)
+            # Handle LA_METRO with ML-005 compliant composite predictions
+            if zone == "LA_METRO":
+                # Use composite prediction logic for LA_METRO
+                try:
+                    composite_predictions = _generate_composite_la_metro_predictions(
+                        WeatherInput(temperature=25.0, humidity=60.0, wind_speed=10.0, zone=zone),
+                        hours_ahead=1
+                    )
+                    
+                    if composite_predictions and len(composite_predictions) > 0:
+                        predicted_load = composite_predictions[0].predicted_load
+                        logger.info(f"Using ML-005 compliant LA_METRO status prediction: {predicted_load} MW")
                     else:
-                        base_prediction = current_load * 1.02
+                        # Fallback for LA_METRO
+                        logger.warning(f"LA_METRO composite prediction failed - using fallback")
+                        predicted_load = current_load * 1.02
+                except Exception as e:
+                    logger.error(f"Error generating LA_METRO status prediction: {e}")
+                    predicted_load = current_load * 1.02
+            else:
+                # Map zone names for forecaster lookup
+                if zone == "STATEWIDE":
+                    forecaster_zone = "SYSTEM"
+                else:
+                    forecaster_zone = zone
 
-                    # For LA_METRO, scale the SCE prediction to account for combined load
-                    if zone == "LA_METRO" and current_load > 0:
-                        # Get SCE current load for scaling
-                        sce_current = 0.0
-                        if regional_data and "SCE" in regional_data and len(regional_data["SCE"]) > 0:
-                            sce_current = float(regional_data["SCE"].iloc[-1]['load'])
-
-                        if sce_current > 0:
-                            # Scale prediction by the ratio of combined load to SCE load
-                            scale_factor = current_load / sce_current
-                            predicted_load = base_prediction * scale_factor
+                # Use zone-specific forecaster if available
+                zone_forecaster = zone_forecasters.get(forecaster_zone)
+                if zone_forecaster:
+                    predictions = zone_forecaster.make_predictions(
+                        prediction_time=datetime.now(timezone.utc),
+                        zone=forecaster_zone,
+                        horizons=[1]
+                    )
+                    if predictions and len(predictions) > 0:
+                        pred = predictions[0]
+                        # Use enhanced prediction if available, otherwise baseline
+                        if hasattr(pred, 'enhanced_prediction') and pred.enhanced_prediction:
+                            predicted_load = float(pred.enhanced_prediction)
+                        elif hasattr(pred, 'baseline_prediction') and pred.baseline_prediction:
+                            predicted_load = float(pred.baseline_prediction)
                         else:
                             predicted_load = current_load * 1.02
                     else:
-                        predicted_load = base_prediction
+                        predicted_load = current_load * 1.02
                 else:
                     predicted_load = current_load * 1.02
-            # Fallback to legacy forecaster
-            elif forecaster and forecaster_loaded:
+        except Exception as e:
+            logger.error(f"Error making prediction for zone {zone}: {e}")
+            predicted_load = current_load * 1.02
+    else:
+        # No current load available
+        predicted_load = 0.0
+
+    # Legacy fallback (should rarely be used now)
+    if predicted_load == 0.0 and current_load > 0:
+        try:
+            if forecaster and forecaster_loaded:
                 predictions = forecaster.make_predictions(
                     prediction_time=datetime.now(timezone.utc),
                     zone=forecaster_zone,
@@ -1099,9 +1223,66 @@ async def get_demand_trend(zone: str):
             next_peak_time = (datetime.now() + timedelta(days=1)).replace(hour=18, minute=0, second=0)
             hours_to_peak = 24 + (18 - current_hour)
 
-    # Estimate peak load (typically 15-25% higher than current)
-    peak_multiplier = 1.2 if is_peak_hours else 1.15
-    next_peak_load = current_load * peak_multiplier
+    # Get actual ML model prediction for peak time instead of using multiplier
+    try:
+        # Calculate hours to peak time for ML prediction
+        peak_hours_ahead = int(hours_to_peak) if hours_to_peak <= 24 else 24
+        
+        if peak_hours_ahead > 0:
+            # Use real ML model to predict load at peak time for the requested zone
+            logger.info(f"Getting ML prediction for zone {zone}, {peak_hours_ahead} hours ahead")
+            
+            if zone == "LA_METRO":
+                # For LA_METRO, use ML-005 compliant composite predictions (aggregate SCE + SP15)
+                try:
+                    composite_predictions = _generate_composite_la_metro_predictions(
+                        WeatherInput(temperature=25.0, humidity=60.0, wind_speed=10.0, zone=zone),
+                        hours_ahead=peak_hours_ahead
+                    )
+                    
+                    if composite_predictions and len(composite_predictions) >= peak_hours_ahead:
+                        # Get composite prediction for the peak time
+                        peak_prediction = composite_predictions[peak_hours_ahead - 1]
+                        next_peak_load = peak_prediction.predicted_load
+                        logger.info(f"Using ML-005 compliant LA_METRO composite prediction: {next_peak_load} MW")
+                    else:
+                        # Fallback to multiplier if ML prediction fails
+                        logger.warning(f"LA_METRO composite prediction failed - using fallback multiplier")
+                        peak_multiplier = 1.15
+                        next_peak_load = current_load * peak_multiplier
+                except Exception as e:
+                    logger.error(f"Error generating LA_METRO composite prediction: {e}")
+                    # Fallback to multiplier if ML prediction fails
+                    logger.warning(f"LA_METRO composite prediction error - using fallback multiplier")
+                    peak_multiplier = 1.15
+                    next_peak_load = current_load * peak_multiplier
+            else:
+                # For all other zones, use direct prediction
+                predictions = generate_regional_predictions(
+                    zone, 
+                    WeatherInput(temperature=25.0, humidity=60.0, wind_speed=10.0, zone=zone),
+                    hours_ahead=peak_hours_ahead,
+                    model_id="enhanced"
+                )
+                
+                if predictions and len(predictions) >= peak_hours_ahead:
+                    # Get prediction for the peak time
+                    peak_prediction = predictions[peak_hours_ahead - 1]
+                    next_peak_load = peak_prediction.predicted_load
+                    logger.info(f"Using ML prediction: {next_peak_load} MW for zone {zone}")
+                else:
+                    # Fallback to multiplier if ML prediction fails
+                    logger.warning(f"ML prediction failed - using fallback multiplier for zone {zone}")
+                    peak_multiplier = 1.15
+                    next_peak_load = current_load * peak_multiplier
+        else:
+            # If peak is now, use current load
+            next_peak_load = current_load
+    except Exception as e:
+        logger.warning(f"Failed to get ML prediction for peak load: {e}")
+        # Fallback to simple multiplier
+        peak_multiplier = 1.2 if is_peak_hours else 1.15
+        next_peak_load = current_load * peak_multiplier
 
     return DemandTrend(
         zone=zone,
