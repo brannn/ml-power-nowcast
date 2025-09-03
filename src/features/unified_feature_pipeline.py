@@ -337,10 +337,13 @@ def create_power_lag_features(df: pd.DataFrame, lag_hours: List[int]) -> pd.Data
 
 def create_weather_interaction_features(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Create interaction features between weather variables.
+    Create interaction features between weather variables and temporal components.
+    
+    Enhanced to include time-of-day × weather interactions for better heat wave
+    and peak demand modeling during extreme weather conditions.
     
     Args:
-        df: DataFrame with weather features
+        df: DataFrame with weather and temporal features
         
     Returns:
         DataFrame with interaction features added
@@ -349,18 +352,45 @@ def create_weather_interaction_features(df: pd.DataFrame) -> pd.DataFrame:
     
     result_df = df.copy()
     
-    # Temperature-humidity interactions
+    # Traditional weather-weather interactions (unchanged)
     if 'temp_c' in result_df.columns and 'humidity' in result_df.columns:
         result_df['temp_humidity_interaction'] = result_df['temp_c'] * result_df['humidity']
         result_df['heat_index_approx'] = result_df['temp_c'] + 0.5 * result_df['humidity']
     
-    # Temperature-wind interactions
     if 'temp_c' in result_df.columns and 'wind_speed_kmh' in result_df.columns:
         result_df['temp_wind_interaction'] = result_df['temp_c'] * result_df['wind_speed_kmh']
         # Simple wind chill approximation
         result_df['wind_chill_approx'] = result_df['temp_c'] - 0.1 * result_df['wind_speed_kmh']
     
-    logger.info("Created weather interaction features")
+    # NEW: Time-of-day × weather interactions for better temporal pattern modeling
+    if 'temp_c' in result_df.columns and 'hour' in result_df.columns:
+        # Afternoon heat intensity (stronger AC demand 2-6 PM during hot weather)
+        afternoon_mask = (result_df['hour'] >= 14) & (result_df['hour'] <= 18)
+        result_df['afternoon_heat_load'] = result_df['temp_c'] * afternoon_mask.astype(int)
+        
+        # Evening cooling effect (reduced AC demand after 7 PM even on hot days)  
+        evening_mask = (result_df['hour'] >= 19) & (result_df['hour'] <= 23)
+        result_df['evening_temp_relief'] = result_df['temp_c'] * evening_mask.astype(int)
+        
+        # Morning pre-heating (low AC demand before 10 AM regardless of temperature)
+        morning_mask = result_df['hour'] <= 10
+        result_df['morning_temp_baseline'] = result_df['temp_c'] * morning_mask.astype(int)
+        
+        # Peak heat stress indicator (extreme temps during peak hours 4-8 PM)
+        peak_hours_mask = (result_df['hour'] >= 16) & (result_df['hour'] <= 20)
+        temp_extreme_mask = result_df['temp_c'] >= 35  # 95°F threshold
+        result_df['peak_heat_stress'] = (peak_hours_mask & temp_extreme_mask).astype(int)
+    
+    # NEW: Cyclical time × temperature interactions (captures heat wave progression)
+    if 'temp_c' in result_df.columns and 'hour_sin' in result_df.columns and 'hour_cos' in result_df.columns:
+        result_df['temp_hour_sin_interaction'] = result_df['temp_c'] * result_df['hour_sin']
+        result_df['temp_hour_cos_interaction'] = result_df['temp_c'] * result_df['hour_cos']
+    
+    # NEW: Weekend × temperature interactions (different patterns on weekends)
+    if 'temp_c' in result_df.columns and 'is_weekend' in result_df.columns:
+        result_df['weekend_temp_load'] = result_df['temp_c'] * result_df['is_weekend']
+    
+    logger.info("Created enhanced weather and temporal interaction features")
     return result_df
 
 
@@ -558,8 +588,13 @@ def get_unified_feature_names(config: Optional[UnifiedFeatureConfig] = None) -> 
     # Interaction features
     if config.include_weather_interactions:
         features.extend([
+            # Traditional weather-weather interactions
             'temp_humidity_interaction', 'heat_index_approx',
-            'temp_wind_interaction', 'wind_chill_approx'
+            'temp_wind_interaction', 'wind_chill_approx',
+            # NEW: Time-of-day × weather interactions  
+            'afternoon_heat_load', 'evening_temp_relief', 'morning_temp_baseline',
+            'peak_heat_stress', 'temp_hour_sin_interaction', 'temp_hour_cos_interaction',
+            'weekend_temp_load'
         ])
 
     return features
