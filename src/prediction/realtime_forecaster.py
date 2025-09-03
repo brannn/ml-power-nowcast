@@ -297,18 +297,74 @@ class RealtimeForecaster:
             # Extract enhanced features (keep zone for feature preparation)
             enhanced_df = enhanced_temp_df.drop(columns=['timestamp', 'load'], errors='ignore')
 
-            # Add weather forecast features with reasonable defaults
-            enhanced_df['temp_forecast_6h'] = 20.0  # Default temperature
-            enhanced_df['temp_forecast_24h'] = 20.0
-            enhanced_df['cooling_forecast_6h'] = max(20.0 - 18.0, 0)  # Cooling degree days
-            enhanced_df['heating_forecast_6h'] = max(18.0 - 20.0, 0)  # Heating degree days
-            enhanced_df['temp_change_rate_6h'] = 0.0  # No temperature change
-            enhanced_df['weather_volatility_6h'] = 0.0  # No weather volatility
+            # Load real weather data for accurate predictions
+            try:
+                from pathlib import Path
+                weather_path = Path("data/weather_all_zones_sample.parquet")
+                if weather_path.exists():
+                    weather_df = pd.read_parquet(weather_path)
+                    
+                    # Get weather data for the target zone and time
+                    zone_weather = weather_df[weather_df['zone'] == zone]
+                    if len(zone_weather) > 0:
+                        # Find closest weather record to target time
+                        zone_weather['timestamp'] = pd.to_datetime(zone_weather['timestamp'])
+                        closest_weather = zone_weather.iloc[(zone_weather['timestamp'] - target_time.replace(tzinfo=None)).abs().argsort()[:1]]
+                        
+                        if len(closest_weather) > 0:
+                            weather_record = closest_weather.iloc[0]
+                            temp_c = float(weather_record.get('temp_c', 20.0))
+                            humidity = float(weather_record.get('humidity', 50.0))
+                            
+                            # Add real weather features
+                            enhanced_df['temp_c'] = temp_c
+                            enhanced_df['humidity'] = humidity
+                            enhanced_df['temp_c_squared'] = temp_c ** 2
+                            enhanced_df['cooling_degree_days'] = max(temp_c - 18.0, 0)
+                            enhanced_df['heating_degree_days'] = max(18.0 - temp_c, 0)
+                            enhanced_df['temp_humidity_interaction'] = temp_c * humidity / 100.0
+                            enhanced_df['heat_index_approx'] = temp_c + 0.5 * humidity / 10.0
+                            
+                            # Weather forecast features
+                            enhanced_df['temp_forecast_6h'] = temp_c
+                            enhanced_df['temp_forecast_24h'] = temp_c
+                            enhanced_df['cooling_forecast_6h'] = max(temp_c - 18.0, 0)
+                            enhanced_df['heating_forecast_6h'] = max(18.0 - temp_c, 0)
+                            enhanced_df['temp_change_rate_6h'] = 0.0  # Simplified
+                            enhanced_df['weather_volatility_6h'] = abs(temp_c - 20.0)  # Volatility from normal
+                        else:
+                            # Fallback to defaults if no weather data
+                            self._add_default_weather_features(enhanced_df)
+                    else:
+                        # Fallback to defaults if no zone weather
+                        self._add_default_weather_features(enhanced_df)
+                else:
+                    # Fallback to defaults if no weather file
+                    self._add_default_weather_features(enhanced_df)
+            except Exception as e:
+                # Fallback to defaults on any error
+                self._add_default_weather_features(enhanced_df)
 
             return baseline_df, enhanced_df
 
         except Exception as e:
             raise PredictionError(f"Failed to prepare horizon features: {e}")
+
+    def _add_default_weather_features(self, enhanced_df: pd.DataFrame) -> None:
+        """Add default weather features when real weather data is unavailable."""
+        enhanced_df['temp_c'] = 20.0
+        enhanced_df['humidity'] = 50.0
+        enhanced_df['temp_c_squared'] = 400.0
+        enhanced_df['cooling_degree_days'] = max(20.0 - 18.0, 0)
+        enhanced_df['heating_degree_days'] = max(18.0 - 20.0, 0)
+        enhanced_df['temp_humidity_interaction'] = 10.0
+        enhanced_df['heat_index_approx'] = 22.5
+        enhanced_df['temp_forecast_6h'] = 20.0
+        enhanced_df['temp_forecast_24h'] = 20.0
+        enhanced_df['cooling_forecast_6h'] = max(20.0 - 18.0, 0)
+        enhanced_df['heating_forecast_6h'] = max(18.0 - 20.0, 0)
+        enhanced_df['temp_change_rate_6h'] = 0.0
+        enhanced_df['weather_volatility_6h'] = 0.0
 
     def _create_enhanced_features_with_pipeline(
         self,
@@ -346,7 +402,7 @@ class RealtimeForecaster:
                 include_lag_features=True,
                 lag_hours=[1, 24],
                 include_temporal_features=True,
-                include_weather_interactions=False,  # No weather data available
+                include_weather_interactions=True,   # Weather data now available
                 target_zones=[zone]
             )
 
@@ -357,9 +413,10 @@ class RealtimeForecaster:
 
             try:
                 # Build features using unified pipeline
+                weather_path = Path("data/weather_all_zones_sample.parquet")
                 features_df = build_unified_features(
                     power_data_path=temp_path,
-                    weather_data_path=None,
+                    weather_data_path=weather_path if weather_path.exists() else None,
                     forecast_data_dir=None,
                     config=config
                 )
